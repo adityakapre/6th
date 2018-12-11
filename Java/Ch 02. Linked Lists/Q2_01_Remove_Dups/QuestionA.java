@@ -2,7 +2,7 @@ package Q2_01_Remove_Dups;
 
 import java.util.HashSet;
 import CtCILibrary.LinkedListNode;
-
+//buffer = hashset
 public class QuestionA {
 	public static void deleteDups(LinkedListNode n) {
 		HashSet<Integer> set = new HashSet<Integer>();
