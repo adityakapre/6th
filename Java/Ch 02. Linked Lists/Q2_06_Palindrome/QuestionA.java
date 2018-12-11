@@ -1,3 +1,11 @@
+/*Solution #1: Reverse and Compare
+Our first solution is to reverse the linked list and compare the reversed list to the original list. If they're the
+same, the lists are identical.
+Note that when we compare the linked list to the reversed list, we only actually need to compare the first
+half of the list. If the first half of the normal list matches the first half of the reversed list, then the second half
+of the normal list must match the second half of the reversed list.
+*/
+
 package Q2_06_Palindrome;
 
 import CtCILibrary.LinkedListNode;
