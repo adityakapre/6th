@@ -12,6 +12,9 @@ elements on top. When we dequeue an element, we want to remove the oldest elemen
 dequeue from stackOldest. If stackOldest is empty, then we want to transfer all elements from
 stackNewest into this stack in reverse order. To insert an element, we push onto stackNewest, since it
 has the newest elements on top.
+During your actual interview, you may find that you forget the exact API calls. Don't stress too much if that
+happens to you. Most interviewers are okay with your asking for them to refresh your memory on little
+details. They're much more concerned with your big picture understanding.
 */
 package Q3_04_Queue_via_Stacks;
 
