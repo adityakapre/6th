@@ -4,10 +4,14 @@ A second approach is to allow the stack blocks to be flexible in size. When one 
 capacity, we grow the allowable capacity and shift elements as necessary.
 We will also design our array to be circular, such that the final stack may start at the end of the array and
 wrap around to the beginning.
+
 Please note that the code for this solution is far more complex than would be appropriate for an interview.
 You could be responsible for pseudocode, or perhaps the code of individual components, but the entire
 implementation would be far too much work.
 
+In problems like this, it's important to focus on w riting clean, maintainable code. You should use additional
+classes, as we did with Stackinfo, and pull chunks of code into separate methods. Of course, this advice
+applies to the "real world" as well.
 */
 package Q3_01_Three_in_One;
 
