@@ -5,7 +5,6 @@ Circular linked list: A (corrupt) linked list in which a node's next pointer poi
 as to make a loop in the linked list.
 EXAMPLE
 Input:
-Output:
-SOLUTION
 A - > B - > C - > D - > E - > C [the same C as earlier]
+Output:
 C
