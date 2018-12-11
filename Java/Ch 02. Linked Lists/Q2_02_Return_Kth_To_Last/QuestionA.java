@@ -8,6 +8,7 @@ do we handle this?
 Approach A: Don't Return the Element.
 One way to do this is to change the problem to simply printing the kth to last element. Then, we can pass
 back the value of the counter simply through return values.
+Of course, this is only a valid solution if the interviewer says it is valid
 */
 
 package Q2_02_Return_Kth_To_Last;
