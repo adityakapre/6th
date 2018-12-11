@@ -3,6 +3,7 @@ package Q2_01_Remove_Dups;
 import CtCILibrary.LinkedListNode;
 /* lfwe don't have a buffer, we can iterate with two pointers: current which iterates through the linked list, 
 * and runner which checks all subsequent nodes for duplicates.
+This code runs in O ( 1) space, but O ( N2) time.
 */
 public class QuestionB {
 	public static void deleteDups(LinkedListNode head) {
