@@ -1,3 +1,17 @@
+/*Follow Up
+Part B is conceptually the same (recurse, carry the excess), but has some additional complications when it
+comes to implementation:
+1. One list may be shorter than the other, and we cannot handle this "on the flY:' For example, suppose we
+were adding (1 -> 2 -> 3-> 4) and (5-> 6-> 7). We need to know that the 5 should be"matched"with the
+2, not the 1. We can accomplish this by comparing the lengths of the lists in the beginning and padding
+the shorter list with zeros.
+2. In the first part, successive results were added to the tail (i.e., passed forward). This meant that the recursive
+call would be passed the carry, and would return the result (which is then appended to the tail). In
+this case, however, results are added to the head (i.e., passed backward). The recursive call must return
+the result, as before, as well as the carry. This is not terribly challenging to implement, but it is more
+cumbersome. We can solve this issue by creating a wrapper class called Partial Sum.
+*/
+
 package Q2_05_Sum_Lists;
 import CtCILibrary.LinkedListNode;
 
