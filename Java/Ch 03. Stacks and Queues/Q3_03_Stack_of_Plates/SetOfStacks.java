@@ -16,6 +16,11 @@ elements), but it might get us into tricky situations later on if someone assume
 the last) operate at full capacity. There's no "right answer" here; you should discuss this trade-off with your
 interviewer.
 
+This problem is not conceptually that tough, but it requires a lot of code to implement it fully. Your interviewer
+would not ask you to implement the entire code.
+A good strategy on problems like this is to separate code into other methods, like a leftShi ft method
+that popAt can call. This will make your code cleaner and give you the opportunity to lay down the skeleton
+of the code before dealing with some of the details.
 */
 package Q3_03_Stack_of_Plates;
 
