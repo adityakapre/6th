@@ -24,6 +24,8 @@ this is the best we can do, since any algorithm must touch all N nodes.
 Due to the use of recursion, the space complexity is O ( log N) on a balanced tree. There are up to O ( log
 N) recursive calls on the stack since we may recurse up to the depth of the tree.
 
+Remember that in recursive algorithms, you should always make sure that your base cases, as well as your
+null cases, are well handled.
 */
 
 package Q4_05_Validate_BST;
