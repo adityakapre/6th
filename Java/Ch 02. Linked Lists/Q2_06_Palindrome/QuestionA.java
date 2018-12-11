@@ -4,6 +4,10 @@ same, the lists are identical.
 Note that when we compare the linked list to the reversed list, we only actually need to compare the first
 half of the list. If the first half of the normal list matches the first half of the reversed list, then the second half
 of the normal list must match the second half of the reversed list.
+
+Observe that we've modularized this code into reverse and is Equa 1 functions. We've also created a new
+class so that we can return both the head and the tail of this method. We could have also returned a twoelement
+array, but that approach is less maintainable.
 */
 
 package Q2_06_Palindrome;
