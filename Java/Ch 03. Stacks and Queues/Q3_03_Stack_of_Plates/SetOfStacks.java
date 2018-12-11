@@ -1,3 +1,11 @@
+/*
+We know that push () should behave identically to a single stack, which means that we need push () to
+call push () on the last stack in the array of stacks. We have to be a bit careful here though: if the last stack
+is at capacity, we need to create a new stack. Our code should look something like this.
+
+What should pop() do? It should behave similarly to push () in that it should operate on the last stack. If
+the last stack is empty (after popping), then we should remove the stack from the list of stacks.
+*/
 package Q3_03_Stack_of_Plates;
 
 import java.util.ArrayList;
