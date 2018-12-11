@@ -1,3 +1,9 @@
+/*
+Alternatively, we can also implement a modification of breadth-first search. With this implementation, we
+want to iterate through the root first, then level 2, then level 3, and so on.
+With each level i, we will have already fully visited all nodes on level i. - 1. This means that to get which
+nodes are on level i, we can simply look at all children of the nodes of level i - 1.
+*/
 package Q4_03_List_of_Depths;
 
 import CtCILibrary.*;
