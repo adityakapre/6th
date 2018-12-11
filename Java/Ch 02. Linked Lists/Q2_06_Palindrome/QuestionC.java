@@ -26,7 +26,7 @@ Let's examine what the call stack looks like:
 1 vl = is Palindrome: list = 0 ( 1 ( 2 ( 3 ) 2 ) 1 ) 0. length = 7
 2 	v2 = isPalindrome: list = 1 ( 2 ( 3 ) 2 ) 1 ) 0. length = 5
 3 		v3 = isPalindrome: list = 2 ( 3 ) 2 ) 1 ) 0. length = 3
-4 			v4 = is Palindrome: list = 3 ) 2 ) 1 ) 0. length = 1
+4 			v4 = isPalindrome: list = 3 ) 2 ) 1 ) 0. length = 1
 5 		returns v3
 6 	returns v2
 7 returns vl
