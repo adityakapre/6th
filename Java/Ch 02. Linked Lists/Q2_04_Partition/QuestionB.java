@@ -1,3 +1,12 @@
+/*If it bugs you to keep around four different variables for tracking two linked lists, you're not alone. We can
+make this code a bit shorter.
+If we don't care about making the elements of the list "stable" (which there's no obligation to, since the
+interviewer hasn't specified that), then we can instead rearrange the elements by growing the list at the
+head and tail.
+In this approach, we start a"new" list (using the existing nodes). Elements bigger than the pivot element are
+put at the tail and elements smaller are put at the head. Each time we insert an element, we update either
+the head or tail.*/
+
 package Q2_04_Partition;
 
 import CtCILibrary.LinkedListNode;
