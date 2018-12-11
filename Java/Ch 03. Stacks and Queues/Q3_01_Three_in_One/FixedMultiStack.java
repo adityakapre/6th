@@ -11,6 +11,10 @@ point.
 For stack 1, we will use [0, X).
 For stack 2, we will use [ X , 2X ) .
 For stack 3, we will use [ 2X , n) .
+
+If we had additional information about the expected usages of the stacks, then we could modify this algorithm
+accordingly. For example, if we expected Stack 1 to have many more elements than Stack 2, we could
+allocate more space to Stack 1 and less space to Stack 2.
 */
 package Q3_01_Three_in_One;
 
