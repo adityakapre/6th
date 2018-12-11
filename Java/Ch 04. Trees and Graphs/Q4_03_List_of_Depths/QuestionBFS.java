@@ -3,6 +3,18 @@ Alternatively, we can also implement a modification of breadth-first search. Wit
 want to iterate through the root first, then level 2, then level 3, and so on.
 With each level i, we will have already fully visited all nodes on level i. - 1. This means that to get which
 nodes are on level i, we can simply look at all children of the nodes of level i - 1.
+
+first solution = dfs
+seconf solution = bfs
+
+One might ask which of these solutions is more efficient. Both run in O ( N) time, but what about the space
+efficiency? At first, we might want to claim that the second solution is more space efficient.
+In a sense, that's correct. The first solution uses 0( log N) recursive calls (in a balanced tree), each of which
+adds a new level to the stack. The second solution, which is iterative, does not require this extra space.
+However, both solutions require returning O(N) data. The extra 0( log N) space usage from the recursive
+implementation is dwarfed by the O ( N) data that must be returned. So while the first solution may actually
+use more data, they are equally efficient when it comes to "big O:'
+
 */
 package Q4_03_List_of_Depths;
 
