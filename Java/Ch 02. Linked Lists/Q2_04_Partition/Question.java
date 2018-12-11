@@ -1,3 +1,13 @@
+/*If this were an array, we would need to be careful about how we shifted elements. Array shifts are very
+expensive.
+However, in a linked list, the situation is much easier. Rather than shifting and swapping elements, we can
+actually create two different linked lists: one for elements less than x, and one for elements greater than or
+equal to x.
+We iterate through the linked list, inserting elements into our before list or our after list. Once we reach
+the end of the linked list and have completed this splitting, we merge the two lists.
+This approach is mostly "stable" in that elements stay in their original order, other than the necessary movement
+around the partition. The code below implements this approach.*/
+
 package Q2_04_Partition;
 
 import CtCILibrary.LinkedListNode;
