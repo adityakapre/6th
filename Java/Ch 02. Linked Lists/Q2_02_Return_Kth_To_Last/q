@@ -1,0 +1,7 @@
+Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
+
+
+Solution #1: If linked list size is known
+If the size of the linked list is known, then the kth to last element is the ( length - k)th element. We can
+just iterate through the linked list to find this element. Because this solution is so trivial, we can almost be
+sure that this is not what the interviewer intended.
