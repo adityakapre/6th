@@ -24,11 +24,11 @@ This method will form the outline of the isPalindrome method. The "meat" of the 
 comparing node i to node n - i to check if the linked list is a palindrome. How do we do that?
 Let's examine what the call stack looks like:
 1 vl = is Palindrome: list = 0 ( 1 ( 2 ( 3 ) 2 ) 1 ) 0. length = 7
-2 v2 = isPalindrome: list = 1 ( 2 ( 3 ) 2 ) 1 ) 0. length = 5
-3 v3 = isPalindrome: list = 2 ( 3 ) 2 ) 1 ) 0. length = 3
-4 v4 = is Palindrome: list = 3 ) 2 ) 1 ) 0. length = 1
-5 returns v3
-6 returns v2
+2 	v2 = isPalindrome: list = 1 ( 2 ( 3 ) 2 ) 1 ) 0. length = 5
+3 		v3 = isPalindrome: list = 2 ( 3 ) 2 ) 1 ) 0. length = 3
+4 			v4 = is Palindrome: list = 3 ) 2 ) 1 ) 0. length = 1
+5 		returns v3
+6 	returns v2
 7 returns vl
 8 returns ?
 In the above call stack, each call wants to check if the list is a palindrome by comparing its head node with
