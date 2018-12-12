@@ -1,6 +1,6 @@
 /*
-Recall that an in-order traversal traverses the left subtree, then the current node, then the right subtree. To
-approach this problem, we need to think very, very carefully about what happens.
+Recall that an in-order traversal traverses the left subtree, then the current node, then the right subtree. 
+To approach this problem, we need to think very, very carefully about what happens.
 Let's suppose we have a hypothetical node. We know that the order goes left subtree, then current side,
 then right subtree. So, the next node we visit should be on the right side.
 But which node on the right subtree? It should be the first node we'd visit if we were doing an in-order
