@@ -38,7 +38,7 @@ public class Question {
 	
 	public static Project[] findBuildOrder(String[] projects, String[][] dependencies) {
 		Graph graph = buildGraph(projects, dependencies);
-		return orderProjects(graph.getNodes());
+		return orderProjects(graph);
 	}
 	
 	/* Build the graph, adding the edge (a, b) if b is dependent on a. 
@@ -60,7 +60,8 @@ public class Question {
 		return graph;
 	}
 	
-	public static Project[] orderProjects(ArrayList<Project> projects) {
+	public static Project[] orderProjects(Graph graph) {
+		ArrayList<Project> projects = graph.getNodes();
 		Project[] order = new Project[projects.size()];
 		
 		/* Add “roots” to the build order first.*/
