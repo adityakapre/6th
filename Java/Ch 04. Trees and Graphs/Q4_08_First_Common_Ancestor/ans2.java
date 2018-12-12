@@ -1,3 +1,18 @@
+/*
+Solution #2: With Links to Parents (Better Worst-Case Runtime)
+Similar to the earlier approach, we could trace p's path upwards and check if any of the nodes cover q.
+The first node that covers q (we already know that every node on this path will cover p) must be the first
+common ancestor.
+
+Observe that we don't need to re-check the entire subtree. As we move from a node x to its parent y, all the
+nodes under x have already been checked for q. Therefore, we only need to check the new nodes "uncovered';
+which will be the nodes under x's sibling.
+
+To implement this, we can just traverse upwards from p, storing the parent and the sibling node in
+a variable. (The sibling node is always a child of parent and refers to the newly uncovered subtree.)
+At each iteration, sibling gets set to the old parent's sibling node and parent gets set to parent.
+parent.
+*/
 package Q4_08_First_Common_Ancestor;
 
 import CtCILibrary.TreeNode;
