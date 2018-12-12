@@ -7,6 +7,8 @@ Solution #1: With Links to Parents
 If each node has a link to its parent, we could trace p and q's paths up until they intersect. This is essentially
 the same problem as question 2.7 which find the intersection of two linked lists. The "linked list" in this case
 is the path from each node up to the root.
+
+This approach will take 0( d) time, where d is the depth of the deeper node.
 */
 package Q4_08_First_Common_Ancestor;
 
