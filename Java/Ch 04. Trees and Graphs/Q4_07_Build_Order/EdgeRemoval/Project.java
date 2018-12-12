@@ -1,3 +1,6 @@
+/*
+Project is a Vertex is graph and has its children in Project are Vertexes to which this Project has edge
+*/
 package Q4_07_Build_Order.EdgeRemoval;
 
 import java.util.ArrayList;
