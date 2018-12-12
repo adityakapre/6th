@@ -1,5 +1,7 @@
 /*
-Project is a Vertex is graph and has its children in Project are Vertexes to which this Project has edge
+Project is a Vertex is graph and has its children in Project are Vertexes to which this.Project object has edge
+
+instance variable "dependencies" represents number of incoming edges in graph for this.Project object
 */
 package Q4_07_Build_Order.EdgeRemoval;
 
