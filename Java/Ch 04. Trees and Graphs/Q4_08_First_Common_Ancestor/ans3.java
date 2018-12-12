@@ -1,3 +1,11 @@
+/*
+Solution #3: Without Links to Parents
+Alternatively, you could follow a chain in which p and q are on the same side. That is, if p and q are both on
+the left of the node, branch left to look for the common ancestor. If they are both on the right, branch right
+to look for the common ancestor. When p and q are no longer on the same side, you must have found the
+first common ancestor.
+*/
+
 package Q4_08_First_Common_Ancestor;
 
 import CtCILibrary.TreeNode;
