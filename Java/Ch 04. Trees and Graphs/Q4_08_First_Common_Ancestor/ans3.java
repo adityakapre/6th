@@ -4,6 +4,13 @@ Alternatively, you could follow a chain in which p and q are on the same side. T
 the left of the node, branch left to look for the common ancestor. If they are both on the right, branch right
 to look for the common ancestor. When p and q are no longer on the same side, you must have found the
 first common ancestor.
+
+This algorithm runs in O(n) time on a balanced tree. This is because covers is called on 2n nodes in the
+first call (n nodes for the left side, and n nodes for the right side). After that the algorithm branches left or
+right, at which point c overs will be called on 2n/2 nodes, then 2n/4, and so on. This results in a runtime
+ofO(n).
+We know at this point that we cannot do better than that in terms of the asymptotic runtime since we need
+to potentially look at every node in the tree. However, we may be able to improve it by a constant multiple.
 */
 
 package Q4_08_First_Common_Ancestor;
