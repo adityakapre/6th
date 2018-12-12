@@ -12,6 +12,10 @@ To implement this, we can just traverse upwards from p, storing the parent and t
 a variable. (The sibling node is always a child of parent and refers to the newly uncovered subtree.)
 At each iteration, sibling gets set to the old parent's sibling node and parent gets set to parent.
 parent.
+
+This algorithm takes O(t) time, where tis the size of the subtree for the first common ancestor. In the
+worst case, this will be O( n), where n is the number of nodes in the tree. We can derive this runtime by
+noticing that each node in that subtree is searched once.
 */
 package Q4_08_First_Common_Ancestor;
 
