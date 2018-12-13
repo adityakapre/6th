@@ -17,6 +17,7 @@ public class Question {
 			for (int x : array) {
 				tree.insertInOrder(x);
 			}
+			System.out.println(tree.get(tree.root, 3).size());
 			int d = tree.getRandomNode().data;
 			counts[d]++;
 		}
@@ -70,7 +71,7 @@ class TreeNode {
 	public int data;
 	public TreeNode left;
 	public TreeNode right;
-	private int size = 0;
+	private int size = 0; //total size of tree under this node
 
 	public TreeNode(int d) {
 		data = d;
