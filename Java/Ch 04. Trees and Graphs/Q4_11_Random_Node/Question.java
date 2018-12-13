@@ -110,6 +110,7 @@ class TreeNode {
 		return null;
 	}
 
+	//anwers option#6
 	public TreeNode getRandomNode() {
 		int leftSize = left == null ? 0 : left.size();
 		Random random = new Random();
@@ -123,6 +124,7 @@ class TreeNode {
 		}
 	}
 
+	//anwers option#7
 	public TreeNode getIthNode(int i) {
 		int leftSize = left == null ? 0 : left.size();
 		if (i < leftSize) {
