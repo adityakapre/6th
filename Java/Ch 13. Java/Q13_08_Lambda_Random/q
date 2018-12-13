@@ -1,0 +1,66 @@
+13.8 Lambda Random: Using Lambda expressions, write a function List <Integer>
+getRandomSub set ( List< Integer> list) that returns a random subset of arbitrary size. All
+subsets (including the empty set) should be equally likely to be chosen.
+
+SOLUTION
+It's tempting to approach this problem by picking a subset size from 0 to N and then generating a random
+subset of that size.
+That creates two issues:
+1. We'd have to weight those probabilities. If N > 1, there are more subsets of size N/2 than there are of
+subsets of size N (of which there is always only one).
+2. It's actually more difficult to generate a subset of a restricted size (e.g., specifically 1 O) than it is to
+generate a subset of any size.
+
+Instead, rather than generating a subset based on sizes, let's think about it based on elements. (The fact
+that we're told to use lambda expressions is also a hint that we should think about some sort of iteration or
+processing through the elements.)
+Imagine we were iterating through { 1, 2, 3} to generate a subset. Should 1 be in this subset?
+We've got two choices: yes or no. We need to weight the probability of"yes"vs. "no" based on the percent of
+subsets that contain 1. So, what percent of elements contain 1?
+For any specific element, there are as many subsets that contain the element as do not contain it. Consider
+the following:
+{}
+{2}
+{3}
+{2, 3}
+{1}
+{1, 2}
+{1, 3}
+{l, 2, 3}
+Note how the difference between the subsets on the left and the subsets on the right is the existence of
+1. The left and right sides must have the same number of subsets because we can convert from one to the
+other by just adding an element.
+This means that we can generate a random subset by iterating through the list and flipping a coin (i.e.,
+deciding on a 50/50 chance) to pick whether or not each element will be in it.
+Without lambda expressions, we can write something like this:
+1 List<Integer> getRandomSubset(List<Integer> list) {
+2 List<Integer> subset = new ArrayList<Integer>();
+3 Random random = new Random();
+4 for (int item : list) {
+5 /* Flip coin. */
+6 if (random.nextBoolean()) {
+7 subset.add(item);
+8 }
+9 }
+10 return subset;
+11 }
+To implement this approach using lambda expressions, we can do the following:
+1 List<Integer> getRandomSubset(List<Integer> list) {
+2 Random random = new Random();
+3 List<Integer> subset= list.stream().filter(
+4 k -> { return random.nextBoolean(); /* Flip coin. */
+5 }).collect(Collectors.tolist());
+6 return subset;
+7 }
+Or, we can use a predicate (defined within the class or within the function):
+1 Random random = new Random();
+2 Predicate<Object> flipCoin = o -> {
+3 return random.nextBoolean();
+4 };
+5
+6 List<Integer> getRandomSubset(List<Integer> list) {
+7 List<Integer> subset= list.stream().filter(flipCoin).
+8 collect(Collectors.tolist());
+9 return subset;
+10 }
+The nice thing about this implementation is that now we can apply the flipCoin predicate in other places.
