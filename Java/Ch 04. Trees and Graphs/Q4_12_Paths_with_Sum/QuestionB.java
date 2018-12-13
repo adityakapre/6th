@@ -47,6 +47,17 @@ a value of 2 (originating from index 2 and index 5). As we can see above, indexe
 6 through 7 have sums of 8.
 Now that we've settled the algorithm for an array, let's review this on a tree. We take a similar approach.
 We traverse through the tree using depth-first search. As we visit each node:
+
+1. Track its runningSum. We'll take this in as a parameter and immediately increment it by node. value.
+2. Look up runningSum - targetSum in the hash table. The value there indicates the total number. Set
+totalPaths to this value.
+3. If runningSum == targetSum, then there's one additional path that starts at the root. Increment
+totalPaths.
+4. Add runningSum to the hash table (incrementing the value if it's already there).
+5. Recurse left and right, counting the number of paths with sum targetSum.
+6. After we're done recursing left and right, decrement the value of runningSum in the hash table. This is
+essentially backing out of our work; it reverses the changes to the hash table so that other nodes don't
+use it (since we're now done with node).
 */
 package Q4_12_Paths_with_Sum;
 import java.util.HashMap;
