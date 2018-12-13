@@ -10,6 +10,9 @@ would land on the left or the right side of x.
 Building off this approach, is there a way that we can look at the middle element to determine where a
 magic index might be? Let's look at a sample array:
 
+-40  -20  -1  1  2  3  5  7  9  12  13
+0     1    2  3  4  5  6  7  8   9  10
+
 When we look at the middle element A [5] = 3, we know that the magic index must be on the right side,
 sinceA[mid] < mid.
 Why couldn't the magic index be on the left side? Observe that when we move from i to i-1, the value
