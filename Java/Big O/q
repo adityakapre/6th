@@ -39,13 +39,14 @@ O(n2 raisedTo n).
 Not so fast. Can you find the error in the logic?
 The error is that the n is changing. Yes, fib (n) takes 0(2 raisedTo n) time, but it matters what that value of n is.
 Instead, let's walk through each call.
-fib(!) -> 2 raisedTo 1 steps
+fib(1) -> 2 raisedTo 1 steps
 fib(2) -> 2 raisedTo 2 steps
 fib(3) -> 2 raisedTo 3 steps
 fib(4) -> 2 raisedTo 4 steps
 fib(n) -> 2 raisedTo n steps
 Therefore, the total amount of work is:
 2 raisedTo 1 + 2 raisedTo 2 + 2 raisedTo 3 + 2 raisedTo 4 + , , , + 2 raisedTo n
+
 As we showed on page 44, this is 2 raisedTo n+1
 . Therefore, the runtime to compute the first n Fibonacci numbers
 (using this terrible algorithm) is still O ( 2 raisedTo n).
