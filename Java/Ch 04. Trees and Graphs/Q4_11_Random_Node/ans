@@ -38,7 +38,7 @@ We could just return the last node we find, but that would mean unequal probabil
 
 Option #5 [Fast & Not Working]
 We could try just a simple approach: traverse randomly down the tree. At each node:
-, With X odds, we return the current node.
+, With 1/3 odds, we return the current node.
 • With X odds, we traverse left.
 With X odds, we traverse right.
 This solution, like some of the others, does not distribute the probabilities evenly across the nodes. The root
@@ -50,17 +50,17 @@ previous solutions. To do so, we must diagnose-deeply-the root problem in a solu
 Let's look at Option #5. It fails because the probabilities aren't evenly distributed across the options. Can we
 fix that while keeping the basic algorithm the same?
 We can start with the root. With what probability should we return the root? Since we have N nodes, we
-must return the root node with X probability. (In fact, we must return each node with X probability.
+must return the root node with 1/N probability. (In fact, we must return each node with 1/N probability.
 After all, we have N nodes and each must have equal probability. The total must be 1 (100%), therefore each
-must have X probability.)
+must have 1/N probability.)
 We've resolved the issue with the root. Now what about the rest of the problem? With what probability
 should we traverse left versus right? It's not 50/50. Even in a balanced tree, the number of nodes on each
 side might not be equal. If we have more nodes on the left than the right, then we need to go left more
 often.
 One way to think about it is that the odds of picking something-anything-from the left must be the sum
-of each individual probability. Since each node must have probability X, the odds of picking something
-from the left must have probability LEFT SIZE * X. This should therefore be the odds of going left.
-Likewise, the odds of going right should be RIGHT SIZE * X.
+of each individual probability. Since each node must have probability 1/N, the odds of picking something
+from the left must have probability LEFT SIZE * (1/N). This should therefore be the odds of going left.
+Likewise, the odds of going right should be RIGHT SIZE * (1/N).
 This means that each node must know the size of the nodes on the left and the size of the nodes on the
 right. Fortunately, our interviewer has told us that we're building this tree class from scratch. It's easy to
 keep track of this size information on inserts and deletes. We can just store a size variable in each node.
