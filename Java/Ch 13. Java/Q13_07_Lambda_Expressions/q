@@ -1,0 +1,58 @@
+13.7 Lambda Expressions: There is a class Country that has methods getContinent() and
+getPopulation(). Write a function int getPopulation(List<Country> countries,
+String continent) that computes the total population of a given continent, given a list of all
+countries and the name of a continent.
+
+SOLUTION
+This question really comes in two parts. First, we need to generate a list of the countries in North America.
+Then, we need to compute their total population.
+Without lambda expressions, this is fairly straightforward to do.
+1 int getPopulation(List<Country> countries, String continent) {
+2 int s um = 0;
+3 for (Country c : countries) {
+4 if (c.getContinent().equals(continent)) {
+5 s um += c.getPopulation();
+6 }
+7 }
+8 return sum;
+9 }
+
+To implement this with lambda expressions, let's break this up into multiple parts.
+First, we use filter to get a list of the countries in the specified continent.
+1 Stream<Country> northAmerica = countries.stream().filter(
+2 country -> { return country.getContinent().equals(continent);}
+3 );
+Second, we convert this into a list of populations using map.
+1 Stream<Integer> populations = northAmerica.map(
+2 c -> c.getPopulation()
+3 );
+Third and finally, we compute the sum using reduce.
+1 int population = populations.reduce(0, (a, b) -> a+ b);
+
+This function puts it all together.
+1 int getPopulation(List<Country> countries, String continent) {
+2 /* Filter countries. */
+3 Stream<Country> sublist = countries.stream().filter(
+4 country -> { return country.getContinent().equals(continent);}
+5 );
+6
+7 /* Convert to list of populations. */
+8 Stream<Integer> populations = subli st.map(
+9 c -> c.getPopulation()
+10 ) ;
+11
+12 /* Sum list. */
+13 int population = populations.reduce(0, (a, b) -> a+ b);
+14 return population;
+15 }
+
+Alternatively, because of the nature of this specific problem, we can actually remove the filter entirely.
+The reduce operation can have logic that maps the population of countries not in the right continent to
+zero. The sum will effectively disregard countries not within continent.
+1 int getPopulation(List<Country> countries, String continent) {
+2 Stream<Integer> populations = countries.stream().map(
+3 c -> c.getContinent().equals(continent) ? c.getPopulation() 0);
+4 return populations.reduce(0, (a, b) -> a+ b);
+5 }
+Lambda functions were new to Java 8, so if you don't recognize them, that's probably why. Now is a great
+time to learn about them, though!
