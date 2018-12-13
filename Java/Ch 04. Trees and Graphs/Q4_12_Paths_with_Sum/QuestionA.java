@@ -4,6 +4,11 @@ Solution #1: Brute Force
 In the brute force approach, we just look at all possible paths. To do this, we traverse to each node. At each
 node, we recursively try all paths downwards, tracking the sum as we go. As soon as we hit our target sum,
 we increment the total.
+
+What is the time complexity of this algorithm?
+Consider that node at depth d will be "touched" (via countPathsWi thSumFromNode) by d nodes above it.
+In a balanced binary tree, d will be no more than approximately log N. Therefore, we know that with N
+nodes in the tree, countPathsWi thSumFromNode will be called O(N log N) times. The runtime is O(N log N).
 */
 package Q4_12_Paths_with_Sum;
 
