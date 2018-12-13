@@ -1,3 +1,19 @@
+/*
+Memoization Solution
+The previous solution for c ountWays is called many times for the same values, which is unnecessary. We
+can fix this through memoization.
+Essentially, if we've seen this value of n before, return the cached value. Each time we compute a fresh value,
+add it to the cache.
+Typically we use a HashMap<Integer, Integer> for a cache. In this case, the keys will be exactly 1
+through n. It's more compact to use an integer array.
+
+Regardless of whether or not you use memoization, note that the number of ways will quickly overflow the
+bounds of an integer. By the time you get to just n 37, the result has already overflowed. Using a long
+will delay, but not completely solve, this issue.
+It is great to communicate this issue to your interviewer. He probably won't ask you to work around it
+(although you could, with a Biginteger class). but it's nice to demonstrate that you think about these
+issues.
+*/
 package Q8_01_Triple_Step;
 
 import java.util.Arrays;
