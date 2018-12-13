@@ -1,3 +1,21 @@
+/*
+If the elements are not distinct, then this algorithm fails. Consider the following array:
+When we see that A [mid] < mid, we cannot conclude which side the magic index is on. It could be on
+the right side, as before. Or, it could be on the left side (as it, in fact, is).
+Could it be anywhere on the left side? Not exactly. Since A[ 5] = 3, we know that A[ 4] couldn't be a magic
+index. A[ 4] would need to be 4 to be the magic index, but A[ 4] must be less than or equal to A[ 5].
+In fact, when we see that A[ 5] = 3, we'll need to recursively search the right side as before. But, to search
+the left side, we can skip a bunch of elements and only recursively search elements A [ 0] through A [ 3].
+A [ 3] is the first element that could be a magic index.
+The general pattern is that we compare mid Index and midValue for equality first. Then, if they are not
+equal, we recursively search the left and right sides as follows:
+• Left side: search indices start through Math. min (midlndex - 1, midValue ).
+Right side: search indices Math. max(midlndex + 1, midValue) through end.
+
+Note that in the above code, if the elements are all distinct, the method operates almost identically to the
+first solution.
+*/
+
 package Q8_03_Magic_Index;
 
 import java.util.Arrays;
