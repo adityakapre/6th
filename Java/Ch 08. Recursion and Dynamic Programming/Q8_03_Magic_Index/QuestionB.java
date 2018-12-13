@@ -1,5 +1,9 @@
 /*
 If the elements are not distinct, then this algorithm fails. Consider the following array:
+
+-10  -5  2  2  2  3  4  7  9  12  13
+ 0   1   2  3  4  5  6  7  8  9   10
+
 When we see that A [mid] < mid, we cannot conclude which side the magic index is on. It could be on
 the right side, as before. Or, it could be on the left side (as it, in fact, is).
 Could it be anywhere on the left side? Not exactly. Since A[ 5] = 3, we know that A[ 4] couldn't be a magic
