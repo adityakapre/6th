@@ -1,3 +1,23 @@
+/*
+Immediately, the brute force solution should jump to mind-and there's no shame in mentioning it. We
+simply iterate through the array, looking for an element which matches this condition.
+
+Given that the array is sorted, though, it's very likely that we're supposed to use this condition.
+We may recognize that this problem sounds a lot like the classic binary search problem. Leveraging the
+Pattern Matching approach for generating algorithms, how might we apply binary search here?
+In binary search, we find an element k by comparing it to the middle element, x, and determining if k
+would land on the left or the right side of x.
+Building off this approach, is there a way that we can look at the middle element to determine where a
+magic index might be? Let's look at a sample array:
+
+When we look at the middle element A [ 5] = 3, we know that the magic index must be on the right side,
+sinceA[mid] < mid.
+Why couldn't the magic index be on the left side? Observe that when we move from i to i-1, the value
+at this index must decrease by at least 1, if not more (since the array is sorted and all the elements are
+distinct). So, if the middle element is already too small to be a magic index, then when we move to the left,
+subtracting k indexes and (at least) k values, all subsequent elements will also be too small.
+We continue to apply this recursive algorithm, developing code that looks very much like binary search.
+*/
 package Q8_03_Magic_Index;
 
 import java.util.Arrays;
