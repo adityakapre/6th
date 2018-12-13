@@ -23,17 +23,19 @@ s X y
 If each value knows its running sum (the sum of values from s through itself), then we can find this pretty
 easily. We just need to leverage this simple equation: runningSumx = runningSumY - targetSum.
 We then look for the values of x where this is true.
-t
-t
-s
-runningSum y
-\
-t
-X
-targets um
-i '
-t
-y
+
+             targetSum
+s          x           y
+
+
+         runningSumY
+    ----------------------
+   |                      |
+  runningSumX     targetSum 
+s              x           y
+
+
+
 Since we're just looking for the number of paths, we can use a hash table. As we iterate through the array,
 build a hash table that maps from a runningSum to the number of times we've seen that sum. Then, for
 each y, look up runningSumY - targetSum in the hash table. The value in the hash table will tell you
