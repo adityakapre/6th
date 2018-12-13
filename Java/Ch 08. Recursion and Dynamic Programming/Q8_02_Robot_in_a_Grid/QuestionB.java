@@ -34,6 +34,7 @@ public class QuestionB {
 		return null;
 	}
 	
+	//finds path going back from destination (r,c) to (0,0)
 	public static boolean getPath(boolean[][] maze, int row, int col, ArrayList<Point> path, HashSet<Point> failedPoints) {
 		/* If out of bounds or not available, return.*/
 		if (col < 0 || row < 0 || !maze[row][col]) {
