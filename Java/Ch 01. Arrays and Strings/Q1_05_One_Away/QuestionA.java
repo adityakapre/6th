@@ -16,6 +16,17 @@ We can go ahead and implement this algorithm now. We'll merge the insertion and 
 step, and check the replacement step separately.
 Observe that you don't need to check the strings for insertion, removal, and replacement edits. The lengths
 of the strings will indicate which of these you need to check.
+
+This algorithm (and almost any reasonable algorithm) takes O ( n) time, where n is the length of the shorter
+string.
+I Why is the runtime dictated by the shorter string instead of the longer string? If the strings are
+the same length (plus or minus one character), then it doesn't matter whether we use the longer
+string or the shorter string to define the runtime. If the strings are very different lengths, then the
+algorithm will terminate in 0( 1) time. One really, really long string therefore won't significantly
+extend the runtime. It increases the runtime only if both strings are long.
+
+We might notice that the code for one Edi tReplace is very simtlar to that for one Edi tinsert. We can
+merge them into one method.
 */
 package Q1_05_One_Away;
 
