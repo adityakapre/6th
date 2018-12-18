@@ -1,3 +1,22 @@
+/*
+There is a "brute force" algorithm to do this. We could check all possible strings that are one edit away by
+testing the removal of each character (and comparing), testing the replacement of each character (and
+comparing), and then testing the insertion of each possible character (and comparing).
+That would be too slow, so let's not bother with implementing it.
+This is one of those problems where it's helpful to think about the "meaning" of each of these operations.
+What does it mean for two strings to be one insertion, replacement, or removal away from each other?
+• Replacement: Consider two strings, such as bale and pale, that are one replacement away. Yes, that
+does mean that you could replace a character in bale to make pale. But more precisely, it means that
+they are different only in one place.
+• Insertion: The strings apple and aple are one insertion away. This means that if you compared the
+strings, they would be identical-except for a shift at some point in the strings.
+• Removal: The strings apple and aple are also one removal away, since removal is just the inverse of
+insertion.
+We can go ahead and implement this algorithm now. We'll merge the insertion and removal check into one
+step, and check the replacement step separately.
+Observe that you don't need to check the strings for insertion, removal, and replacement edits. The lengths
+of the strings will indicate which of these you need to check.
+*/
 package Q1_05_One_Away;
 
 public class QuestionA {
