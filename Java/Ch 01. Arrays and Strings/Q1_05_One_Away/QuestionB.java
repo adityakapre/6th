@@ -3,6 +3,11 @@ To do this, observe that both methods follow similar logic: compare each charact
 strings are only different by one. The methods vary in how they handle that difference. The method
 one Edi tReplace does nothing other than flag the difference, whereas one Edi tinsert increments
 the pointer to the longer string. We can handle both of these in the same method.
+
+Some people might argue the first approach is better, as it is clearer and easier to follow. Others, however,
+will argue that the second approach is better, since it's more compact and doesn't duplicate code (which
+can facilitate maintainability).
+You don't necessarily need to "pick a side:'You can discuss the tradeoffs with your interviewer.
 */
 
 package Q1_05_One_Away;
