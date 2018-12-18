@@ -1,3 +1,10 @@
+/*
+To do this, observe that both methods follow similar logic: compare each character and ensure that the
+strings are only different by one. The methods vary in how they handle that difference. The method
+one Edi tReplace does nothing other than flag the difference, whereas one Edi tinsert increments
+the pointer to the longer string. We can handle both of these in the same method.
+*/
+
 package Q1_05_One_Away;
 
 public class QuestionB {	
