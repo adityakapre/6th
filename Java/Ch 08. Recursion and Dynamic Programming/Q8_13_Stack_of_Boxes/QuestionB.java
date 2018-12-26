@@ -2,6 +2,14 @@
 The problem in this code is that it gets very inefficient. We try to find the best solution that looks like {b3,b4, ••• } 
 even though we may have already found the best solution with b4 at the bottom. Instead of
 generating these solutions from scratch, we can cache these results using memoization.
+
+Because we're only mapping from an index to a height, we can just use an integer array for our"hash table:'
+Be very careful here with what each spot in the hash table represents. In this code, stackMap[i] represents
+the tallest stack with box i at the bottom. Before pulling the value from the hash table, you have to
+ensure that box i can be placed on top of the current bottom.
+It helps to keep the line that recalls from the hash table symmetric with the one that inserts. For example, in
+this code, we recall from the hash table with bottomindex at the start of the method. We insert into the
+hash table with bottomindex at the end.
 */
 package Q8_13_Stack_of_Boxes;
 
