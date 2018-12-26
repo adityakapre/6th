@@ -1,3 +1,58 @@
+/*
+Let's start with the smallest possible example: n = 1.
+
+	|	             |		|
+      -----                  |		|
+    ---------                |		|
+   -----------               |		|
+  -------------              |		|
+ ---------------             |		|
+        
+
+Case n = 1. Can we move Disk 1 from Tower 1 to Tower 3? Yes.
+1. We simply move Disk 1 from Tower 1 to Tower 3.
+
+Case n = 2. Can we move Disk 1 and Disk 2 from Tower 1 to Tower 3? Yes.
+1. Move Disk 1 from Tower 1 to Tower 2
+2. Move Disk 2 from Tower 1 to Tower 3
+3. Move Disk 1 from Tower 2 to Tower 3
+
+Note how in the above steps, Tower 2 acts as a buffer, holding a disk while we move other disks to Tower 3.
+
+Case n = 3. Can we move Disk 1, 2, and 3 from Tower 1 to Tower 3? Yes.
+1. We know we can move the top two disks from one tower to another (as shown earlier), so let's assume
+we've already done that. But instead, let's move them to Tower 2.
+2. Move Disk 3 to Tower 3.
+3. Move Disk 1 and Disk 2 to Tower 3. We already know how to do this-just repeat what we did in Step 1.
+
+Case n = 4. Can we move Disk 1, 2, 3 and 4 from Tower 1 to Tower 3? Yes.
+1. Move Disks 1, 2, and 3 to Tower 2. We know how to do that from the earlier examples.
+2. Move Disk 4 to Tower 3.
+3. Move Disks 1, 2 and 3 back to Tower 3.
+
+Remember that the labels of Tower 2 and Tower 3 aren't important. They're equivalent towers. So, moving
+disks to Tower 3 with Tower 2 serving as a buffer is equivalent to moving disks to Tower 2 with Tower 3
+serving as a buffer.
+
+This approach leads to a natural recursive algorithm. In each part, we are doing the following steps, outlined
+below with pseudocode:
+1 moveDisks(int n, Tower origin, Tower destination, Tower buffer) {
+2 // Base case 
+3 if (n <= 0) return;
+4
+s // move top n - 1 disks from origin to buffer, using destination as a buffer. 
+6 moveDisks(n - 1, origin, buffer, destination);
+7
+8 // move top from origin to destination
+9 moveTop(origin, destination);
+10
+11 // move top n - 1 disks from buffer to destination, using origin as a buffer. 
+12 moveDisks(n - 1, buffer, destination, origin);
+13 }
+The following code provides a more detailed implementation of this algorithm, using concepts of objectoriented
+design.
+	
+*/
 package Q8_06_Towers_of_Hanoi;
 
 import java.util.Stack;
