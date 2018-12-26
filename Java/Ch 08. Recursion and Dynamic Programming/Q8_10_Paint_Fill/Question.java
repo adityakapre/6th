@@ -1,3 +1,20 @@
+/*
+First, let's visualize how this method works. When we call paintFill (i.e., "click" paint fill in the image
+editing application) on, say, a green pixel, we want to "bleed" outwards. Pixel by pixel, we expand outwards
+by calling paintFill on the surrounding pixel. When we hit a pixel that is not green, we stop.
+
+If you used the variable names x and y to implement this, be careful about the ordering of the variables in
+screen [y] [x]. Because x represents the horizontal axis (that is, it's left to right), it actually corresponds
+to the column number, not the row number. The value of y equals the number of rows. This is a very easy
+place to make a mistake in an interview, as well as in your daily coding. It's typically clearer to use row and
+column instead, as we've done here.
+Does this algorithm seem familiar? It should! This is essentially depth-first search on a graph. At each pixel.
+we are searching outwards to each surrounding pixel. We stop once we've fully traversed all the surrounding
+pixels of this color.
+We could alternatively implement this using breadth-first search.
+
+ocolor -> old color ncolor -> new color
+*/
 package Q8_10_Paint_Fill;
 
 public class Question {
