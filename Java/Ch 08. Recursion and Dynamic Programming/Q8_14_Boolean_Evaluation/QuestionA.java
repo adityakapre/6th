@@ -38,6 +38,26 @@ countEval(left | right, false) = countEval(left, false) * countEval(right, false
 
 countEval(left ^ right, false) = countEval(left, false) * countEval(right, false) + countEval(left, false) * countEval(right, false)
 + countEval(left, true) * countEval(right, true)
+
+Alternatively, we can just use the same logic from above and subtract it out from the total number of ways
+of evaluating the expression.
+totalEval(left) = countEval(left, true)+ countEval(left, false)
+totalEval(right) = countEval(right, true)+ countEval(right, false)
+totalEval(expression) = totalEval(left) * totalEval(right)
+countEval(expression, false) = totalEval(expression) - countEval(expression, true)
+
+This makes the code a bit more concise.
+
+Note that the tradeoff of computing the false results from the true ones, and of computing the
+{leftTrue, rightTrue, leftFalse, and rightFalse} values upfront, is a small amount of
+extra work in some cases. For example, if we're looking for the ways that an AND(&) can result in true, we
+never would have needed the leftFalse and rightFalse results. Likewise, if we're looking for the ways
+that an OR (|) can result in false, we never would have needed the leftTrue and rightTrue results.
+Our current code is blind to what we do and don't actually need to do and instead just computes all of
+the values. This is probably a reasonable tradeoff to make (especially given the constraints of whiteboard
+coding) as it makes our code substantially shorter and less tedious to write. Whichever approach you make,
+you should discuss the tradeoffs with your interviewer.
+That said, there are more important optimizations we can make.
 */
 package Q8_14_Boolean_Evaluation;
 
