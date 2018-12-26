@@ -1,3 +1,8 @@
+/*
+The problem in this code is that it gets very inefficient. We try to find the best solution that looks like {b3,b4, ••• } 
+even though we may have already found the best solution with b4 at the bottom. Instead of
+generating these solutions from scratch, we can cache these results using memoization.
+*/
 package Q8_13_Stack_of_Boxes;
 
 import java.util.ArrayList;
