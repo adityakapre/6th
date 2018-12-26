@@ -1,3 +1,16 @@
+/*
+Solution #2
+Alternatively, we can think about the recursive algorithm as making a choice, at each step, whether to put
+a particular box in the stack. (We will again sort our boxes in descending order by a dimension, such as
+height.)
+First, we choose whether or not to put box O in the stack. Take one recursive path with box O at the bottom
+and one recursive path without box 0. Return the better of the two options.
+
+Then, we choose whether or not to put box 1 in the stack. Take one recursive path with box 1 at the bottom
+and one path without box 1. Return the better of the two options. 
+
+We will again use memoization to cache the height of the tallest stack with a particular bottom.
+*/
 package Q8_13_Stack_of_Boxes;
 
 import java.util.ArrayList;
