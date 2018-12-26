@@ -28,6 +28,9 @@ When merged together, the lines above make P (3).
 Case:n > 0
 Generating P (n) for the general case is just a simple generalization of the above steps. We compute
 P (n-1), clone the results, and then add a n to each of these cloned sets.
+
+This solution will be O(n * 2 raisedTo n) in time and space, which is the best we can do. For a slight optimization, we
+could also implement this algorithm iteratively.
 */
 package Q8_04_Power_Set;
 
