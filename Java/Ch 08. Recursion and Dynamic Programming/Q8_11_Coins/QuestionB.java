@@ -1,3 +1,14 @@
+/*
+This works, but it's not as optimal as it could be. The issue is that we will be recursively calling makeChange
+several times for the same values of amount and index.
+We can resolve this issue by storing the previously computed values. We'll need to store a mapping from
+each pair(amount, index) to the precomputed result.
+
+Note that we've used a two-dimensional array of integers to store the previously computed values. This is
+simpler, but takes up a little extra space. Alternatively, we could use an actual hash table that maps from
+amount to a new hash table, which then maps from denom to the precomputed value. There are other
+alternative data structures as well.
+*/
 package Q8_11_Coins;
 
 public class QuestionB {
