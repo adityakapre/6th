@@ -51,7 +51,9 @@ s // move top n - 1 disks from origin to buffer, using destination as a buffer.
 13 }
 The following code provides a more detailed implementation of this algorithm, using concepts of objectoriented
 design.
-	
+
+Implementing the towers as their own objects is not strictly necessary, but it does help to make the code
+cleaner in some respects.
 */
 package Q8_06_Towers_of_Hanoi;
 
