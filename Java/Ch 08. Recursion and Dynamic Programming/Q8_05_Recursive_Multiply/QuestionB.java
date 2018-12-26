@@ -1,3 +1,17 @@
+/*
+Solution #2
+If we observe how the recursion operates, we'll notice that we have duplicated work. Consider this example:
+minProduct(17, 23)
+	minProduct(8, 23)
+		minProduct(4, 23) * 2
+			...
+	+ minProduct(9, 23)
+		minProduct(4, 23)
+			...
+	+ minProduct(5, 23)
+The second call to min Product (4, 23) is unaware of the prior call, and so it repeats the same work. We
+should cache these results.
+*/
 package Q8_05_Recursive_Multiply;
 
 public class QuestionB {
