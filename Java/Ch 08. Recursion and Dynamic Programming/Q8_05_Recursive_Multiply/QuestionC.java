@@ -11,6 +11,8 @@ of the recursive call. On odd numbers, we do the same, but then we also add b ig
 In doing so, we have an unexpected "win". Our minProduct function just recurses straight downwards,
 with increasingly small numbers each time. It will never repeat the same call, so there's no need to cache
 any information.
+
+This algorithm will run in O(log s) time, wheres is the smaller of the two numbers.
 */
 package Q8_05_Recursive_Multiply;
 
