@@ -1,3 +1,12 @@
+/*
+Solution #1
+How would we count the number of squares in this grid? We could just count each cell. That's pretty slow,
+though.
+Alternatively, we could count half the squares and then double it (by adding this count to itself). To count
+half the squares, we repeat the same process.
+Of course, this "doubling" only works if the number is in fact even. When it's not even, we need to do the
+counting/summing from scratch.
+*/
 package Q8_05_Recursive_Multiply;
 
 public class QuestionA {
