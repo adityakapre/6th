@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class QuestionB {
 	
 	public static void addParen(ArrayList<String> list, int leftRem, int rightRem, char[] str, int index) {
-		if (leftRem < 0 || rightRem < leftRem) return; // invalid state
+		if (leftRem < 0 || leftRem > rightRem ) return; // invalid state
 		
 		if (leftRem == 0 && rightRem == 0) { /* all out of left and right parentheses */
 			list.add(String.copyValueOf(str));
