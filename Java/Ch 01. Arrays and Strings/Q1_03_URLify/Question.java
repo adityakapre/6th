@@ -1,3 +1,13 @@
+/*
+A common approach in string manipulation problems is to edit the string starting from the end and working
+backwards. This is useful because we have an extra buffer at the end, which allows us to change characters
+without worrying about what we're overwriting.
+
+We will use this approach in this problem. The algorithm employs a two-scan approach. In the first scan, we
+count the number of spaces. By tripling this number, we can compute how many extra characters we will
+have in the final string. In the second pass, which is done in reverse order, we actually edit the string. When
+we see a space, we replace it with %20. If there is no space, then we copy the original character.
+*/
 package Q1_03_URLify;
 
 import CtCILibrary.AssortedMethods;
@@ -11,8 +21,9 @@ public class Question {
 				spaceCount++;
 			}
 		}
-		index = trueLength + spaceCount * 2;
-		if (trueLength < str.length) str[trueLength] = '\0';
+		index = trueLength + spaceCount * 2;   //spaceCount is multiplied by 2 not 3 as space already is 1 character
+		if (trueLength < str.length) 
+			str[trueLength] = '\0';
 		for (i = trueLength - 1; i >= 0; i--) {
 			if (str[i] == ' ') {
 				str[index - 1] = '0';
