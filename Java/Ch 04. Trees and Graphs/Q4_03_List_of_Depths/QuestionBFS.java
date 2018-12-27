@@ -38,7 +38,7 @@ public class QuestionBFS {
 		while (current.size() > 0) {
 			result.add(current); // Add previous level
 			LinkedList<TreeNode> parents = current; // Go to next level
-			current = new LinkedList<TreeNode>(); 
+			current = new LinkedList<TreeNode>();  //Create LL for new level
 			for (TreeNode parent : parents) {
 				/* Visit the children */
 				if (parent.left != null) {
