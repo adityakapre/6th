@@ -65,6 +65,17 @@ public class QuestionC {
 		return checkAtMostOneBitSet(bitVector);
 	}
 	
+	public static int getCharNumber(Character c) {
+		int a = Character.getNumericValue('a');
+		int z = Character.getNumericValue('z');
+		
+		int val = Character.getNumericValue(c);
+		if (a <= val && val <= z) {
+			return val - a;
+		}
+		return -1;
+	}
+	
 	public static void main(String[] args) {
 		String pali = "Rats live on no evil star";
 		System.out.println(isPermutationOfPalindrome(pali));
