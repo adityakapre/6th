@@ -4,7 +4,7 @@ of data. This will give us a basic idea of an approach that might work.
 
 The Simple Approach
 In this smaller, simpler problem, we could consider comparing string representations of traversals of each
-tree. lfT2 is a subtree of Tl, then T2's traversal should be a substring of Tl. ls the reverse true? If so, should
+tree. If T2 is a subtree of Tl, then T2's traversal should be a substring of Tl. Is the reverse true? If so, should
 we use an in-order traversal or a pre-order traversal?
 An in-order traversal will definitely not work. After all, consider a scenario in which we were using binary
 search trees. A binary search tree's in-order traversal always prints out the values in sorted order. Therefore,
@@ -42,12 +42,12 @@ complete.
 This whole process was deterministic, as it will be on any other tree. A pre-order traversal always starts at
 the root and, from there, the path we take is entirely defined by the traversal. Therefore, two trees are identical
 if they have the same pre-order traversal.
-Now consider the subtree problem. lfT2's pre-order traversal is a substring ofTl 's pre-order traversal, then
+Now consider the subtree problem. If T2's pre-order traversal is a substring of Tl's pre-order traversal, then
 T2's root element must be found in Tl. If we do a pre-order traversal from this element in Tl, we will follow
 an identical path to T2's traversal. Therefore, T2 is a subtree of Tl.
-Implementing th is is quite stra ig htforwa rd. We just need to construct and com pa re the pre-order traversa Is.
+Implementing this is quite straightforward. We just need to construct and compare the pre-order traversaIs.
 
-This approach takes O(n + m) time and O(n + m) space, where n and mare the number of nodes in Tl
+This approach takes O(n + m) time and O(n + m) space, where n and m are the number of nodes in T1
 and T2, respectively. Given millions of nodes, we might want to reduce the space complexity.
 
 */
