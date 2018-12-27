@@ -14,7 +14,7 @@ magic index might be? Let's look at a sample array:
 0     1    2  3  4  5  6  7  8   9  10
 
 When we look at the middle element A [5] = 3, we know that the magic index must be on the right side,
-sinceA[mid] < mid.
+since A[mid] < mid.
 Why couldn't the magic index be on the left side? Observe that when we move from i to i-1, the value
 at this index must decrease by at least 1, if not more (since the array is sorted and all the elements are
 distinct). So, if the middle element is already too small to be a magic index, then when we move to the left,
