@@ -7,7 +7,8 @@ equal to x.
 We iterate through the linked list, inserting elements into our before list or our after list. Once we reach
 the end of the linked list and have completed this splitting, we merge the two lists.
 This approach is mostly "stable" in that elements stay in their original order, other than the necessary movement
-around the partition. The code below implements this approach.*/
+around the partition. The code below implements this approach.
+*/
 
 package Q2_04_Partition;
 
