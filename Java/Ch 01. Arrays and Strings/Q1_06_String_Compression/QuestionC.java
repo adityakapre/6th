@@ -1,3 +1,15 @@
+/*
+Both of these solutions create the compressed string first and then return the shorter of the input string
+and the compressed string.
+
+Instead, we can check in advance. This will be more optimal in cases where we don't have a large number of
+repeating characters. It will avoid us having to create a string that we never use. The downside of this is that
+it causes a second loop through the characters and also adds nearly duplicated code.
+
+One other benefit of this approach is that we can initialize StringBuilder to its necessary capacity
+up-front. Without this, StringBuilder will (behind the scenes) need to double its capacity every time it
+hits capacity. The capacity could be double what we ultimately need.
+*/
 package Q1_06_String_Compression;
 
 public class QuestionC {	
