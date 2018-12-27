@@ -1,4 +1,5 @@
-/*If this were an array, we would need to be careful about how we shifted elements. Array shifts are very
+/*
+If this were an array, we would need to be careful about how we shifted elements. Array shifts are very
 expensive.
 However, in a linked list, the situation is much easier. Rather than shifting and swapping elements, we can
 actually create two different linked lists: one for elements less than x, and one for elements greater than or
