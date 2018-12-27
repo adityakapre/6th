@@ -20,10 +20,10 @@ This is a fairly straightforward algorithm to implement recursively. We just nee
 countWays(n-1) + countWays(n-2) + countWays(n-3)
 The one tricky bit is defining the base case. If we have O steps to go (we're currently standing on the step),
 are there zero paths to that step or one path?
-That is, what is countWays(0)? Is it 1 or O?
+That is, what is countWays(0)? Is it 1 or 0?
 You could define it either way. There is no"right" answer here.
 However, it's a lot easier to define it as 1. If you defined it as 0, then you would need some additional base
-cases (or else you'd just wind up with a series of Os getting added).
+cases (or else you'd just wind up with a series of 0s getting added).
 
 Like the Fibonacci problem, the runtime of this algorithm is exponential (roughly O ( 3 raised to n) ), since each call
 branches out to three more calls.
