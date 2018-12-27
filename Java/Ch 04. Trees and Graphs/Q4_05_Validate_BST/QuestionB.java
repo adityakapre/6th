@@ -2,27 +2,26 @@
 Solution #2: The Min / Max Solution
 In the second solution, we leverage the definition of the binary search tree.
 What does it mean for a tree to be a binary search tree? We know that it must, of course, satisfy the condition
-left. data <= current. data < right. data for each node, but this isn't quite sufficient. Consider
+left.data <= current.data < right.data for each node, but this isn't quite sufficient. Consider
 the following small tree:
 
 Although each node is bigger than its left node and smaller than its right node, this is clearly not a binary
 search tree since 25 is in the wrong place.
-More precisely, the condition is that a// left nodes must be less than or equal to the current node, which
+More precisely, the condition is that all left nodes must be less than or equal to the current node, which
 must be less than all the right nodes.
 Using this thought, we can approach the problem by passing down the min and max values. As we iterate
 through the tree, we verify against progressively narrower ranges.
 
 We start with a range of (min = NULL, max = NULL), which the root obviously meets. (NULL indicates
-that there is no min or max.) We then branch left, checking that these nodes are within the range ( min =
-NULL, max = 20). Then, we branch right, checking that the nodes are within the range ( min = 20,
-max = NULL).
-We proceed through the tree with this approach. When we branch left, the max gets updated. When we
-branch right, the min gets updated. If anything fails these checks, we stop and return false.
+that there is no min or max.) We then branch left, checking that these nodes are within the range (min =NULL, max = 20). 
+Then, we branch right, checking that the nodes are within the range (min = 20,max = NULL).
+We proceed through the tree with this approach. When we branch left, the max gets updated (to value of root). When we
+branch right, the min gets updated (to value of root). If anything fails these checks, we stop and return false.
 
 The time complexity for this solution is O(N), where N is the number of nodes in the tree. We can prove that
 this is the best we can do, since any algorithm must touch all N nodes.
-Due to the use of recursion, the space complexity is O ( log N) on a balanced tree. There are up to O ( log
-N) recursive calls on the stack since we may recurse up to the depth of the tree.
+Due to the use of recursion, the space complexity is O(log N) on a balanced tree. There are up to O(log N) 
+recursive calls on the stack since we may recurse up to the depth of the tree.
 
 Remember that in recursive algorithms, you should always make sure that your base cases, as well as your
 null cases, are well handled.
