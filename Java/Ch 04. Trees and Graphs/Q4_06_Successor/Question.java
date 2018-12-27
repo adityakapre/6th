@@ -14,6 +14,24 @@ If n were to the right of q, then we have fully traversed q's subtree as well. W
 q until we find a node x that we have not fully traversed. How do we know that we have not fully traversed
 a node x? We know we have hit this case when we move from a left node to its parent. The left node is fully
 traversed, but its parent is not.
+
+The pseudocode looks like this:
+1 Node inorderSucc(Node n) {
+2 	if (n has a right subtree) {
+3 		return leftmost child of right subtree
+4 	} else {
+5		while (n is a right child of n.parent) {
+6 			n = n.parent; // Go up
+7 		}
+8 		return n.parent; // Parent has not been traversed
+9 	}
+10 }
+
+But wait-what if we traverse all the way up the tree before finding a left child?This will happen only when
+we hit the very end of the in-order traversal. That is, if we're already on the far right of the tree, then there is
+no in-order successor. We should return null.
+This is not the most algorithmically complex problem in the world, but it can be tricky to code perfectly. In
+a problem like this, it's useful to sketch out pseudocode to carefully outline the different cases.	
 */
 
 package Q4_06_Successor;
