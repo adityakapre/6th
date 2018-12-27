@@ -9,6 +9,11 @@ We can also immediately return false if the string length exceeds the number of 
 alphabet. After all, you can't form a string of 280 unique characters out of a 128-character alphabet.
 It's also okay to assume 256 characters. This would be the case in extended ASCII. You should
 clarify your assumptions with your interviewer.
+
+The time complexity for this code isO(n), where n is the length of the string. The space complexity isO(l).
+(You could also argue the time complexity is O(1), since the for loop will never iterate through more than
+128 characters.) If you didn't want to assume the character set is fixed, you could express the complexity as
+O(c) space and O(min(c, n)) or O(c) time, where c is the size of the character set.
 */
 package Q1_01_Is_Unique;
 
