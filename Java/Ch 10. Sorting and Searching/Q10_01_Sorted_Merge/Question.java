@@ -1,3 +1,15 @@
+/*
+Since we know that A has enough buffer at the end, we won't need to allocate additional space. Our logic
+should involve simply comparing elements of A and B and inserting them in order, until we've exhausted
+all elements in A and in B.
+The only issue with this is that if we insert an element into the front of A, then we'll have to shift the existing
+elements backwards to make room for it. It's better to insert elements into the back of the array, where
+there's empty space.
+The code below does just that. It works from the back of A and B, moving the largest elements to the back
+of A.
+Note that you don't need to copy the contents of A after running out of elements in B. They are already in
+place.
+*/
 package Q10_01_Sorted_Merge;
 
 import CtCILibrary.AssortedMethods;
