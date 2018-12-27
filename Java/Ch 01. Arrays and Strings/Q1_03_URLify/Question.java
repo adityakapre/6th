@@ -7,6 +7,10 @@ We will use this approach in this problem. The algorithm employs a two-scan appr
 count the number of spaces. By tripling this number, we can compute how many extra characters we will
 have in the final string. In the second pass, which is done in reverse order, we actually edit the string. When
 we see a space, we replace it with %20. If there is no space, then we copy the original character.
+
+We have implemented this problem using character arrays, because Java strings are immutable. If we used
+strings directly, the function would have to return a new copy of the string, but it would allow us to implement
+this in just one pass.
 */
 package Q1_03_URLify;
 
