@@ -1,7 +1,7 @@
 /*
-If we picture this grid, the only way to move to spot ( r, c) is by moving to one of the adjacent spots:
+If we picture this grid, the only way to move to spot (r, c) is by moving to one of the adjacent spots:
 (r-1, c) or (r, c-1). So, we need to find a path to either (r-1, c) or (r, c-1).
-How do we find a path to those spots? To find a path to (r-1, c) or (r, c -1), we need to move to one
+How do we find a path to those spots? To find a path to (r-1, c) or (r, c-1), we need to move to one
 of its adjacent cells. So, we need to find a path to a spot adjacent to (r-1, c), which are coordinates
 (r-2, c) and (r-1, c-1). or a spot adjacent to (r, c-1). which are soots (r-1, c-1) and (r, c-2).
 Observe that we list the point (r-1, c-1) twice; we'll discuss that issue later.
