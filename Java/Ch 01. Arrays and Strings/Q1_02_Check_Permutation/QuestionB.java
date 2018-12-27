@@ -1,3 +1,12 @@
+/*
+Solution #2: Check if the two strings have identical character counts.
+We can also use the definition of a permutation-two words with the same character counts-to implement
+this algorithm. We simply iterate through this code, counting how many times each character appears.
+Then, afterwards, we compare the two arrays.
+
+Note the assumption on line 6. In your interview, you should always check with your interviewer about the
+size of the character set. We assumed that the character set was ASCII.
+*/
 package Q1_02_Check_Permutation;
 
 public class QuestionB {	
