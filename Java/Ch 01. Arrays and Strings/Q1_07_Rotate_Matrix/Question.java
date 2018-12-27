@@ -1,3 +1,24 @@
+/*
+Because we're rotating the matrix by 90 degrees, the easiest way to do this is to implement the rotation in
+layers. We perform a circular rotation on each layer, moving the top edge to the right edge, the right edge
+to the bottom edge, the bottom edge to the left edge, and the left edge to the top edge.
+
+How do we perform this four-way edge swap? One option is to copy the top edge to an array, and then
+move the left to the top, the bottom to the left, and so on. This requires O(N) memory, which is actually
+unnecessary.
+
+A better way to do this is to implement the swap index by index. In this case, we do the following:
+1 for i = 0 to n
+2 	temp= top[i];
+3 	top[i] = left[i]
+4 	left[i] = bottom[i]
+5 	bottom[i] = right[i]
+6 	right[i] = temp
+We perform such a swap on each layer, starting from the outermost layer and working our way inwards.
+(Alternatively, we could start from the inner layer and work outwards.)
+
+This algorithm is O (N sq.), which is the best we can do since any algorithm must touch all N sq. elements.
+*/
 package Q1_07_Rotate_Matrix;
 
 import CtCILibrary.*;
