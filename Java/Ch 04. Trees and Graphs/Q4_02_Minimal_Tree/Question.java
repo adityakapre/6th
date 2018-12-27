@@ -9,7 +9,7 @@ the array will become the right subtree.
 One way to implement this is to use a simple root. insertNode(int v) method which inserts the
 value v through a recursive process that starts with the root node. This will indeed construct a tree with
 minimal height but it will not do so very efficiently. Each insertion will require traversing the tree, giving a
-total cost ofO ( N log N) to the tree.
+total cost of O(Nlog N) to the tree.
 Alternatively, we can cut out the extra traversals by recursively using the createMinimalBST method.
 This method is passed just a subsection of the array and returns the root of a minimal tree for that array.
 The algorithm is as follows:
