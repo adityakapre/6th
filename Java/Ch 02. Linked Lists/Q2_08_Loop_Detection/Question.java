@@ -18,12 +18,12 @@ If we apply our algorithm from part l, when will FastRunner and SlowRunner colli
 We know that for every p steps that SlowRunner takes, FastRunner has taken 2p steps. Therefore, when
 SlowRunner enters the looped portion after k steps, FastRunner has taken 2k steps total and must be
 2k - k steps, or k steps, into the looped portion. Since k might be much larger than the loop length, we
-should actually write this as mod ( k, LOOP SIZE) steps, which we will denote as K.
+should actually write this as mod(k, LOOP_SIZE) steps, which we will denote as K.
 At each subsequent step, FastRunner and SlowRunner get either one step farther away or one step
 closer, depending on your perspective. That is, because we are in a circle, when A moves q steps away from
 B, it is also moving q steps closer to B.
 So now we know the following facts:
-1. SlowRunner is O steps into the loop.
+1. SlowRunner is 0 steps into the loop.
 2. FastRunner is K steps into the loop.
 3. SlowRunner is K steps behind FastRunner.
 4. FastRunner is LOOP SIZE - K steps behind SlowRunner.
