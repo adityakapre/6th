@@ -1,3 +1,12 @@
+/*
+In this question, we've been fortunate enough to be told exactly what balanced means: that for each node,
+the two subtrees differ in height by no more than one. We can implement a solution based on this definition.
+We can simply recurse through the entire tree, and for each node, compute the heights of each subtree.
+
+Although this works. it's not very efficient. On each node. we recurse through its entire subtree. This means
+that getHeight is called repeatedly on the same nodes. The algorithm is O(Nlog N) since each node is
+"touched" once per node above it.
+*/
 package Q4_04_Check_Balanced;
 
 import CtCILibrary.AssortedMethods;
