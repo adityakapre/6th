@@ -1,3 +1,39 @@
+/*
+Optimal Solution
+int right) {
+To optimize past the prior solution, we need to cut out the sorting step. The algorithm must operate on an
+unsorted array.
+Let's revisit an example.
+9 1 0 4 8 7
+For each element, we'll look at the adjacent elements. Let's imagine some sequences. We'll just use the
+numbers 0, 1 and 2. The specific values don't matter.
+0 1 2
+0 2 1  // peak
+1 0 2
+1 2 0  // peak
+2 1 0
+
+2 0 1
+If the center element needs to be a peak, then two of those sequences work. Can we fix the other ones to
+make the center element a peak?
+Yes. We can fix this sequence by swapping the center element with the largest adjacent element.
+0 1 2 -> 0 2 1
+0 2 1   //peak
+1 0 2 -> 1 2 0 
+1 2 0   //peak
+2 1 0 -> 1 2 0
+2 0 1 -> 0 2 1
+
+As we noted before, if we make sure the peaks are in the right place then we know the valleys are in the
+right place.
+We should be a little cautious here. Is it possible that one of these swaps could "break" an earlier
+part of the sequence that we'd already processed? This is a good thing to worry about, but it's
+not an issue here. If we're swapping middle with left, then left is currently a valley. Middle
+is smaller than left, so we're putting an even smaller element as a valley. Nothing will break.
+All is good!
+The code to implement this is below.
+This algorithm takes O ( n) time.
+*/
 package Q10_11_Peaks_and_Valleys;
 
 import CtCILibrary.AssortedMethods;
