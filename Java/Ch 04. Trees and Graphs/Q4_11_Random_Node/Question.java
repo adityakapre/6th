@@ -71,7 +71,7 @@ class TreeNode {
 	public int data;
 	public TreeNode left;
 	public TreeNode right;
-	private int size = 0; //total size of tree under this node
+	private int size = 0; //total size of tree (left subtree + right subtree) under this node
 
 	public TreeNode(int d) {
 		data = d;
