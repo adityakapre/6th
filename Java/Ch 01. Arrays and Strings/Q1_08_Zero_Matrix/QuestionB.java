@@ -1,3 +1,22 @@
+/*
+To make this somewhat more space efficient we could use a bit vector instead of a boolean array. It would
+still be O(N) space.
+We can reduce the space to 0(1) by using the first row as a replacement for the row array and the first
+column as a replacement for the column array. This works as follows:
+
+1. Check if the first row and first column have any zeros, and set variables rowHasZero and
+columnHasZero. (We'll nullify the first row and first column later, if necessary.)
+2. Iterate through the rest of the matrix, setting matrix[i][0] and matrix[0][j] to zero whenever
+there's a zero in matrix[i][j].
+3. Iterate through rest of matrix, nullifying row i if there's a zero in matrix[i][0].
+4. Iterate through rest of matrix, nullifying column j if there's a zero in matrix[0][j].
+5. Nullify the first row and first column, if necessary (based on values from Step 1 ).
+
+This code has a lot of "do this for the rows, then the equivalent action for the column:' In an interview, you
+could abbreviate this code by adding comments and TODOs that explain that the next chunk of code looks
+the same as the earlier code, but using rows. This would allow you to focus on the most important parts of
+the algorithm.
+*/
 package Q1_08_Zero_Matrix;
 
 import CtCILibrary.AssortedMethods;
