@@ -1,3 +1,19 @@
+/*
+If we imagine that S2 is a rotation of S1, then we can ask what the rotation point is. For example, if you
+rotate waterbottle after wat. you get erbottlewat. In a rotation, we cut S1 into two parts, x and y,
+and rearrange them to get S2.
+S1 = xy = waterbottle
+x = wat
+y = erbottle
+s2 = yx = erbottlewat
+So, we need to check if there's a way to split s1 into x and y such that xy = s1 and yx = s2. Regardless of
+where the division between x and y is, we can see that yx will always be a substring of xyxy.That is, s2 will
+always be a substring of s1s1.
+And this is precisely how we solve the problem: simply do isSubstring(slsl, s2).
+
+The runtime of this varies based on the runtime of isSubstring. But if you assume that isSubstring
+runs in O(A+B) time (on strings of length A and B), then the runtime of is Rotation isO(N).
+*/
 package Q1_09_String_Rotation;
 
 public class Question {
