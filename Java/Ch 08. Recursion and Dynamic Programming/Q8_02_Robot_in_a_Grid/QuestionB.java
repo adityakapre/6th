@@ -2,7 +2,7 @@
 We should look for a faster way.
 Often, we can optimize exponential algorithms by finding duplicate work. What work are we repeating?
 If we walk through the algorithm, we'll see that we are visiting squares multiple times. In fact, we visit
-each square many, many times. After all, we have re squares but we're doing O(2 raisedTo r+c) work. If we were
+each square many, many times. After all, we have rc squares but we're doing O(2 raisedTo r+c) work. If we were
 only visiting each square once, we would probably have an algorithm that was O (rc) (unless we were
 somehow doing a lot of work during each visit).
 
