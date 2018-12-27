@@ -6,12 +6,12 @@ node, we recursively try all paths downwards, tracking the sum as we go. As soon
 we increment the total.
 
 What is the time complexity of this algorithm?
-Consider that node at depth d will be "touched" (via countPathsWi thSumFromNode) by d nodes above it.
+Consider that node at depth d will be "touched" (via countPathsWithSumFromNode) by d nodes above it.
 In a balanced binary tree, d will be no more than approximately log N. Therefore, we know that with N
-nodes in the tree, countPathsWi thSumFromNode will be called O(N log N) times. The runtime is O(N log N).
+nodes in the tree, countPathsWithSumFromNode will be called O(Nlog N) times. The runtime is O(Nlog N).
 
 We can also approach this from the other direction. At the root node, we traverse to all N - 1 nodes beneath
-it (via countPathsWi thSumFromNode). At the second level (where there are two nodes), we traverse to N - 3
+it (via countPathsWithSumFromNode). At the second level (where there are two nodes), we traverse to N - 3
 nodes. At the third level (where there are four nodes, plus three above those), we traverse to N - 7 nodes.
 Following this pattern, the total work is roughly:
 (N - 1) + (N - 3) + (N - 7) + (N - 15) + (N - 31) + ••• + (N - N)
@@ -28,11 +28,11 @@ of two look like in binary:
 + 0100
 + 1000
 = 1111
-Therefore, the runtime is O(N log N) in a balanced tree.
+Therefore, the runtime is O(Nlog N) in a balanced tree.
 In an unbalanced tree, the runtime could be much worse. Consider a tree that is just a straight line down. At
 the root, we traverse to N - 1 nodes. At the next level (with just a single node), we traverse to N - 2 nodes.
 At the third level, we traverse to N - 3 nodes, and so on. This leads us to the sum of numbers between 1
-and N, which is 0( N2 ).
+and N, which is O(N sq.).
 */
 package Q4_12_Paths_with_Sum;
 
