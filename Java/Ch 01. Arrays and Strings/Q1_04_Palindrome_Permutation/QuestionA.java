@@ -38,11 +38,22 @@ public class QuestionA {
 		return table;
 	}
 	
+	public static int getCharNumber(Character c) {
+		int a = Character.getNumericValue('a');
+		int z = Character.getNumericValue('z');
+		
+		int val = Character.getNumericValue(c);
+		if (a <= val && val <= z) {
+			return val - a;
+		}
+		return -1;
+	}
+	
 	public static boolean checkMaxOneOdd(int[] table) {
 		boolean foundOdd = false;
 		for (int count : table) {
 			if (count % 2 == 1) {
-				if (foundOdd) {
+				if (foundOdd) {		//already have found odd number of character once
 					return false;
 				}
 				foundOdd = true;
