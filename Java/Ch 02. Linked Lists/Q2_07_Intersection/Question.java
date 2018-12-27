@@ -72,6 +72,7 @@ public class Question {
 		return current;
 	}
 	
+	//start here...
 	public static LinkedListNode findIntersection(LinkedListNode list1, LinkedListNode list2) {
 		if (list1 == null || list2 == null) return null;
 		
