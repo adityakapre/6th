@@ -25,7 +25,7 @@ You could define it either way. There is no"right" answer here.
 However, it's a lot easier to define it as 1. If you defined it as 0, then you would need some additional base
 cases (or else you'd just wind up with a series of 0s getting added).
 
-Like the Fibonacci problem, the runtime of this algorithm is exponential (roughly O ( 3 raised to n) ), since each call
+Like the Fibonacci problem, the runtime of this algorithm is exponential (roughly O(3 raised to n) ), since each call
 branches out to three more calls.
 */
 package Q8_01_Triple_Step;
