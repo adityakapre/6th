@@ -1,26 +1,27 @@
 /*
 The Alternative Approach
-An alternative approach is to search through the larger tree, Tl. Each time a node in Tl matches the root
-ofT2, call match Tree. The match Tree method will compare the two subtrees to see if they are identical.
+An alternative approach is to search through the larger tree, T1. Each time a node in T1 matches the root
+of T2, call matchTree. The matchTree method will compare the two subtrees to see if they are identical.
 Analyzing the runtime is somewhat complex. A naive answer would be to say that it is O(nm) time, where
-n is the number of nodes in Tl and mis the number of nodes in T2. While this is technically correct, a little
+n is the number of nodes in T1 and m is the number of nodes in T2. While this is technically correct, a little
 more thought can produce a tighter bound.
 
-We do not actually call match Tree on every node in Tl. Rather, we call it k times, where k is the number
-of occurrences of T2's root in Tl. The runtime is closer too O(n + km).
+We do not actually call matchTree on every node in T1. Rather, we call it k times, where k is the number
+of occurrences of T2's root in T1. The runtime is closer to O(n + km).
 In fact, even that overstates the runtime. Even if the root were identical, we exit matchTree when we find
-a difference between Tl and T2. We therefore probably do not actually look at m nodes on each call of
+a difference between T1 and T2. We therefore probably do not actually look at m nodes on each call of
 match Tree.
 
 When might the simple solution be better, and when might the alternative approach be better? This is a
 great conversation to have with your interviewer. Here are a few thoughts on that matter:
+
 1. The simple solution takes O(n + m) memory. The alternative solution takes O(log(n) + log(m))
 memory. Remember: memory usage can be a very big deal when it comes to scalability.
 2. The simple solution is O(n + m) time and the alternative solution has a worst case time of O (nm).
 However, the worst case time can be deceiving; we need to look deeper than that.
-3. A slightly tighter bound on the runtime, as explained earlier, is O ( n + km), where k is the number of
-occurrences ofT2's root in Tl. Let's suppose the node data for Tl and T2 were random numbers picked
-between O and p. The value of k would be approximately n/p. Why? Because each of n nodes in Tl has
+3. A slightly tighter bound on the runtime, as explained earlier, is O(n + km), where k is the number of
+occurrences of T2's root in T1. Let's suppose the node data for T1 and T2 were random numbers picked
+between O and p. The value of k would be approximately n/p. Why? Because each of n nodes in T1 has
 a 1/p chance of equaling the root, so approximately n/p nodes in Tl should equal T2. root. So, let's
 say p = 1000, n = 1000000 and m = 100. We would do somewhere around l,100,000 node checks
 (1100000 = 1000000 + 100*1000000/1000 ).
