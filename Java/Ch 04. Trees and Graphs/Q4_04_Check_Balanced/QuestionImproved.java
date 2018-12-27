@@ -13,6 +13,8 @@ return an error code from the current call.
 
 What do we use for an error code? The height of a null tree is generally defined to be -1, so that's
 not a great idea for an error code. Instead, we'll use Integer.MIN_VALUE.
+
+This code runs in O(N) time and O(H) space, where H is the height of the tree.
 */
 
 package Q4_04_Check_Balanced;
