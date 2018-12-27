@@ -22,6 +22,8 @@ Solution#1
 Implementing this algorithm is fairly straightforward. We use a hash table to count how many times each
 character appears. Then, we iterate through the hash table and ensure that no more than one character has
 an odd count.
+
+This algorithm takes O ( N) time, where N is the length of the string.
 */
 package Q1_04_Palindrome_Permutation;
 
