@@ -1,3 +1,7 @@
+/*
+Both of these solutions create the compressed string first and then return the shorter of the input string
+and the compressed string.
+*/
 package Q1_06_String_Compression;
 
 public class QuestionB {	
