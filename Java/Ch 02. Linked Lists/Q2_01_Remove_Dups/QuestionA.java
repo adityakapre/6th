@@ -1,3 +1,12 @@
+/*
+In order to remove duplicates from a linked list, we need to be able to track duplicates. A simple hash table
+will work well here.
+In the below solution, we simply iterate through the linked list, adding each element to a hash table. When
+we discover a duplicate element, we remove the element and continue iterating. We can do this all in one
+pass since we are using a linked list.
+
+The above solution takes O(N) time, where N is the number of elements in the linked list.
+*/
 package Q2_01_Remove_Dups;
 
 import java.util.HashSet;
