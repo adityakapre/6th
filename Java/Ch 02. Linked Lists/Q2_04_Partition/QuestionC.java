@@ -1,4 +1,5 @@
-/*If it bugs you to keep around four different variables for tracking two linked lists, you're not alone. We can
+/*
+If it bugs you to keep around four different variables for tracking two linked lists, you're not alone. We can
 make this code a bit shorter.
 If we don't care about making the elements of the list "stable" (which there's no obligation to, since the
 interviewer hasn't specified that), then we can instead rearrange the elements by growing the list at the
