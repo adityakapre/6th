@@ -1,7 +1,7 @@
 /*
 To do this, observe that both methods follow similar logic: compare each character and ensure that the
 strings are only different by one. The methods vary in how they handle that difference. The method
-one Edi tReplace does nothing other than flag the difference, whereas one Edi tinsert increments
+oneEditReplace does nothing other than flag the difference, whereas oneEditinsert increments
 the pointer to the longer string. We can handle both of these in the same method.
 
 Some people might argue the first approach is better, as it is clearer and easier to follow. Others, however,
