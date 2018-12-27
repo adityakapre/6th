@@ -1,6 +1,6 @@
 /*
 Memoization Solution
-The previous solution for c ountWays is called many times for the same values, which is unnecessary. We
+The previous solution for countWays is called many times for the same values, which is unnecessary. We
 can fix this through memoization.
 Essentially, if we've seen this value of n before, return the cached value. Each time we compute a fresh value,
 add it to the cache.
