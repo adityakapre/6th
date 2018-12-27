@@ -112,13 +112,13 @@ Let's mark these nodes as having been built too, just in case someone else needs
 Now what? We can start with any old node again, doing a DFS on it and then adding the node to the front
 of the build queue when the DFS is completed.
 DFS(d)
-DFS(g)
-build order = ... , g, b, a, e, h
-build order = ... , d, g, b, a, e, h
+    DFS(g)
+        build order = ... , g, b, a, e, h
+    build order = ... , d, g, b, a, e, h
 DFS(f)
-DFS(c)
-build order = ... , c, d, g, b, a, e, h
-build order= f, c, d, g, b, a, e, h
+    DFS(c)
+      build order = ... , c, d, g, b, a, e, h
+    build order= f, c, d, g, b, a, e, h
 
 In an algorithm like this, we should think about the issue of cycles. There is no possible build order if there
 is a cycle. But still, we don't want to get stuck in an infinite loop just because there's no possible solution.
@@ -130,7 +130,7 @@ done with this node's DFS, we need to update the state.
 We also need a state to indicate "I've already processed/built this node" so we don't re-build the node. Our
 state therefore can have three options: COMPLETED, PARTIAL, and BLANK.
 
-Like the earlier algorithm, this solution is O  P+D) time, where P is the number of projects and D is the
+Like the earlier algorithm, this solution is O(P+D) time, where P is the number of projects and D is the
 number of dependency pairs.
 
 By the way, this problem is called topological sort: linearly ordering the vertices in a graph such that for
