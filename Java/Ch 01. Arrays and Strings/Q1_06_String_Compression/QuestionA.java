@@ -1,3 +1,14 @@
+/*
+At first glance, implementing this method seems fairly straightforward, but perhaps a bit tedious. We iterate
+through the string, copying characters to a new string and counting the repeats. At each iteration, check
+if the current character is the same as the next character. If not, add its compressed version to the result.
+
+This works. ls it efficient, though?Take a look at the runtime of this code.
+The runtime is O(p + k sq.), where p is the size of the original string and k is thelnumber of character
+sequences. For example, if the string is aabccdeeaa, then there are six characte sequences. It's slow
+because string concatenation operates in O(n sq.) time (see StringBuilder on pg 8 ).
+We can fix this by using a StringBuilder.
+*/
 package Q1_06_String_Compression;
 
 public class QuestionA {	
