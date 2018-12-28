@@ -11,14 +11,13 @@ public Node countDuplicatesLCR(Node root, Node prev) {
         duplicates += countDuplicatesLCR(root, root.left);  //L                              
    if(root!=prev && root.val==prev.val) 
         duplicates += 1;                                    // C (actual processing)
-  if(root.right!=null) 
+   if(root.right!=null) 
         duplicates += countDuplicatesLCR(root.right, root); //R                                             
  	 return duplicates;
 } 
 
 //Recursion based Generic
 public int countDuplicatesGeneric(Node root, Node prev) {
-           
     if(root==null) 
         return 0;     //Basic edge case .. root==null
     int count=0;
