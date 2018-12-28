@@ -18,8 +18,11 @@ class Palindrome {
     middle = (begin + end)/2;
     for (i = begin; i <= middle; i++) {
       if (inputString.charAt(begin) == inputString.charAt(end)) {
-         begin++; end--;
-      } else break;
+         begin++; 
+         end--;
+      } else {
+         break;
+      }
     }
     if (i == middle + 1) {
       System.out.println("Palindrome");
