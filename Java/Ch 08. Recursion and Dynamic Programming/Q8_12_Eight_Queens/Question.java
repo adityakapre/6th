@@ -46,7 +46,7 @@ public class Question {
 	 * a time. We know this row is empty. 
 	 */
 	public static boolean checkValid(Integer[] columns, int row1, int column1) {
-		for (int row2 = 0; row2 < row1; row2++) {
+		for (int row2 = 0; row2 < row1; row2++) {     /*row2 < row1 traverses all rows in which queens are placed till now*/
 			int column2 = columns[row2];
 			/* Check if (row2, column2) invalidates (row1, column1) as a queen spot. */
 			
