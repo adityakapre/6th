@@ -7,8 +7,8 @@ first common ancestor.
 
 This algorithm runs in O(n) time on a balanced tree. This is because covers is called on 2n nodes in the
 first call (n nodes for the left side, and n nodes for the right side). After that the algorithm branches left or
-right, at which point c overs will be called on 2n/2 nodes, then 2n/4, and so on. This results in a runtime
-ofO(n).
+right, at which point covers will be called on 2n/2 nodes, then 2n/4, and so on. This results in a runtime
+of O(n).
 We know at this point that we cannot do better than that in terms of the asymptotic runtime since we need
 to potentially look at every node in the tree. However, we may be able to improve it by a constant multiple.
 */
