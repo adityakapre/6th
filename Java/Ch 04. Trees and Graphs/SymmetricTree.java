@@ -1,3 +1,4 @@
+/*
 Q. Check if a tree is symmetric.  
 For example, this binary tree is symmetric:
     1
@@ -14,6 +15,7 @@ But the following is not:
 
 
 Recursive
+*/
 
 public boolean isSymmetric(Node root) {
   if (root == null)  return true;    //base case true
@@ -34,9 +36,11 @@ public boolean isSymmetric(Node l, Node r) {
   return true;
 }
 
+/*
 Iterative
-//aditya added {poll similarTo remove} & {offer similarTo add} 
+aditya added {poll similarTo remove} & {offer similarTo add} 
 trick : use Queue to store left & right nodes to be compared
+*/
 
 private Boolean isSymmetricIterative(Node n) {
 	boolean result = false;
