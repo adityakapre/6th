@@ -40,7 +40,7 @@ class BitSet {
 	int[] bitset;
 	
 	public BitSet(int size) {
-		bitset = new int[(size >> 5) + 1]; // divide by 32
+		bitset = new int[(size >> 5) + 1]; // divide by 32 (since each int in java = 4bytes= 32bits = 22 rasiedTo 5)
 	}
 
 	boolean get(int pos) {
