@@ -1,3 +1,14 @@
+/*
+If it weren't for the empty strings, we could simply use binary search. We would compare the string to be
+found, str, with the midpoint of the array, and go from there.
+With empty strings interspersed, we can implement a simple modification of binary search. All we need to
+do is fix the comparison against mid, in case mid is an empty string. We simply move mid to the closest
+non-empty string.
+The recursive code below to solve this problem can easily be modified to be iterative. We provide such an
+implementation in the code attachment.
+
+
+*/
 package Q10_05_Sparse_Search;
 
 public class QuestionA {
