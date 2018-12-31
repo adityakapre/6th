@@ -7,7 +7,14 @@ non-empty string.
 The recursive code below to solve this problem can easily be modified to be iterative. We provide such an
 implementation in the code attachment.
 
-
+The worst-case runtime for this algorithm is O(n). In fact, it's impossible to have an algorithm for this
+problem that is better than O(n) in the worst case. After all, you could have an array of all empty strings
+except for one non-empty string. There is no "smart" way to find this non-empty string. In the worst case,
+you will need to look at every element in the array.
+Careful consideration should be given to the situation when someone searches for t he empty string. Should
+we find the location (which is an O(n) operation)? Or should we handle this as an error?
+There's no correct answer here. This is an issue you should raise with your interviewer. Simply asking this
+question will demonstrate that you are a careful coder.
 */
 package Q10_05_Sparse_Search;
 
