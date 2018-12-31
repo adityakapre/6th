@@ -1,3 +1,10 @@
+/*
+Remember 1 KiB = 1024 bytes = 1024 * 8 bits = 32768 bits > 32000 bits
+We have 4 kilobytes of memory which means we can address up to 8 * 4 * 210 bits. Note that 32 * 2 raisedTo 10
+bits is greater than 32000. We can create a bit vector with 32000 bits, where each bit represents one integer.
+Using this bit vector, we can then iterate through the array, flagging each element v by setting bit v to 1.
+When we come across a duplicate element, we print it.
+*/
 package Q10_08_Find_Duplicates;
 
 import CtCILibrary.AssortedMethods;
