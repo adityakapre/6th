@@ -1,3 +1,50 @@
+/*
+Alternatively, we can apply a solution that more directly looks like binary search. The code is considerably
+more complicated, but it applies many of the same learnings.
+Solution #2: Binary Search
+Let's again look at a simple example.
+
+15 20 70 85
+213 3S 80 95
+30 55 95 105
+40 80 100 120
+We want to be able to leverage the sorting property to more efficiently find an element. So, we might ask
+ourselves, what does the unique ordering property of this matrix imply about where an element might be
+located?
+We are told that every row and column is sorted. This means that element a [ i] [ j] will be greater than
+the elements in row i between columns O and j - 1 and the elements in column j between rows O and
+i - 1.
+Or, in other words:
+a[i][0] <= a[i][l] <= ... <= a[i][j-1] <= a[i][j]
+a[0][j] <= a[l][j] <= ... <= a[i-l][j] <= a[i][j]
+Looking at this visually, the dark gray element below is bigger than all the light gray elements.
+
+The light gray elements also have an ordering to them: each is bigger than the elements to the left of it,
+as well as the elements above it. So, by transitivity, the dark gray element is bigger than the entire square.
+
+This means that for any rectangle we draw in the matrix, the bottom right hand corner will always be the
+biggest.
+Likewise, the top left hand corner will always be the smallest. The colors below indicate what we know
+about the ordering of elements (light gray< dark gray < black):
+Let's return to the original problem: suppose we were searching for the value 85. If we look along the diagonal,
+we'll find the elements 35 and 95. What does this tell us about the location of 85?
+
+85 can't be in the black area, since 95 is in the upper left hand corner and is therefore the smallest element
+in that square.
+85 can't be in the light gray area either, since 35 is in the lower right hand corner of that square.
+85 must be in one of the two white areas.
+So, we partition our grid into four quadrants and recursively search the lower left quadrant and the upper
+right quadrant. These, too, will get divided into quadrants and searched.
+Observe that since the diagonal is sorted, we can efficiently search it using binary search.
+
+If you read all this code and thought, "there's no way I could do all this in an interview!" you're probably
+right. You couldn't. But, your performance on any problem is evaluated compared to other candidates on
+the same problem. So while you couldn't implement all this, neither could they. You are at no disadvantage
+when you get a tricky problem like this.
+You help yourself out a bit by separating code out into other methods. For example, by pulling
+parti tionAndSearch out into its own method, you will have an easier time outlining key aspects of the
+code. You can then come back to fill in the body for partitionAndSearch if you have time.
+*/
 package Q10_09_Sorted_Matrix_Search;
 import CtCILibrary.*;
 
