@@ -2,6 +2,9 @@
 First, let's implement a simple simulation of the dining philosophers problem in which we don't concern
 ourselves with deadlocks. We can implement this solution by having Philosopher extend Thread, and
 Chopstick call lock. lock() when it is picked up and lock. unlock() when it is put down.
+
+Running the below code may lead to a deadlock if all the philosophers have a left chopstick and are waiting
+for the right one.
 */
 package Q15_03_Dining_Philosophers.QuestionA;
 
