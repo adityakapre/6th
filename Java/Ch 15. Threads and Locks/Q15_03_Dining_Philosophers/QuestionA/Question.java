@@ -1,3 +1,8 @@
+/*
+First, let's implement a simple simulation of the dining philosophers problem in which we don't concern
+ourselves with deadlocks. We can implement this solution by having Philosopher extend Thread, and
+Chopstick call lock. lock() when it is picked up and lock. unlock() when it is put down.
+*/
 package Q15_03_Dining_Philosophers.QuestionA;
 
 public class Question {
