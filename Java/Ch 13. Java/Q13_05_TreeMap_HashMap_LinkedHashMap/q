@@ -42,6 +42,9 @@ output the people in alphabetical order by name. A TreeMap lets you do this.
 "More"function in many applications.
 A LinkedHashMap is useful whenever you need the ordering of keys to match the ordering of insertion.
 This might be useful in a caching situation, when you want to delete the oldest item.
+A special constructor is provided to create a linked hash map whose order of iteration is the order in which its entries 
+were last accessed, from least-recently accessed to most-recently (access-order). 
+This kind of map is well-suited to building LRU caches.
 Generally, unless there is a reason not to, you would use HashMap. That is, if you need to get the keys back
 in insertion order, then use LinkedHashMap. If you need to get the keys back in their true/natural order,
 then use TreeMap. Otherwise, HashMap is probably best. It is typically faster and requires less overhead.
