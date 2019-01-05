@@ -68,7 +68,7 @@ public class QuestionA {
 	}	
 	
 	public static boolean oneEditAway(String first, String second) {
-		if (first.length() == second.length()) {
+		if (first.length() == second.length()) {                //same lengths, so might be replacement
 			return oneEditReplace(first, second);
 		} else if (first.length() + 1 == second.length()) {
 			return oneEditInsert(first, second);
