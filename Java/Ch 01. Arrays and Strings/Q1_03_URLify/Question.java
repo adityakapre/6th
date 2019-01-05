@@ -35,7 +35,7 @@ public class Question {
 				str[index - 3] = '%';
 				index = index - 3;
 			} else {
-				str[index - 1] = str[i];
+				str[index - 1] = str[i]; //copy original character
 				index--;
 			}
 		}
