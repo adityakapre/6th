@@ -10,7 +10,7 @@ We can use the earlier pattern we'd established for recursive calls: O(branchesd
 There are 2 branches per call, and we go as deep as N, therefore the runtime is O( 2N).
 
 Through some very complicated math, we can actually get a tighter runtime. The time is indeed
-exponential, but it's actually closer to 0( 1.6 raisedTo N). The reason that it's not exactly 0(2 raisedTo N) is that, at
+exponential, but it's actually closer to O(1.6 raisedTo N). The reason that it's not exactly O(2 raisedTo N) is that, at
 the bottom of the call stack, there is sometimes only one call. It turns out that a lot of the nodes
 are at the bottom (as is true in most trees), so this single versus double call actually makes a big
 difference. Saying O(2 raisedTo N) would suffice for the scope of an interview, though (and is still technically
