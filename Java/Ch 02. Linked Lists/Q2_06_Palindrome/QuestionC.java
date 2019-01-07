@@ -97,9 +97,9 @@ public class QuestionC {
 
 	public static Result isPalindromeRecurse(LinkedListNode head, int length) {
 		if (head == null || length <= 0) { // Even number of nodes
-			return new Result(head, true);				//At middle
+			return new Result(head, true);				//At middle [even]
 		} else if (length == 1) { // Odd number of nodes
-			return new Result(head.next, true);			//At middle
+			return new Result(head.next, true);			//At middle [odd]
 		} 
 		
 		/* Recurse on sublist. */
