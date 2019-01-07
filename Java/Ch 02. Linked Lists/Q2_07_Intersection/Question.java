@@ -82,7 +82,7 @@ public class Question {
 		
 		/* If different tail nodes, then there's no intersection. */
 		if (result1.tail != result2.tail) {
-			return null;
+			return null;`			//tails not equal so lists never intersect
 		}
 		
 		/* Set pointers to the start of each linked list. */
