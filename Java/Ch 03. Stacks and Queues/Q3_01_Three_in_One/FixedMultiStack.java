@@ -15,6 +15,16 @@ For stack 3, we will use [ 2X , n) .
 If we had additional information about the expected usages of the stacks, then we could modify this algorithm
 accordingly. For example, if we expected Stack 1 to have many more elements than Stack 2, we could
 allocate more space to Stack 1 and less space to Stack 2.
+
++ public
+	push(int stackNum, int value) throws FullStackException
+	pop(int stackNum)
+	peek(int stackNum)
+	isEmpty(int stackNum)
+	isFull(int stackNum)
+- private
+	indexOfTop(int stackNum)
+	
 */
 package Q3_01_Three_in_One;
 
