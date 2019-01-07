@@ -21,7 +21,11 @@ package Q4_04_Check_Balanced;
 import CtCILibrary.TreeNode;
 
 public class QuestionImproved {
-		
+	//start here...
+	public static boolean isBalanced(TreeNode root) {
+		return checkHeight(root) != Integer.MIN_VALUE;
+	}
+	
 	public static int checkHeight(TreeNode root) {
 		if (root == null) {
 			return -1;
@@ -39,11 +43,7 @@ public class QuestionImproved {
 			return Math.max(leftHeight, rightHeight) + 1;
 		}
 	}
-	
-	public static boolean isBalanced(TreeNode root) {
-		return checkHeight(root) != Integer.MIN_VALUE;
-	}
-	
+		
 	public static void main(String[] args) {
 		// Create balanced tree
 		int[] array = {0, 1, 2, 3, 5, 6, 7, 8, 9, 10};
