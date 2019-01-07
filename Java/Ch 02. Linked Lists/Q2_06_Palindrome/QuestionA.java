@@ -15,22 +15,12 @@ package Q2_06_Palindrome;
 import CtCILibrary.LinkedListNode;
 
 public class QuestionA {
+	//start here
 	public static boolean isPalindrome(LinkedListNode head) {
 		LinkedListNode reversed = reverseAndClone(head);
 		return isEqual(head, reversed);
 	}
-		
-	public static LinkedListNode reverseAndClone(LinkedListNode node) {
-		LinkedListNode head = null;
-		while (node != null) {
-			LinkedListNode n = new LinkedListNode(node.data); // Clone
-			n.next = head;
-			head = n;
-			node = node.next;
-		}
-		return head;
-	}	
-		
+	
 	public static boolean isEqual(LinkedListNode one, LinkedListNode two) {
 		while (one != null && two != null) {
 			if (one.data != two.data) {
@@ -42,6 +32,17 @@ public class QuestionA {
 		return one == null && two == null;
 	}
 	
+	public static LinkedListNode reverseAndClone(LinkedListNode node) {
+		LinkedListNode head = null;
+		while (node != null) {
+			LinkedListNode n = new LinkedListNode(node.data); // Clone
+			n.next = head;
+			head = n;
+			node = node.next;
+		}
+		return head;
+	}	
+		
 	public static void main(String[] args) {
 		int length = 9;
 		LinkedListNode[] nodes = new LinkedListNode[length];
