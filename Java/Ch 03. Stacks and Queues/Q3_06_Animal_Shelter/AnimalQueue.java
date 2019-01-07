@@ -21,7 +21,7 @@ import java.util.LinkedList;
 public class AnimalQueue {
 	LinkedList<Dog> dogs = new LinkedList<Dog>();
 	LinkedList<Cat> cats = new LinkedList<Cat>();
-	private int order = 0;
+	private int order = 0;				//used as timestamp
 	
 	public void enqueue(Animal a) {
 		a.setOrder(order);
