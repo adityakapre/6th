@@ -24,7 +24,7 @@ import CtCILibrary.AssortedMethods;
 
 public class FixedMultiStack {
 	private int numberOfStacks = 3;
-	private int stackCapacity;	//no of items that a stack can hold
+	private int stackCapacity;	//max no of items that a stack can hold
 	private int[] values;		//hold stack items
 	private int[] sizes;		//hold size of each stack
 	
