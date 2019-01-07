@@ -29,8 +29,8 @@ public class FixedMultiStack {
 	private int[] sizes;		//hold size of each stack
 	
 	public FixedMultiStack(int stackSize) {
-		stackCapacity = stackSize;
-		values = new int[stackSize * numberOfStacks];
+		this.stackCapacity = stackCapacity;
+		values = new int[stackCapacity * numberOfStacks];
 		sizes = new int[numberOfStacks];
 	}
 
