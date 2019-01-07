@@ -57,7 +57,7 @@ public class SetOfStacks {
 		Stack last = getLastStack();
 		if (last == null) throw new EmptyStackException();
 		int v = last.pop();
-		if (last.size == 0) {					//if after popping, the stack size = 0m, remove it
+		if (last.size == 0) {					//if after popping, stack size = 0, remove it
 			stacks.remove(stacks.size() - 1);
 		}
 		return v;
