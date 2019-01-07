@@ -57,7 +57,7 @@ public class Question {
 			return false;
 		}
 		if (screen[r][c] == ocolor) {
-			screen[r][c] = ncolor;
+			screen[r][c] = ncolor;			     //visit : similar to preorder traversal CLR
 			PaintFill(screen, r - 1, c, ocolor, ncolor); // up
 			PaintFill(screen, r + 1, c, ocolor, ncolor); // down
 			PaintFill(screen, r, c - 1, ocolor, ncolor); // left
