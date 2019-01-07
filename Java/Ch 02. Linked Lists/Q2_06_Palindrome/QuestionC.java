@@ -48,8 +48,8 @@ equals node 3, so head.next is node 2b.
 Line 3 compares its head, node 2f, to returned_node (the value from the previous recursive call),
 which is node 2b. lf the values match, it passes a reference to node lb (returned_node. next) up
 to line 2.
-Line 2 compares its head (node 1 f) to returned_node (node lb). If the values match, it passes a
-reference to node 0b (or, returned_node . next) up to line 1.
+Line 2 compares its head (node 1f) to returned_node (node lb). If the values match, it passes a
+reference to node 0b (or, returned_node.next) up to line 1.
 Line 1 compares its head, node 0f, to returned_node, which is node 0b. If the values match, it
 returns true.
 
