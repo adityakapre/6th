@@ -33,9 +33,9 @@ public class QuestionC {
 			}	
 			node = next;
 		}
-		tail.next = null;
-		
-		return head;
+		tail.next = null;				//remember to set tails's next to null
+		 
+		return head;					//return start of list
 	}
 	
 	public static void main(String[] args) {
