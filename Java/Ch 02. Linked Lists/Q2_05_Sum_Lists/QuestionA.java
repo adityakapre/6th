@@ -2,6 +2,8 @@
 6 1 7 
 + 2 9 5
 
+We start addition from units place. (i.e head in this problem)
+
 First, we add 7 and 5 to get 12. The digit 2 becomes the last digit of the number, and 1 gets carried over to
 the next step. Second, we add 1, 1, and 9 to get 11. The 1 becomes the second digit, and the other 1 gets
 carried over the final step. Third and finally, we add 1, 6 and 2 to get 9. So, our value becomes 912.
