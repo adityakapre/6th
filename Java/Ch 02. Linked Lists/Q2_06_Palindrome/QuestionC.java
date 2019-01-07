@@ -10,9 +10,9 @@ idea that we want to compare element 0 and element n - 1, element 1 and element 
 and element n-3, and so on, until the middle element(s). For example:
 0 ( 1 ( 2 ( 3 ) 2 ) 1 ) 0
 In order to apply this approach, we first need to know when we've reached the middle element, as this will
-form our base case. We can do this by passing in (length - 2) for the length each time. When the length
-equals 0 or 1, we're at the center of the linked list. This is because the length is reduced by 2 each time. Once
-we've recursed N/2 times, length will be down to 0.
+form our base case. We can do this by passing in (length - 2) for the length each time. 
+When the length equals 0 or 1, we're at the center of the linked list. This is because the length is reduced by 2 each time. 
+Once we've recursed N/2 times, length will be down to 0.
 
 1 recurse(Node n, int length) {
 2 	if (length== 0 || length== 1) {
