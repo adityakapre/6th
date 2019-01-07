@@ -30,7 +30,7 @@ So now we know the following facts:
 5. FastRunner catches up to SlowRunner at a rate of 1 step per unit of time.
 So, when do they meet? Well, if FastRunner is LOOP_SIZE - K steps behind SlowRunner, and
 FastRunner catches up at a rate of 1 step per unit of time, then they meet after LOOP_SIZE - K steps.
-At this point, they will be K steps before the head of the loop. Let's call this point Collisions pot.
+At this point, they will be K steps before the head of the loop. Let's call this point Collisions point.
 
 Part 3: How Do You Find The Start of the Loop?
 We now know that CollisionSpot is K nodes before the start of the loop. Because K = mod(k, LOOP_SIZE) 
