@@ -1,4 +1,9 @@
-/*It's useful to remember in this problem how exactly addition works. Imagine the problem:
+/*
+
+Advantage os storing units place at head of LL :  if the two numbers are of different number of digits, nulls can be handled on fly
+unline storing tails units place at tail
+
+It's useful to remember in this problem how exactly addition works. Imagine the problem:
 6 1 7 
 + 2 9 5
 
