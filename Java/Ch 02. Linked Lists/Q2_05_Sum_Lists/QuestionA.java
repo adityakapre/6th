@@ -44,7 +44,7 @@ public class QuestionA {
 		if (l2 != null) {
 			value += l2.data;
 		}
-		result.data = value % 10;
+		result.data = value % 10;                         //modulus, returns remainder
 		if (l1 != null || l2 != null) {
 			LinkedListNode more = addLists(l1 == null ? null : l1.next, 
 										   l2 == null ? null : l2.next, 
