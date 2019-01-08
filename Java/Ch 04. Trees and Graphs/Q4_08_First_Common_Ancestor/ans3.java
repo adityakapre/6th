@@ -26,6 +26,12 @@ public class QuestionD {
 		return ancestorHelper(root, p, q);
 	}
 	
+	public static boolean covers(TreeNode root, TreeNode p) { 
+		if (root == null) return false;
+		if (root == p) return true;
+		return covers(root.left, p) || covers(root.right, p); 
+	}
+	
 	public static TreeNode ancestorHelper(TreeNode root, TreeNode p, TreeNode q) {
 		if (root == null || root == p || root == q) {
 			return root;
@@ -39,14 +45,6 @@ public class QuestionD {
 		TreeNode childSide = pIsOnLeft ? root.left : root.right;
 		return ancestorHelper(childSide, p, q);
 	}	
-	
-	public static boolean covers(TreeNode root, TreeNode p) { 
-		if (root == null) return false;
-		if (root == p) return true;
-		return covers(root.left, p) || covers(root.right, p); 
-	}
-		
-	
 	
 	public static void main(String[] args) {
 		int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
