@@ -25,7 +25,7 @@ arraySet60), how would that give us the full answer? We could just"weave" each a
 with each array from arraySet60-and then prepend each array with a 50.
 
 Here's what we mean by weaving. We are merging two arrays in all possible ways, while keeping the
-elements within each array in the same relative order.
+elements within each array in the same relative order (kind combination i.e selecting 1 2 is same as selecting 2 1).
 arrayl: {l, 2}
 array2: {3, 4}
 weaved: {l, 2, 3, 4}, {l, 3, 2, 4}, {1, 3, 4, 2}, {3, 1, 2, 4}, {3, 1, 4, 2}, {3, 4, 1, 2}
