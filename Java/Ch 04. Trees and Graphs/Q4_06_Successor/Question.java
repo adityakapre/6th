@@ -21,7 +21,7 @@ The pseudocode looks like this:
 3 		return leftmost child of right subtree
 4 	} else {
 5		while (n is a right child of n.parent) {
-6 			n = n.parent; // Go up
+6 			n = n.parent; // Go up till we find n which is left child of n.parent
 7 		}
 8 		return n.parent; // Parent has not been traversed
 9 	}
