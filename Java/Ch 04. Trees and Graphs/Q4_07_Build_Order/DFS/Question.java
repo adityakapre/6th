@@ -5,6 +5,38 @@ import java.util.Stack;
 
 public class Question {
 	
+	public static Stack<Project> orderProjects(Graph graph) {
+		ArrayList<Project> projects = graph.getNodes();
+		Stack<Project> stack = new Stack<Project>();
+		for (Project project : projects) {
+			if (project.getState() == Project.State.BLANK) {
+				if (!doDFS(project, stack)) {
+					return null;
+				}
+			}
+		}
+		return stack;
+	}
+	
+	public static boolean doDFS(Project project, Stack<Project> stack) {
+		if (project.getState() == Project.State.PARTIAL) {
+			return false; // Cycle
+		}
+		
+		if (project.getState() == Project.State.BLANK) {
+			project.setState(Project.State.PARTIAL);
+			ArrayList<Project> children = project.getChildren();
+			for (Project child : children) {
+				if (!doDFS(child, stack)) {
+					return false;
+				}
+			}
+			project.setState(Project.State.COMPLETE);
+			stack.push(project);
+		}
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		String[] projects = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
 		String[][] dependencies = {
@@ -55,38 +87,6 @@ public class Question {
 		}
 		
 		return graph;
-	}
-	
-	public static Stack<Project> orderProjects(Graph graph) {
-		ArrayList<Project> projects = graph.getNodes();
-		Stack<Project> stack = new Stack<Project>();
-		for (Project project : projects) {
-			if (project.getState() == Project.State.BLANK) {
-				if (!doDFS(project, stack)) {
-					return null;
-				}
-			}
-		}
-		return stack;
-	}
-	
-	public static boolean doDFS(Project project, Stack<Project> stack) {
-		if (project.getState() == Project.State.PARTIAL) {
-			return false; // Cycle
-		}
-		
-		if (project.getState() == Project.State.BLANK) {
-			project.setState(Project.State.PARTIAL);
-			ArrayList<Project> children = project.getChildren();
-			for (Project child : children) {
-				if (!doDFS(child, stack)) {
-					return false;
-				}
-			}
-			project.setState(Project.State.COMPLETE);
-			stack.push(project);
-		}
-		return true;
 	}
 	
 	public static String[] convertToStringList(Stack<Project> projects) {
