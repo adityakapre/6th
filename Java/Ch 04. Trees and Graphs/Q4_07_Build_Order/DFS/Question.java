@@ -1,3 +1,9 @@
+/*
+We start by finding nodes that can be built last (no nodes depend on them) and add such nodes to stack
+So stack starts by pushing nodes that can be built last.
+therefore, Stack top contains nodes that can be built first
+*/
+
 package Q4_07_Build_Order.DFS;
 
 import java.util.ArrayList;
