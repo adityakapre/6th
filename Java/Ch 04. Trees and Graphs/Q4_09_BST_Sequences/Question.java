@@ -107,8 +107,8 @@ public class Question {
 			return;
 		}
 		
-		/* Recurse with head of first added to prefix. Removing head will damage first, so we’ll need to put it back where we
-		 * found it afterwards. */
+		/* Recurse with head of first added to prefix. Removing head will damage first, 
+		   so we’ll need to put it back where we found it afterwards. */
 		int headFirst = first.removeFirst();
 		prefix.addLast(headFirst);
 		weaveLists(first, second, results, prefix);
