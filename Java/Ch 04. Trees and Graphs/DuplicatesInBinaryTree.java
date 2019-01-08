@@ -27,3 +27,34 @@ public int countDuplicatesGeneric(Node root, Node prev) {
         count++;
     return count + countDuplicatesGeneric(root.left,root) + countDuplicatesGeneric(root.right,root);       
 }
+//=============================================================================================================
+
+/*We can avoid the use of array and solve the problem in O(n) time. 
+The idea is to use hashing. 
+We traverse the given tree, for every node, we check if it already exists in hash table. 
+If exists, we return true (found duplicate). If it does not exist, we insert into hash table.*/
+
+//Function that used HashSet to find presence of duplicate nodes 
+    public static boolean checkDupUtil(Node root, HashSet<Integer> s) {  
+        // If tree is empty, there are no  
+        // duplicates.   
+        if (root == null)  
+            return false;  
+    
+        // If current node's data is already present.  
+        if (s.contains(root.data))  
+            return true;  
+    
+        // Insert current node  
+        s.add(root.data);  
+        
+        // Recursively check in left and right  
+        // subtrees.  
+        return checkDupUtil(root.left, s) || checkDupUtil(root.right, s);  
+    }  
+    
+    // To check if tree has duplicates  
+    public static boolean checkDup(Node root){  
+        HashSet<Integer> s=new HashSet<>(); 
+        return checkDupUtil(root, s);  
+    }  
