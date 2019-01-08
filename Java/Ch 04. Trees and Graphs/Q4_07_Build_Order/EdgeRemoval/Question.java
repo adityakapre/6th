@@ -95,14 +95,14 @@ public class Question {
 	
 	/* A helper function to insert projects with zero dependencies 
 	 * into the order array, starting at index offset. */
-	public static int addNonDependent(Project[] order, ArrayList<Project> projects, int offset) {
+	public static int addNonDependent(Project[] order, ArrayList<Project> projects, int endOfList) {
 		for (Project project : projects) {
 			if (project.getNumberDependencies() == 0) {
-				order[offset] = project;
-				offset++;
+				order[endOfList] = project;
+				endOfList++;
 			}
 		}
-		return offset;
+		return endOfList;
 	}
 	
 	public static String[] convertToStringList(Project[] projects) {
