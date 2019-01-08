@@ -7,14 +7,14 @@ public class Question {
 	//start here ...
 	public static Project[] orderProjects(Graph graph) {
 		ArrayList<Project> projects = graph.getNodes();
-		Project[] order = new Project[projects.size()];
+		Project[] output = new Project[projects.size()];
 		
 		/* Add “roots” to the build order first.*/
-		int endOfList = addNonDependent(order, projects, 0);
+		int endOfList = addNonDependent(output, projects, 0);
 		
 		int toBeProcessed = 0;
-		while (toBeProcessed < order.length) { //toBeProcessed=order.length indicates all projects compiled
-			Project current = order[toBeProcessed];
+		while (toBeProcessed < output.length) { //toBeProcessed=order.length indicates all projects compiled
+			Project current = output[toBeProcessed];
 			
 			/* We have a circular dependency since there are no remaining
 			 * projects with zero dependencies. */ 
@@ -29,12 +29,12 @@ public class Question {
 			}			
 			
 			/* Add children that have no one depending on them. */
-			endOfList = addNonDependent(order, children, endOfList);
+			endOfList = addNonDependent(output, children, endOfList);
 			
 			toBeProcessed++;
 		}
 		
-		return order;
+		return output;
 	}
 	
 	/* A helper function to insert projects with zero dependencies 
