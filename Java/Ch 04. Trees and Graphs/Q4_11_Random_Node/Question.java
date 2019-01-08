@@ -5,6 +5,45 @@ import java.util.Random;
 /* One node of a binary tree. The data element stored is a single 
  * character.
  */
+class Tree {
+	TreeNode root = null;
+
+	//start here ...
+	public TreeNode getRandomNode() {
+		if (root == null)
+			return null;
+
+		Random random = new Random();
+		int i = random.nextInt(size());
+		return root.getIthNode(i);
+	}
+	
+	public int size() {
+		return root == null ? 0 : root.size();
+	}
+	
+	public void insertInOrder(int value) {
+		if (root == null) {
+			root = new TreeNode(value);
+		} else {
+			root.insertInOrder(value);
+		}
+	}
+
+	public TreeNode get(TreeNode n, int d) {
+		if(null == n)
+			return null;
+		if(n.data == d)
+			return n;
+		TreeNode node = get(n.left, d);
+		if(null == node) {
+			return get(n.right, d);
+		} else {
+			return node;
+		}
+		
+	}
+}
 
 public class Question {
 
@@ -25,45 +64,6 @@ public class Question {
 		for (int i = 0; i < counts.length; i++) {
 			System.out.println(i + ": " + counts[i]);
 		}
-	}
-}
-
-class Tree {
-	TreeNode root = null;
-
-	public void insertInOrder(int value) {
-		if (root == null) {
-			root = new TreeNode(value);
-		} else {
-			root.insertInOrder(value);
-		}
-	}
-
-	public int size() {
-		return root == null ? 0 : root.size();
-	}
-
-	public TreeNode getRandomNode() {
-		if (root == null)
-			return null;
-
-		Random random = new Random();
-		int i = random.nextInt(size());
-		return root.getIthNode(i);
-	}
-	
-	public TreeNode get(TreeNode n, int d) {
-		if(null == n)
-			return null;
-		if(n.data == d)
-			return n;
-		TreeNode node = get(n.left, d);
-		if(null == node) {
-			return get(n.right, d);
-		} else {
-			return node;
-		}
-		
 	}
 }
 
