@@ -51,7 +51,7 @@ public class QuestionA {
 		/* Count paths with sum starting from the root. */
 		int pathsFromRoot = countPathsWithSumFromNode(root, targetSum, 0);
 		
-		/* Try the nodes on the left and right. */
+		/* Try the nodes on the left and right of root. */
 		int pathsOnLeft = countPathsWithSum(root.left, targetSum);
 		int pathsOnRight = countPathsWithSum(root.right, targetSum);
 		
