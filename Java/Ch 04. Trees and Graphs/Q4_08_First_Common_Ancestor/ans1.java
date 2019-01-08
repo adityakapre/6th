@@ -20,7 +20,8 @@ public class QuestionB {
 		int delta = depth(p) - depth(q); // get difference in depths
 		TreeNode shallower = delta > 0 ? q : p; // get shallower node
 		TreeNode deeper = delta > 0 ? p : q; // get deeper node
-		deeper = goUpBy(deeper, Math.abs(delta)); // move shallower node to depth of deeper
+		deeper = goUpBy(deeper, Math.abs(delta)); // move deeper node up
+		/* Find where paths intersect. */
 		while (shallower != deeper && shallower != null && deeper != null) {
 			shallower = shallower.parent;
 			deeper = deeper.parent;
