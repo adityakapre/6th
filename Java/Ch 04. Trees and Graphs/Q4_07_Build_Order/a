@@ -54,20 +54,20 @@ way to build the system. We should return an error.
 
 The implementation follows this approach very closely.
 Initialization and setup:
-1. Build a graph where each project is a node and its outgoing edges represent the projects that depend
-on it. That is, if A has an edge to B (A-> B), it means B has a dependency on A and therefore A must be
-built before B. Each node also tracks the number of incoming edges.
-2. Initialize a buildOrder array. Once we determine a project's build order, we add it to the array. We also
-continue to iterate through the array, using a toBeProcessed pointer to point to the next node to be
-fully processed.
-3. Find all the nodes with zero incoming edges and add those to a buildOrder array. Set a toBeProcessed pointer to 
-the beginning of the array. Repeat until toBeProcessed is at the end of the buildOrder:
-1. Read node at toBeProcessed.
-» If node is null, then all remaining nodes have a dependency and we have detected a cycle.
-2. For each child of node:
-» Decrement child. dependencies (the number of incoming edges).
-» If child. dependencies is zero, add child to end of buildOrder.
-3. Increment toBeProcessed.
+  1. Build a graph where each project is a node and its outgoing edges represent the projects that depend
+  on it. That is, if A has an edge to B (A-> B), it means B has a dependency on A and therefore A must be
+  built before B. Each node also tracks the number of incoming edges.
+  2. Initialize a buildOrder array. Once we determine a project's build order, we add it to the array. We also
+  continue to iterate through the array, using a toBeProcessed pointer to point to the next node to be
+  fully processed.
+  3. Find all the nodes with zero incoming edges and add those to a buildOrder array. Set a toBeProcessed pointer to 
+  the beginning of the array. Repeat until toBeProcessed is at the end of the buildOrder:
+      1. Read node at toBeProcessed.
+      » If node is null, then all remaining nodes have a dependency and we have detected a cycle.
+      2. For each child of node:
+      » Decrement child. dependencies (the number of incoming edges).
+      » If child. dependencies is zero, add child to end of buildOrder.
+      3. Increment toBeProcessed.
 
 
 Solution #2
