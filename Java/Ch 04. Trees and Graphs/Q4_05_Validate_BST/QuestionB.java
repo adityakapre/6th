@@ -33,6 +33,11 @@ import CtCILibrary.AssortedMethods;
 import CtCILibrary.TreeNode;
 
 public class QuestionB {
+	
+	public static boolean checkBST(TreeNode n) {
+		return checkBST(n, null, null);
+	}
+	
 	public static boolean checkBST(TreeNode n, Integer min, Integer max) {
 		if (n == null) {
 			return true;
@@ -45,10 +50,6 @@ public class QuestionB {
 			return false;
 		}
 		return true;
-	}
-		
-	public static boolean checkBST(TreeNode n) {
-		return checkBST(n, null, null);
 	}
 	
 	public static boolean checkBSTAlternate(TreeNode n) {
