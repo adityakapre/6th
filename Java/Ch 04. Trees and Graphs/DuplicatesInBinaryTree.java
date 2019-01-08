@@ -25,6 +25,7 @@ public int countDuplicatesGeneric(Node root, Node prev) {
 }
 //=============================================================================================================
 
+//Q. Check if a Binary Tree (not BST) has duplicate values
 /*
 A simple solution is to store inorder traversal of given binary tree in an array. Then check if array has duplicates or not. 
 We can avoid the use of array and solve the problem in O(n) time. 
