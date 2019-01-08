@@ -39,10 +39,10 @@ public class Question {
 	
 	/* A helper function to insert projects with zero dependencies 
 	 * into the order array, starting at index offset. */
-	public static int addNonDependent(Project[] order, ArrayList<Project> projects, int endOfList) {
+	public static int addNonDependent(Project[] output, ArrayList<Project> projects, int endOfList) {
 		for (Project project : projects) {
 			if (project.getNumberDependencies() == 0) {
-				order[endOfList] = project;
+				output[endOfList] = project;
 				endOfList++;
 			}
 		}
