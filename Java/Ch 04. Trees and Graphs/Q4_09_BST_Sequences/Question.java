@@ -1,3 +1,29 @@
+/*
+It's useful to kick off this question with a good example.
+
+						 50
+						/  \
+					       20   60
+					      /  \    \
+					     10   25   70
+					    / \        / \
+					   5   15     65  80
+											
+We should also think about the ordering of items in a binary search tree. Given a node, all nodes on its left
+must be less than all nodes on its right. Once we reach a place without a node, we insert the new value
+there.
+What this means is that the very first element in our array must have been a 50 in order to create the above
+tree. If it were anything else, then that value would have been the root instead.
+What else can we say? Some people jump to the conclusion that everything on the left must have been
+inserted before elements on the right, but that's not actually true. In fact, the reverse is true: the order of the
+left or right items doesn't matter.
+Once the 50 is inserted, all items less than 50 will be routed to the left and all items greater than 50 will be
+routed to the right. The 60 or the 20 could be inserted first, and it wouldn't matter.
+Let's think about this problem recursively. If we had all arrays that could have created the subtree rooted
+at 20 (call this arraySet20), and all arrays that could have created the subtree rooted at 60 (call this
+a rray5et60), how would that give us the full answer? We could just"weave" each array from a rray5et20
+with each array from arraySet60-and then prepend each array with a 50.
+*/
 package Q4_09_BST_Sequences;
 
 import java.util.ArrayList;
