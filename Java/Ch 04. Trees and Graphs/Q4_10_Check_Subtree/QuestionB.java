@@ -44,19 +44,20 @@ public class QuestionB {
 		if (t2 == null) {
 			return true; // The empty tree is a subtree of every tree.
 		}
-		return subTree(t1, t2);
+		return findRootInLargerTree(t1, t2);
 	}
 	
 	/* Checks if the binary tree rooted at r1 contains the binary tree 
 	 * rooted at r2 as a subtree somewhere within it.
+	 * T1 is much larger than T2	 
 	 */
-	public static boolean subTree(TreeNode r1, TreeNode r2) {
+	public static boolean findRootInLargerTree(TreeNode r1, TreeNode r2) {
 		if (r1 == null) {
 			return false; // big tree empty & subtree still not found.
 		} else if (r1.data == r2.data && matchTree(r1,r2)) { //we found root of T2 in T1 so start matching
 			return true;
 		}
-		return subTree(r1.left, r2) || subTree(r1.right, r2); 
+		return findRootInLargerTree(r1.left, r2) || findRootInLargerTree(r1.right, r2); 
 	}
 
 	/* Checks if the binary tree rooted at r1 contains the 
