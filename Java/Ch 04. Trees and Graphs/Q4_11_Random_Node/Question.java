@@ -78,6 +78,7 @@ class TreeNode {
 		size = 1;
 	}
 
+	//creates BST from array
 	public void insertInOrder(int d) {
 		if (d <= data) {
 			if (left == null) {
