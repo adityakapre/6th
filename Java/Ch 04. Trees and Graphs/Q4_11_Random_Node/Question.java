@@ -133,7 +133,7 @@ class TreeNode {
 		} else if (i == leftSize) {
 			return this;
 		} else {
-			return right.getIthNode(i - (leftSize + 1));
+			return right.getIthNode(i - (leftSize + 1)); //go right as rand num > leftSize, subtract leftSize+1 from rand
 		}
 	}
 }
