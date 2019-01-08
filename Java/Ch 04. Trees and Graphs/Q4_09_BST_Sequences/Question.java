@@ -68,6 +68,25 @@ We've chosen to implement it the latter way. Since we're keeping the same refere
 prefix the entire way down the recursive call stack, then we'll need to clone prefix just before we store
 the complete result.
 
+Some people struggle with this problem because there are two different recursive algorithms that must be
+designed and implemented. They get confused with how the algorithms should interact with each other
+and they try to juggle both in their heads.
+If this sounds like you, try this: trust and focus. Trust that one method does the right thing when implementing
+an independent method, and focus on the one thing that this independent method needs to do.
+
+Look at weaveLists. It has a specific job: to weave two lists together and return a list of all possible
+weaves. The existence of allSequences is irrelevant. Focus on the task that weavelists has to do and
+design this algorithm.
+As you're implementing allSequences (whether you do this before or after weavelists), trust that
+weavelists will do the right thing. Don't concern yourself with the particulars of how weaveLists
+operates while implementing something that is essentially independent. Focus on what you're doing while
+you're doing it.
+In fact, this is good advice in general when you're confused during whiteboard coding. Have a good understanding
+of what a particular function should do ("okay, this function is going to return a list of _ "). You
+should verify that it's really doing what you think. But when you're not dealing with that function, focus on
+the one you are dealing with and trust that the others do the right thing. It's often too much to keep the
+implementations of multiple algorithms straight in your head.
+
 */
 package Q4_09_BST_Sequences;
 
@@ -79,8 +98,7 @@ import CtCILibrary.TreeNode;
 public class Question {
 	
 	public static void weaveLists(LinkedList<Integer> first, LinkedList<Integer> second, ArrayList<LinkedList<Integer>> results, LinkedList<Integer> prefix) {
-		/* One list is empty. Add the remainder to [a cloned] prefix and
-		 * store result. */
+		/* One list is empty. Add the remainder to [a cloned] prefix and store result. */
 		if (first.size() == 0 || second.size() == 0) {
 			LinkedList<Integer> result = (LinkedList<Integer>) prefix.clone();
 			result.addAll(first);
@@ -89,8 +107,7 @@ public class Question {
 			return;
 		}
 		
-		/* Recurse with head of first added to the prefix. Removing the
-		 * head will damage first, so we’ll need to put it back where we
+		/* Recurse with head of first added to prefix. Removing head will damage first, so we’ll need to put it back where we
 		 * found it afterwards. */
 		int headFirst = first.removeFirst();
 		prefix.addLast(headFirst);
@@ -98,8 +115,7 @@ public class Question {
 		prefix.removeLast();
 		first.addFirst(headFirst);
 		
-		/* Do the same thing with second, damaging and then restoring
-		 * the list.*/
+		/* Do the same thing with second, damaging and then restoring the list.*/
 		int headSecond = second.removeFirst();
 		prefix.addLast(headSecond);
 		weaveLists(first, second, results, prefix);
