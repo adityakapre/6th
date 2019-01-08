@@ -9,6 +9,16 @@ public class Traversals {
 		}
 	}
 	
+	//write inorder traversal of tree to array
+	public void inOrder(TreeNode node, E[] array, int index){
+    		if(node == null){  //when node is null, empty leaf is reached (doesn't matter if its left or right, end method call)
+       			return;
+    		}
+    		inOrder(node.left, array, index);   // first do every left child tree
+    		array[index++]= node.data;          // then write the data in the array
+    		inOrder(node.right, array, index);  // do the same with the right child
+	}
+	
 	public static void inOrderTraversal(TreeNode node) {
 		if (node != null) {
 			inOrderTraversal(node.left);
