@@ -28,6 +28,11 @@ of two look like in binary:
 + 0100
 + 1000
 = 1111
+
+[sum of powers of two from 1 through N] = 2^0 + 2^1 + 2^2 + 2^3 +...+2^N = 2^(N+1) 
+[sum of powers of two from 1 through log N] = 2^0 + 2^1 + 2^2 + 2^3 +...+2^(logN) = 2^(N+1) ~ 2*2^(logN) ~ 2N 
+(since 2^(logN) = N when log base is 2)
+
 Therefore, the runtime is O(Nlog N) in a balanced tree.
 In an unbalanced tree, the runtime could be much worse. Consider a tree that is just a straight line down. At
 the root, we traverse to N - 1 nodes. At the next level (with just a single node), we traverse to N - 2 nodes.
