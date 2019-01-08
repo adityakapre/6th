@@ -53,7 +53,7 @@ public class QuestionB {
 	public static boolean subTree(TreeNode r1, TreeNode r2) {
 		if (r1 == null) {
 			return false; // big tree empty & subtree still not found.
-		} else if (r1.data == r2.data && matchTree(r1,r2)) {
+		} else if (r1.data == r2.data && matchTree(r1,r2)) {		//we found root of T2 in T1 so start matching
 			return true;
 		}
 		return subTree(r1.left, r2) || subTree(r1.right, r2); 
