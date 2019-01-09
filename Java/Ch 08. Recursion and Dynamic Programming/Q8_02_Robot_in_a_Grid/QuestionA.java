@@ -1,4 +1,10 @@
 /*
+
+|_|_|_|_|
+|_|_|_|_|
+|_|_|_|_|
+|_|_|_|_|
+
 If we picture this grid, the only way to move to spot (r, c) is by moving to one of the adjacent spots:
 (r-1, c) or (r, c-1). So, we need to find a path to either (r-1, c) or (r, c-1).
 How do we find a path to those spots? To find a path to (r-1, c) or (r, c-1), we need to move to one
