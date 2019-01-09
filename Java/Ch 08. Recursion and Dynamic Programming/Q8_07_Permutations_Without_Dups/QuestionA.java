@@ -25,13 +25,15 @@ a3a2a1 -> a4a3a2a1 a3a4a2a1 a3a2a4a1 a3a2a1a4
 
 We can now implement this algorithm recursively.
 
+e.g [a1a2a3]
+read below from wind -> down -> down ->unwind
+stack
+wind	  unwind (returns [list])
 
-stack wind		stack unwind (returns [list])
-
-(a1a2a3)		[a1a2a3, a2a1a3, a2a3a1, a1a3a2, a3a1a2, a3a2a1] 	first=a1
-(a2a3)			[a2a3, a3,a2] 						first=a2
-(a3)			[a3]							first=a3
-()			[""]							str.length()=0	
+(a1a2a3)  [a1a2a3, a2a1a3, a2a3a1, a1a3a2, a3a1a2, a3a2a1] first=a1
+(a2a3)	  [a2a3, a3,a2] first=a2
+(a3)	  [a3]	first=a3
+()	  [""]	str.length()=0	
 
 */
 package Q8_07_Permutations_Without_Dups;
