@@ -46,8 +46,8 @@ public class QuestionA {
 		ArrayList<String> words = getPerms(remainder);
 		for (String word : words) {
 			for (int j = 0; j <= word.length(); j++) {
-				String s = insertCharAt(word, first, j);
-				permutations.add(s);
+				String newPermu = insertCharAt(word, first, j);
+				permutations.add(newPermu);
 			}
 		}
 		return permutations;
