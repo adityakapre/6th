@@ -14,14 +14,25 @@ any information.
 
 This algorithm will run in O(log s) time, wheres is the smaller of the two numbers.
 
-e.g 15*30
-Stack wind   Stack unwind (returns to above call)
-(15, 30)	210+210+30=450
-(7, 30)		90+90+30=210
-(3, 30)		30+30+30=90
-(1, 30)		30
+e.g 15*30 i.e smaller = 15, larger=30
+inital call (15, 30) 
+
+Stack wind (i/p params)   Stack unwind (returns to above call)
+(15, 30)			210+210+30=450
+(7, 30)				90+90+30=210
+(3, 30)				30+30+30=90
+(1, 30)				30
 
 
+e.g 16*30 i.e smaller = 16, larger=30
+inital call (16, 30) 
+
+Stack wind (i/p params)   Stack unwind (returns to above call)
+(16, 30)			240+240=480
+(8, 30)				120+120=240
+(4, 30)				60+60=120
+(2, 30)				30+30=60
+(1, 30)				30
 
 */
 package Q8_05_Recursive_Multiply;
