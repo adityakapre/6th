@@ -37,17 +37,17 @@ serving as a buffer.
 This approach leads to a natural recursive algorithm. In each part, we are doing the following steps, outlined
 below with pseudocode:
 1 moveDisks(int n, Tower origin, Tower destination, Tower buffer) {
-2 // Base case 
-3 if (n <= 0) return;
+2 	// Base case 
+3 	if (n <= 0) return;
 4
-s // move top n - 1 disks from origin to buffer, using destination as a buffer. 
-6 moveDisks(n - 1, origin, buffer, destination);
+s 	// move top n - 1 disks from origin to buffer, using destination as a buffer. 
+6 	moveDisks(n - 1, origin, buffer, destination);
 7
-8 // move top from origin to destination
-9 moveTop(origin, destination);
+8 	// move top from origin to destination
+9 	moveTop(origin, destination);
 10
-11 // move top n - 1 disks from buffer to destination, using origin as a buffer. 
-12 moveDisks(n - 1, buffer, destination, origin);
+11 	// move top n - 1 disks from buffer to destination, using origin as a buffer. 
+12 	moveDisks(n - 1, buffer, destination, origin);
 13 }
 The following code provides a more detailed implementation of this algorithm, using concepts of objectoriented
 design.
