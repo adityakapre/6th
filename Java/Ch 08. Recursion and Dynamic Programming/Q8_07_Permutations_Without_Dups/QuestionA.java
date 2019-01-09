@@ -37,7 +37,7 @@ public class QuestionA {
 		}
 		ArrayList<String> permutations = new ArrayList<String>();
 		if (str.length() == 0) { // base case
-			permutations.add("");
+			permutations.add(""); //add empty string to list
 			return permutations;
 		}
 	            
