@@ -30,7 +30,7 @@ public class QuestionB {
 		if (n < 0) {
 			return 0;
 		} else if (n == 0) {
-			return 1;
+			return 1;   //avoid just wind up with a series of 0s getting added, return 1 instead of 0
 		} else if (memo[n] > -1) {
 			return memo[n];
 		} else {
