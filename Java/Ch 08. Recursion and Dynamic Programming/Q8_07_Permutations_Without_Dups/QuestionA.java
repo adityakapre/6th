@@ -29,8 +29,8 @@ e.g [a1a2a3]
 read below numerically
 {} indicates extra info
 stack
-wind (str)  unwind (returns [list])
----------   -----------------------
+wind (str)  unwind (returns "word" [list])
+---------   -------------------------------
 1.(a1a2a3)  8.[a1a2a3, a2a1a3, a2a3a1, a1a3a2, a3a1a2, a3a2a1] {first=a1}
 2.(a2a3)    7.[a2a3, a3,a2] {first=a2}
 3.(a3)	    6.[a3]	{first=a3}
