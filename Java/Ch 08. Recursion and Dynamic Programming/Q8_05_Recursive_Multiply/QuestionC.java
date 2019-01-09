@@ -13,6 +13,16 @@ with increasingly small numbers each time. It will never repeat the same call, s
 any information.
 
 This algorithm will run in O(log s) time, wheres is the smaller of the two numbers.
+
+e.g 15*30
+Stack wind   Stack unwind (returns to above call)
+(15, 30)	210+210+30=450
+(7, 30)		90+90+30=210
+(3, 30)		30+30+30=90
+(1, 30)		30
+
+
+
 */
 package Q8_05_Recursive_Multiply;
 
@@ -27,7 +37,7 @@ public class QuestionC {
 			return bigger;
 		} 
 		
-		int s = smaller >> 1;
+		int s = smaller >> 1; //divide by 2
 		int halfProd = minProductHelper(s, bigger);
 		
 		if (smaller % 2 == 0) {
