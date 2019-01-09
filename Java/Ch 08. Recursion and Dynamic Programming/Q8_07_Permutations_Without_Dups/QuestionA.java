@@ -8,7 +8,7 @@ Case: permutations of a1 a2
 P(a1a2) = a1a2 and a2a1
 
 Case: permutations of a1a2a3
-P(a1a2a3) = a1a2a3, a1a3a2, a2a1a3, a2a3a1, a3a1a2, a3a2a1 ,
+P(a1a2a3) = a3a1a2, a1a3a2, a1a2a3, a3a2a1, a2a3a1, a2a1a3
 
 Case: permutations of a1a2a3a4
 This is the first interesting case. How can we generate permutations of a1a2a3a4 from a1a2a3 ?
