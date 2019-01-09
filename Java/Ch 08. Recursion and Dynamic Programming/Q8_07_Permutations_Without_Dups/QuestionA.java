@@ -34,7 +34,7 @@ wind (str)  unwind (returns "word" [list]) to above level
 1.(a1a2a3)  8.[a1a2a3, a2a1a3, a2a3a1, a1a3a2, a3a1a2, a3a2a1] {first=a1}
 2.(a2a3)    7.[a2a3, a3,a2] {first=a2}
 3.(a3)	    6.[a3]	{first=a3}
-4.()	    5.[""]	{str.length()=0}	
+4.()   ---> 5.[""]	{str.length()=0}	
 
 */
 package Q8_07_Permutations_Without_Dups;
