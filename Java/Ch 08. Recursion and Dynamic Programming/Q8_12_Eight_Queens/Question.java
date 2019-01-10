@@ -75,7 +75,8 @@ public class Question {
 			/* Check diagonals: if the distance between the columns equals the distance
 			 * between the rows, then they’re in the same diagonal. */
 			int columnDistance = Math.abs(column2 - column1); 
-			int rowDistance = row1 - row2; // row1 > row2, so no need to use absolute value
+			// row1 > row2, so no need to use absolute value
+			int rowDistance = row1 - row2; 
 		    	if (columnDistance == rowDistance) {
 		    		return false;
 		    	}
