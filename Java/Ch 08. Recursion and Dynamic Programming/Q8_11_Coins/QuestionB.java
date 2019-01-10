@@ -19,23 +19,24 @@ public class QuestionB {
 	}
 	
 	public static int makeChangeHelper(int total, int[] denoms, int index, int[][] map) {
-		/* Check cache for prior result. */
+		//returned memoized result
 		if (map[total][index] > 0) { // retrieve value
 			return map[total][index];
 		}
 		
 		int coin = denoms[index];
 		if (index == denoms.length - 1) {
-			int remaining = total % coin; 
+			int remaining = total % coin;
+			//add "1" way if total=coin i.e remaining=0
 			return remaining == 0 ? 1 : 0;
 		}
 		int numberOfWays = 0;
-		/* Try 1 coin, then 2 coins, 3 three, ... (recursing each time on rest). */
+		// Try 1 coin, then 2 coins, 3 three, ... (recursing each time on rest). 
 		for (int amount = 0; amount <= total; amount += coin) { 
 			numberOfWays += makeChangeHelper(total - amount, denoms, index + 1, map); // go to next denom
 		}
 		
-		/* Update cache with current result. */
+		//memoization
 		map[total][index] = numberOfWays;
 		
 		return numberOfWays;
