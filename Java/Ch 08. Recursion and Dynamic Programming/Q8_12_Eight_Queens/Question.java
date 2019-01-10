@@ -40,13 +40,13 @@ import java.util.ArrayList;
 public class Question {
 	public static int GRID_SIZE = 8;
 	
-	/* Check if (row1, column1) is a valid spot for 
-	   a queen by checking if there
-	   is a queen in the same column or diagonal. 
-	   We don't need to check it for queens
-	   in the same row because the calling placeQueen 
-	   only attempts to place one queen at
-	   a time. We know this row is empty. 
+	/*  Check if (row1, column1) is a valid spot for 
+	 *  a queen by checking if there
+	 *  is a queen in the same column or diagonal. 
+	 *  We don't need to check it for queens
+	 *  in the same row because the calling placeQueen 
+	 *  only attempts to place one queen at
+	 *  a time. We know this row is empty. 
 	 */
 	public static boolean checkValid(Integer[] columns, int row1, int column1) {
 		//row2 < row1 traverses all rows in which queens are placed till now placing queen starts from row 0
