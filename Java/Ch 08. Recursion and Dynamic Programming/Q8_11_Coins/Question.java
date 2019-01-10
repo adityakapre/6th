@@ -1,43 +1,36 @@
 /*
-This is a recursive problem, so let's figure out how to compute makeChange(n) using prior solutions (i.e.,
-subproblems).
-Let's say n = 100. We want to compute the number of ways of making change for 100 cents. What is the
-relationship between this problem and its subproblems?
+This is a recursive problem, so let's figure out how to compute makeChange(n) using prior solutions (i.e.,subproblems).
+Let's say n = 100. We want to compute the number of ways of making change for 100 cents. What is the relationship between 
+this problem and its subproblems?
+
 We know that making change for 100 cents will involve either 0, 1, 2, 3, or 4 quarters. So:
-makeChange(100) = makeChange(100 using 0 quarters)+
-makeChange(100 using 1 quarter) +
-makeChange(100 using 2 quarters)+
-makeChange(100 using 3 quarters)+
-makeChange(100 using 4 quarters)
+
+makeChange(100) = makeChange(100 using 0 quarters)+makeChange(100 using 1 quarter) +makeChange(100 using 2 quarters)+
+makeChange(100 using 3 quarters)+makeChange(100 using 4 quarters)
+
 Inspecting this further, we can see that some of these problems reduce. For example, makeChange(100 using 1 quarter) 
-will equal makeChange(75 using 0 quarters). This is because,if we must use
-exactly one quarter to make change for 100 cents, then our only remaining choices involve making change
-for the remaining 75 cents.
-We can apply th esame logic tomakeChange(100 using 2 quarters),makeChange(100 using
-3 quarters) and makeChange(100 using 4 quarters). We have thus reduced the above statement
-to the following.
+will equal makeChange(75 using 0 quarters). This is because, if we must use exactly one quarter to make change for 100 cents, 
+then our only remaining choices involve making change for the remaining 75 cents.
+
+We can apply the same logic to makeChange(100 using 2 quarters),makeChange(100 using 3 quarters) 
+and makeChange(100 using 4 quarters). We have thus reduced the above statement to the following.
+
 makeChange(100) = makeChange(100 using 0 quarters)+makeChange(75 using 0 quarters)+makeChange(50 using 0 quarters)+
 makeChange(25 using 0 quarters)+1
-Note that the final statement from above, makeChange(100 using 4 quarters), equals 1. We call
-this "fully reduced:'
-Now what? We've used up all our quarters, so now we can start applying our next biggest denomination:
-dimes.
+
+Note that the final statement from above, makeChange(100 using 4 quarters), equals 1. We callthis "fully reduced:'
+
+Now what? We've used up all our quarters, so now we can start applying our next biggest denomination:dimes.
+
 Our approach for quarters applies to dimes as well, but we apply this for each of the four of five parts of the
 above statement. So, for the first part, we get the following statements:
+
 makeChange(100 using 0 quarters)= makeChange(100 using 0 quarters, 0 dimes)+
-makeChange(l00 using 0 quarters, 1 dime) +
-makeChange(100 using 0 quarters, 2 dimes)+
-makeChange(75 using 0 quarters)
-makeChange(50 using 0 quarters)
-makeChange(l00 using 0 quarters, 10 dimes)
-makeChange(75 using 0 quarters, 0 dimes)+
-makeChange(75 using 0 quarters, 1 dime) +
-makeChange(75 using 0 quarters, 2 dimes)+
+makeChange(l00 using 0 quarters, 1 dime) +makeChange(100 using 0 quarters, 2 dimes)+makeChange(75 using 0 quarters)
+makeChange(75 using 0 quarters, 1 dime) +makeChange(75 using 0 quarters, 2 dimes)+
 ...
 makeChange(75 using 0 quarters, 7 dimes)
-makeChange(50 using 0 quarters, 0 dimes)+
-makeChange(50 using 0 quarters, 1 dime) +
-makeChange(50 using 0 quarters, 2 dimes)+
+makeChange(50 using 0 quarters, 0 dimes)+makeChange(50 using 0 quarters, 1 dime) +makeChange(50 using 0 quarters, 2 dimes)+
 ...
 makeChange(50 using 0 quarters, 5 dimes)
 
