@@ -63,9 +63,9 @@ public class Question {
 			 * between the rows, then they’re in the same diagonal. */
 			int columnDistance = Math.abs(column2 - column1); 
 			int rowDistance = row1 - row2; // row1 > row2, so no need to use absolute value
-		    if (columnDistance == rowDistance) {
-		    	return false;
-		    }
+		    	if (columnDistance == rowDistance) {
+		    		return false;
+		    	}
 		}
 		return true;
 	}
