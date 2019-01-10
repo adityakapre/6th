@@ -21,7 +21,8 @@ public class QuestionB {
 		Collections.sort(boxes, new BoxComparator());
 		int maxHeight = 0;
 		//K=arrayindex=box-number ; V=stackMap[K]=maxHeight-Using-Box-K
-		int[] stackMap = new int[boxes.size()];		
+		int[] stackMap = new int[boxes.size()];	
+		//for each box find maxHeight till last box
 		for (int i = 0; i < boxes.size(); i++) {
 			int height = createStack(boxes, i, stackMap);
 			maxHeight = Math.max(maxHeight, height);
