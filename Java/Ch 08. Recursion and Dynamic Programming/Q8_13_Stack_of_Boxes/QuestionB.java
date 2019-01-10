@@ -31,6 +31,7 @@ public class QuestionB {
 	}
 	
 	public static int createStack(ArrayList<Box> boxes, int bottomIndex, int[] stackMap) {
+		//memoization in use
 		if (bottomIndex < boxes.size() && stackMap[bottomIndex] > 0) {
 			return stackMap[bottomIndex];
 		}
@@ -45,6 +46,7 @@ public class QuestionB {
 		}
 		//add current boxes height i.e bottom.height as current box is bottom
 		maxHeight += bottom.height;
+		//memoization
 		stackMap[bottomIndex] = maxHeight;
 		return maxHeight;
 	}
