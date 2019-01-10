@@ -29,7 +29,7 @@ public class QuestionB {
 		ArrayList<Point> path = new ArrayList<Point>();
 		HashSet<Point> failedPoints = new HashSet<Point>();
 		if (getPath(maze, maze.length - 1, maze[0].length - 1, path, failedPoints)) {
-			return path;
+			return path;	//returns actual path from src (maze.length - 1, maze[0].length - 1) to dest(0,0)
 		}
 		return null;
 	}
