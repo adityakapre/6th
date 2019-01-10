@@ -1,4 +1,6 @@
 /*
+This algorithm is called FLOOD-FILL ALGORITHM
+
 First, let's visualize how this method works. When we call paintFill (i.e., "click" paint fill in the image
 editing application) on, say, a green pixel, we want to "bleed" outwards. Pixel by pixel, we expand outwards
 by calling paintFill on the surrounding pixel. When we hit a pixel that is not green, we stop.
@@ -7,6 +9,9 @@ Does this algorithm seem familiar? It should! This is essentially depth-first se
 we are searching outwards to each surrounding pixel. We stop once we've fully traversed all the surrounding
 pixels of this color.
 We could alternatively implement this using breadth-first search.
+
+This code visits each and every cell of a matrix of size n*m starting with some source cell. 
+Time Complexity of above algorithm is O(n*m)
 
 ocolor -> old color ncolor -> new color
 */
