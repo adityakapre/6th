@@ -1,5 +1,5 @@
 /*
-This algorithm is called FLOOD-FILL ALGORITHM, complexity O(nm) for n rows, m columns in matrix
+This algorithm is called FLOOD-FILL ALGORITHM, complexity O(rc) for r rows, c columns in matrix
 
 First, let's visualize how this method works. When we call paintFill (i.e., "click" paint fill in the image
 editing application) on, say, a green pixel, we want to "bleed" outwards. Pixel by pixel, we expand outwards
@@ -11,7 +11,7 @@ pixels of this color.
 We could alternatively implement this using breadth-first search.
 
 This code visits each and every cell of a matrix of size n*m starting with some source cell. 
-Time Complexity of above algorithm is O(n*m)
+Time Complexity of above algorithm is O(r*c)
 
 ocolor -> old color ncolor -> new color
 */
