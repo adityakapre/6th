@@ -40,7 +40,7 @@ import java.util.ArrayList;
 public class Question {
 	public static int GRID_SIZE = 8;
 	
-	/*Called with row=0*/
+	/*Start here ... Called with row=0*/
 	public static void placeQueens(int row, Integer[] columns, ArrayList<Integer[]> results) {
 		if (row == GRID_SIZE) { // Found valid placement
 			results.add(columns.clone()); 
