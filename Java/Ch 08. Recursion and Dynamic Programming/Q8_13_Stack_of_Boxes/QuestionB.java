@@ -20,7 +20,8 @@ public class QuestionB {
 	public static int createStack(ArrayList<Box> boxes) {
 		Collections.sort(boxes, new BoxComparator());
 		int maxHeight = 0;
-		int[] stackMap = new int[boxes.size()];
+		//K=arrayindex=box-number ; V=stackMap[K]=maxHeight-Using-Box-K
+		int[] stackMap = new int[boxes.size()];		
 		for (int i = 0; i < boxes.size(); i++) {
 			int height = createStack(boxes, i, stackMap);
 			maxHeight = Math.max(maxHeight, height);
