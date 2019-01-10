@@ -1,4 +1,9 @@
 /*
+Formula : 
+
+The number of permutations of n objects taken r at a time is determined by the following formula:
+P(n,r)=n!/(n−r)!
+
 Approach 1: Building from permutations of first n-1 characters.
 Base Case: permutations of first character substring
 The only permutation of a1 is the string a1. So:
