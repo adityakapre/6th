@@ -40,6 +40,20 @@ import java.util.ArrayList;
 public class Question {
 	public static int GRID_SIZE = 8;
 	
+	/*Called with row=0*/
+	public static void placeQueens(int row, Integer[] columns, ArrayList<Integer[]> results) {
+		if (row == GRID_SIZE) { // Found valid placement
+			results.add(columns.clone()); 
+		} else {
+			for (int col = 0; col < GRID_SIZE; col++) {			
+				if (checkValid(columns, row, col)) {
+					columns[row] = col;	// Place queen
+					placeQueens(row + 1, columns, results);	
+				}		
+			}
+		}
+	}
+	
 	/*  Check if (row1, column1) is a valid spot for 
 	 *  a queen by checking if there
 	 *  is a queen in the same column or diagonal. 
@@ -67,19 +81,6 @@ public class Question {
 		    	}
 		}
 		return true;
-	}
-	
-	public static void placeQueens(int row, Integer[] columns, ArrayList<Integer[]> results) {
-		if (row == GRID_SIZE) { // Found valid placement
-			results.add(columns.clone()); 
-		} else {
-			for (int col = 0; col < GRID_SIZE; col++) {			
-				if (checkValid(columns, row, col)) {
-					columns[row] = col;	// Place queen
-					placeQueens(row + 1, columns, results);	
-				}		
-			}
-		}
 	}
 	
 	public static void clear(Integer[] columns) {
