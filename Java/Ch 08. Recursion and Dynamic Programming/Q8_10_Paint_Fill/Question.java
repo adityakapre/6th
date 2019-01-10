@@ -1,5 +1,5 @@
 /*
-This algorithm is called FLOOD-FILL ALGORITHM, complexity O(rc) for r rows, c columns in matrix
+This algorithm is called FLOOD-FILL ALGORITHM (application:BUCKET FILL), complexity O(rc) for r rows, c columns in matrix
 
 First, let's visualize how this method works. When we call paintFill (i.e., "click" paint fill in the image
 editing application) on, say, a green pixel, we want to "bleed" outwards. Pixel by pixel, we expand outwards
