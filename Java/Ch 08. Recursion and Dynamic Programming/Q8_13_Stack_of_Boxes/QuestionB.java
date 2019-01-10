@@ -31,7 +31,7 @@ public class QuestionB {
 	}
 	
 	public static int createStack(ArrayList<Box> boxes, int bottomIndex, int[] stackMap) {
-		//memoization in use
+		//returned memoized result
 		if (bottomIndex < boxes.size() && stackMap[bottomIndex] > 0) {
 			return stackMap[bottomIndex];
 		}
