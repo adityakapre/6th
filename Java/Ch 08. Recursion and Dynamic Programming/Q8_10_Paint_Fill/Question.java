@@ -1,5 +1,5 @@
 /*
-This algorithm is called FLOOD-FILL ALGORITHM
+This algorithm is called FLOOD-FILL ALGORITHM, complexity O(nm) for n rows, m columns in matrix
 
 First, let's visualize how this method works. When we call paintFill (i.e., "click" paint fill in the image
 editing application) on, say, a green pixel, we want to "bleed" outwards. Pixel by pixel, we expand outwards
