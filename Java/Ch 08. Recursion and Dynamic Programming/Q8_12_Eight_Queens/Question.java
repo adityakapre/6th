@@ -3,6 +3,15 @@
 We have eight queens which must be lined up on an 8x8 chess board such that none share the same row,
 column or diagonal. So, we know that each row and column (and diagonal) must be used exactly once .
 
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|_|
+
 Picture the queen that is placed last, which we'll assume is on row 8. (This is an okay assumption to make
 since the ordering of placing the queens is irrelevant.) On which cell in row 8 is this queen? There are eight
 possibilities, one for each column.
