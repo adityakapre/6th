@@ -42,7 +42,8 @@ public class QuestionB {
 				int height = createStack(boxes, i, stackMap);
 				maxHeight = Math.max(height, maxHeight);
 			}
-		}		
+		}
+		//add current boxes height i.e bottom.height as current box is bottom
 		maxHeight += bottom.height;
 		stackMap[bottomIndex] = maxHeight;
 		return maxHeight;
