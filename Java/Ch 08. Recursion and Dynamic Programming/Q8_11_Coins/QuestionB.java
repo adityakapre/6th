@@ -31,7 +31,7 @@ public class QuestionB {
 			return remaining == 0 ? 1 : 0;
 		}
 		int numberOfWays = 0;
-		// Try 1 coin, then 2 coins, 3 three, ... (recursing each time on rest). 
+		// Try 1 coin, then 2 coins, 3,... (recursing each time on rest) 
 		for (int amount = 0; amount <= total; amount += coin) { 
 			numberOfWays += makeChangeHelper(total - amount, denoms, index + 1, map); // go to next denom
 		}
