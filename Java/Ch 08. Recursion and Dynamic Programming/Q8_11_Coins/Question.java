@@ -48,8 +48,10 @@ package Q8_11_Coins;
 public class Question {	
 	public static int makeChangeHelper(int total, int[] denoms, int index) {
 		int coin = denoms[index];
-		if (index == denoms.length - 1) { // One denom left, either you can do it or not
+		// One denom left, either you can do it or not
+		if (index == denoms.length - 1) { 
 			int remaining = total % coin; 
+			//use coin if total=coin i.e remaining=0
 			return remaining == 0 ? 1 : 0;
 		}
 		int ways = 0;
