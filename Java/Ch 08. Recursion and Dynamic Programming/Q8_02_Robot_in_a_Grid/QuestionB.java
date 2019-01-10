@@ -1,4 +1,9 @@
 /*
+This algorithm is called FLOOD-FILL ALGORITHM (application:SOLVING MAZE), complexity O(rc) for r rows, c columns in matrix
+Solving a Maze: 
+Given a matrix with some starting point, and some destination with some obstacles in between, 
+this algorithm helps to find out the path from source to destination
+
 We should look for a faster way.
 Often, we can optimize exponential algorithms by finding duplicate work. What work are we repeating?
 If we walk through the algorithm, we'll see that we are visiting squares multiple times. In fact, we visit
