@@ -49,7 +49,8 @@ import java.util.ArrayList;
 public class Question {
 	public static int GRID_SIZE = 8;
 	
-	/*Start here ... Called with row=0*/
+	//Start here ... Called with row=0
+	//1st queen placed at (0,0) next at (1,2) etc
 	public static void placeQueens(int row, Integer[] columns, ArrayList<Integer[]> results) {
 		if (row == GRID_SIZE) { // Found valid placement
 			results.add(columns.clone()); 
