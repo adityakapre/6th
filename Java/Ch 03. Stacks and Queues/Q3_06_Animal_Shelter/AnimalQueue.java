@@ -68,7 +68,7 @@ public class AnimalQueue {
 	}
 	
 	public Dog dequeueDogs() {
-		return dogs.poll();
+		return dogs.remove();
 	}
 	
 	public Dog peekDogs() {
@@ -76,7 +76,7 @@ public class AnimalQueue {
 	}
 	
 	public Cat dequeueCats() {
-		return cats.poll();
+		return cats.remove();
 	}
 	
 	public Cat peekCats() {
