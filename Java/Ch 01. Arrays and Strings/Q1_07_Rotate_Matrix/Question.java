@@ -36,16 +36,16 @@ public class Question {
 				int offset = i - first;
 				int top = matrix[first][i]; // save top
 
-				// left -> top
+				// top = left
 				matrix[first][i] = matrix[last-offset][first]; 			
 
-				// bottom -> left
+				// left = bottom
 				matrix[last-offset][first] = matrix[last][last - offset]; 
 
-				// right -> bottom
+				// bottom = right
 				matrix[last][last - offset] = matrix[i][last]; 
 
-				// top -> right
+				// right = top
 				matrix[i][last] = top; // right <- saved top
 			}
 		}
