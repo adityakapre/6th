@@ -21,7 +21,7 @@ public class QuestionC {
 		
 		/* Partition list */
 		while (node != null) {
-			LinkedListNode next = node.next;
+			LinkedListNode next = node.next;	//temporary cache
 			if (node.data < x) {
 				/* Insert node at head. */
 				node.next = head;
