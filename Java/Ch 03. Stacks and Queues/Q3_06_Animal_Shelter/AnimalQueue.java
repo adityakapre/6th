@@ -72,7 +72,7 @@ public class AnimalQueue {
 	}
 	
 	public Dog peekDogs() {
-		return dogs.peek();
+		return dogs.peek(); //LinkedList HAS peek() method
 	}
 	
 	public Cat dequeueCats() {
