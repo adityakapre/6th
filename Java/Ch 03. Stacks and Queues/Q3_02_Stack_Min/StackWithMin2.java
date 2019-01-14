@@ -21,7 +21,8 @@ public class StackWithMin2 extends Stack<Integer> {
 	}
 	
 	public void push(int value){
-		if (value <= min()) {
+		// "=" in "<=" is important as we push min number of times we see it so its in sync w/ pop
+		if (value <= min()) { 
 			s2.push(value);
 		}
 		super.push(value);
