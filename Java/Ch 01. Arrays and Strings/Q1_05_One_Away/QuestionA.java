@@ -58,7 +58,7 @@ public class QuestionA {
 				if (index1 != index2) {
 					return false;
 				}		
-				index2++;
+				index2++; //since s2 lerger in length, we progress its ptr
 			} else {
 				index1++;
 				index2++;
