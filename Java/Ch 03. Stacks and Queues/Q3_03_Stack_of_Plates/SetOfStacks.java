@@ -70,8 +70,10 @@ public class SetOfStacks {
 	public int leftShift(int index, boolean removeTop) {
 		Stack stack = stacks.get(index);
 		int removed_item;
-		if (removeTop) removed_item = stack.pop();
-		else removed_item = stack.removeBottom();
+		if (removeTop) 
+			removed_item = stack.pop();
+		else 
+			removed_item = stack.removeBottom();
 		if (stack.isEmpty()) {
 			stacks.remove(index);
 		} else if (stacks.size() > index + 1) {
