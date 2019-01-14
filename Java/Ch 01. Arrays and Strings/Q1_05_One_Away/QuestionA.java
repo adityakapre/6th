@@ -49,7 +49,7 @@ public class QuestionA {
 		return true;
 	}
 	
-	/* Check if you can insert a character into s1 to make s2. */
+	/* Check if you can insert a character into s1 to make s2. s1->smaller s2->larger */
 	public static boolean oneEditInsert(String s1, String s2) {
 		int index1 = 0;
 		int index2 = 0;
