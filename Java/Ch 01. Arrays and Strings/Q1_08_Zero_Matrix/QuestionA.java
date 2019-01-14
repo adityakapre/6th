@@ -18,17 +18,6 @@ package Q1_08_Zero_Matrix;
 import CtCILibrary.AssortedMethods;
 
 public class QuestionA {
-	public static void nullifyRow(int[][] matrix, int row) {
-		for (int j = 0; j < matrix[0].length; j++) {  // matrix[0].length will give no of columns in a row to be zeroed
-			matrix[row][j] = 0;
-		}		
-	}
-
-	public static void nullifyColumn(int[][] matrix, int col) {
-		for (int i = 0; i < matrix.length; i++) {
-			matrix[i][col] = 0;
-		}		
-	}			
 	
 	public static void setZeros(int[][] matrix) {
 		boolean[] row = new boolean[matrix.length];	
@@ -57,7 +46,19 @@ public class QuestionA {
 				nullifyColumn(matrix, j);
 			}
 		}
-	}	
+	}
+	
+	public static void nullifyRow(int[][] matrix, int row) {
+		for (int j = 0; j < matrix[0].length; j++) {  // matrix[0].length will give no of columns in a row to be zeroed
+			matrix[row][j] = 0;
+		}		
+	}
+
+	public static void nullifyColumn(int[][] matrix, int col) {
+		for (int i = 0; i < matrix.length; i++) {
+			matrix[i][col] = 0;
+		}		
+	}			
 	
 	public static boolean matricesAreEqual(int[][] m1, int[][] m2) {
 		if (m1.length != m2.length || m1[0].length != m2[0].length) {
