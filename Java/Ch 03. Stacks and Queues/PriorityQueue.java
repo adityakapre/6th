@@ -91,6 +91,7 @@ class PriorityQueue
        child = 2;
        while (child <= heapSize)
        {
+           //if siblingr priority greater, select sibling i.e do child++
            if (child < heapSize && heap[child].priority < heap[child + 1].priority)
                child++;
            if (temp.priority >= heap[child].priority)
