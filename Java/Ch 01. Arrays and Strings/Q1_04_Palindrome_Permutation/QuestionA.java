@@ -29,6 +29,12 @@ package Q1_04_Palindrome_Permutation;
 
 public class QuestionA {	
 	
+	//start here...
+	public static boolean isPermutationOfPalindrome(String phrase) {
+		int[] table = Common.buildCharFrequencyTable(phrase);
+		return checkMaxOneOdd(table);
+	}
+	
 	public static int[] buildCharFrequencyTable(String phrase) {
 		int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
 		for (char c : phrase.toCharArray()) {
@@ -62,11 +68,6 @@ public class QuestionA {
 			}
 		}
 		return true;
-	}
-	
-	public static boolean isPermutationOfPalindrome(String phrase) {
-		int[] table = Common.buildCharFrequencyTable(phrase);
-		return checkMaxOneOdd(table);
 	}
 	
 	public static void main(String[] args) {
