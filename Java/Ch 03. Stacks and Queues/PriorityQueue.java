@@ -24,7 +24,7 @@ so parent(8) = (int) 9/2 = 4 = i/2
 child(4) = 2*4 = 8 = 2i
 child(4) = 2*4 +1 = 9 = 2i+1
 
-So for simplicity, below program starts with index 1 rather than 0
+So for simplicity, below program starts with index 1 rather than index 0
 
  **/
  
