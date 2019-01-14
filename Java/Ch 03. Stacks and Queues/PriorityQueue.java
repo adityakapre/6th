@@ -9,6 +9,23 @@ In below program, we start heap at index 1
 So Children of the element at position i are at 2i & 2i+1
 Parent of the element in position i is at i/2
 
+                       1
+                     /   \
+                    2     3
+                   / \   / \
+                  4  5  6   7
+                 / \
+                8   9
+                
+Above heap we are starting from index 1 in array.
+so parent(8) = (int) 8/2 = 4 = i/2
+so parent(8) = (int) 9/2 = 4 = i/2
+
+child(4) = 2*4 = 8 = 2i
+child(4) = 2*4 +1 = 9 = 2i+1
+
+So for simplicity, below program starts with index 1 rather than 0
+
  **/
  
 import java.util.Scanner;
