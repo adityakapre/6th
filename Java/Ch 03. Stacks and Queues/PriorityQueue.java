@@ -62,6 +62,7 @@ class PriorityQueue
    {
        Task newJob = new Task(job, priority);
  
+       //first element inserted at "1" as preincrement done (++heapSize)
        heap[++heapSize] = newJob;
        int pos = heapSize;
        //repeat till parent < child i.e heap[pos/2] < newJob since this is maxHeap
