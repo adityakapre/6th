@@ -42,36 +42,6 @@ import CtCILibrary.LinkedListNode;
 
 public class Question {
 
-	public static class Result {
-		public LinkedListNode tail;
-		public int size;
-		public Result(LinkedListNode tail, int size) {
-			this.tail = tail;
-			this.size = size;
-		}
-	}
-	
-	public static Result getTailAndSize(LinkedListNode list) {
-		if (list == null) return null;
-		
-		int size = 1;
-		LinkedListNode current = list;
-		while (current.next != null) {
-			size++;
-			current = current.next;
-		}
-		return new Result(current, size);
-	}
-	
-	public static LinkedListNode getKthNode(LinkedListNode head, int k) {
-		LinkedListNode current = head;
-		while (k > 0 && current != null) {
-			current = current.next;
-			k--;
-		}
-		return current;
-	}
-	
 	//start here...
 	public static LinkedListNode findIntersection(LinkedListNode list1, LinkedListNode list2) {
 		if (list1 == null || list2 == null) return null;
@@ -100,6 +70,36 @@ public class Question {
 		
 		/* Return either one. */
 		return longer; 
+	}
+	
+	public static class Result {
+		public LinkedListNode tail;
+		public int size;
+		public Result(LinkedListNode tail, int size) {
+			this.tail = tail;
+			this.size = size;
+		}
+	}
+	
+	public static Result getTailAndSize(LinkedListNode list) {
+		if (list == null) return null;
+		
+		int size = 1;
+		LinkedListNode current = list;
+		while (current.next != null) {
+			size++;
+			current = current.next;
+		}
+		return new Result(current, size);
+	}
+	
+	public static LinkedListNode getKthNode(LinkedListNode head, int k) {
+		LinkedListNode current = head;
+		while (k > 0 && current != null) {
+			current = current.next;
+			k--;
+		}
+		return current;
 	}
 	
 	public static void main(String[] args) {
