@@ -64,6 +64,7 @@ class PriorityQueue
  
        heap[++heapSize] = newJob;
        int pos = heapSize;
+       //repeat till parent < child i.e heap[pos/2] < newJob since this is maxHeap
        while (pos != 1 && newJob.priority > heap[pos/2].priority)
        {
            heap[pos] = heap[pos/2];
