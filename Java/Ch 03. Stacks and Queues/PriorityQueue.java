@@ -1,5 +1,14 @@
 /**
  ** Java Program to implement Priority Queue
+ 
+Children of the element at position i are at positions (i << 1) + 1 and (i << 1) + 2 i.e (2i+1) & (2i+2)
+In general, if i is a positive integer, the position of the parent of the element in position i 
+is in position (i − 1) >> 1 i.e (i-1)/2; we use a right shift of one bit instead of division by 2.
+
+In below program, we start heap at index 1
+So Children of the element at position i are at 2i & 2i+1
+Parent of the element in position i is at i/2
+
  **/
  
 import java.util.Scanner;
