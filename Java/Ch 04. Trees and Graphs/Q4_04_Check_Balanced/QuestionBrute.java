@@ -14,13 +14,6 @@ import CtCILibrary.TreeNode;
 
 public class QuestionBrute {
 	
-	public static int getHeight(TreeNode root) {
-		if (root == null) {
-			return -1;
-		}
-		return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
-	}
-		
 	public static boolean isBalanced(TreeNode root) {
 		if (root == null) {
 			return true;
@@ -34,6 +27,13 @@ public class QuestionBrute {
 		}
 	}
 	
+	public static int getHeight(TreeNode root) {
+		if (root == null) {
+			return -1;
+		}
+		return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+	}
+		
 	public static void main(String[] args) {
 		// Create balanced tree
 		int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
