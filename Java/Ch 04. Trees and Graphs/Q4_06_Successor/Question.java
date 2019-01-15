@@ -54,6 +54,7 @@ public class Question {
 				q = x;
 				x = x.parent;
 			}
+			//when we are on left side, as per LCR, next inoder = parent = c
 			return x;
 		}  
 	} 
