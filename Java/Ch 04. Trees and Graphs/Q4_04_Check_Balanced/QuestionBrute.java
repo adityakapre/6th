@@ -14,7 +14,7 @@ import CtCILibrary.TreeNode;
 
 public class QuestionBrute {
 	
-	public static boolean isBalanced(TreeNode root) {
+	public static boolean isBalanced(TreeNode root) {	//recurssive method 1
 		if (root == null) {
 			return true;
 		}
@@ -27,7 +27,7 @@ public class QuestionBrute {
 		}
 	}
 	
-	public static int getHeight(TreeNode root) {
+	public static int getHeight(TreeNode root) {		//recurssive method 2
 		if (root == null) {
 			return -1;
 		}
