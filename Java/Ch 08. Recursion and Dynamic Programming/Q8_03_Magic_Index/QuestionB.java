@@ -47,6 +47,7 @@ public class QuestionB {
 		if (midValue == midIndex) {
 			return midIndex;
 		}
+		/*Search both sides each time*/
 		/* Search left */
 		int leftIndex = Math.min(midIndex - 1, midValue);
 		int left = magicFast(array, start, leftIndex);
