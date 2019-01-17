@@ -57,7 +57,7 @@ public class Question {
 		} else {
 			for (int col = 0; col < GRID_SIZE; col++) {			
 				if (checkValid(columns, row, col)) {
-					columns[row] = col;	// Place queen
+					columns[row] = col;	// Place queen for "row" at "col"
 					placeQueens(row + 1, columns, results);	
 				}		
 			}
