@@ -14,8 +14,8 @@ A[3] is the first element that could be a magic index.
 The general pattern is that we compare midIndex and midValue for equality first. Then, if they are not
 equal, we recursively search the left and right sides as follows:
 
-Left side: search indices start through Math.min(midlndex - 1, midValue).
-Right side: search indices Math.max(midlndex + 1, midValue) through end.
+Left side: search indices start through end where end = Math.min(midlndex - 1, midValue).
+Right side: search indices from start where start = Math.max(midlndex + 1, midValue) through end.
 
 Note that in the above code, if the elements are all distinct, the method operates almost identically to the
 first solution.
