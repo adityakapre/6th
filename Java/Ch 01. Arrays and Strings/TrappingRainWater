@@ -1,4 +1,0 @@
-https://www.geeksforgeeks.org/trapping-rain-water/
-
-Water trapped at any element i = min(max_left, max_right) – arr[i]
-where arr[i] contains height of ith bar
