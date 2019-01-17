@@ -32,6 +32,7 @@ public class QuestionA {
 		return maxHeight;
 	}
 	
+	//calculate maxHeight for stack with num of boxes = bottomIndex
 	public static int createStack(ArrayList<Box> boxes, int bottomIndex) {
 		Box bottom = boxes.get(bottomIndex);
 		int maxHeight = 0;
