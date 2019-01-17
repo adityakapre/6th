@@ -10,12 +10,11 @@ Maximum water that can be accumulated is 6
 Time Complexity: O(n)
 Auxiliary Space: O(n)
 */
-class Test{ 
+class Test { 
 	static int arr[] = new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}; 
 	
 	// Method for maximum amount of water 
-	static int findWater(int n) 
-	{ 
+	static int findWater(int n) { 
 		// left[i] contains height of tallest bar to the 
 		// left of i'th bar including itself 
 		int left[] = new int[n]; 
@@ -48,7 +47,7 @@ class Test{
 	} 
 	
 	// Driver method to test the above function 
-	public static void main(String[] args){ 
+	public static void main(String[] args) { 
 		
 		System.out.println("Maximum water that can be accumulated is " + 
 										findWater(arr.length)); 
