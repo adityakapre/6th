@@ -41,6 +41,13 @@ violation of the requirement that every queen is in its own row, column and diag
 
 Observe that since each row can only have one queen, we don't need to store our board as a full 8x8 matrix.
 We only need a single array where column[r] = c indicates that row r has a queen at column c.
+
+According to below code
+
+1st queen placed at (0,0) i.e columns[0] = 0;
+2nd queen placed at (1,2) i.e columns[1] = 2;
+3rd queen placed at (2,4) i.e columns[2] = 4;
+etc
 */
 package Q8_12_Eight_Queens;
 
