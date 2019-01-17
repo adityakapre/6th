@@ -21,6 +21,7 @@ import java.util.Collections;
 
 public class QuestionA {	
 	public static int createStack(ArrayList<Box> boxes) {
+		//sort boxes in descending order
 		Collections.sort(boxes, new BoxComparator());
 		int maxHeight = 0;
 		//create stack taking 1 then 2 then 3 then 4 etc boxes
