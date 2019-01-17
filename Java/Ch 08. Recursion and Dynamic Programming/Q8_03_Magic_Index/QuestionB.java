@@ -54,11 +54,9 @@ public class QuestionB {
 		if (left >= 0) {
 			return left;
 		}
-		
 		/* Search right */
 		int rightIndex = Math.max(midIndex + 1, midValue);
 		int right = magicFast(array, rightIndex, end);
-		
 		return right;
 	}
 	
