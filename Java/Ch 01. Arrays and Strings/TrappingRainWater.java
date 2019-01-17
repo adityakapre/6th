@@ -17,11 +17,11 @@ class Test {
 	static int findWater(int n) { 
 		// left[i] contains height of tallest bar to the 
 		// left of i'th bar including itself 
-		int left[] = new int[n]; 
+		int[] left = new int[n]; 
 	
 		// Right [i] contains height of tallest bar to 
 		// the right of ith bar including itself 
-		int right[] = new int[n]; 
+		int[] right = new int[n]; 
 	
 		// Initialize result 
 		int water = 0; 
