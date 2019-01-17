@@ -19,7 +19,7 @@ Parent of the element in position i is at i/2
                 
 Above heap we are starting from index 1 in array.
 so parent(8) = (int) 8/2 = 4 = i/2
-so parent(8) = (int) 9/2 = 4 = i/2
+so parent(9) = (int) 9/2 = 4 = i/2
 
 child(4) = 2*4 = 8 = 2i
 child(4) = 2*4 +1 = 9 = 2i+1
