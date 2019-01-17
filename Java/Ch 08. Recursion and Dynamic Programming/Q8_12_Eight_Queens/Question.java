@@ -55,6 +55,7 @@ public class Question {
 		if (row == GRID_SIZE) { // Found valid placement
 			results.add(columns.clone()); 
 		} else {
+			//check each col for i/p "row"
 			for (int col = 0; col < GRID_SIZE; col++) {			
 				if (checkValid(columns, row, col)) {
 					columns[row] = col;	// Place queen for "row" at "col"
