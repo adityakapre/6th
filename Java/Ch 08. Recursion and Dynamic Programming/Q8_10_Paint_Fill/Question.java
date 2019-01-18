@@ -66,7 +66,7 @@ public class Question {
 		return true;
 	}
 	
-	public void paintFillItrerative(Color oldC, Color newC, Color[][] screen, int r, int c) {
+	public void paintFillIterative(Color oldC, Color newC, Color[][] screen, int r, int c) {
 			if (r < 0 || c < 0 || r >= screen.length || c >= screen[0].length) {
 				return;
 			}
