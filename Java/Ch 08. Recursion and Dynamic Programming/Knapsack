@@ -52,3 +52,23 @@ Therefore, the max profit is Profit[i − 1][j].
       its profit p[i]. So the max profit for this case is: p[i] + Profit[i − 1][j − w[i]].
       Because we do not know which of the cases (4a) and (4b) gives larger profit,
       we take the maximum of the two cases.
+      
+      
+Application 1:
+==============
+You win a prize from your favorite candy shop. You are given a knapsack with capacity K pounds. 
+You can fill the knapsack with any candy box you want. (But if the knapsack breaks, you get nothing). 
+The box i weighs w[i] pounds and costs p[i] dollars. How to pick boxes to maximize the total price?
+
+Application 2:
+==============
+The knapsack is a super-computer at a computing center. On a particular day, there are K seconds 
+computing time available for outside users. Each item is a user job. The job i needs w[i] seconds
+computing time, and the user will pay p[i] dollars to the computing center, if job i is run by the 
+computing center. How should the computing center select the jobs, in order to maximize its revenue?
+
+Application 3:
+==============
+The knapsack is a hard disk drive, with K bytes capacity. Each item is a file. The size of the file i
+is w[i] bytes. The file owner will pay p[i] cents to the disk owner if file i is stored on the disk. 
+How should the disk owner select the files in order to maximize his income?
