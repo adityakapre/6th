@@ -90,6 +90,9 @@ public class QuestionB {
         for(int i=0; i < coins.length; i++){
             for(int j=1; j <= total ; j++){
                 if(j >= coins[i]){
+		    /*
+		    for 1st iteration, temp[1]=tem[1]+temp[0]=0+1=1
+		    */
                     temp[j] += temp[j-coins[i]];
                 }
             }
