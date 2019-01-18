@@ -1,0 +1,51 @@
+0/1 Knapsack Problem
+Input: n items. Each item i (1 ≤ i ≤ n) has a weight w[i] (pounds) and a profit p[i] (dollars). 
+We also have a Knapsack with capacity K (pounds). 
+
+Problem: Choose a subset of items and put them into the knapsack so that:
+- The total weight of the items we put into the knapsack is at most K.
+- The total profit of the items we put into the knapsack is maximum.
+
+
+Simple algorithm:
+=================
+1 Enumerate all possible n-bit 0/1 vectors (x1, x2, . . . , xn);
+2 For each vector (x1, x2, . . . , xn), calculate the total weight and the total profit of the 
+subset of the items represented by the vector;
+3 Select the vector with total weight ≤ K and maximum profit.
+
+This algorithm works fine, except that there are 2^n n-bit 0/1 vectors and the algorithm must loop 
+thru all of them. So the run time is at least Ω(2^n). This is not acceptable.
+
+Dynamic Programming Algorithm:
+==============================
+- Define a 2D array Profit[0..n][0..K].
+- The value of the entries in Profit[∗][∗] is defined as:
+    Profit[i][j] = the maximum profit if the knapsack capacity is j, and we can
+                    fill the knapsack only with a subset of item1, item2, . . . , itemi.
+- By this definition, the maximum profit for the original problem is Profit[n][K].
+So, we only need to calculate this entry. To do so, use the following recursive formula.
+
+             = 0                                                      if i=0                    (1)
+             = 0                                                      if j=0                    (2)
+Profit[i][j] = Profit[i − 1][j]                                       if i!=0, j!=0 and w[i]>j  (3)
+             = max{Profit[i − 1][j], p[i] + Profit[i − 1][j − w[i]]}  if i!=0, j!=0 and w[i]≤ j (4)
+                      (4a)                          (4b)
+Explanation:
+(1) i = 0: we cannot put any item into the knapsack. So, the max profit is 0.
+(2) j = 0: the capacity of the knapsack is 0. Thus we cannot put any item into
+it. So the max profit is again 0.
+(3) w[i] > j: We are allowed to use item1, . . . , itemi−1, itemi. However, since
+w[i] > j, we cannot put itemi into the knapsack (its weight exceeds the knapsack capacity). 
+Thus, we can actually only choose from item1, . . . , itemi−1. 
+Therefore, the max profit is Profit[i − 1][j].
+(4) There are two choices: Either we put itemi into the knapsack, or we don’t.
+  (4a) Do not put itemi into the knapsack. Then the capacity of the knapsack
+       remains the same (j), and now we can only use item1, . . . , itemi−1. So the max
+       profit for this case is Profit[i − 1][j].
+  (4b) Put itemi into the knapsack. The remaining capacity is reduced by the
+      weight of itemi so it becomes j − w[i], and now we can only use item1, . . . ,
+      itemi−1. On the other hand, since we do put itemi into the knapsack, we gain
+      its profit p[i]. So the max profit for this case is: p[i] + Profit[i − 1][j − w[i]].
+      Because we do not know which of the cases (4a) and (4b) gives larger profit,
+      we take the maximum of the two cases.
