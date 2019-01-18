@@ -18,7 +18,21 @@ ocolor -> old color ncolor -> new color
 package Q8_10_Paint_Fill;
 
 enum Color {
-	Black, White, Red, Yellow, Green
+	
+	BLACK("black"),
+	GREEN("green"),
+	RED("red");
+	
+	private String color;
+	
+	private Color(String color) {
+		this.color = color;	
+	}
+	
+	@Override
+    	public String toString() {
+        	return color;
+    	}
 }
 
 public class Paint {
