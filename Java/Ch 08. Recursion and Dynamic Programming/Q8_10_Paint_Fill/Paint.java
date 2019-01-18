@@ -17,18 +17,26 @@ ocolor -> old color ncolor -> new color
 */
 package Q8_10_Paint_Fill;
 
-public class Question {
+enum Color {
+	Black, White, Red, Yellow, Green
+}
 
-	public enum Color {
-		Black, White, Red, Yellow, Green
-	}
+public class Paint {
+
+	private int N = 10;
+	private Color[][] screen = new Color[N][N];
 	
-	public static void PrintScreen(Color[][] screen) {
-		for (int r = 0; r < screen.length; r++) {
-			for (int c = 0; c < screen[0].length; c++) {
-				System.out.print(PrintColor(screen[r][c]));
+	public void initScreen() {
+		for(int r=0; r<10; r++) {
+			for(int c=0; c<10; c++) {
+				screen[r][c]=Color.BLACK;
 			}
-			System.out.println();
+		}
+	}
+		
+	public void randomizeScreen() {
+		for(int i=0; i<100; i++) {
+			screen[getRandom(10)][getRandom(10)]=Color.GREEN;
 		}
 	}
 	
@@ -142,21 +150,27 @@ public class Question {
 		return "X";
 	}
 	
+	public static void PrintScreen(Color[][] screen) {
+		for (int r = 0; r < screen.length; r++) {
+			for (int c = 0; c < screen[0].length; c++) {
+				System.out.print(PrintColor(screen[r][c]));
+			}
+			System.out.println();
+		}
+	}
+	
 	public static void main(String[] args) {
-		int N = 10;
-		Color[][] screen = new Color[N][N];
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				screen[i][j] = Color.Black;
-			}			
-		}
-		for (int i = 0; i < 100; i++) {
-			screen[randomInt(N)][randomInt(N)] = Color.Green;
-		}
+		Paint oPaint = new Paint();
+		oPaint.initScreen();
+		oPaint.randomizeScreen();
 		PrintScreen(screen);
-		PaintFill(screen, 2, 2, Color.White);
-		System.out.println();
+		oPaint.paintFill(Color.GREEN, Color.RED, oPaint.screen, 9, 9); 
+		PrintScreen(screen);
+		oPaint.paintFillIterativeQueue(Color.GREEN, Color.RED, oPaint.screen, 9, 9);
+		PrintScreen(screen);
+		oPaint.paintFillIterativeStack(Color.GREEN, Color.RED, oPaint.screen, 9, 9); 
 		PrintScreen(screen);
 	}
 
+	
 }
