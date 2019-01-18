@@ -51,6 +51,46 @@ public class QuestionB {
 		return ways;
 	}
 	
+	/*
+	Iterative  - 2D array
+	https://www.youtube.com/watch?v=_fgjrs570YE
+	*/
+	public int numberOfSolutions(int coins[], int total){
+		int temp[][] = new int[coins.length+1][total+1];
+		for(int i=0; i <= coins.length; i++){
+		    temp[i][0] = 1;
+		}
+		for(int i=1; i <= coins.length; i++){
+		    for(int j=1; j <= total ; j++){
+			if(coins[i-1] > j){
+			    temp[i][j] = temp[i-1][j];
+			}
+			else{
+			    temp[i][j] = temp[i][j-coins[i-1]] + temp[i-1][j];
+			}
+		    }
+		}
+		return temp[coins.length][total];
+	    }
+
+    /**
+       Iterative - 1D array
+       https://www.youtube.com/watch?v=_fgjrs570YE
+       Space efficient DP solution
+     */
+    public int numberOfSolutionsOnSpace(int coins[], int total){
+        int temp[] = new int[total+1];
+        temp[0] = 1;
+        for(int i=0; i < coins.length; i++){
+            for(int j=1; j <= total ; j++){
+                if(j >= coins[i]){
+                    temp[j] += temp[j-coins[i]];
+                }
+            }
+        }
+        return temp[total];
+    }
+	
 	/*public static int makeChange2(int n, int[] denoms) {
 		int[][] map = new int[n + 1][denoms.length];
 		return makeChangeHelper(n, denoms, 0, map);
