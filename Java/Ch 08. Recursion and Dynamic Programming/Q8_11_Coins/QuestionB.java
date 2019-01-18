@@ -21,6 +21,12 @@ public class QuestionB {
 		return makeChange(coins, money, 0, new HashMap<String, Long>());
 	}
 	
+	/*
+	Like in commented code {makeChange2 function} we could have also used 2D array for memoization 
+	but it will consume extra space with some positions in array having no values.
+	So we use hashmap.
+	While using hashmap, seperator is important
+	*/
 	public static long makeChange(int[] coins, int money, int index, HashMap<String, Long> memo ) {
 		if(money == 0) {
 			return 1;
@@ -43,7 +49,7 @@ public class QuestionB {
 		return ways;
 	}
 	
-	/*public static int makeChange(int n, int[] denoms) {
+	/*public static int makeChange2(int n, int[] denoms) {
 		int[][] map = new int[n + 1][denoms.length];
 		return makeChangeHelper(n, denoms, 0, map);
 	}
