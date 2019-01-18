@@ -26,11 +26,12 @@ Dynamic Programming Algorithm:
 - By this definition, the maximum profit for the original problem is Profit[n][K].
 So, we only need to calculate this entry. To do so, use the following recursive formula.
 
-             = 0                                                      if i=0                    (1)
-             = 0                                                      if j=0                    (2)
-Profit[i][j] = Profit[i − 1][j]                                       if i!=0, j!=0 and w[i]>j  (3)
-             = max{Profit[i − 1][j], p[i] + Profit[i − 1][j − w[i]]}  if i!=0, j!=0 and w[i]≤ j (4)
-                      (4a)                          (4b)
+Profit[i][j]
+= 0                                                      if i=0                    (1)
+= 0                                                      if j=0                    (2)
+= Profit[i − 1][j]                                       if i!=0, j!=0 and w[i]>j  (3)
+= max{Profit[i − 1][j], p[i] + Profit[i − 1][j − w[i]]}  if i!=0, j!=0 and w[i]≤ j (4)
+        (4a)                          (4b)
 Explanation:
 (1) i = 0: we cannot put any item into the knapsack. So, the max profit is 0.
 (2) j = 0: the capacity of the knapsack is 0. Thus we cannot put any item into
