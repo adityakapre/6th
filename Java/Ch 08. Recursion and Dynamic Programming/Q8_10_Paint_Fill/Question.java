@@ -66,6 +66,40 @@ public class Question {
 		return true;
 	}
 	
+	public void paintFillItrerative(Color oldC, Color newC, Color[][] screen, int r, int c) {
+			if (r < 0 || c < 0 || r >= screen.length || c >= screen[0].length) {
+				return;
+			}
+			Queue<Integer> row = new LinkedList<Integer>();
+			Queue<Integer> col = new LinkedList<Integer>();
+			row.add(r);
+			col.add(c);
+			while (!row.isEmpty()) {
+				r = row.remove();
+				c = col.remove();
+				if (screen[r][c] == oldC) {
+					screen[r][c] = newC;
+					if (r - 1 >= 0) {
+						row.add(r - 1);
+						col.add(c);
+					}
+					if (r + 1 < screen.length) {
+						row.add(r + 1);
+						col.add(c);
+					}
+					if (c - 1 >= 0) {
+						row.add(r);
+						col.add(c - 1);
+					}
+					if (c + 1 < screen[0].length) {
+						row.add(r);
+						col.add(c + 1);
+					}
+				}
+			}
+
+		}
+	
 	public static boolean PaintFill(Color[][] screen, int r, int c, Color ncolor) {
 		if (screen[r][c] == ncolor) return false;
 		return PaintFill(screen, r, c, screen[r][c], ncolor);
