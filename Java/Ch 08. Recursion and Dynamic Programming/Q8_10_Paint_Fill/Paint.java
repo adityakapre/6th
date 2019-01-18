@@ -40,7 +40,7 @@ public class Paint {
 		}
 	}
 	
-	public static int randomInt(int n) {
+	public static int getRandom(int n) {
 		return (int) (Math.random() * n);
 	}
 	
