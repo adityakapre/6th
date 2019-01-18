@@ -23,22 +23,6 @@ public class Question {
 		Black, White, Red, Yellow, Green
 	}
 	
-	public static String PrintColor(Color c) {
-		switch(c) {
-		case Black:
-			return "B";
-		case White:
-			return "W";
-		case Red:
-			return "R";
-		case Yellow:
-			return "Y";
-		case Green:
-			return "G";
-		}
-		return "X";
-	}
-	
 	public static void PrintScreen(Color[][] screen) {
 		for (int r = 0; r < screen.length; r++) {
 			for (int c = 0; c < screen[0].length; c++) {
@@ -140,6 +124,22 @@ public class Question {
 	public static boolean PaintFill(Color[][] screen, int r, int c, Color ncolor) {
 		if (screen[r][c] == ncolor) return false;
 		return PaintFill(screen, r, c, screen[r][c], ncolor);
+	}
+	
+	public static String PrintColor(Color c) {
+		switch(c) {
+		case Black:
+			return "B";
+		case White:
+			return "W";
+		case Red:
+			return "R";
+		case Yellow:
+			return "Y";
+		case Green:
+			return "G";
+		}
+		return "X";
 	}
 	
 	public static void main(String[] args) {
