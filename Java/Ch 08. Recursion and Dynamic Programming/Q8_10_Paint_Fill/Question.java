@@ -52,6 +52,7 @@ public class Question {
 		return (int) (Math.random() * n);
 	}
 	
+	//dfs
 	public static boolean PaintFill(Color[][] screen, int r, int c, Color ocolor, Color ncolor) {
 		if (r < 0 || r >= screen.length || c < 0 || c >= screen[0].length) {
 			return false;
@@ -66,6 +67,7 @@ public class Question {
 		return true;
 	}
 	
+	//bfs
 	public void paintFillIterative(Color oldC, Color newC, Color[][] screen, int r, int c) {
 			if (r < 0 || c < 0 || r >= screen.length || c >= screen[0].length) {
 				return;
@@ -94,6 +96,41 @@ public class Question {
 					if (c + 1 < screen[0].length) {
 						row.add(r);
 						col.add(c + 1);
+					}
+				}
+			}
+
+		}
+	
+	//dfs
+	public void paintFillIterativeStack(Color oldC, Color newC, Color[][] screen, int r, int c) {
+			if (r < 0 || c < 0 || r >= screen.length || c >= screen[0].length) {
+				return;
+			}
+			Stack<Integer> row = new Stack<Integer>();
+			Stack<Integer> col = new Stack<Integer>();
+			row.push(r);
+			col.push(c);
+			while (!row.isEmpty()) {
+				r = row.pop();
+				c = col.pop();
+				if (screen[r][c] == oldC) {
+					screen[r][c] = newC;
+					if (r - 1 >= 0) {
+						row.push(r - 1);
+						col.push(c);
+					}
+					if (r + 1 < screen.length) {
+						row.push(r + 1);
+						col.push(c);
+					}
+					if (c - 1 >= 0) {
+						row.push(r);
+						col.push(c - 1);
+					}
+					if (c + 1 < screen[0].length) {
+						row.push(r);
+						col.push(c + 1);
 					}
 				}
 			}
