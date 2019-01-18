@@ -54,6 +54,12 @@ public class QuestionB {
 	/*
 	Iterative  - 2D array
 	https://www.youtube.com/watch?v=_fgjrs570YE
+	
+		0 1 2 3 4 5 ->j  total=5
+	      1 1 1 1 1 1 1
+	      2 1 1 2 2 3 3
+	      3 1 1 2 3 4 5
+	      i
 	*/
 	public int numberOfSolutions(int coins[], int total){
 		int temp[][] = new int[coins.length+1][total+1];
