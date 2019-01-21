@@ -57,8 +57,10 @@ public class QuestionA {
 			if (s1.charAt(index1) != s2.charAt(index2)) {
 				if (index1 != index2) {
 					return false;
-				}		
-				index2++; //since s2 lerger in length, we progress its ptr
+				}	
+				//since s2 larger in length, we progress its ptr only once
+				//when chars are not same
+				index2++; 
 			} else {
 				index1++;
 				index2++;
