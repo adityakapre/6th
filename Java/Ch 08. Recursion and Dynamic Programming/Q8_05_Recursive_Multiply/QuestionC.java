@@ -13,7 +13,7 @@ In doing so, we have an unexpected "win". Our minProduct function just recurses 
 with increasingly small numbers each time. It will never repeat the same call, so there's no need to cache
 any information.
 
-This algorithm will run in O(log s) time, wheres is the smaller of the two numbers.
+This algorithm will run in O(log s) time, where s is the smaller of the two numbers.
 
 e.g 15*30 i.e smaller = 15, larger=30
 inital call (15, 30) 
