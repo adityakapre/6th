@@ -26,6 +26,7 @@ public class QuestionD {
 		return ancestorHelper(root, p, q);
 	}
 	
+	//checks if n is within tree rooted at root
 	public static boolean covers(TreeNode root, TreeNode n) { 
 		if (root == null) return false;
 		if (root == n) return true;
