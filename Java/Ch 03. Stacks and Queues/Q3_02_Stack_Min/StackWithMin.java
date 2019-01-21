@@ -28,6 +28,8 @@ package Q3_02_Stack_Min;
 import java.util.Stack;
 
 public class StackWithMin extends Stack<NodeWithMin> {
+    
+    //Remember, push method decides what is min, not min() method, min() just gives current min
     public void push(int value) {
         int newMin = Math.min(value, min());
         super.push(new NodeWithMin(value, newMin));
