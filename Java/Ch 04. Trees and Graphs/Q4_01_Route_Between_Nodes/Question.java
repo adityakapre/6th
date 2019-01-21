@@ -39,6 +39,7 @@ public class Question {
 				    }
 				}
 			    }
+			    //added to queue all adjacent nodes of u, so mark it visited
 			    u.state = State.Visited;
 		    }
 		}
