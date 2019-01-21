@@ -41,16 +41,16 @@ public class Paint {
 	private Color[][] screen = new Color[N][N];
 	
 	public void initScreen() {
-		for(int r=0; r<10; r++) {
-			for(int c=0; c<10; c++) {
+		for(int r=0; r<N; r++) {
+			for(int c=0; c<N; c++) {
 				screen[r][c]=Color.BLACK;
 			}
 		}
 	}
 		
 	public void randomizeScreen() {
-		for(int i=0; i<100; i++) {
-			screen[getRandom(10)][getRandom(10)]=Color.GREEN;
+		for(int i=0; i<(N*N); i++) {
+			screen[getRandom(N)][getRandom(N)]=Color.GREEN;
 		}
 	}
 	
