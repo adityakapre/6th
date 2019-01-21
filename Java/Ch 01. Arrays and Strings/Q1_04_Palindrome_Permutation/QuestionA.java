@@ -23,6 +23,8 @@ Implementing this algorithm is fairly straightforward. We use a hash table to co
 character appears. Then, we iterate through the hash table and ensure that no more than one character has
 an odd count.
 
+hash table in this case is int[] where "key"=ascii value of char & "value"=count of char
+
 This algorithm takes O ( N) time, where N is the length of the string.
 */
 package Q1_04_Palindrome_Permutation;
