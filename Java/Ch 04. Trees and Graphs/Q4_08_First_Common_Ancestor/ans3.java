@@ -26,10 +26,10 @@ public class QuestionD {
 		return ancestorHelper(root, p, q);
 	}
 	
-	public static boolean covers(TreeNode root, TreeNode p) { 
+	public static boolean covers(TreeNode root, TreeNode n) { 
 		if (root == null) return false;
-		if (root == p) return true;
-		return covers(root.left, p) || covers(root.right, p); 
+		if (root == n) return true;
+		return covers(root.left, n) || covers(root.right, n); 
 	}
 	
 	public static TreeNode ancestorHelper(TreeNode root, TreeNode p, TreeNode q) {
