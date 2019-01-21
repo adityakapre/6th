@@ -110,10 +110,11 @@ class PriorityQueue
            System.out.println("Heap is empty");
            return null;
        }
- 
+       //remove item from priority queue
        item = heap[1];
+       //consider last item in heap
        temp = heap[heapSize--];
- 
+       //define & start with 1st parent child
        parent = 1;
        child = 2;
        while (child <= heapSize)
