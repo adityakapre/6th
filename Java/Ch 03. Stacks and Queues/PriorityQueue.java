@@ -101,8 +101,7 @@ class PriorityQueue
        heap[pos] = newJob;   
    }
    /** function to remove task **/
-   public Task remove()
-   {
+   public Task remove() {
        int parent, child;
        Task item, temp;
        if (isEmpty() )
@@ -124,8 +123,7 @@ class PriorityQueue
                child++;
            if (temp.priority >= heap[child].priority)
                break;
- 
-           //copy greater child (from child & child+1) to empty space at parent
+           //copy greater child (from child & child+1) to empty space at parent (bubble up)
            heap[parent] = heap[child];
            //repeat for empty place created at (child or child+1) after above step
            parent = child;
