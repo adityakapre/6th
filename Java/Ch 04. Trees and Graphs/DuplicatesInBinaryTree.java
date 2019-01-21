@@ -6,22 +6,22 @@ use inorder traversal (LCR) since it goes sequentially in increasing order
 */
 
 int duplicates=0;    // global variable to count duplicates
-public Node countDuplicatesLCR(Node root, Node prev) {
+public Node countDuplicatesLCR(Node prev, Node root) {
  	 if(root==null) return duplicates;
- 	 if(root.left!=null) duplicates += countDuplicatesLCR(root, root.left);  //L                              
+ 	 if(root.left!=null) duplicates += countDuplicatesLCR(root.left, root);  //L                              
    if(root!=prev && root.val==prev.val) duplicates += 1;                   // C (actual processing)
-   if(root.right!=null) duplicates += countDuplicatesLCR(root.right, root); //R                                             
+   if(root.right!=null) duplicates += countDuplicatesLCR(root, root.right); //R                                             
  	 return duplicates;
 } 
 
 //Recursion based Generic
-public int countDuplicatesGeneric(Node root, Node prev) {
+public int countDuplicatesGeneric(Node prev, Node root) {
     if(root==null) 
         return 0;     //Basic edge case .. root==null
     int count=0;
     if (root.data==prev.data) 
         count++;
-    return count + countDuplicatesGeneric(root.left,root) + countDuplicatesGeneric(root.right,root);       
+    return count + countDuplicatesGeneric(root, root.left) + countDuplicatesGeneric(root, root.right);       
 }
 //=============================================================================================================
 
