@@ -74,11 +74,7 @@ public static char firstNonRepeatedCharacter(String word) {
  	// build table [char -> count] 
  	for (int i = 0; i < word.length(); i++) { 
  		char c = word.charAt(i); 
- 		if (scoreboard.containsKey(c)) { 
- 			scoreboard.put(c, scoreboard.get(c) + 1); 
- 		} else { 
- 			scoreboard.put(c, 1); 
- 		} 
+		scoreboard.put(c, scoreboard.containsKey(c) ? scoreboard.get(c) + 1 : 1); 
  	} 
  	// since HashMap doesn't maintain order, going through string again 
  	for (char c: word.toCharArray()) { 
