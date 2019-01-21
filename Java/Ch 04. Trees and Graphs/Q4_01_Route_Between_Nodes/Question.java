@@ -79,7 +79,7 @@ public class Question {
 }
 
 class Graph {
-	private Node vertices[];
+	private Node[] vertices;
 	public static int MAX_VERTICES = 6;
 	public int count;
 	public Graph() {
@@ -102,7 +102,7 @@ class Graph {
 }
 
 class Node {
-    private Node adjacent[];
+    private Node[] adjacent;
     public int adjacentCount;
     private String vertex;
     public Question.State state;
