@@ -37,7 +37,6 @@ public class QuestionD {
 		if (root == null || root == p || root == q) {
 			return root;
 		}
-		
 		boolean pIsOnLeft = hasNode(root.left, p);
 		boolean qIsOnLeft = hasNode(root.left, q);
 		if (pIsOnLeft != qIsOnLeft) { // Nodes are on different side
