@@ -24,9 +24,8 @@ public boolean isSymmetric(Node root) {
 public boolean isSymmetric(Node l, Node r) {
   if (l == null && r == null) 
       return true;
-  else 
-     if (l == null || r == null) 
-        return false;
+  else if (l == null || r == null) 
+      return false;
   if (l.val != r.val) 
         return false;
   if (!isSymmetric(l.left, r.right)) 	
