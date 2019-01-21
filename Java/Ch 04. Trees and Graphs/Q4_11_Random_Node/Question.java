@@ -1,5 +1,5 @@
 package g;
-
+//Remember to import Random class
 import java.util.Random;
 
 /* One node of a binary tree. The data element stored is a single 
