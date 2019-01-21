@@ -44,7 +44,7 @@ trick : use Queue to store left & right nodes to be compared
 private Boolean isSymmetricIterative(Node n) {
 	boolean result = false;
 	if (n == null) 
-      return true;
+      		return true;
 	Queue<Node> queue = new LinkedList<Node>();
 	queue.add(n.left);
 	queue.add(n.right);
