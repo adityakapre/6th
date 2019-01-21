@@ -39,6 +39,10 @@ public class Question {
 				}
 			}
 			project.setState(Project.State.COMPLETE);
+			/*
+			push leaf nodes (dependent projects) to bottom of stack
+			so that when we unwind stack, projects with no dependencies pop out first
+			*/
 			stack.push(project);
 		}
 		return true;
