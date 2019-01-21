@@ -43,7 +43,7 @@ below with pseudocode:
 s 	// move top n - 1 disks from origin to buffer, using destination as a buffer. 
 6 	moveDisks(n - 1, origin, buffer, destination);
 7
-8 	// move top from origin to destination
+8 	// move top i.e nth from origin to destination
 9 	moveTop(origin, destination);
 10
 11 	// move top n - 1 disks from buffer to destination, using origin as a buffer. 
