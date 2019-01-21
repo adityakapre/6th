@@ -22,6 +22,7 @@ public class StackWithMin2 extends Stack<Integer> {
 	
 	public void push(int value){
 		// "=" in "<=" is important as we push min number of times we see it so its in sync w/ pop
+		//Remember, push method decides what is min, not min() method, min() just gives current min
 		if (value <= min()) { 
 			s2.push(value);
 		}
