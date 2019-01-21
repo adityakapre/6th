@@ -44,6 +44,7 @@ public class QuestionB {
 		long ways = 0;
 		while(amountWithCoin <= money) {
 			int remaining = money - amountWithCoin;
+			//for 1st time in each recurrsive call, remaining=money as amountWithCoin=0
 			ways += makeChange(coins, remaining, index+1, memo);
 			amountWithCoin += coins[index];
 		}
