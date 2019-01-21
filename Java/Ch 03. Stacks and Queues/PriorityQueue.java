@@ -130,7 +130,6 @@ class PriorityQueue
            child *= 2;
        }
        heap[parent] = temp;
- 
        return item;
    }
 }
