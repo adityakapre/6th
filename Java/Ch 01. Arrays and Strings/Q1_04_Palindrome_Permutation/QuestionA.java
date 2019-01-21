@@ -38,6 +38,7 @@ public class QuestionA {
 	}
 	
 	public static int[] buildCharFrequencyTable(String phrase) {
+		//decide size of hash table
 		int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
 		for (char c : phrase.toCharArray()) {
 			int x = getCharNumber(c);
