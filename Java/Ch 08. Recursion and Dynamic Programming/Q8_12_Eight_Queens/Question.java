@@ -56,6 +56,15 @@ import java.util.ArrayList;
 public class Question {
 	public static int GRID_SIZE = 8;
 	
+	public static void main(String[] args) {
+		ArrayList<Integer[]> results = new ArrayList<Integer[]>();
+		Integer[] columns = new Integer[GRID_SIZE];
+		clear(columns);
+		placeQueens(0, columns, results);
+		printBoards(results);
+		System.out.println(results.size());
+	}
+	
 	//Start here ... Called with row=0
 	//1st queen placed at (0,0) next at (1,2) etc
 	public static void placeQueens(int row, Integer[] columns, ArrayList<Integer[]> results) {
@@ -140,13 +149,5 @@ public class Question {
 			printBoard(board);
 		}
 	}
-	   
-	public static void main(String[] args) {
-		ArrayList<Integer[]> results = new ArrayList<Integer[]>();
-		Integer[] columns = new Integer[GRID_SIZE];
-		clear(columns);
-		placeQueens(0, columns, results);
-		printBoards(results);
-		System.out.println(results.size());
-	}
+	
 }
