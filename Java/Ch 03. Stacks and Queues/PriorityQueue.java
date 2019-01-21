@@ -88,8 +88,8 @@ class PriorityQueue
    public void insert(String job, int priority)
    {
        Task newJob = new Task(job, priority);
- 
        //first element inserted at "1" as preincrement done (++heapSize)
+       //new element inserted at last available location in array as per definition of heap
        heap[++heapSize] = newJob;
        int pos = heapSize;
        //repeat till parent < child i.e heap[pos/2] < newJob since this is maxHeap
