@@ -1,7 +1,7 @@
 /*
 
-Advantage os storing units place at head of LL :  if the two numbers are of different number of digits, nulls can be handled on fly
-unline storing tails units place at tail
+Advantage of storing units place at head of LL :  if the two numbers are of different number of digits, nulls can be handled on fly
+unlike storing units place at tail
 
 It's useful to remember in this problem how exactly addition works. Imagine the problem:
 6 1 7 
