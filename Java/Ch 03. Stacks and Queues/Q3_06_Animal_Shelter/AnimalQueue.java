@@ -84,7 +84,7 @@ public class AnimalQueue {
 	}
 }
 
-bstract class Animal {
+abstract class Animal {
 	private int order; 
 	protected String name;
 	public Animal(String n) {
@@ -103,5 +103,15 @@ bstract class Animal {
 	
 	public boolean isOlderThan(Animal a) {
 		return this.order < a.getOrder();
+	}
+}
+
+class Cat extends Animal {
+	public Cat(String n) {
+		super(n);
+	}
+	
+	public String name() {
+		return "Cat: " + name;
 	}
 }
