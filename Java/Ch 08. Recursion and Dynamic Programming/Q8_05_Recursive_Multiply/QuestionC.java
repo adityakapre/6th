@@ -7,7 +7,8 @@ This is unnecessary. Instead, we can do:
 minProduct(31, 35) = 2 * minProduct(15, 35) + 35
 After all, since 31 = 2*15+1, then 31x35 = 2*15*35+35.
 The logic in this final solution is that, on even numbers, we just divide smaller by 2 and double the result
-of the recursive call. On odd numbers, we do the same, but then we also add b igger to this result.
+of the recursive call. 
+On odd numbers, we do the same, but then we also add bigger to this result.
 In doing so, we have an unexpected "win". Our minProduct function just recurses straight downwards,
 with increasingly small numbers each time. It will never repeat the same call, so there's no need to cache
 any information.
