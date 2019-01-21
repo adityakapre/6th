@@ -20,17 +20,17 @@ import CtCILibrary.TreeNode;
 public class QuestionD {
 	
 	public static TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (!covers(root, p) || !covers(root, q)) { // Error check - one node is not in tree
+		if (!hasNode(root, p) || !hasNode(root, q)) { // Error check - one node is not in tree
 			return null;
 		}
 		return ancestorHelper(root, p, q);
 	}
 	
 	//checks if n is within tree rooted at root
-	public static boolean covers(TreeNode root, TreeNode n) { 
+	public static boolean hasNode(TreeNode root, TreeNode n) { 
 		if (root == null) return false;
 		if (root == n) return true;
-		return covers(root.left, n) || covers(root.right, n); 
+		return hasNode(root.left, n) || hasNode(root.right, n); 
 	}
 	
 	public static TreeNode ancestorHelper(TreeNode root, TreeNode p, TreeNode q) {
@@ -38,8 +38,8 @@ public class QuestionD {
 			return root;
 		}
 		
-		boolean pIsOnLeft = covers(root.left, p);
-		boolean qIsOnLeft = covers(root.left, q);
+		boolean pIsOnLeft = hasNode(root.left, p);
+		boolean qIsOnLeft = hasNode(root.left, q);
 		if (pIsOnLeft != qIsOnLeft) { // Nodes are on different side
 			return root;
 		}
