@@ -60,7 +60,7 @@ public class Paint {
 	
 	//dfs
 	public static boolean PaintFill(Color[][] screen, int r, int c, Color ocolor, Color ncolor) {
-		if (r < 0 || r >= screen.length || c < 0 || c >= screen[0].length) {
+		if (r < 0 || c < 0 || r >= screen.length || c >= screen[0].length) {
 			return false;
 		}
 		if (screen[r][c] == ocolor) {
