@@ -42,9 +42,9 @@ public class AnimalQueue {
 		Dog dog = dogs.peek();
 		Cat cat = cats.peek();
 		if (dog.isOlderThan(cat)) {
-			return dogs.remove();
+			return dequeueDogs();
 		} else {
-			return cats.remove();
+			return dequeueCats();
 		}
 	}
 	
