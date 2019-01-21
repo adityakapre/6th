@@ -22,7 +22,8 @@ public class QuestionB {
 
 	public static int countWays(int n) {
 		int[] map = new int[n + 1];
-		Arrays.fill(map, -1);
+		//Remember to fill map using Arrays.fill
+		Arrays.fill(map, -1);	
 		return countWays(n, map);
 	}
 	
