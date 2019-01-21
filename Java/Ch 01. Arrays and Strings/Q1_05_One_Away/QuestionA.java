@@ -56,7 +56,7 @@ public class QuestionA {
 		while (index2 < s2.length() && index1 < s1.length()) {
 			if (s1.charAt(index1) != s2.charAt(index2)) {
 				//since s2 larger in length, we progress its ptr only once
-				//when chars are not same
+				//when chars are not same to allow 1 distince character
 				if (index1 == index2) {
 					index2++; 
 				} else {
