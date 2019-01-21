@@ -7,7 +7,10 @@ prev -> current -> next
 
 Iterate through the linked list. In loop, change next to prev, prev to current and current to next.          
 
-Key things to remember is during iteration, onlu modify 1 link, i.e current.next=prev
+Key things to remember is during iteration, only modify 1 link, i.e current.next=prev
+
+prev (*<-*) current -> next, this (**) becomes only change and then prev=current & current=next
+
 */
 
 static void reverse(Node head) {
