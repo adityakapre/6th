@@ -25,7 +25,7 @@ an odd count.
 
 hash table in this case is int[] where "key"=ascii value of char & "value"=count of char
 
-This algorithm takes O ( N) time, where N is the length of the string.
+This algorithm takes O (N) time, where N is the length of the string.
 */
 package Q1_04_Palindrome_Permutation;
 
