@@ -50,6 +50,7 @@ public class Question {
 			TreeNode q = n;
 			TreeNode x = q.parent;
 			// Go up until we're on left instead of right
+			//i.e recurse till q is not left child of x
 			while (x != null && x.left != q) {
 				q = x;
 				x = x.parent;
