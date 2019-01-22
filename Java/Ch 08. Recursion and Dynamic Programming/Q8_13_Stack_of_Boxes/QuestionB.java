@@ -40,6 +40,7 @@ public class QuestionB {
 		int maxHeight = 0;
 		for (int i = bottomIndex + 1; i < boxes.size(); i++) {
 			if (boxes.get(i).canBeAbove(bottom)) {
+				//go find height of stack with "i" at bottom
 				int height = createStack(boxes, i, stackMap);
 				maxHeight = Math.max(height, maxHeight);
 			}
