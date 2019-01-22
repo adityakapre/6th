@@ -38,17 +38,17 @@ Explanation:
 (1) i = 0: we cannot put any item into the knapsack. So, the max profit is 0.
 (2) j = 0: the capacity of the knapsack is 0. Thus we cannot put any item into
 it. So the max profit is again 0.
-(3) w[i] > j: We are allowed to use item1, . . . , itemi−1, itemi. However, since
+(3) w[i] > j: We are allowed to use item 1, . . . , item i−1, item i. However, since
 w[i] > j, we cannot put itemi into the knapsack (its weight exceeds the knapsack capacity). 
-Thus, we can actually only choose from item1, . . . , itemi−1. 
+Thus, we can actually only choose from item 1, . . . , item i−1. 
 Therefore, the max profit is Profit[i − 1][j].
-(4) There are two choices: Either we put itemi into the knapsack, or we don’t.
-  (4a) Do not put itemi into the knapsack. Then the capacity of the knapsack
-       remains the same (j), and now we can only use item1, . . . , itemi−1. So the max
+(4) There are two choices: Either we put item i into the knapsack, or we don’t.
+  (4a) Do not put item i into the knapsack. Then the capacity of the knapsack
+       remains the same (j), and now we can only use item 1, . . . , item i−1. So the max
        profit for this case is Profit[i − 1][j].
   (4b) Put itemi into the knapsack. The remaining capacity is reduced by the
-      weight of itemi so it becomes j − w[i], and now we can only use item1, . . . ,
-      itemi−1. On the other hand, since we do put itemi into the knapsack, we gain
+      weight of itemi so it becomes j − w[i], and now we can only use item 1, . . . ,
+      item i−1. On the other hand, since we do put itemi into the knapsack, we gain
       its profit p[i]. So the max profit for this case is: p[i] + Profit[i − 1][j − w[i]].
       Because we do not know which of the cases (4a) and (4b) gives larger profit,
       we take the maximum of the two cases.
