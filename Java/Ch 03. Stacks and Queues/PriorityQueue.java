@@ -128,7 +128,7 @@ class PriorityQueue
            heap[parent] = heap[child];
            //repeat for empty place created at (child or child+1) after above step
            parent = child;
-           child *= 2;
+           child = parent*2;
        }
        heap[parent] = temp;
        return item;
