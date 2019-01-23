@@ -3,6 +3,7 @@ Q. Count duplicates in a binary search tree
 
 Approach is to do inoorder traversal and check if each node matches its previous node
 use inorder traversal (LCR) since it goes sequentially in increasing order
+Time complexity = time complexity(inorder traversal) = O(n)
 */
 
 int duplicates=0;    // global variable to count duplicates
