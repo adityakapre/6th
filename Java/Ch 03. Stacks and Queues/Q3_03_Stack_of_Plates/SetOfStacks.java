@@ -64,6 +64,7 @@ public class SetOfStacks {
 	}
 	
 	public int popAt(int index) {
+		//at first, remove top item
 		return leftShift(index, true);
 	}
 	
@@ -77,6 +78,7 @@ public class SetOfStacks {
 		if (stack.isEmpty()) {
 			stacks.remove(index);
 		} else if (stacks.size() > index + 1) {
+			//next, shift bottom items to previous stack
 			int v = leftShift(index + 1, false);
 			stack.push(v);
 		}
