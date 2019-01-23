@@ -13,7 +13,9 @@ public class Question {
 		int endOfList = addNonDependent(output, projects, 0);
 		
 		int toBeProcessed = 0;
-		while (toBeProcessed < output.length) { //toBeProcessed=order.length indicates all projects compiled
+		//output is like a queue here
+		//toBeProcessed=order.length indicates all projects compiled
+		while (toBeProcessed < output.length) { 
 			Project current = output[toBeProcessed];
 			
 			/* We have a circular dependency since there are no remaining
