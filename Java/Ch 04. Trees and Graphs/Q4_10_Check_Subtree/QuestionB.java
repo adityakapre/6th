@@ -57,6 +57,7 @@ public class QuestionB {
 		} else if (r1.data == r2.data && matchTree(r1,r2)) { //we found root of T2 in T1 so start matching
 			return true;
 		}
+		//if T2's root not yet found, try to find it in r1.left or r1.right
 		return findRootInLargerTree(r1.left, r2) || findRootInLargerTree(r1.right, r2); 
 	}
 
