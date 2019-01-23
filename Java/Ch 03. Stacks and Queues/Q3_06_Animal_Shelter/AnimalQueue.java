@@ -93,12 +93,12 @@ abstract class Animal {
 	
 	public abstract String name();
 	
-	public void setOrder(int ord) {
-		order = ord;
+	public void setOrder(int order) {
+		this.order = order;
 	}
 	
 	public int getOrder() {
-		return order;
+		return this.order;
 	}
 	
 	public boolean isOlderThan(Animal a) {
