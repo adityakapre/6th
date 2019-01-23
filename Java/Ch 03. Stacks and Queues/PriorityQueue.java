@@ -124,6 +124,7 @@ class PriorityQueue
            if (temp.priority >= heap[child].priority)
                break;
            //copy greater child (from child & child+1) to empty space at parent (bubble up)
+           //bring larger child up
            heap[parent] = heap[child];
            //repeat for empty place created at (child or child+1) after above step
            parent = child;
