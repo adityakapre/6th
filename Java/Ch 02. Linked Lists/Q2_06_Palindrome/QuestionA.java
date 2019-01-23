@@ -29,7 +29,7 @@ public class QuestionA {
 			one = one.next;
 			two = two.next;
 		}
-		return one == null && two == null;
+		return one == null && two == null;	//check both have reached tails
 	}
 	
 	public static LinkedListNode reverseAndClone(LinkedListNode node) {
