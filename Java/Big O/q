@@ -30,7 +30,8 @@ The following code prints all Fibonacci numbers from 0 to n. What is its time co
 5 }
 6
 7 int fib(int n) {
-8   if (n <= 0) return 0;
+8   if (n <= 0) 
+      return 0;
 9   else if (n == 1) return 1;
 10    return fib(n - 1) + fib(n - 2);
 11 }
