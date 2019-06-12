@@ -1,3 +1,31 @@
+Big 0, Big Theta, and Big Omega
+=============================== 
+If you've never covered big O in an academic setting, you can probably skip this subsection. It might
+confuse you more than it helps. This "FYI" is mostly here to clear up ambiguity in wording for people who
+have learned big O before, so that they don't say, "But I thought big O meant..:'
+
+Academics use big O, big 0 (theta), and big Ω (omega) to describe runtimes.
+O (big O): In academia, big O describes an upper bound on the time. An algorithm that prints all the
+values in an array could be described as O(N), but it could also be described as O(N2), O(N3), or 0( 2N)
+(or many other big O times). The algorithm is at least as fast as each of these; therefore they are upper
+bounds on the runtime. This is similar to a less-than-or-equal-to relationship. If Bob is X years old (I'll
+assume no one lives past age 130), then you could say X .$. 130. It would also be correct to say that
+X .$. 1, 000 or X .$. 1,000,000. It's technically true (although not terribly useful). Likewise, a simple
+algorithm to print the values in an array is O(N) as well as O(N3 ) or any runtime bigger than O(N).
+
+Ω (big omega): In academia, Ω is the equivalent concept but for lower bound. Printing the values in
+an array is Ω(N) as well as Ω(log N) and Ω(1). After all, you know that it won't be faster than those
+runtimes.
+
+0 (big theta): In academia, 0 means both O and Ω. That is, an algorithm is 0(N) if it is both O(N) and
+Ω( N). 0 gives a tight bound on runtime.
+
+In industry (and therefore in interviews), people seem to have merged 0 and O together. Industry's meaning
+of big O is closer to what academics mean by 0, in that it would be seen as incorrect to describe printing an
+array as O(N2 ). Industry would just say this is O(N).
+For this book, we will use big O in the way that industry tends to use it: By always trying to offer the tightest
+description of the runtime.
+
 Example 13
 ===========
 The following code computes the Nth Fibonacci number.
