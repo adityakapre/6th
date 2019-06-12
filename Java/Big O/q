@@ -68,7 +68,7 @@ computed values in an integer array. If it has already been computed, it just re
        return 1;
 11  else if (memo[n] > 0) 
        return memo[n];
-13  memo[n] = fib(n - 1, memo)+ fib(n - 2, memo);
+13  memo[n] = fib(n - 1, memo)+ fib(n - 2, memo);     //memoization
 14  return memo[n];
 15 }
 Let's walk through what this algorithm does.
