@@ -7,7 +7,7 @@ The following code computes the Nth Fibonacci number.
 4   return fib(n - 1) + fib(n - 2);
 5 }
 We can use the earlier pattern we'd established for recursive calls: O(branchesdepth).
-There are 2 branches per call, and we go as deep as N, therefore the runtime is O( 2N).
+There are 2 branches per call, and we go as deep as N, therefore the runtime is O(2 raisedTo N).
 
 Through some very complicated math, we can actually get a tighter runtime. The time is indeed
 exponential, but it's actually closer to O(1.6 raisedTo N). The reason that it's not exactly O(2 raisedTo N) is that, at
