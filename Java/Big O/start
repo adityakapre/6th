@@ -9,9 +9,9 @@ O (big O): In academia, big O describes an upper bound on the time. An algorithm
 values in an array could be described as O(N), but it could also be described as O(N2), O(N3), or 0( 2N)
 (or many other big O times). The algorithm is at least as fast as each of these; therefore they are upper
 bounds on the runtime. This is similar to a less-than-or-equal-to relationship. If Bob is X years old (I'll
-assume no one lives past age 130), then you could say X .$. 130. It would also be correct to say that
-X .$. 1, 000 or X .$. 1,000,000. It's technically true (although not terribly useful). Likewise, a simple
-algorithm to print the values in an array is O(N) as well as O(N3 ) or any runtime bigger than O(N).
+assume no one lives past age 130), then you could say X<=130. It would also be correct to say that
+X<=1,000 or X<=1,000,000. It's technically true (although not terribly useful). Likewise, a simple
+algorithm to print the values in an array is O(N) as well as O(N raisedTo 3) or any runtime bigger than O(N).
 
 Ω (big omega): In academia, Ω is the equivalent concept but for lower bound. Printing the values in
 an array is Ω(N) as well as Ω(log N) and Ω(1). After all, you know that it won't be faster than those
