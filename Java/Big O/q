@@ -35,7 +35,7 @@ The following code prints all Fibonacci numbers from 0 to n. What is its time co
 10    return fib(n - 1) + fib(n - 2);
 11 }
 Many people will rush to concluding that since fib(n) takes O(2 rasiedTo n) time and it's called n times, then it's
-O(n2 raisedTo n).
+O(n *(2 raisedTo n)).
 Not so fast. Can you find the error in the logic?
 The error is that the n is changing. Yes, fib (n) takes 0(2 raisedTo n) time, but it matters what that value of n is.
 Instead, let's walk through each call.
