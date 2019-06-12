@@ -26,6 +26,35 @@ array as O(N2 ). Industry would just say this is O(N).
 For this book, we will use big O in the way that industry tends to use it: By always trying to offer the tightest
 description of the runtime.
 
+Best, Worst & Expected
+======================
+
+Best Case: If all elements are equal, then quick sort will, on average, just traverse through the array once.
+This is O ( N). (This actually depends slightly on the implementation of quick sort. There are implementations,
+though, that will run very quickly on a sorted array.)
+
+Worst Case: What if we get really unlucky and the pivot is repeatedly the biggest element in the array?
+(Actually, this can easily happen. If the pivot is chosen to be the first element in the subarray and the
+array is sorted in reverse order, we'll have this situation.) In this case, our recursion doesn't divide the
+array in half and recurse on each half. It just shrinks the subarray by one element. This will degenerate
+to an O(N2) runtime.
+
+Expected Case: Usually, though, these wonderful or terrible situations won't happen. Sure, sometimes
+the pivot will be very low or very high, but it won't happen over and over again. We can expect a runtime
+of O(N log N).
+
+We rarely ever discuss best case time complexity, because it's not a very useful concept. After all, we could
+take essentially any algorithm, special case some input, and then get an O ( 1) time in the best case.
+For many-probably most-algorithms, the worst case and the expected case are the same. Sometimes
+they're different, though, and we need to describe both of the runtimes.
+
+What is the relationship between best/worst/expected case and big O/theta/omega?
+It's easy for candidates to muddle these concepts (probably because both have some concepts of"higher':
+"lower" and "exactly right"), but there is no particular relationship between the concepts.
+Best, worst, and expected cases describe the big O (or big theta) time for particular inputs or scenarios.
+
+Big O, big omega, and big theta describe the upper, lower, and tight bounds for the runtime.
+
 Example 13
 ===========
 The following code computes the Nth Fibonacci number.
