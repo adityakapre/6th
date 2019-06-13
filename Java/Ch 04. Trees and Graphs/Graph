@@ -1,0 +1,24 @@
+Traversals
+==========
+
+Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. 
+It starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key'[1]), 
+and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
+
+Pseudocode
+Input: A graph Graph and a starting vertex root of Graph
+Output: Goal state. The parent links trace the shortest path back to root
+
+1  procedure BFS(G,start_v):
+2      let Q be a queue
+3      label start_v as discovered
+4      Q.enqueue(start_v)
+5      while Q is not empty
+6          v = Q.dequeue()
+7          if v is the goal:
+8              return v
+9          for all edges from v to w in G.adjacentEdges(v) do
+10             if w is not labeled as discovered:
+11                 label w as discovered
+12                 w.parent = v
+13                 Q.enqueue(w) 
