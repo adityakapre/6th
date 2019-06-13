@@ -1,6 +1,9 @@
 Traversals
 ==========
 
+BFS
+===
+
 Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. 
 It starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key'[1]), 
 and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
@@ -22,3 +25,36 @@ Output: Goal state. The parent links trace the shortest path back to root
 11                 label w as discovered
 12                 w.parent = v
 13                 Q.enqueue(w) 
+
+
+DFS
+===
+
+Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. 
+The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) 
+and explores as far as possible along each branch before backtracking.
+
+Pseudocode
+Input: A graph G and a vertex v of G
+Output: All vertices reachable from v labeled as discovered
+
+A recursive implementation of DFS:[5]
+
+1  procedure DFS(G,v):
+2      label v as discovered
+3      for all directed edges from v to w that are in G.adjacentEdges(v) do
+4          if vertex w is not labeled as discovered then
+5              recursively call DFS(G,w)
+The order in which the vertices are discovered by this algorithm is called the lexicographic order.
+
+A non-recursive implementation of DFS with worst-case space complexity {\displaystyle O(|E|)} O(|E|):[6]
+
+1  procedure DFS-iterative(G,v):
+2      let S be a stack
+3      S.push(v)
+4      while S is not empty
+5          v = S.pop()
+6          if v is not labeled as discovered:
+7              label v as discovered
+8              for all edges from v to w in G.adjacentEdges(v) do 
+9                  S.push(w)
