@@ -1,4 +1,15 @@
 /*
+Q:
+One Away: There are three types of edits that can be performed on strings: insert a character,
+remove a character, or replace a character. Given two strings, write a function to check if they are
+one edit (or zero edits) away.
+EXAMPLE
+pale, ple -> true
+pales, pale -> true
+pale, bale -> true
+pale, bae -> false
+
+A:
 There is a "brute force" algorithm to do this. We could check all possible strings that are one edit away by
 testing the removal of each character (and comparing), testing the replacement of each character (and
 comparing), and then testing the insertion of each possible character (and comparing).
@@ -54,6 +65,7 @@ public class QuestionA {
 		int index1 = 0;
 		int index2 = 0;
 		while (index2 < s2.length() && index1 < s1.length()) {
+			//This condition should be true exactly once for string to be one insert away
 			if (s1.charAt(index1) != s2.charAt(index2)) {
 				//since s2 larger in length, we progress its ptr only once
 				//when chars are not same to allow 1 distince character
