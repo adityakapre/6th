@@ -1,4 +1,7 @@
 /*
+Q : 
+Given two strings, write a method to decide if one is a permutation of the other
+
 Like in many questions, we should confirm some details with our interviewer. We should understand if the
 permutation comparison is case sensitive. That is: is God a permutation of dog? Additionally, we should
 ask if whitespace is significant. We will assume for this problem that the comparison is case sensitive and
