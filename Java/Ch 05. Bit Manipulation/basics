@@ -14,7 +14,6 @@ The following program, BitDemo, uses the bitwise AND operator to print the numbe
 
 In java, System.out.println(Integer.toBinaryString(8)) is used to print number in binary form.
 
-
 class BitDemo {
     public static void main(String[] args) {
         int bitmask = 0x000F;
