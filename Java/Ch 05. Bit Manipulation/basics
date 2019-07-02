@@ -22,3 +22,6 @@ class BitDemo {
         System.out.println(val & bitmask);
     }
 }
+
+To set nth bit in number : number |= (1<<n)  i.e number = number | (1<<n)
+To reset nth bit in number : number &= ~(1<<n) i.e number = number & (~(1<<n))
