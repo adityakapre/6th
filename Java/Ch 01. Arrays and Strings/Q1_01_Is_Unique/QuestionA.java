@@ -1,4 +1,8 @@
 /*
+Q :
+Implement an algorithm to determine if a string has all unique characters. What if you can not use additional data structures?
+
+A: 
 You should first ask your interviewer if the string is an ASCII string or a Unicode string. Asking this question
 will show an eye for detail and a solid foundation in computer science. We'll assume for simplicity the character
 set is ASCII. If this assumption is not valid, we would need to increase the storage size.
