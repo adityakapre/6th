@@ -18,6 +18,7 @@ class Palindrome {
     begin  = 0;
     end    = length - 1;
     middle = (begin + end)/2;
+    //check only till half/mid
     for (i = begin; i <= middle; i++) {
       if (inputString.charAt(begin) == inputString.charAt(end)) {
          begin++; 
