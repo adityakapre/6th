@@ -53,12 +53,14 @@ public class QuestionA {
 		}
 	}
 	
+	//to nullify a row iterate over columns
 	public static void nullifyRow(int[][] matrix, int row) {
 		for (int c = 0; c < matrix[0].length; c++) {  // matrix[0].length will give no of columns in a row to be zeroed
 			matrix[row][c] = 0;
 		}		
 	}
 
+	//to nullify a column iterate over rows
 	public static void nullifyColumn(int[][] matrix, int col) {
 		for (int r = 0; r < matrix.length; r++) {
 			matrix[r][col] = 0;
