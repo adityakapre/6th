@@ -29,8 +29,22 @@ there will be 2 ‘operations’ on each character in a given string, which woul
 In Big-O Notation, this is O(n), which is a lot more efficient than our previous algorithm which was O(n2).
 
 Hash tables versus arrays
-Now the question is whether we should use an array or a hashtable as our data structure? Let’s examine the differences between the two. Hashtables do have a higher lookup overhead when compared to arrays, so that’s one advantage of arrays. But, the biggest difference is in the memory that each data structure would require. A hash table would only need to store the characters that actually exist in the input string – so if a string contains the characters “abcdef”, then a hashtable would only need to store the characters in the string “abcdef”. An array, on the other hand, would need an element for every single possible value of a character. This is because with an array you can not skip indices – so we can not have an array with just 2 elements, where one index is 10 and one index is 99. That’s impossible – you would have to have elements at index 0 and 1 for a 2 element array. And, remember that we have to store the numeric values of the characters in the index position for this problem. This means that if we have a Unicode string, we would need to have 65,536 elements (assuming a 16 bit Unicode encoding) in our array to account for every possible character that could be in the string – whether or not it is actually in the string. This is because we simply do not know what is going to be in the string that’s being passed in – but with an array we have to be ready to accept all possible values. But for an ASCII string, an array would really only need 128 elements, because there are only 128 possible ASCII values.
-Because of the memory requirements, arrays would be better when there are not many possible character values (like in an ASCII string) and when the strings are long (because hash tables have a higher lookup overhead than arrays). But, hashtables are much more efficient when strings are smaller in size or when there are lot of possible character values.
+Now the question is whether we should use an array or a hashtable as our data structure? Let’s examine the differences 
+between the two. Hashtables do have a higher lookup overhead when compared to arrays, so that’s one advantage of arrays. 
+But, the biggest difference is in the memory that each data structure would require. A hash table would only need to store 
+the characters that actually exist in the input string – so if a string contains the characters “abcdef”, then a hashtable 
+would only need to store the characters in the string “abcdef”. An array, on the other hand, would need an element for 
+every single possible value of a character. This is because with an array you can not skip indices – so we can not have 
+an array with just 2 elements, where one index is 10 and one index is 99. That’s impossible – you would have to have 
+elements at index 0 and 1 for a 2 element array. And, remember that we have to store the numeric values of the characters 
+in the index position for this problem. This means that if we have a Unicode string, we would need to have 65,536 elements 
+(assuming a 16 bit Unicode encoding) in our array to account for every possible character that could be in the string – 
+whether or not it is actually in the string. This is because we simply do not know what is going to be in the string that’s 
+being passed in – but with an array we have to be ready to accept all possible values. But for an ASCII string, an array 
+would really only need 128 elements, because there are only 128 possible ASCII values.
+Because of the memory requirements, arrays would be better when there are not many possible character values 
+(like in an ASCII string) and when the strings are long (because hash tables have a higher lookup overhead than arrays). 
+But, hashtables are much more efficient when strings are smaller in size or when there are lot of possible character values.
 
 sol 3, 4 & 2 code IN ORDER BELOW
 */
