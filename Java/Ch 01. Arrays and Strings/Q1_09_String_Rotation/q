@@ -1,3 +1,0 @@
-String Rotation: Assume you have a method isSubString which checks if one word is a substring
-of another. Given two strings, S1 and S2, write code to check if S2 is a rotation of S1 using only one
-call to isSubString (e.g., "waterbottle" is a rotation of" erbottlewat").
