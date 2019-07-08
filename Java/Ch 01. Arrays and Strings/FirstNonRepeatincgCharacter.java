@@ -5,14 +5,28 @@ Sol 1:
 We can use string characters as index and build a count array. Following is the algorithm.
 1) Scan the string from left to right and construct the count array.
 2) Again, scan string from left to right, check for count of character, if you find element who's count is 1, return it.
-In terms of Big O Notation, this means that the algorithm will be O(n2). For very large strings, it’s very likely that this algorithm will do close to n2 comparisons if not n2. This is because there’s a higher probability of there being more repeated characters in larger strings when compared to smaller strings.
+In terms of Big O Notation, this means that the algorithm will be O(n2). For very large strings, it’s very likely that 
+this algorithm will do close to n2 comparisons if not n2. This is because there’s a higher probability of there being 
+more repeated characters in larger strings when compared to smaller strings.
 
 Sol 2
 Using a hash table or an array to find the first nonrepeated character in a string
-If we use an array or a hashtable, the question is what will we store in the index for the array, or the key for the hashtable? Well, because we need to be able to search the data structure by character, the most obvious choice for the key or index is the character. Because array indices have to be numeric, we could just convert a given character to an integer and then use it as an index. This means for ASCII strings we would have 128 possible values, and for Unicode strings we would have 65,536 possible values. But, what do we actually store inside the data structures? Because the problem asks us to find the first nonrepeated character, then why don’t we just store the number of times each character appears in the string. So, all we have to do is scan the string once and we can get a count for each of the characters that would tell us how many times each one appears in the string.
-And once we have a count for all of the characters, then all we have to do is scan the data structure for the very first “1” that we encounter in the data structure. This would give us the first non-repeated character!
+If we use an array or a hashtable, the question is what will we store in the index for the array, or the key for the hashtable? 
+Well, because we need to be able to search the data structure by character, the most obvious choice for the key or index 
+is the character. Because array indices have to be numeric, we could just convert a given character to an integer and then 
+use it as an index. This means for ASCII strings we would have 128 possible values, and for Unicode strings we would 
+have 65,536 possible values. But, what do we actually store inside the data structures? Because the problem asks us to find 
+the first nonrepeated character, then why don’t we just store the number of times each character appears in the string. 
+So, all we have to do is scan the string once and we can get a count for each of the characters that would tell us how many 
+times each one appears in the string.
+And once we have a count for all of the characters, then all we have to do is scan the data structure for the very 
+first “1” that we encounter in the data structure. This would give us the first non-repeated character!
 What’s the Big-O Notation of the new solution to finding the first nonrepeated character?
-But, is the new algorithm actually an improvement over what we previously had? Well, let’s break it down: we scan the entire string once to build the data structure. And then, once we have built the data structure, we scan it to find the ‘1’ – which tells us that this is the first nonrepeated character. This means that in the worst case, there will be 2 ‘operations’ on each character in a given string, which would be 2n for a string of length n. In Big-O Notation, this is O(n), which is a lot more efficient than our previous algorithm which was O(n2).
+But, is the new algorithm actually an improvement over what we previously had? Well, let’s break it down: 
+we scan the entire string once to build the data structure. And then, once we have built the data structure, 
+we scan it to find the ‘1’ – which tells us that this is the first nonrepeated character. This means that in the worst case, 
+there will be 2 ‘operations’ on each character in a given string, which would be 2n for a string of length n. 
+In Big-O Notation, this is O(n), which is a lot more efficient than our previous algorithm which was O(n2).
 
 Hash tables versus arrays
 Now the question is whether we should use an array or a hashtable as our data structure? Let’s examine the differences between the two. Hashtables do have a higher lookup overhead when compared to arrays, so that’s one advantage of arrays. But, the biggest difference is in the memory that each data structure would require. A hash table would only need to store the characters that actually exist in the input string – so if a string contains the characters “abcdef”, then a hashtable would only need to store the characters in the string “abcdef”. An array, on the other hand, would need an element for every single possible value of a character. This is because with an array you can not skip indices – so we can not have an array with just 2 elements, where one index is 10 and one index is 99. That’s impossible – you would have to have elements at index 0 and 1 for a 2 element array. And, remember that we have to store the numeric values of the characters in the index position for this problem. This means that if we have a Unicode string, we would need to have 65,536 elements (assuming a 16 bit Unicode encoding) in our array to account for every possible character that could be in the string – whether or not it is actually in the string. This is because we simply do not know what is going to be in the string that’s being passed in – but with an array we have to be ready to accept all possible values. But for an ASCII string, an array would really only need 128 elements, because there are only 128 possible ASCII values.
