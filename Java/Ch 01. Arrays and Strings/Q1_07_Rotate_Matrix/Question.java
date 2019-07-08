@@ -1,4 +1,9 @@
 /*
+Q:
+Rotate Matrix: Given an image represented by an NxN matrix, where each pixel in the image is 4
+bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+
+A:
 Because we're rotating the matrix by 90 degrees, the easiest way to do this is to implement the rotation in
 layers. We perform a circular rotation on each layer, moving the top edge to the right edge, the right edge
 to the bottom edge, the bottom edge to the left edge, and the left edge to the top edge.
