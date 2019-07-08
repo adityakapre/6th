@@ -1,4 +1,10 @@
 /*
+Q:
+String Rotation: Assume you have a method isSubString which checks if one word is a substring
+of another. Given two strings, S1 and S2, write code to check if S2 is a rotation of S1 using only one
+call to isSubString (e.g., "waterbottle" is a rotation of" erbottlewat").
+
+A:
 If we imagine that S2 is a rotation of S1, then we can ask what the rotation point is. For example, if you
 rotate waterbottle after wat. you get erbottlewat. In a rotation, we cut S1 into two parts, x and y,
 and rearrange them to get S2.
