@@ -24,11 +24,7 @@ package Q1_09_String_Rotation;
 
 public class Question {
 	public static boolean isSubstring(String big, String small) {
-		if (big.indexOf(small) >= 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return (big.indexOf(small) >= 0);
 	}
 	
 	public static boolean isRotation(String s1, String s2) {
