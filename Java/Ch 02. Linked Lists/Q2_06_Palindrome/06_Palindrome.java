@@ -32,6 +32,7 @@ public class QuestionA {
 		return one == null && two == null;	//check both have reached tails
 	}
 	
+	//Reverse LL
 	public static LinkedListNode reverseAndClone(LinkedListNode node) {
 		LinkedListNode head = null;
 		while (node != null) {
