@@ -1,4 +1,8 @@
-/*Solution #1: Reverse and Compare
+/*
+Q:
+Palindrome: Implement a function to check if a linked list is a palindrome.
+
+Solution #1: Reverse and Compare
 Our first solution is to reverse the linked list and compare the reversed list to the original list. If they're the
 same, the lists are identical.
 Note that when we compare the linked list to the reversed list, we only actually need to compare the first
