@@ -13,7 +13,8 @@ Output: 9 -> 1 -> 2. That is, 912.
 
 A:
 Advantage of storing units place at head of LL :  if the two numbers are of different number of digits, nulls can be handled on fly
-unlike storing units place at tail
+unlike storing units place at tail 
+GENERAL CONCEPT  : Store head from place where we start summing numbers
 
 It's useful to remember in this problem how exactly addition works. Imagine the problem:
 6 1 7 
