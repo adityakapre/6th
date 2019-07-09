@@ -1,4 +1,17 @@
 /*
+Q:
+Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
+beginning of the loop.
+DEFINITION
+Circular linked list: A (corrupt) linked list in which a node's next pointer points to an earlier node, so
+as to make a loop in the linked list.
+EXAMPLE
+Input:
+A -> B -> C -> D -> E -> C [the same C as earlier]
+Output:
+C
+
+A:
 This is a modification of a classic interview problem: detect if a linked list has a loop. Let's apply the Pattern
 Matching approach.
 Part 1 : Detect If Linked List Has A Loop
