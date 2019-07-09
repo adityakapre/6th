@@ -1,4 +1,8 @@
 /*
+Q:
+Three in One: Describe how you could use a single array to implement three stacks.
+
+A:
 Like many problems, this one somewhat depends on how well we'd like to support these stacks. If we're
 okay with simply allocating a fixed amount of space for each stack, we can do that. This may mean though
 that one stack runs out of space, while the others are nearly empty.
