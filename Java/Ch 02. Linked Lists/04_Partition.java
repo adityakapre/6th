@@ -102,7 +102,7 @@ import CtCILibrary.LinkedListNode;
 public class QuestionC {
 
 	public static LinkedListNode partition(LinkedListNode node, int x) {
-		LinkedListNode head = node;	//both initialised to point to same node, so its same LL
+		LinkedListNode head = node;	//IMP : both initialised to point to same node, so its same LL
 		LinkedListNode tail = node;
 		
 		/* Partition list */
