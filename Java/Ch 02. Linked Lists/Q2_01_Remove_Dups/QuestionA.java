@@ -1,4 +1,10 @@
 /*
+Q:
+Remove Dups: Write code to remove duplicates from an unsorted linked list.
+FOLLOW UP
+How would you solve this problem if a temporary buffer is not allowed?
+
+A:
 In order to remove duplicates from a linked list, we need to be able to track duplicates. A simple hash table
 will work well here.
 In the below solution, we simply iterate through the linked list, adding each element to a hash table. When
