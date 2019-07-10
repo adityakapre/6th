@@ -1,4 +1,9 @@
 /*
+Q:
+Stack Min: How would you design a stack which, in addition to push and pop, has a function min
+which returns the minimum element? Push, pop and min should all operate in 0(1) time.
+
+A:
 The thing with minimums is that they don't change very often. They only change when a smaller element
 is added.
 One solution is to have just a single int value, minValue, that's a member of the Stack class. When
