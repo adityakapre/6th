@@ -37,7 +37,6 @@ public class MyQueue<T> {
 	}
 	
 	public void add(T value) {
-		// Push onto stack1
 		stackNewest.push(value);
 	}
 	
