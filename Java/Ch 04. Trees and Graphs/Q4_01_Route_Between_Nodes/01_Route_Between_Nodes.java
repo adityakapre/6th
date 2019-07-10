@@ -75,6 +75,7 @@ public class Question {
 
 	public static boolean search(Graph g,Node start,Node end) {  
 		LinkedList<Node> q = new LinkedList<Node>();
+		//Initialize everything as unvisited
 		for (Node u : g.getNodes()) {
 		    u.state = State.Unvisited;
 		}
@@ -84,6 +85,7 @@ public class Question {
 		while(!q.isEmpty()) {
 		    u = q.removeFirst();
 		    if (u != null) {
+			    //explore adjacent nodes of u
 			    for (Node v : u.getAdjacent()) {
 				if (v.state == State.Unvisited) {
 				    if (v == end) {
