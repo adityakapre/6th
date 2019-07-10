@@ -1,4 +1,10 @@
 /*
+Q:
+Sort Stack: Write a program to sort a stack such that the smallest items are on the top. You can use
+an additional temporary stack, but you may not copy the elements into any other data structure
+(such as an array). The stack supports the following operations: push, pop, peek, and isEmpty.
+
+A:
 One approach is to implement a rudimentary sorting algorithm. We search through the entire stack to find
 the minimum element and then push that onto a new stack. Then, we find the new minimum element
 and push that. This will actually require a total of three stacks: s1 is the original stack, s2 is the final sorted
