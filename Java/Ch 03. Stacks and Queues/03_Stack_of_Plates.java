@@ -18,9 +18,10 @@ What should pop() do? It should behave similarly to push() in that it should ope
 the last stack is empty (after popping), then we should remove the stack from the list of stacks.
 
 Follow Up: Implement popAt(int index)
-This is a bit trickier to implement, but we can imagine a "rollover" system. If we pop an element from stack
-1, we need to remove the bottom of stack 2 and push it onto stack 1. We then need to rollover from stack 3
-to stack 2, stack 4 to stack 3, etc.
+This is a bit trickier to implement, but we can imagine a "rollover" system. If we pop an element from 
+stack 1 (because after stack 1 was at capacity, we started pushing elements into stack 2 & so the first element
+pushed after stack 1 was at capacity is now at bottom of stack 2), we need to remove the bottom of stack 2 and push it onto stack 1. 
+We then need to rollover from stack 3 to stack 2, stack 4 to stack 3, etc.
 You could make an argument that, rather than "rolling over;' we should be okay with some stacks not
 being at full capacity. This would improve the time complexity (by a fair amount, with a large number of
 elements), but it might get us into tricky situations later on if someone assumes that all stacks (other than
