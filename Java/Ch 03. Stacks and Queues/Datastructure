@@ -1,0 +1,7 @@
+Queue w/ linked list implementation:
+- ATT (ADD to TAIL)
+- RFH (REMOVE from HEAD)
+
+Stack w/ linked list implementation:
+- ATT (ADD to TOP)
+- RFT (REMOVE from TOP)
