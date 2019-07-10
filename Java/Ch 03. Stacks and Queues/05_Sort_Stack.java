@@ -15,8 +15,8 @@ Rather than searching for the minimum repeatedly, we can sort sl by inserting ea
 order into s2. How would this work?
 
 Let S is the stack to be sorted & R stack is used to sort S. R is"sorted"
-We must store R in descending order from top and then reverse R into S to that we get elemets sorted in ascending order in S
-which is our goal.
+Main idea : Store R in descending order from top and then reverse R into S to that we get elemets 
+sorted in ascending order in S which is our goal.
 
 S : (top) 
       5
