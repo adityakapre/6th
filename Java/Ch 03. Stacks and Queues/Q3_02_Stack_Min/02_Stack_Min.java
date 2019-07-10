@@ -49,6 +49,15 @@ public class StackWithMin extends Stack<NodeWithMin> {
     }
 }
 
+class NodeWithMin {
+    public int value;
+    public int min;
+    public NodeWithMin(int v, int min){
+        value = v;
+        this.min = min;
+    }
+}
+
 /*
 A:
 There's just one issue with this: if we have a large stack, we waste a lot of space by keeping track of the min
@@ -81,6 +90,7 @@ public class StackWithMin2 extends Stack<Integer> {
 	
 	public Integer pop() {
 		int value = super.pop();
+		//IMP : Pop min from other stack if it matches with value to be removed from main stack
 		if (value == min()) {
 			s2.pop();			
 		}
