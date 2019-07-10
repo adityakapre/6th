@@ -7,26 +7,29 @@ elements from sl and push them onto the buffer, s3.
 Unfortunately, this requires two additional stacks, and we can only use one. Can we do better? Yes.
 Rather than searching for the minimum repeatedly, we can sort sl by inserting each element from sl in
 order into s2. How would this work?
-Imagine we have the following stacks, where s2 is"sorted" and sl is not:
 
-s1 : (top) 
+Let S is the stack to be sorted & R stack is used to sort S. R is"sorted"
+We must store R in descending order from top and then reverse R into S to that we get elemets sorted in ascending order in S
+which is our goal.
+
+S : (top) 
       5
       10 
       7
-s2 : (top)
+R : (top)
      12
      8
      3
      1
 
-When we pop 5 from s1, we need to find the right place in s2 to insert this number. In this case, the correct
-place is on s2 just above 3. How do we get it there? We can do this by popping 5 from sl and holding it
-in a temporary variable. Then, we move 12 and 8 over to s1 (by popping them from s2 and pushing them
-onto sl) and then push 5 onto s2.
-Note that 8 and 12 are still in sl-and that's okay! We just repeat the same steps for those two numbers as
-we did for 5, each time popping off the top of sl and putting it into the "right place" on s2. (Of course, since
-8 and 12 were moved from s2 to s1 precisely because they were larger than 5, the "right place" for these
-elements will be right on top of 5. We won't need to muck around with s2's other elements, and the inside
+When we pop 5 from S, we need to find the right place in R to insert this number. In this case, the correct
+place is on R just above 3. How do we get it there? We can do this by popping 5 from S and holding it
+in a temporary variable. Then, we move 12 and 8 over to S (by popping them from s2 and pushing them
+onto sl) and then push 5 onto R.
+Note that 8 and 12 are still in S-and that's okay! We just repeat the same steps for those two numbers as
+we did for 5, each time popping off the top of S and putting it into the "right place" on R. (Of course, since
+8 and 12 were moved from R to S precisely because they were larger than 5, the "right place" for these
+elements will be right on top of 5. We won't need to muck around with R's other elements, and the inside
 of the below while loop will not be run when tmp is 8 or 12.)
 
 This algorithm is O (N sq.) time and O (N) space.
