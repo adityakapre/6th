@@ -1,4 +1,8 @@
 /*
+Q:
+Queue via Stacks: Implement a MyQueue class which implements a queue using two stacks.
+
+A:
 Since the major difference between a queue and a stack is the order (first-in first-out vs. last-in first-out), we
 know that we need to modify peek() and pop() to go in reverse order. We can use our second stack to
 reverse the order of the elements (by popping sl and pushing the elements on to s2). In such an implementation,
