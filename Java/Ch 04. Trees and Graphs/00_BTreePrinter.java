@@ -1,5 +1,6 @@
 class BTreePrinter {
 
+    //Use this method to print tree by passing root
     public static <T extends Comparable<?>> void printNode(TreeNode root) {
         int maxLevel = BTreePrinter.maxLevel(root);
         printNodeInternal(Collections.singletonList(root), 1, maxLevel);
