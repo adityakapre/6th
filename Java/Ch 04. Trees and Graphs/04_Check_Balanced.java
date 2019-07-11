@@ -111,3 +111,46 @@ public class QuestionImproved {
 		System.out.println("Is balanced? " + isBalanced(root));
 	}
 }
+
+/*
+Result of 2nd (optimized) solution :
+
+       5               
+      / \       
+     /   \      
+    /     \     
+   /       \    
+   1       8       
+  / \     / \   
+ /   \   /   \  
+ 0   2   6   9   
+      \   \   \ 
+      3   7   10 
+                                
+Is balanced? true
+5 -> 1 -> 2 -> 3 -> NULL
+               5                               
+              / \               
+             /   \              
+            /     \             
+           /       \            
+          /         \           
+         /           \          
+        /             \         
+       /               \        
+       1               8               
+      / \             / \       
+     /   \           /   \      
+    /     \         /     \     
+   /       \       /       \    
+   0       2       6       9       
+            \       \       \   
+             \       \       \  
+             3       7       10   
+              \                 
+              4                 
+                                                                
+Is balanced? false
+
+Completed with exit code: 0
+*/
