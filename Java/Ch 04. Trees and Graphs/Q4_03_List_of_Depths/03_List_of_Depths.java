@@ -1,4 +1,9 @@
 /*
+Q:
+List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the nodes
+at each depth (e.g., if you have a tree with depth D, you'll have D linked lists).
+
+A:
 Alternatively, we can also implement a modification of breadth-first search. With this implementation, we
 want to iterate through the root first, then level 2, then level 3, and so on.
 With each level i, we will have already fully visited all nodes on level i-1. This means that to get which
