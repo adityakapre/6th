@@ -1,4 +1,10 @@
 /*
+Q:
+Check Balanced: Implement a function to check if a binary tree is balanced. For the purposes of
+this question, a balanced tree is defined to be a tree such that the heights of the two subtrees of any
+node never differ by more than one.
+
+A:
 In this question, we've been fortunate enough to be told exactly what balanced means: that for each node,
 the two subtrees differ in height by no more than one. We can implement a solution based on this definition.
 We can simply recurse through the entire tree, and for each node, compute the heights of each subtree.
