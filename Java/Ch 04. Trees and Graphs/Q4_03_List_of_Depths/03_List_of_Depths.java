@@ -33,28 +33,26 @@ public class QuestionBFS {
 
 	public static ArrayList<LinkedList<TreeNode>> createLevelLinkedList(TreeNode root) {
 		ArrayList<LinkedList<TreeNode>> result = new ArrayList<LinkedList<TreeNode>>();
-		
+
 		/* "Visit" the root */
-		LinkedList<TreeNode> current = new LinkedList<TreeNode>();
+		LinkedList<TreeNode> currLvl = new LinkedList<TreeNode>();
 		if (root != null) {
-			current.add(root);
+			currLvl.add(root);
 		}
-		
-		while (current.size() > 0) {
-			result.add(current); // Add previous level
-			LinkedList<TreeNode> parents = current; // Go to next level
-			current = new LinkedList<TreeNode>();  //Create LL for new level
-			for (TreeNode parent : parents) {
+		while (currLvl.size() > 0) {
+			result.add(currLvl); // Add previous level
+			LinkedList<TreeNode> nxtLvl = new LinkedList<TreeNode>();  //Create LL for new level
+			for (TreeNode parent : currLvl) {
 				/* Visit the children */
 				if (parent.left != null) {
-					current.add(parent.left);
+					nxtLvl.add(parent.left);
 				}
 				if (parent.right != null) {
-					current.add(parent.right);
+					nxtLvl.add(parent.right);
 				}
 			}
+            		currLvl = nxtLvl; //go to next level
 		}
-
 		return result;
 	}
 	
