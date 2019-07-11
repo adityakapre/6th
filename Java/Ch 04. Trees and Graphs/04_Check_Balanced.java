@@ -103,13 +103,11 @@ public class QuestionImproved {
 		// Create balanced tree
 		int[] array = {0, 1, 2, 3, 5, 6, 7, 8, 9, 10};
 		TreeNode root = TreeNode.createMinimalBST(array);
-
-		
+		BTreePrinter.printNode(root);
 		System.out.println("Is balanced? " + isBalanced(root));
-		
 		root.insertInOrder(4); // Add 4 to make it unbalanced
-
+        	System.out.println();
+      		BTreePrinter.printNode(root);
 		System.out.println("Is balanced? " + isBalanced(root));
 	}
-
 }
