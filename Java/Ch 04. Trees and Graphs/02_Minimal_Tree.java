@@ -38,7 +38,7 @@ public class Question {
 		System.out.println("Height: " + root.height());
 	}
 
-	private static TreeNode createMinimalBST(int arr[], int start, int end){
+	private static TreeNode createMinimalBST(int arr[], int start, int end){ //REMEMBER : to pass start & end pointers
 		if (end < start) {
 			return null;
 		}
