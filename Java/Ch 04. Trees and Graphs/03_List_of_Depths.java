@@ -24,7 +24,6 @@ use more data, they are equally efficient when it comes to "big O:'
 package Q4_03_List_of_Depths;
 
 import CtCILibrary.*;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
