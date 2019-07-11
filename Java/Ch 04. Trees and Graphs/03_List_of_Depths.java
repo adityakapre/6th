@@ -68,7 +68,6 @@ public class QuestionBFS {
 			depth++;
 		}
 	}
-	
 
 	public static void main(String[] args) {
 		int[] nodes_flattened = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -88,7 +87,7 @@ public class QuestionDFS {
 	public static void createLevelLinkedList(TreeNode root, ArrayList<LinkedList<TreeNode>> lists, int level) {
 		if (root == null) return;
 		LinkedList<TreeNode> currLvl = null;
-		if (lists.size() == level) { // Level not contained in list
+		if (lists.size() == level) { // current level not contained in list
 			currLvl = new LinkedList<TreeNode>();
 			/* Levels are always traversed in order. So, if this is the first time we've visited level i,
 			 * we must have seen levels 0 through i - 1. We can therefore safely add the level at the end. */
