@@ -93,8 +93,10 @@ public class QuestionImproved {
 		
 		int heightDiff = leftHeight - rightHeight;
 		if (Math.abs(heightDiff) > 1) {
+          		System.out.println("UnBalanced !!!->"+root.data);
 			return Integer.MIN_VALUE; // Found error -> pass it back
 		} else {
+          		System.out.println("Balanced ->"+root.data);
 			return Math.max(leftHeight, rightHeight) + 1;
 		}
 	}
@@ -113,8 +115,6 @@ public class QuestionImproved {
 }
 
 /*
-Result of 2nd (optimized) solution :
-
        5               
       / \       
      /   \      
@@ -127,6 +127,16 @@ Result of 2nd (optimized) solution :
       \   \   \ 
       3   7   10 
                                 
+Balanced ->0
+Balanced ->3
+Balanced ->2
+Balanced ->1
+Balanced ->7
+Balanced ->6
+Balanced ->10
+Balanced ->9
+Balanced ->8
+Balanced ->5
 Is balanced? true
 5 -> 1 -> 2 -> 3 -> NULL
                5                               
@@ -150,7 +160,9 @@ Is balanced? true
               \                 
               4                 
                                                                 
+Balanced ->0
+Balanced ->4
+Balanced ->3
+UnBalanced !!!->2
 Is balanced? false
-
-Completed with exit code: 0
 */
