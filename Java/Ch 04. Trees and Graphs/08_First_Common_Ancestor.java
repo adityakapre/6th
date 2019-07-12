@@ -148,7 +148,7 @@ import CtCILibrary.TreeNode;
 public class QuestionD {
 	
 	public static TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (!hasNode(root, p) || !hasNode(root, q)) { // Error check - one node is not in tree
+		if (!exists(root, p) || !exists(root, q)) { // Error check - one node is not in tree
 			return null;
 		}
 		return ancestorHelper(root, p, q);
@@ -159,8 +159,8 @@ public class QuestionD {
 		if (root == null || root == p || root == q) {
 			return root;
 		}
-		boolean pIsOnLeft = hasNode(root.left, p);
-		boolean qIsOnLeft = hasNode(root.left, q);
+		boolean pIsOnLeft = exists(root.left, p);
+		boolean qIsOnLeft = exists(root.left, q);
 		if (pIsOnLeft != qIsOnLeft) { // Nodes are on different side
 			return root;
 		}
@@ -172,10 +172,10 @@ public class QuestionD {
 	}
 	
 	//checks if n is within tree rooted at root
-	public static boolean hasNode(TreeNode root, TreeNode n) { 
+	public static boolean exists(TreeNode root, TreeNode n) { 
 		if (root == null) return false;
 		if (root == n) return true;
-		return hasNode(root.left, n) || hasNode(root.right, n); 
+		return exists(root.left, n) || exists(root.right, n); 
 	}
 	
 	public static void main(String[] args) {
