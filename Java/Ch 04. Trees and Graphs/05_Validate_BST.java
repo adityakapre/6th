@@ -16,8 +16,10 @@ the following small tree:
 
 Although each node is bigger than its left node and smaller than its right node, this is clearly not a binary
 search tree since 25 is in the wrong place.
+***********
 More precisely, the condition is that all left nodes must be less than or equal to the current node, which
 must be less than all the right nodes.
+***********
 Using this thought, we can approach the problem by passing down the min and max values. As we iterate
 through the tree, we verify against progressively narrower ranges.
 
