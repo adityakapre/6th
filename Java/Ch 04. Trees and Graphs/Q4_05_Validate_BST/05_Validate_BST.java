@@ -1,4 +1,13 @@
 /*
+Q:
+Validate BST: Implement a function to check if a binary tree is a binary search tree.
+
+Definition BST :
+A binary search tree (BST) is a binary tree where each node has a Comparable key (and an associated value) 
+and satisfies the restriction that the key in any node is larger than the keys in all nodes in that node's left subtree 
+and smaller than the keys in all nodes in that node's right subtree.
+
+A:
 Solution #2: The Min / Max Solution
 In the second solution, we leverage the definition of the binary search tree.
 What does it mean for a tree to be a binary search tree? We know that it must, of course, satisfy the condition
