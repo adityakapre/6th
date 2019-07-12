@@ -1,4 +1,9 @@
 /*
+Q:
+Successor: Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a
+binary search tree. You may assume that each node has a link to its parent.
+
+A:
 Recall that an in-order traversal traverses the left subtree, then the current node, then the right subtree. 
 To approach this problem, we need to think very, very carefully about what happens.
 Let's suppose we have a hypothetical node. We know that the order goes left subtree, then current side,
