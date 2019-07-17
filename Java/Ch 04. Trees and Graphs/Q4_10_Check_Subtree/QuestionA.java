@@ -180,7 +180,7 @@ public class QuestionB {
 			return false; // exactly one tree is empty, therefore trees don't match
 		} else if (r1.data != r2.data) {  
 			return false;  // data doesn't match
-		} else {
+		} else { //r1 r2 match, so now check remaining tree
 			return matchTree(r1.left, r2.left) && matchTree(r1.right, r2.right);
 		}
 	}
