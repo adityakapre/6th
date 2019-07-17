@@ -8,7 +8,7 @@ we increment the total.
 What is the time complexity of this algorithm?
 Consider that node at depth d will be "touched" (via countPathsWithSumFromNode) by d nodes above it.
 In a balanced binary tree, d will be no more than approximately log N. Therefore, we know that with N
-nodes in the tree, countPathsWithSumFromNode will be called O(Nlog N) times. The runtime is O(Nlog N).
+nodes in the tree, countPathsWithSumFromNode will be called O(Nlog N) times. The runtime is *** O(Nlog N) ***
 
 We can also approach this from the other direction. At the root node, we traverse to all N - 1 nodes beneath
 it (via countPathsWithSumFromNode). At the second level (where there are two nodes), we traverse to N - 3
