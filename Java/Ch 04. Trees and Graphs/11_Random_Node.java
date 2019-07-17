@@ -189,7 +189,7 @@ class TreeNode {
 			if (left == null) {
 				left = new TreeNode(d);
 			} else {
-				left.insertInOrder(d);
+				left.insertInOrder(d);		//call insertInOrder on child
 			}
 		} else {
 			if (right == null) {
@@ -198,7 +198,7 @@ class TreeNode {
 				right.insertInOrder(d);
 			}
 		}
-		size++;
+		size++;		//increment number of nodes under this node
 	}
 
 	public int size() {
