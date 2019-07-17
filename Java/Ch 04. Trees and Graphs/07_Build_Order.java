@@ -365,7 +365,7 @@ public class Question {
 	}
 	
 	public static boolean doDFS(Project project, Stack<Project> stack) {
-		if (project.getState() == Project.State.PARTIAL) {
+		if (project.getState() == Project.State.PARTIAL) { //Check if project was seen before
 			return false; // Cycle
 		}
 		
