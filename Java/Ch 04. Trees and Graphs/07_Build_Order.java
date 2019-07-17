@@ -269,10 +269,10 @@ public class Question {
 }
 	
 class Project {
-	private ArrayList<Project> children = new ArrayList<Project>();
+	private ArrayList<Project> children = new ArrayList<Project>();	//OUTGOING EDGES
 	private HashMap<String, Project> map = new HashMap<String, Project>();
 	private String name;
-	private int dependencies = 0;
+	private int dependencies = 0; //NO OF INCOMING EDGES
 	
 	public Project(String n) {
 		name = n;
