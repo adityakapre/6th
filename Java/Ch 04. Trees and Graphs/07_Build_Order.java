@@ -286,7 +286,7 @@ class Project {
 		if (!map.containsKey(node.getName())) {
 			children.add(node);
 			map.put(node.getName(), node);
-			node.incrementDependencies();
+			node.incrementDependencies();  //INCREMENT NO OF INCOMING EDGES I.E PROJECT DEPENDENCIES
 		}
 	}
 	
