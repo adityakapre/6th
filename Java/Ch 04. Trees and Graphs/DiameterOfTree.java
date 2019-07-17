@@ -1,3 +1,9 @@
+/*
+Q:
+Diameter of a Binary Tree. 
+The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes.
+*/
+
 static int height(Node node) { 
         /* base case tree is empty */
         if (node == null) 
