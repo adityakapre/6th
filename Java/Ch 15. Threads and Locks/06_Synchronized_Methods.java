@@ -6,7 +6,7 @@ same time? Can they execute A and B at the same time?
 pg 180
 
 A:
-By applying the word synchroniz ed to a method, we ensure that two threads cannot execute synchronized
+By applying the word synchronized to a method, we ensure that two threads cannot execute synchronized
 methods on the same object instance at the same time.
 So, the answer to the first part really depends. If the two threads have the same instance of the object, then
 no, they cannot simultaneously execute method A. However, if they have different instances of the object,
