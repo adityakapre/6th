@@ -53,10 +53,10 @@ public class Question {
 		int mid = (start + end) / 2;
 		if (array[mid] == mid) {
 			return mid;
-		} else if (array[mid] > mid){
-			return magicFast(array, start, mid - 1);
-		} else {
+		} else if (array[mid] < mid){
 			return magicFast(array, mid + 1, end);
+		} else {
+			return magicFast(array, start, mid - 1);
 		}
 	}
 	
