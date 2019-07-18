@@ -118,6 +118,17 @@ How does our current algorithm work? To find a path to (r, c), we look for a pat
 at their adjacent coordinates: (r-2, c), (r-1, c-1), (r-1, c-1), and (r, c -2). The spot (r-1, c-1)
 appears twice, which means that we're duplicating effort. Ideally, we should remember that we already
 visited (r-1, c-1) so that we don't waste our time.
+         
+                                               r,c
+                    r-1,c                                                r,c-1
+         r-2,c                  r-1,c-1                   r-1,c-1                  r,c-2
+   r-3,c      r-2,c-1    r-2,c-1       r-1,c-2     r-2,c-1       r-1,c-2    r-1,c-2      r,c-3
+
+
+notice  (r-1,c-1) repeats twice at level 2
+(r-2,c-1) & (r-1,c-2) each repeat thrice at level 3
+similarly, (r-2,c-2) & (r-1,c-3) & (r-3,c-1) will repeat 4 times at level 4
+
 This simple change will make our code run substantially faster. The algorithm will now take O(XY) time
 because we hit each cell just once.
 */
