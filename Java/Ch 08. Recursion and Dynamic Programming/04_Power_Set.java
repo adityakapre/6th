@@ -105,7 +105,7 @@ public class QuestionB {
 	public static ArrayList<Integer> convertIntToSet(int x, ArrayList<Integer> set) {
 		ArrayList<Integer> subset = new ArrayList<Integer>(); 
 		int index = 0;
-		for (int k = x; k > 0; k >>= 1) {
+		for (int k = x; k > 0; k >>= 1) { //k >>= 1 means "set k to itself shifted by one bit to the right".
 			if ((k & 1) == 1) {
 				subset.add(set.get(index));
 			}
