@@ -111,7 +111,7 @@ public class MyThread extends Thread {
 
 /*
 This code won't actually quite work due to the concept of lock ownership. One thread is actually performing
-the lock (in the Fo oBad constructor), but different threads attempt to unlock the locks. This is not allowed,
+the lock (in the FooBad constructor), but different threads attempt to unlock the locks. This is not allowed,
 and your code will raise an exception. A lock in Java is owned by the same thread which locked it.
 
 A2:
