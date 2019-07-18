@@ -132,6 +132,7 @@ similarly, (r-2,c-2) & (r-1,c-3) & (r-3,c-1) will repeat 4 times at level 4
 This simple change will make our code run substantially faster. The algorithm will now take O(rc) time
 because we hit each cell just once.
 
+Hacker rank dynamic programming
 https://www.youtube.com/watch?v=P8Xa2BitN3I
 
 */
