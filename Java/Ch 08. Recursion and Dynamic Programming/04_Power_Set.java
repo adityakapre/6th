@@ -102,6 +102,15 @@ import java.util.*;
 
 public class QuestionB {
 	
+	/*
+	6&1=0;
+        5&1=1;
+        4&1=0;
+        3&1=1;
+        
+        5>>1=2;
+	
+	*/
 	public static ArrayList<Integer> convertIntToSet(int x, ArrayList<Integer> set) {
 		ArrayList<Integer> subset = new ArrayList<Integer>(); 
 		int index = 0;
