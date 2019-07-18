@@ -88,6 +88,27 @@ public class Question {
 		thread1.start();
 	}
 }
+
+public class MyThread extends Thread {
+	private String method;
+	private FooBad foo;
+	
+	public MyThread(FooBad foo, String method) {
+		this.method = method;
+		this.foo = foo;
+	}
+	
+	public void run() {
+		if (method == "first") {
+			foo.first();
+		} else if (method == "second") {
+			foo.second();
+		} else if (method == "third") {
+			foo.third();
+		}
+	}
+}
+
 /*
 This code won't actually quite work due to the concept of lock ownership. One thread is actually performing
 the lock (in the Fo oBad constructor), but different threads attempt to unlock the locks. This is not allowed,
