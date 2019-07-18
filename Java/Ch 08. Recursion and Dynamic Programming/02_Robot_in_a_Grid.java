@@ -119,10 +119,10 @@ at their adjacent coordinates: (r-2, c), (r-1, c-1), (r-1, c-1), and (r, c -2). 
 appears twice, which means that we're duplicating effort. Ideally, we should remember that we already
 visited (r-1, c-1) so that we don't waste our time.
          
-                                               r,c
-                    r-1,c                                                r,c-1
-         r-2,c                  r-1,c-1                   r-1,c-1                  r,c-2
-   r-3,c      r-2,c-1    r-2,c-1       r-1,c-2     r-2,c-1       r-1,c-2    r-1,c-2      r,c-3
+                                            r,c
+                  r-1,c                                             r,c-1
+      r-2,c                  r-1,c-1                   r-1,c-1                  r,c-2
+ r-3,c     r-2,c-1    r-2,c-1       r-1,c-2     r-2,c-1       r-1,c-2    r-1,c-2     r,c-3
 
 
 notice  (r-1,c-1) repeats twice at level 2
