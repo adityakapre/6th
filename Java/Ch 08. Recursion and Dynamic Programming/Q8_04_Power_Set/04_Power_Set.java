@@ -8,8 +8,8 @@ being in there or not. That is, for the first element, there are two choices: it
 the second, there are two, etc. So, doing { 2 * 2 * . . . } n times gives us 2" subsets.
 Assuming that we're going to be returning a list of subsets, then our best case time is actually the total
 number of elements across all of those subsets. There are 2" subsets and each of the n elements will be
-contained in half of the subsets (i.e (2 raisedTo n / 2) = 2 raisedTo (n- 1) subsets). Therefore, the total number of elements across all of
-those subsets is n * 2 raisedTo (n-1).
+contained in half of the subsets (i.e (2 raisedTo n / 2) = 2 raisedTo (n- 1) subsets). Therefore, the total number of elements 
+across all of those subsets is n * 2 raisedTo (n-1).
 We will not be able to beat O(n * 2 raisedTo n) in space or time complexity.
 The subsets of {a1 , a2 , ••• , an} are also called the powerset P({a1, a2 , ••• , an}), or just P(n).
 
