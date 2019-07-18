@@ -1,6 +1,5 @@
 /*
 Q:
-
 Power Set: Write a method to return all subsets of a set.
 
 We should first have some reasonable expectations of our time and space complexity.
