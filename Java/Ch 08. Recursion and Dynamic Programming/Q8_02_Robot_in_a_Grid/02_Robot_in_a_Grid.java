@@ -66,7 +66,8 @@ public class QuestionA {
 	public static ArrayList<Point> getPath(boolean[][] maze) {
 		if (maze == null || maze.length == 0) return null;
 		ArrayList<Point> path = new ArrayList<Point>();
-		if (getPath(maze, maze.length - 1, maze[0].length - 1, path)) { //start from right bottom pixel
+		//start from right bottom pixel to find path to origin (0,0)
+		if (getPath(maze, maze.length - 1, maze[0].length - 1, path)) { 
 			return path;
 		}
 		return null;
