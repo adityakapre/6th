@@ -77,3 +77,16 @@ public class MyClass extends Thread  {
 		}
 	}
 }
+
+/*
+Sample output :
+
+Thread 2.foo(): starting logic execution
+Program terminating.
+Thread 2.foo(): ending
+Thread 3.foo(): starting logic execution
+Thread 3.foo(): ending
+Thread 1.foo(): starting logic execution
+Thread 1.foo(): ending
+
+*/
