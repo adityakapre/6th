@@ -152,7 +152,11 @@ public class QuestionB {
 	}
 }
 
-//
+/*
+A:
+Alternatively, if we're working in a language which supports this (Java 8 and many other languages do), we
+can pass in a validate method and a print method as parameters.
+*/
 
 package Q15_07_FizzBuzz;
 
