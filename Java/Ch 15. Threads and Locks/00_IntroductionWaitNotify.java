@@ -49,6 +49,7 @@ public class MyObject {
 package synchronization;
 
 public class MyClass extends Thread  {
+	
 	private String name;
 	private MyObject myObj;
 	
@@ -68,7 +69,6 @@ public class MyClass extends Thread  {
 				} else {
 					myObj.wait();
 				}
-				
 				myObj.foo(name);
 				myObj.notify();	
 			}
