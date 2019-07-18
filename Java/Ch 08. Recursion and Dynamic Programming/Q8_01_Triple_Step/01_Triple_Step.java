@@ -1,4 +1,10 @@
 /*
+Q:
+Triple Step: A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3
+steps at a time. Implement a method to count how many possible ways the child can run up the
+stairs.
+
+A:
 Let's think about this with the following question: What is the very last step that is done?
 The very last hop the child makes-the one that lands her on the nth step-was either a 3-step hop, a
 2-step hop, or a 1-step hop.
@@ -13,7 +19,7 @@ previous steps. We can get up to the nth step by any of the following:
 
 Therefore, we just need to add the number of these paths together.
 Be very careful here. A lot of people want to multiply them. Multiplying one path with another would signify
-taking one path and then taking the other. That's not what's happening here.
+taking one path AND then taking the other. That's not what's happening here. We want one path OR other.
 
 Brute Force Solution
 This is a fairly straightforward algorithm to implement recursively. We just need to follow logic like this:
