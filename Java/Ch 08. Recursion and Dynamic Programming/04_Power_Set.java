@@ -114,6 +114,7 @@ public class QuestionB {
 	public static ArrayList<Integer> convertIntToSet(int x, ArrayList<Integer> set) {
 		ArrayList<Integer> subset = new ArrayList<Integer>(); 
 		int index = 0;
+		//for loop gets executed n times
 		for (int k = x; k > 0; k >>= 1) { //k >>= 1 means "set k to itself shifted by one bit to the right".
 			if ((k & 1) == 1) {
 				subset.add(set.get(index));
@@ -126,6 +127,7 @@ public class QuestionB {
 	public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set) {
 		ArrayList<ArrayList<Integer>> allsubsets = new ArrayList<ArrayList<Integer>>();
 		int max = 1 << set.size(); /* Compute 2^n */ 
+		//for loop gets executed 2^n times
 		for (int k = 0; k < max; k++) {
 			ArrayList<Integer> subset = convertIntToSet(k, set);
 			allsubsets.add(subset);
