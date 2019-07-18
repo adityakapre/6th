@@ -46,6 +46,28 @@ P(n-1), clone the results, and then add a n to each of these cloned sets.
 
 This solution will be O(n * 2 raisedTo n) in time and space, which is the best we can do. For a slight optimization, we
 could also implement this algorithm iteratively.
+
+Mathematical identity :
+Combinations refer to the combination of n things taken k at a time without repetition.
+If the set has n elements, the number of k-combinations is equal to the binomial coefficient n!/(k!(n-k)!)
+
+In our case, we need to take 0 elements from n, then 1 element from n, then 2 elements from n ..... then n elements fron n
+so, total number of combinations = nC1 + nC2 + nC3 + ... +nCn = 2^n
+
+e.g there are 3 elemenst in set then combinations are
+
+decimal	binary
+0	0 0 0 (0 element out of 3)
+1	0 0 1 (1 element out of 3)
+2	0 1 0 (1 element out of 3)
+3	0 1 1 (2 element out of 3)
+4	1 0 0 (1 element out of 3)
+5	1 0 1 (2 element out of 3)
+6	1 1 0 (2 element out of 3)
+7	1 1 1 (3 element out of 3)
+
+So no of subsets are 8 = 2^3 = 2^n
+
 */
 package Q8_04_Power_Set;
 
