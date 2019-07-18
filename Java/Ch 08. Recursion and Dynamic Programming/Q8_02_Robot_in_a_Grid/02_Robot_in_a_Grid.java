@@ -35,7 +35,6 @@ This solution is O (2 raised to (r+c) ), since each path has r+c steps and there
 package Q8_02_Robot_in_a_Grid;
 
 import java.util.ArrayList;
-
 import CtCILibrary.AssortedMethods;
 
 class Point {
@@ -77,17 +76,16 @@ public class QuestionA {
 		// If out of bounds or not available, return.
 		if (col < 0 || row < 0 || !maze[row][col]) {
 			return false;
-		}
-		
+		}		
 		boolean isAtOrigin = (row == 0) && (col == 0);
-		
-		// If there's a path from the start to my current location, add my location.
+		// 1. If at origin, add (row, col) to path OR
+		// 2. If has path from (row, col-1), add (row, col) to path OR
+		// 3. If has path from (row-1, col), add (row, col) to path
 		if (isAtOrigin || getPath(maze, row, col - 1, path) || getPath(maze, row - 1, col, path)) { 
 			Point p = new Point(row, col);
 			path.add(p);
 			return true;
 		}
-		
 		return false;
 	}
 	
