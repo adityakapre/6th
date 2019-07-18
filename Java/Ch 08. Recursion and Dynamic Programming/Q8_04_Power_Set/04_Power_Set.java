@@ -64,8 +64,8 @@ public class QuestionA {
 			ArrayList<ArrayList<Integer>> moresubsets = new ArrayList<ArrayList<Integer>>();
 			for (ArrayList<Integer> subset : allsubsets) {
 				ArrayList<Integer> newsubset = new ArrayList<Integer>();
-				newsubset.addAll(subset); 
 				newsubset.add(item);
+				newsubset.addAll(subset); 
 				moresubsets.add(newsubset);
 			}
 			allsubsets.addAll(moresubsets);
@@ -81,5 +81,4 @@ public class QuestionA {
 		ArrayList<ArrayList<Integer>> subsets = getSubsets(list, 0);
 		System.out.println(subsets.toString());	
 	}
-
 }
