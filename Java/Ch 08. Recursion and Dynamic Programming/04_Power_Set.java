@@ -115,7 +115,7 @@ public class QuestionB {
 		ArrayList<Integer> subset = new ArrayList<Integer>(); 
 		int index = 0;
 		//for loop gets executed n times
-		for (int k = x; k > 0; k >>= 1) { //k >>= 1 means "set k to itself shifted by one bit to the right".
+		for (int k = x; k > 0; k >>= 1) { //k >>= 1 : "set k to itself shifted by one bit to right" i.e k=k/2.
 			if ((k & 1) == 1) {
 				subset.add(set.get(index));
 			}
