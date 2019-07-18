@@ -1,4 +1,12 @@
 /*
+Q:
+Magic Index: A magic index in an array A[ 1 ... n-1] is defined to be an index such that 
+A[i] = i. Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in
+array A.
+FOLLOW UP
+What if the values are not distinct?  
+
+A:
 Immediately, the brute force solution should jump to mind-and there's no shame in mentioning it. We
 simply iterate through the array, looking for an element which matches this condition.
 
