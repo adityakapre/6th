@@ -128,12 +128,27 @@ public class FizzBuzzThread extends Thread {
 }
 
 public class NumberThread extends FizzBuzzThread {
+	
 	public NumberThread(boolean div3, boolean div5, int max) {
 		super(div3, div5, max, null);
 	}
 
 	public void print() {
 		System.out.println(current);
+	}
+}
+
+public class QuestionB {
+
+	public static void main(String[] args) {
+		int n = 100;
+		Thread[] threads = {new FizzBuzzThread(true, true, n, "FizzBuzz"), 
+				    new FizzBuzzThread(true, false, n, "Fizz"), 
+				    new FizzBuzzThread(false, true, n, "Buzz"),
+				    new NumberThread(false, false, n)};
+		for (Thread thread : threads) {
+			thread.start();
+		}
 	}
 }
 
