@@ -126,7 +126,7 @@ public class QuestionB {
 	
 	public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set) {
 		ArrayList<ArrayList<Integer>> allsubsets = new ArrayList<ArrayList<Integer>>();
-		int max = 1 << set.size(); /* Compute 2^n */ 
+		int max = 1 << set.size(); /* Compute 2^n whr n = no.of.elements = set.size() */ 
 		//for loop gets executed 2^n times
 		for (int k = 0; k < max; k++) {
 			ArrayList<Integer> subset = convertIntToSet(k, set);
