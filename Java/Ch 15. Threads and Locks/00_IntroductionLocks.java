@@ -1,6 +1,7 @@
-package IntroductionLocks;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class Intro {
+public class IntroLocks {
 
 	public static void main(String[] args) {
 		NoLockATM noLockATM = new NoLockATM();
@@ -28,12 +29,8 @@ public class Intro {
 	}
 }
 
-package IntroductionLocks;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-public class LockedATM {
+class LockedATM {
 	private Lock lock;
 	private int balance = 100;
 	
@@ -72,9 +69,8 @@ public class LockedATM {
 	}
 }
 
-package IntroductionLocks;
 
-public class NoLockATM {
+class NoLockATM {
 	private int balance = 100;
 	
 	public NoLockATM() {
@@ -107,14 +103,7 @@ public class NoLockATM {
 	}	
 }
 
-package IntroductionLocks;
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import CtCILibrary.AssortedMethods;
-
-public class MyClass extends Thread  {
+class MyClass extends Thread  {
 	private NoLockATM noLockATM;
 	private LockedATM lockedATM;
 	public int delta = 0;
@@ -129,7 +118,8 @@ public class MyClass extends Thread  {
 	
 	public void run() {
 		completionLock.lock();
-		int[] operations = AssortedMethods.randomArray(20, -50, 50);
+		//int[] operations = AssortedMethods.randomArray(20, -50, 50);
+        int[] operations = new int[]{40,-10,20,30,10,-40,50,-10,40,10,50,-30,20,30,50,-40,50,-10,40,50};
 		for (int op : operations) {
 			delta += op;
 			if (op < 0) {
