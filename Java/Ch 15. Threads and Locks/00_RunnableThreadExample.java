@@ -1,5 +1,3 @@
-package IntroductionA;
-
 public class RunnableThreadExample implements Runnable {
 	public int count = 0;
 
