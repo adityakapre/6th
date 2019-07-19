@@ -1,4 +1,15 @@
 /*
+Q:
+Recursive Multiply: Write a recursive function to multiply two positive integers without using
+the * operator (or / operator). You can use addition, subtraction, and bit shifting, but you should
+minimize the number of those operations.
+
+
+Solution ::
+We can think about multiplying 8x7 as doing 8+8+8+8+8+8+8 (or adding 7 eight times). We can also think
+about it as the number of squares in an 8x7 grid.
+
+A:
 Solution #1
 How would we count the number of squares in this grid? We could just count each cell. That's pretty slow,
 though.
