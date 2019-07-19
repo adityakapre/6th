@@ -6,8 +6,9 @@ minimize the number of those operations.
 
 
 Solution ::
-We can think about multiplying 8x7 as doing 8+8+8+8+8+8+8 (or adding 7 eight times). We can also think
-about it as the number of squares in an 8x7 grid.
+We can think about multiplying 8x7 as doing 8+8+8+8+8+8+8 (or adding 7 eight times). 
+i.e ADD BIGGER TO ITSELF FOR N NUMBER OF TIMES WHERE N=SMALLER
+We can also think about it as the number of squares in an 8x7 grid.
 
 A:
 Solution #1
