@@ -29,8 +29,8 @@ public class IntroLocks {
 	}
 }
 
-
 class LockedATM {
+
 	private Lock lock;
 	private int balance = 100;
 	
