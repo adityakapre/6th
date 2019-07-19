@@ -85,7 +85,8 @@ class NoLockATM {
 			temp = temp - value;
 			Thread.sleep(300);
 			balance = temp;
-		} catch (InterruptedException e) {		}
+		} catch (InterruptedException e) {		
+		}
 		return temp;
 	}
 	
@@ -96,7 +97,8 @@ class NoLockATM {
 			temp = temp + value;
 			Thread.sleep(300);
 			balance = temp;
-		} catch (InterruptedException e) {		}
+		} catch (InterruptedException e) {		
+		}
 		return temp;
 	} 
 	
