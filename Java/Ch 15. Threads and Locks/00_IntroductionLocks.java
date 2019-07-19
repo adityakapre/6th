@@ -46,7 +46,8 @@ class LockedATM {
 			temp = temp - value;
 			Thread.sleep(100);
 			balance = temp;
-		} catch (InterruptedException e) {		}
+		} catch (InterruptedException e) {		
+		}
 		lock.unlock();
 		return temp;
 	}
@@ -59,7 +60,8 @@ class LockedATM {
 			temp = temp + value;
 			Thread.sleep(100);
 			balance = temp;
-		} catch (InterruptedException e) {		}
+		} catch (InterruptedException e) {		
+		}
 		lock.unlock();
 		return temp;
 	} 
