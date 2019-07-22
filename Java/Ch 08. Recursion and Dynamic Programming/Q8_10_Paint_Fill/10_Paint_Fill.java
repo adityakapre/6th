@@ -61,6 +61,7 @@ public class Paint {
 		}
 	}
 	
+	// *n since Math.random() retruns double between 0.0 to 1.0
 	public static int getRandom(int n) {
 		return (int) (Math.random() * n);
 	}
