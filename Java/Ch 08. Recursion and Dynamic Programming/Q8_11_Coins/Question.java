@@ -259,6 +259,12 @@ public class QuestionB {
 }
 
 /*
+Q:
+Q:
+Coins: Given an infinite number of quarters (25 cents), dimes (1O cents), nickels (5 cents), and
+pennies (1 cent), write code to calculate the number of ways of representing n cents.
+
+A:
 1) Optimal Substructure
 To count the total number of solutions, we can divide all set solutions into two sets.
 1) Solutions that do not contain mth coin (or Sm).
