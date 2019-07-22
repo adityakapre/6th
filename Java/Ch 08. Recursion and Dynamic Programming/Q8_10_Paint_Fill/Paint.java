@@ -53,7 +53,8 @@ public class Paint {
 			}
 		}
 	}
-		
+	
+	//assign green color to random blocks
 	public void randomizeScreen() {
 		for(int i=0; i<(N*N); i++) {
 			screen[getRandom(N)][getRandom(N)]=Color.GREEN;
