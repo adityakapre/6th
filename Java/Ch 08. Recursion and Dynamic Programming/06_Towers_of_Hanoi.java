@@ -71,7 +71,9 @@ package Q8_06_Towers_of_Hanoi;
 import java.util.Stack;
 
 public class Tower {
+	//tower is stack
 	private Stack<Integer> disks = new Stack<Integer>();
+	
 	public String name;
 	
 	public void add(int d) {
