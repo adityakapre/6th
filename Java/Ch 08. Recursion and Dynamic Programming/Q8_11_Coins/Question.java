@@ -318,6 +318,12 @@ Since same suproblems are called again, this problem has Overlapping Subprolems 
 So the Coin Change problem has both properties (see Overlapping Subproblems and Optimal Substructure) of a dynamic programming problem. 
 Like other typical Dynamic Programming(DP) problems, recomputations of same subproblems can be avoided 
 by constructing a temporary array table[][] in bottom up manner.
+
+		  0 1 2 3 4 5 ->j  n=total=5
+	        1 1 1 1 1 1 1
+	        2 1 1 2 2 3 3
+	        3 1 1 2 3 4 5
+	coins-> i
 */
 
 public static int count( int S[], int m, int n ) { 
