@@ -321,9 +321,8 @@ by constructing a temporary array table[][] in bottom up manner.
 */
 
 public static int count( int S[], int m, int n ) { 
-    // table[i] will be storing the number of solutions for 
-    // value i. We need n+1 rows as the table is constructed 
-    // in bottom up manner using the base case (n = 0) 
+    // table[i] will be storing the number of solutions for value i.  
+    // We need n+1 rows as the table is constructed in bottom up manner using the base case (n = 0) 
     int table[]=new int[n+1]; 
   
     // Base case (If given value is 0) 
