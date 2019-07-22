@@ -93,14 +93,14 @@ public class Tower {
 	
     public void moveDisks(int quantity, Tower destination, Tower buffer){
     	if (quantity <= 0) return;
-    		//n-1 disks to buffer tower
-		moveDisks(quantity - 1, buffer, destination);	
-		System.out.println("Move " + disks.peek() + " from " + this.name + " to " + destination.name);
-	    	//nth disk to destination
-		moveTopTo(destination);
-	    	//n-1 disks to final destination tower
-		buffer.moveDisks(quantity - 1, destination, this);
-	}
+    	//n-1 disks to buffer tower
+	moveDisks(quantity - 1, buffer, destination);	
+	System.out.println("Move " + disks.peek() + " from " + this.name + " to " + destination.name);
+	//nth disk to destination
+	moveTopTo(destination);
+	//n-1 disks to final destination tower
+	buffer.moveDisks(quantity - 1, destination, this);
+    }
 }
 
 class Question {
