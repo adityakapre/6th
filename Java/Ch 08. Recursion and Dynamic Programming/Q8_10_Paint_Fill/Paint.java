@@ -1,4 +1,10 @@
 /*
+Q:
+Paint Fill: Implement the "paint fill" function that one might see on many image editing programs.
+That is, given a screen (represented by a two-dimensional array of colors), a point, and a new color,
+fill in the surrounding area until the color changes from the original color.
+
+A:
 This algorithm is called FLOOD-FILL ALGORITHM (application:BUCKET FILL), complexity O(rc) for r rows, c columns in matrix
 
 First, let's visualize how this method works. When we call paintFill (i.e., "click" paint fill in the image
