@@ -1,4 +1,12 @@
 /*
+Q:
+Permutations without Dups: Write a method to compute all permutations of a string of unique characters.
+
+Solution::
+Like in many recursive problems, the Base Case and Build approach will be useful. Assume we have a string S
+represented by the characters a1, a2 ... an .
+
+A:
 Formula : 
 
 The number of permutations of n objects taken r at a time is determined by the following formula:
