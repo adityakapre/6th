@@ -1,5 +1,10 @@
-
 /*
+Q:
+Eight Queens:Write an algorithm to print all ways of arranging eight queens on an 8x8 chess board
+so that none of them share the same row, column, or diagonal. In this case, "diagonal" means all
+diagonals, not just the two that bisect the board.
+
+A:
 We have eight queens which must be lined up on an 8x8 chess board such that none share the same row,
 column or diagonal. So, we know that each row and column (and diagonal) must be used exactly once .
 
@@ -141,13 +146,11 @@ public class Question {
         System.out.println(line.toString());
     }
 
-
-	
-	public static void printBoards(ArrayList<Integer[]> boards) {
+    public static void printBoards(ArrayList<Integer[]> boards) {
 		for (int i = 0; i < boards.size(); i++) {
 			Integer[] board = boards.get(i);
 			printBoard(board);
 		}
-	}
+    }
 	
 }
