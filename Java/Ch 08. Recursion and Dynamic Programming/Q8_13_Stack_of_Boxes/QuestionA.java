@@ -1,4 +1,11 @@
 /*
+Q:
+Stack of Boxes: You have a stack of n boxes, with widths wi, heights hi, and depths di . The boxes
+cannot be rotated and can only be stacked on top of one another if each box in the stack is strictly
+larger than the box above it in width, height, and depth. Implement a method to compute the
+height of the tallest possible stack. The height of a stack is the sum of the heights of each box.
+
+A:
 Solution#1
 Imagine we had the following boxes: b1 , b2 , ••• , bn. The biggest stack that we can build with all the
 boxes equals the max of (biggest stack with bottom b1, biggest stack with bottom b2 , ••• , biggest stack
