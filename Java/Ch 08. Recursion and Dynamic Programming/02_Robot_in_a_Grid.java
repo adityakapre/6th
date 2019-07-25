@@ -191,5 +191,45 @@ public class QuestionB {
 			System.out.println("No path found.");
 		}
 	}
+}
 
+/*
+Dynamic programming approach :
+Consider 1x1 grid, then 1x2, then 1x3 grid then ... till 3X3 grid.
+Assume each time, assume robot starting from (1,1) and destinations are right corners.
+Find in total how many ways can robot reach destination each time.
+Generalize the formula
+
+   j
+   1 2 3
+1  0 1 1
+2  1 2 3
+3  1 3 6
+
+General formula on noticing:
+
+curr_cell_val=top_cell_val+left_cell_val
+i.e 
+new_dp[j]=old_dp[j]+dp[j-1]
+i.e
+dp[j]=dp[j]+dp[j-1]
+
+Now, if there is obstacle marked in a cell, for such cell, mark dp[j]=0
+*/
+
+uniquePathsWithObstacles(int[][] obstacles) {
+	
+	int width = obstacles[0].length;
+	int dp[] = new int[width];
+	dp[0]=1;
+	for(int[] row : obstacles) {
+		for(int j=0; j< width; j++) {
+			if(row[j]==1) {	//obstacle found
+				dp[j]=0;
+			} else if(j>0) {
+				dp[j]=dp[j]+dp[j-1];
+			}
+		}
+	}
+	return dp[j-1];
 }
