@@ -97,7 +97,7 @@ public class Question {
 	public static boolean checkValid(Integer[] columns, int row1, int column1) {
 		//row2 < row1 traverses all rows in which queens are placed till now placing queen starts from row 0
 		for (int row2 = 0; row2 < row1; row2++) {     
-			int column2 = columns[row2];
+			int column2 = columns[row2]; //columns[row2] is where queen was placed in row2
 		
 			/* Check if rows have a queen in the same column */
 			if (column1 == column2) { 
