@@ -112,7 +112,6 @@ public class QuestionB {
 			int x = Common.getCharNumber(c);
 			if (x != -1) {
 				table[x]++;
-
 				if (table[x] % 2 == 1) {
 					countOdd++;
 				} else {
