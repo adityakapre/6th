@@ -31,7 +31,8 @@ public class QuestionA {
 		if (head == null) {
 			return 0;
 		}
-		int index = printKthToLast(head.next, k) + 1;
+		int index = printKthToLast(head.next, k);
+		index++;
 		if (index == k) {
 			System.out.println(k + "th to last node is " + head.data);
 		}
@@ -77,7 +78,7 @@ public class QuestionC {
 			return null;
 		}
 		LinkedListNode node = kthToLast(head.next, k, idx);
-		idx.value = idx.value + 1;
+		idx.value++;
 		if (idx.value == k) {
 			return head;
 		} 
