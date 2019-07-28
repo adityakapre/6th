@@ -14,20 +14,6 @@
 public class EditDistance {
 
     /**
-     * Uses recursion to find minimum edits
-     */
-    public int recEditDistance(char[]  str1, char str2[], int len1,int len2){
-        
-        if(len1 == str1.length){
-            return str2.length - len2;
-        }
-        if(len2 == str2.length){
-            return str1.length - len1;
-        }
-        return min(recEditDistance(str1, str2, len1 + 1, len2 + 1) + str1[len1] == str2[len2] ? 0 : 1, recEditDistance(str1, str2, len1, len2 + 1) + 1, recEditDistance(str1, str2, len1 + 1, len2) + 1);
-    }
-    
-    /**
      * Uses bottom up DP to find the edit distance
      *
      *        a  b  c  d  e  f
@@ -39,12 +25,13 @@ public class EditDistance {
      *   f 5  4  4  3  2  3  3
      */
     public int dynamicEditDistance(char[] str1, char[] str2){
+        //need an extra row and column in DP table
         int temp[][] = new int[str1.length+1][str2.length+1];
-        
+        //init 1st row
         for(int i=0; i < temp[0].length; i++){
             temp[0][i] = i;
         }
-        
+        //init 1st column
         for(int i=0; i < temp.length; i++){
             temp[i][0] = i;
         }
@@ -60,7 +47,6 @@ public class EditDistance {
         }
         printActualEdits(temp, str1, str2);
         return temp[str1.length][str2.length];
-        
     }
 
     /**
@@ -106,4 +92,21 @@ public class EditDistance {
         System.out.print(result);
     }
 
+    /**
+     * Uses recursion to find minimum edits
+     */
+    public int recEditDistance(char[]  str1, char str2[], int len1,int len2){
+        
+        if(len1 == str1.length){
+            return str2.length - len2;
+        }
+        if(len2 == str2.length){
+            return str1.length - len1;
+        }
+        return min(
+            recEditDistance(str1, str2, len1 + 1, len2 + 1) + str1[len1] == str2[len2] ? 0 : 1, 
+            recEditDistance(str1, str2, len1, len2 + 1) + 1, 
+            recEditDistance(str1, str2, len1 + 1, len2) + 1
+        );
+    }
 }
