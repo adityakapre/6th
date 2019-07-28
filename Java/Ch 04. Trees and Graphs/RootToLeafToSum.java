@@ -34,10 +34,34 @@ public class RootToLeafToSum {
                 return false;
             }
         }
-        if(printPath(root.left, sum-root.data, path) || printPath(root.right, sum - root.data, path)){
+        if(printPath(root.left, sum - root.data, path)){
+            path.add(root);
+            return true;
+        }
+        if(printPath(root.right, sum - root.data, path)){
             path.add(root);
             return true;
         }
         return false;
     }
 }
+
+/*
+In above solution look at code :
+
+if(printPath(root.left, sum - root.data, path)){
+   path.add(root);
+   return true;
+}
+if(printPath(root.right, sum - root.data, path)){
+   path.add(root);
+   return true;
+}
+
+This can be replaced by following code since both mean the same thing:
+
+if(printPath(root.left, sum-root.data, path) || printPath(root.right, sum - root.data, path)){
+   path.add(root);
+   return true;
+}
+*/
