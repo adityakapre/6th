@@ -47,6 +47,7 @@ serving as a buffer.
 
 This approach leads to a natural recursive algorithm. In each part, we are doing the following steps, outlined
 below with pseudocode:
+
 1 moveDisks(int n, Tower origin, Tower destination, Tower buffer) {
 2 	// Base case 
 3 	if (n <= 0) return;
@@ -60,6 +61,7 @@ s 	// move top n - 1 disks from origin to buffer, using destination as a buffer.
 11 	// move top n - 1 disks from buffer to destination, using origin as a buffer. 
 12 	moveDisks(n - 1, buffer, destination, origin);
 13 }
+
 The following code provides a more detailed implementation of this algorithm, using concepts of objectoriented
 design.
 
@@ -93,16 +95,17 @@ public class Tower {
 		System.out.println("Contents of Tower " + name + ": " + disks.toString());
 	}
 	
-    public void moveDisks(int quantity, Tower destination, Tower buffer){
-    	if (quantity <= 0) return;
-    	//n-1 disks to buffer tower
-	moveDisks(quantity - 1, buffer, destination);	
-	System.out.println("Move " + disks.peek() + " from " + this.name + " to " + destination.name);
-	//nth disk to destination
-	moveTopTo(destination);
-	//n-1 disks to final destination tower
-	buffer.moveDisks(quantity - 1, destination, this);
-    }
+	//observe this method is called on source tower object
+    	public void moveDisks(int quantity, Tower destination, Tower buffer){
+    		if (quantity <= 0) return;
+    		//n-1 disks to buffer tower
+		moveDisks(quantity - 1, buffer, destination);	
+		System.out.println("Move " + disks.peek() + " from " + this.name + " to " + destination.name);
+		//nth disk to destination
+		moveTopTo(destination);
+		//n-1 disks to final destination tower
+		buffer.moveDisks(quantity - 1, destination, this);
+    	}
 }
 
 class Question {
