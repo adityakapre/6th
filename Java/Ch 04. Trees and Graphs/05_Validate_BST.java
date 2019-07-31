@@ -53,9 +53,11 @@ public class QuestionB {
 		if (n == null) {
 			return true;
 		}
+		//check if n.data are out of bounds
 		if ((min != null && n.data <= min) || (max != null && n.data > max)) {
 			return false;
 		}
+		//check if n.left.data & n.right.data re out of bounds
 		if (!checkBST(n.left, min, n.data) ||
 			!checkBST(n.right, n.data, max)) {
 			return false;
