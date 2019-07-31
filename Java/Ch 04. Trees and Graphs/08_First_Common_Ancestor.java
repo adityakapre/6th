@@ -164,10 +164,11 @@ public class QuestionD {
 		if (pIsOnLeft != qIsOnLeft) { // Nodes are on different side
 			return root;
 		}
+		//If both on left, go to left
 		if(pIsOnLeft) {
             		return lca(root.left, p, q);
         	} else {
-            		return lca(root.right, p, q2);
+            		return lca(root.right, p, q);
         	}
 	}
 	
