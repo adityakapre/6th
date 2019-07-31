@@ -83,8 +83,9 @@ public class Question {
 		start.state = State.Visiting;
 		q.add(start);
 		Node u;
+		//Loop till queue is not empty
 		while(!q.isEmpty()) {
-		    //Remove from queue & explore adjacent nodes
+		    //Remove from queue & explore adjacent nodes in loop
 		    u = q.removeFirst();
 		    if (u != null) {
 			    for (Node v : u.getAdjacent()) {
