@@ -97,7 +97,7 @@ public class QuestionImproved {
 			return Integer.MIN_VALUE; // Found error -> pass it back
 		} else {
           		System.out.println("Balanced ->"+root.data);
-			return Math.max(leftHeight, rightHeight) + 1;
+			return 1 + Math.max(leftHeight, rightHeight);
 		}
 	}
 		
