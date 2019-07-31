@@ -57,7 +57,7 @@ One might ask which of these solutions is more efficient. Both run in O (N) time
 efficiency? At first, we might want to claim that the second solution is more space efficient.
 In a sense, that's correct. The first solution uses 0(log N) recursive calls (in a balanced tree), each of which
 adds a new level to the stack. The second solution, which is iterative, does not require this extra space.
-However, both solutions require returning O(N) data. The extra 0(log N) space usage from the recursive
+However, both solutions require returning O(N) data. The extra O(log N) space usage from the recursive
 implementation is dwarfed by the O (N) data that must be returned. So while the first solution may actually
 use more data, they are equally efficient when it comes to "big O:'
 */
