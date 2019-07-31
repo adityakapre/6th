@@ -10,8 +10,8 @@ the two subtrees differ in height by no more than one. We can implement a soluti
 We can simply recurse through the entire tree, and for each node, compute the heights of each subtree.
 
 Although this works. it's not very efficient. On each node. we recurse through its entire subtree. This means
-that getHeight is called repeatedly on the same nodes. The algorithm is O(Nlog N) since each node is
-"touched" once per node above it.
+that getHeight is called repeatedly on the same nodes (on each node its called ~ log(N) times. 
+The algorithm is O(Nlog N) since each node is "touched" once per node above it.
 */
 package Q4_04_Check_Balanced;
 
