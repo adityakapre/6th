@@ -79,7 +79,7 @@ Initialization and setup:
       » If node is null, then all remaining nodes have a dependency and we have detected a cycle.
       2. For each child of node:
       » Decrement child. dependencies (the number of incoming edges).
-      » If child. dependencies is zero, add child to end of buildOrder.
+      » If child dependencies is zero, add child to end of buildOrder.
       3. Increment toBeProcessed.
 
 
