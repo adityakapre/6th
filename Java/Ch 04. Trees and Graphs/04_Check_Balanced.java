@@ -37,7 +37,7 @@ public class QuestionBrute {
 		if (root == null) {
 			return -1;
 		}
-		return Math.max(getHeight(root.left), getHeight(root.right)) + 1; //+1 is very important
+		return 1 + Math.max(getHeight(root.left), getHeight(root.right)); //1+ is very important
 	}
 		
 	public static void main(String[] args) {
