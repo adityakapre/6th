@@ -79,24 +79,28 @@ public class Question {
 		for (Node u : g.getNodes()) {
 		    u.state = State.Unvisited;
 		}
+		//Visit "Start" node & add to queue
 		start.state = State.Visiting;
 		q.add(start);
 		Node u;
 		while(!q.isEmpty()) {
+		    //Remove from queue & explore adjacent nodes
 		    u = q.removeFirst();
 		    if (u != null) {
-			    //explore adjacent nodes of u
 			    for (Node v : u.getAdjacent()) {
 				if (v.state == State.Unvisited) {
+				    //If destination node found, return true
 				    if (v == end) {
 					return true;
 				    } else {
+					//Mark adjacent nodes as "Visiting"
 					v.state = State.Visiting;
+					//Add adjacent nodes to queue
 					q.add(v);
 				    }
 				}
 			    }
-			    //added to queue all adjacent nodes of u, so mark it visited
+			    //Mark node removed from queue as "Visited"
 			    u.state = State.Visited;
 		    }
 		}
