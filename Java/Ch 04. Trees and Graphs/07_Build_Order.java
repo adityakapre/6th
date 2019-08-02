@@ -78,7 +78,7 @@ Initialization and setup:
       1. Read node at toBeProcessed.
       » If node is null, then all remaining nodes have a dependency and we have detected a cycle.
       2. For each child of node:
-      » Decrement child. dependencies (the number of incoming edges).
+      » Decrement child dependencies (the number of incoming edges).
       » If child dependencies is zero, add child to end of buildOrder.
       3. Increment toBeProcessed.
 
@@ -150,11 +150,83 @@ By the way, this problem is called topological sort: linearly ordering the verti
 every edge (a, b), a appears before b in the linear order.
 
 */
-package Q4_07_Build_Order.EdgeRemoval;
+package project;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class Question {
+//DEFINE DATASTRUCTURES
+
+/*No need to store List<Project> children seperately as map can give us that list
+ * plus map can check if child exists in a Project using containsKey in O(1)*/
+class Project {
+	
+	private String name; //This project name
+	
+	private HashMap<String, Project> children = new HashMap<>(); //Map of outgoing edges
+
+	private int dependencies = 0; //Count of incoming edges
+	
+	public Project(String n) {
+		name = n;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public void addNeighbor(Project node) {
+		if (!children.containsKey(node.getName())) {
+			children.put(node.getName(), node);
+			node.incrementDependencies();  //INCREMENT NO OF INCOMING EDGES I.E PROJECT DEPENDENCIES
+		}
+	}
+	
+	public void incrementDependencies() {
+		dependencies++;
+	}
+	
+	public Collection<Project> getChildren() {
+		return children.values();
+	}
+	
+	public void decrementDependencies() {
+		dependencies--;
+	}
+	
+	public int getNumberDependencies() {
+		return dependencies;
+	}
+}
+
+/*No need to store List<Project> vertices seperately as map can give us that list
+ * plus map can check if a vertex exists in Graph using containsKey in O(1)*/
+class Graph {
+	
+	private HashMap<String, Project> vertices = new HashMap<>(); //Map of nodes in graph
+	
+	public Project getOrCreateNode(String name) {
+		if (!vertices.containsKey(name)) {
+			Project node = new Project(name);
+			vertices.put(name, node);
+		}
+		return vertices.get(name);
+	}
+	
+	public void addEdge(String startName, String endName) {
+		Project start = getOrCreateNode(startName);
+		Project end = getOrCreateNode(endName);
+		start.addNeighbor(end);
+	}
+	
+	public Collection<Project> getNodes() {
+		return vertices.values();
+	}
+}
+
+//DEFINE ALGORITHM
+
+public class BuildOrder {
 	
 	/* Build the graph, adding the edge (a, b) if b is dependent on a. 
 	 * Assumes a pair is listed in “build order”. The pair (a, b) in 
@@ -171,13 +243,15 @@ public class Question {
 			String second = dependency[1];
 			graph.addEdge(first, second);
 		}
-		
 		return graph;
 	}
 	
 	// actual start here ...
 	public static Project[] orderProjects(Graph graph) {
-		ArrayList<Project> projects = graph.getNodes();
+		/*Get ap projects from graph*/
+		Collection<Project> projects = graph.getNodes();
+		
+		/*Array to track order of projects at output*/
 		Project[] output = new Project[projects.size()];
 		
 		/* Add “roots” to the build order first.*/
@@ -195,8 +269,8 @@ public class Question {
 				return null;
 			}
 			
-			/* Remove myself as a dependency. */
-			ArrayList<Project> children = current.getChildren();
+			/* Remove myself ("current") as a dependency from each of my child. */
+			Collection<Project> children = current.getChildren();
 			for (Project child : children) {
 				child.decrementDependencies();
 			}			
@@ -212,7 +286,7 @@ public class Question {
 	
 	/* A helper function to insert projects with zero dependencies 
 	 * into the order array, starting at index offset. */
-	public static int addNonDependent(Project[] output, ArrayList<Project> projects, int endOfList) {
+	public static int addNonDependent(Project[] output, Collection<Project> projects, int endOfList) {
 		for (Project project : projects) {
 			if (project.getNumberDependencies() == 0) {
 				output[endOfList] = project;
@@ -225,8 +299,7 @@ public class Question {
 	public static String[] buildOrderWrapper(String[] projects, String[][] dependencies) {
 		Project[] buildOrder = findBuildOrder(projects, dependencies);
 		if (buildOrder == null) return null;
-		String[] buildOrderString = convertToStringList(buildOrder);
-		return buildOrderString;
+		return convertToStringList(buildOrder);
 	}
 	
 	public static Project[] findBuildOrder(String[] projects, String[][] dependencies) {
@@ -242,6 +315,7 @@ public class Question {
 		return buildOrder;
 	}
 	
+	//a	g	h	b	i	c	d	j	e	f
 	public static void main(String[] args) {
 		String[] projects = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
 		String[][] dependencies = {
@@ -262,78 +336,11 @@ public class Question {
 			System.out.println("Circular Dependency.");
 		} else {
 			for (String s : buildOrder) {
-				System.out.println(s);
+				System.out.print(s+" ");
 			}
 		}
 	}
 }
-	
-class Project {
-	private ArrayList<Project> children = new ArrayList<Project>();	//OUTGOING EDGES
-	private HashMap<String, Project> map = new HashMap<String, Project>();
-	private String name;
-	private int dependencies = 0; //NO OF INCOMING EDGES
-	
-	public Project(String n) {
-		name = n;
-	}
-
-	public String getName() {
-		return name;
-	}
-	
-	public void addNeighbor(Project node) {
-		if (!map.containsKey(node.getName())) {
-			children.add(node);
-			map.put(node.getName(), node);
-			node.incrementDependencies();  //INCREMENT NO OF INCOMING EDGES I.E PROJECT DEPENDENCIES
-		}
-	}
-	
-	public void incrementDependencies() {
-		dependencies++;
-	}
-	
-	public ArrayList<Project> getChildren() {
-		return children;
-	}
-	
-	public void decrementDependencies() {
-		dependencies--;
-	}
-	
-	public int getNumberDependencies() {
-		return dependencies;
-	}
-}
-
-class Graph {
-	private ArrayList<Project> nodes = new ArrayList<Project>();
-	private HashMap<String, Project> map = new HashMap<String, Project>();
-	
-	public Project getOrCreateNode(String name) {
-		if (!map.containsKey(name)) {
-			Project node = new Project(name);
-			nodes.add(node);
-			map.put(name, node);
-		}
-		
-		return map.get(name);
-	}
-	
-	public void addEdge(String startName, String endName) {
-		Project start = getOrCreateNode(startName);
-		Project end = getOrCreateNode(endName);
-		start.addNeighbor(end);
-	}
-	
-	public ArrayList<Project> getNodes() {
-		return nodes;
-	}
-}
-	
-}
-
 
 /*
 A:
