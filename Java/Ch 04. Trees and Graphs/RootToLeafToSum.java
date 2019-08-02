@@ -22,10 +22,10 @@
 public class RootToLeafToSum {
 
     public boolean printPath(Node root, int sum, List<Node> path){
+        
         if(root == null){
             return false;
         }
-
         if(root.left == null && root.right == null){
             if(root.data == sum){
                 path.add(root);
