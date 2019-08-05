@@ -16,13 +16,13 @@ public class EditDistance {
     /**
      * Uses bottom up DP to find the edit distance
      *
-     *        a  b  c  d  e  f
-     *     0  1  2  3  4  5  6
-     *   a 1  0  1  2  3  4  5
-     *   z 2  1  1  2  3  4  5
-     *   d 3  2  2  1  2  3  4
-     *   e 4  3  3  2  2  2  3
-     *   f 5  4  4  3  2  3  3
+     *         a  b  c  d  e  f
+     *      0  1  2  3  4  5  6
+     *   a  1  0  1  2  3  4  5
+     *   z  2  1  1  2  3  4  5
+     *   d  3  2  2  2  2  3  4
+     *   e  4  3  3  3  3  2  3
+     *   f  5  4  4  4  4  3  2
      */
     public int dynamicEditDistance(char[] str1, char[] str2){
         //need an extra row and column in DP table
