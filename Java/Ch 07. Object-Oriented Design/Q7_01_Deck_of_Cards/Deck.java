@@ -20,6 +20,7 @@ public class Deck <T extends Card> {
 			int j = AssortedMethods.randomIntInRange(i, cards.size() - i - 1);
 			T card1 = cards.get(i);
 			T card2 = cards.get(j);
+			//swap ith n jth card
 			cards.set(i, card2);
 			cards.set(j, card1);
 		}
