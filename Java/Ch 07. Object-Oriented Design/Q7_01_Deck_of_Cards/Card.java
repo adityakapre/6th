@@ -12,9 +12,9 @@ public abstract class Card {
 	
 	public abstract int value();
 
-	public Card(int c, Suit s) {
-		faceValue = c;
-		suit = s;
+	public Card(int faceValue, Suit suit) {
+		this.faceValue = faceValue;
+		this.suit = suit;
 	}
 	
 	public Suit suit() { 
