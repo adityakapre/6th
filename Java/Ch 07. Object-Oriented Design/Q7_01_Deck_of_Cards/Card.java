@@ -7,14 +7,15 @@ public abstract class Card {
 	 * or 11 for Jack, 12 for Queen, 13 for King, or 1 for Ace 
 	 */
 	protected int faceValue;
+	
 	protected Suit suit;
+	
+	public abstract int value();
 
 	public Card(int c, Suit s) {
 		faceValue = c;
 		suit = s;
 	}
-	
-	public abstract int value();
 	
 	public Suit suit() { 
 		return suit; 
