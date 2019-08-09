@@ -7,6 +7,7 @@ public enum Suit {
 	Spade (3);
 	
 	private int value;
+	
 	private Suit(int v) {
 		value = v;
 	}
@@ -26,7 +27,7 @@ public enum Suit {
 		case 3: 
 			return Suit.Spade;
 		default:
-				return null;
+			return null;
 		}
 	}
 }
