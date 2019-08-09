@@ -1,6 +1,7 @@
 package Q7_01_Deck_of_Cards;
 
 public class BlackJackCard extends Card {
+	
 	public BlackJackCard(int c, Suit s) {
 		super(c, s);
 	}
