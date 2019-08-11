@@ -26,3 +26,39 @@ public void findTop3 {
     printf("TOP 3rd is<%d>\n",h3);
     return 0;
 }
+
+// if we can use additional space, then we can useb set
+class Solution {
+		
+	public static getMaxOfThree(int[] arr) {
+		
+		Set<Integer> set = new TreeSet<Integer>(new MaxThreeNumbers());
+		for(int i : arr) {
+			set.add(i);
+		}
+		int a,b,c;
+		int cnt=0;
+		for(int i : set) {
+			if(cnt==0) {
+				a=i;
+				cnt++;
+			} else if(cnt==1) {
+				b=i;
+				cnt++;
+			} else if(cnt==2) {
+				c=i;
+				cnt++;
+			} else {
+				break;
+			}
+		}
+	}	
+}
+
+class MaxThreeNumbers implements Comparable<Integer> {
+	
+	@Override
+	public int compare(Integer i, Integer j) {
+		return i-j;
+	}
+}
