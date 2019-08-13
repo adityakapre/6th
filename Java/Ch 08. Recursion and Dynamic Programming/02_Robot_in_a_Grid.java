@@ -208,11 +208,11 @@ Generalize the formula
 
 General formula on noticing:
 
-curr_cell_val=top_cell_val+left_cell_val
+curr_cell_val = top_cell_val + left_cell_val
 i.e 
-new_dp[j]=old_dp[j]+dp[j-1]
+new_dp[j] = old_dp[j] + dp[j-1]
 i.e
-dp[j]=dp[j]+dp[j-1]
+dp[j] = dp[j] + dp[j-1]
 
 Now, if there is obstacle marked in a cell, for such cell, mark dp[j]=0
 */
