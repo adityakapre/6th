@@ -100,6 +100,9 @@ It's important to be very clear here that this is not necessarily more optimal. 
 might even be slightly slower. We have eliminated a final iteration through the hash table, but now we have
 to run a few extra lines of code for each character in the string.
 You should discuss this with your interviewer as an alternate, but not necessarily more optimal, solution.
+
+USE HASHMAP IF SIZE OF CHARACTERSET NOT GIVEN
+so instead of table[x]++, it will be table.put('x', (int) table.get('x') + 1);
 */
 package Q1_04_Palindrome_Permutation;
 
