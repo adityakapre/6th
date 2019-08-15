@@ -114,8 +114,8 @@ public class QuestionB {
 				table[x]++;
 				if (table[x] % 2 == 1) {
 					countOdd++;
-				} else {
-					countOdd--;
+				} else { 		
+					countOdd--;	// IMP to reduce countOdd
 				}
 			}
 		}
