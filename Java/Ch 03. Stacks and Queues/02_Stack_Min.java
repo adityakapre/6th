@@ -41,7 +41,7 @@ public class StackWithMin extends Stack<NodeWithMin> {
     }
     
     public int min() {
-    	if (this.isEmpty()) {
+    	if (this.isEmpty()) {			// Stack is empty
     		return Integer.MAX_VALUE;
     	} else {
     		return peek().min;
