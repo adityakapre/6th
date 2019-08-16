@@ -64,8 +64,8 @@ public class QuestionA {
 		result.data = value % 10;                         //modulus, returns remainder
 		if (l1 != null || l2 != null) {
 			LinkedListNode more = addLists(l1 == null ? null : l1.next, 
-										   l2 == null ? null : l2.next, 
-										   value >= 10 ? 1 : 0);
+						       l2 == null ? null : l2.next, 
+						       value >= 10 ? 1 : 0);
 			result.setNext(more);
 		}
 		return result;
