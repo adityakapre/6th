@@ -26,26 +26,26 @@ public class EditDistance {
      */
     public int dynamicEditDistance(char[] str1, char[] str2){
         //need an extra row and column in DP table
-        int temp[][] = new int[str1.length+1][str2.length+1];
+        int T[][] = new int[str1.length+1][str2.length+1];
         //init 1st row
-        for(int i=0; i < temp[0].length; i++){
-            temp[0][i] = i;
+        for(int i=0; i < T[0].length; i++){
+            T[0][i] = i;
         }
         //init 1st column
-        for(int i=0; i < temp.length; i++){
-            temp[i][0] = i;
+        for(int i=0; i < T.length; i++){
+            T[i][0] = i;
         }
         
         for(int i=1;i <=str1.length; i++){
             for(int j=1; j <= str2.length; j++){
                 if(str1[i-1] == str2[j-1]){
-                    temp[i][j] = temp[i-1][j-1];
+                    T[i][j] = T[i-1][j-1];
                 }else{
-                    temp[i][j] = 1 + min(temp[i-1][j-1], temp[i-1][j], temp[i][j-1]);
+                    T[i][j] = 1 + min(T[i-1][j-1], T[i-1][j], T[i][j-1]);
                 }
             }
         }
-        printActualEdits(temp, str1, str2);
+        printActualEdits(T, str1, str2);
         return temp[str1.length][str2.length];
     }
 
