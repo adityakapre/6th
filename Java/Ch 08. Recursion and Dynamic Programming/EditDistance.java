@@ -46,7 +46,7 @@ public class EditDistance {
             }
         }
         printActualEdits(T, str1, str2);
-        return temp[str1.length][str2.length];
+        return T[str1.length][str2.length];
     }
 
     /**
