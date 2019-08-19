@@ -71,7 +71,7 @@ public class EditDistance {
                 i = i-1;
             } else if (T[i][j] == T[i][j-1] + 1){
                 System.out.println("Delete in string2 " + str2[j-1]);
-                j = j -1;
+                j = j-1;
             } else {
                 throw new IllegalArgumentException("Some wrong with given data");
             }
