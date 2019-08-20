@@ -1,4 +1,24 @@
 /**
+  * Read following : 
+  * - https://security.blogoverflow.com/2013/09/about-secure-password-hashing/
+  * 
+  * BCrypt Features :
+  * 
+  * Not plain text - Not only do plain text passwords compromise your website if the database 
+  * is breached but they can also compromise other websites for the users. 
+  * Unfortunately, a lot of users share passwords across websites.
+  * One way hashing - BCrypt is a one-way hash function to obfuscate the password such that it is not stored in plain text.
+  * Salted hashing - Generating random bytes (the salt) and combining it with the password before hashing 
+  * creates unique hashes across each user's password. If two users have the same password they will not have 
+  * the same password hash. This is to prevent rainbow table attacks which can reverse hashed passwords 
+  * using common hashing functions that do not utilize a salt.
+  * Logarithmic iterations - The hashing function is executed many times sequentially which can be increased exponentially, 
+  * which is known as key stretching. This is to make the function CPU intensive which makes it more secure against brute force attacks.
+  * Updatable iterations - As CPUs become faster so do brute force attacks. Since BCrypt stores the number of iterations 
+  * as part of the hash it's possible to verify a password and then increase its strength by generating a new hash 
+  * with a higher number of iterations.
+  *
+  *
   * Author: Ian Gallagher <igallagher@securityinnovation.com>
   *
   * This code utilizes jBCrypt, which you need installed to use.
