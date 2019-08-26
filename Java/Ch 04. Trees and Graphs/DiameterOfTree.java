@@ -29,9 +29,9 @@ int diameter(Node root)
         int rdiameter = diameter(root.right); 
   
         /* Return max of following three 
-         1) Diameter of left subtree 
-         2) Diameter of right subtree 
-         3) Height of left subtree + height of right subtree + 1  i.e diameter of this tree
+         1) Diameter of this tree i.e height of left subtree + height of right subtree + 1
+         2) Diameter of left subtree 
+         3) Diameter of right subtree 
          */
         return Math.max(lheight + rheight + 1, Math.max(ldiameter, rdiameter)); 
   
