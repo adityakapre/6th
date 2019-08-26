@@ -96,13 +96,9 @@ public class QuestionA {
 		int nrows = 10;
 		int ncols = 15;
 		int[][] matrix = AssortedMethods.randomMatrix(nrows, ncols, -10, 10);		
-
 		AssortedMethods.printMatrix(matrix);
-		
 		setZeros(matrix);
-		
 		System.out.println();
-		
 		AssortedMethods.printMatrix(matrix);
 	}
 }
