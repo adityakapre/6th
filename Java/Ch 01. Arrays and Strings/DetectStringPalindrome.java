@@ -5,7 +5,7 @@ QF. What if the string has a bunch of spaces, but if the same letters are still 
 
 import java.util.*;
  
-class Palindrome {
+public class Palindrome {
   public static void main(String args[]) {
     String inputString;
     Scanner in = new Scanner(System.in);
@@ -13,21 +13,21 @@ class Palindrome {
     
     inputString = in.nextLine();
     int length  = inputString.length();
-    int i, begin, end, middle;
+    int i, start, end, mid;
  
-    begin  = 0;
+    start  = 0;
     end    = length - 1;
-    middle = (begin + end)/2;
+    mid = (start + end)/2;
     //check only till half/mid
-    for (i = begin; i <= middle; i++) {
-      if (inputString.charAt(begin) == inputString.charAt(end)) {
-         begin++; 
+    for (i = start; i <= mid; i++) {
+      if (inputString.charAt(start) == inputString.charAt(end)) {
+         start++; 
          end--;
       } else {
          break;
       }
     }
-    if (i == middle + 1) {
+    if (i == mid + 1) {
       System.out.println("Palindrome");
     }
     else {
