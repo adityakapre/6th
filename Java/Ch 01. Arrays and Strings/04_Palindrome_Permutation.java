@@ -60,10 +60,10 @@ public class QuestionA {
 	}
 	
 	public static int getCharNumber(Character c) {
-		int a = Character.getNumericValue('a');
-		int z = Character.getNumericValue('z');
+		int a = (int)'a';
+		int z = (int)'z';
 		
-		int val = Character.getNumericValue(c);
+		int val = (int)c;
 		if (a <= val && val <= z) {
 			return val - a;
 		}
@@ -126,10 +126,10 @@ public class QuestionB {
 	}
 	
 	public static int getCharNumber(Character c) {
-		int a = Character.getNumericValue('a');
-		int z = Character.getNumericValue('z');
+		int a = (int)'a';
+		int z = (int)'z';
 		
-		int val = Character.getNumericValue(c);
+		int val = (int)c;
 		if (a <= val && val <= z) {
 			return val - a;
 		}
