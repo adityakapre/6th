@@ -166,9 +166,9 @@ public class QuestionD {
 		}
 		//If both on left, go to left
 		if(pIsOnLeft) {
-            		return lca(root.left, p, q);
+            		return ancestorHelper(root.left, p, q);
         	} else {
-            		return lca(root.right, p, q);
+            		return ancestorHelper(root.right, p, q);
         	}
 	}
 	
