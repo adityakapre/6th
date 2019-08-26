@@ -121,7 +121,7 @@ public static boolean oneEditAway(String first, String second) {
 			return false;
 		}
 		
-		/* Get shorter and longer string.*/
+		/* Get shorter s1 and longer string s2.*/
 		String s1 = first.length() < second.length() ? first : second;
 		String s2 = first.length() < second.length() ? second : first;
 
