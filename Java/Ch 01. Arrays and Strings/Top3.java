@@ -27,10 +27,15 @@ public void findTop3 {
     return 0;
 }
 
-// if we can use additional space, then we can useb set
-class Solution {
+/* If we can use additional space, then we can useb set
+Comparator = custom ordering = compare(Object o1, Object o2)
+Comparable = natural ordering = compareTo(Object o1)
+*/
+
+import java.util.*;
+public class Solution {
 		
-	public static getMaxOfThree(int[] arr) {
+	public static void getMaxOfThree(int[] arr) {
 		
 		Set<Integer> set = new TreeSet<Integer>(new MaxThreeNumbers());
 		for(int i : arr) {
@@ -42,23 +47,31 @@ class Solution {
 			if(cnt==0) {
 				a=i;
 				cnt++;
+				System.out.println("Max  = " + i);
 			} else if(cnt==1) {
 				b=i;
 				cnt++;
+				System.out.println("Second Max  = " + i);
 			} else if(cnt==2) {
 				c=i;
 				cnt++;
+				System.out.println("Third Max  = " + i);
 			} else {
-				break;
+			    break;
 			}
 		}
 	}	
+	
+	public static void main(String[] args) {
+	     getMaxOfThree(new int[]{30,26,76,19,49,35,20});
+	     
+	}
 }
 
-class MaxThreeNumbers implements Comparable<Integer> {
+class MaxThreeNumbers implements Comparator<Integer> {
 	
 	@Override
 	public int compare(Integer i, Integer j) {
-		return i-j;
+		return j-i;
 	}
 }
