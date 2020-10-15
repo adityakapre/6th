@@ -271,11 +271,11 @@ where a = first term, d = common difference
 - The sum of series:
 a + (a+d) + (a+2d) + (a+3d) ... + (a+(n-1)d) = (n/2)*(2a+(n-1)d)
 
-
 Example 15
 ==========
 The following code prints all Fibonacci numbers from 0 to n. However, this time, it stores (i.e., caches) previously
 computed values in an integer array. If it has already been computed, it just returns the cache. What is its runtime?
+
 1 void allFib(int n) {
 2   int[] memo = new int[n + 1];
 3   for (int i= 0; i < n; i++) {
@@ -293,6 +293,7 @@ computed values in an integer array. If it has already been computed, it just re
 13  memo[n] = fib(n - 1, memo)+ fib(n - 2, memo);     //memoization
 14  return memo[n];
 15 }
+
 Let's walk through what this algorithm does.
 fib(l) -> return 1
  fib(2)
