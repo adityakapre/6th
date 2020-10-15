@@ -6,7 +6,7 @@ have learned big O before, so that they don't say, "But I thought big O meant..:
 
 Academics use big O, big 0 (theta), and big Ω (omega) to describe runtimes.
 O (big O): In academia, big O describes an upper bound on the time. An algorithm that prints all the
-values in an array could be described as O(N), but it could also be described as O(N2), O(N3), or 0( 2N)
+values in an array could be described as O(N), but it could also be described as O(N^2), O(N^3), or 0(2^N)
 (or many other big O times). The algorithm is at least as fast as each of these; therefore they are upper
 bounds on the runtime. This is similar to a less-than-or-equal-to relationship. If Bob is X years old (I'll
 assume no one lives past age 130), then you could say X<=130. It would also be correct to say that
@@ -18,11 +18,11 @@ an array is Ω(N) as well as Ω(log N) and Ω(1). After all, you know that it wo
 runtimes.
 
 0 (big theta): In academia, 0 means both O and Ω. That is, an algorithm is 0(N) if it is both O(N) and
-Ω( N). 0 gives a tight bound on runtime.
+Ω(N). 0 gives a tight bound on runtime.
 
 In industry (and therefore in interviews), people seem to have merged 0 and O together. Industry's meaning
 of big O is closer to what academics mean by 0, in that it would be seen as incorrect to describe printing an
-array as O(N2 ). Industry would just say this is O(N).
+array as O(N^2). Industry would just say this is O(N).
 For this book, we will use big O in the way that industry tends to use it: By always trying to offer the tightest
 description of the runtime.
 
@@ -30,26 +30,26 @@ Best, Worst & Expected
 ======================
 
 Best Case: If all elements are equal, then quick sort will, on average, just traverse through the array once.
-This is O ( N). (This actually depends slightly on the implementation of quick sort. There are implementations,
+This is O(N). (This actually depends slightly on the implementation of quick sort. There are implementations,
 though, that will run very quickly on a sorted array.)
 
 Worst Case: What if we get really unlucky and the pivot is repeatedly the biggest element in the array?
 (Actually, this can easily happen. If the pivot is chosen to be the first element in the subarray and the
 array is sorted in reverse order, we'll have this situation.) In this case, our recursion doesn't divide the
 array in half and recurse on each half. It just shrinks the subarray by one element. This will degenerate
-to an O(N2) runtime.
+to an O(N^2) runtime.
 
 Expected Case: Usually, though, these wonderful or terrible situations won't happen. Sure, sometimes
 the pivot will be very low or very high, but it won't happen over and over again. We can expect a runtime
 of O(N log N).
 
 We rarely ever discuss best case time complexity, because it's not a very useful concept. After all, we could
-take essentially any algorithm, special case some input, and then get an O ( 1) time in the best case.
+take essentially any algorithm, special case some input, and then get an O (1) time in the best case.
 For many-probably most-algorithms, the worst case and the expected case are the same. Sometimes
 they're different, though, and we need to describe both of the runtimes.
 
 What is the relationship between best/worst/expected case and big O/theta/omega?
-It's easy for candidates to muddle these concepts (probably because both have some concepts of"higher':
+It's easy for candidates to muddle these concepts (probably because both have some concepts of"higher",
 "lower" and "exactly right"), but there is no particular relationship between the concepts.
 Best, worst, and expected cases describe the big O (or big theta) time for particular inputs or scenarios.
 
@@ -72,7 +72,7 @@ However, we also know that this doesn't happen very often. The vast majority of 
 in O(l) time.
 We need a concept that takes both into account. This is what amortized time does. It allows us to describe
 that, yes, this worst case happens every once in a while. But once it happens, it won't happen again for so
-long that the cost is "amortized:'
+long that the cost is "amortized"
 
 In this case, what is the amortized time?
 As we insert elements, we double the capacity when the size of the array is a power of 2. So after X elements,
@@ -119,14 +119,40 @@ N = 16 /* multiply by 2 */
 
 What is k in the expression 2 raisedTo k = N?This is exactly what log expresses.
 2 raisedTo 4 = 16 -> log base(2) l6 = 4
-log base(2) N = k - > 2 raisedTo k = N
+log base(2) N = k -> 2 raisedTo k = N
 This is a good takeaway for you to have. When you see a problem where the number of elements in the
 problem space gets halved each time, that will likely be a O(log N) runtime.
 This is the same reason why finding an element in a balanced binary search tree is O(log N). With each
 comparison, we go either left or right. Half the nodes are on each side, so we cut the problem space in half
 each time.
-I What's the base of the log?That's an excellent question!The short answer is that it doesn't matter
+I What's the base of the log? That's an excellent question!The short answer is that it doesn't matter
 for the purposes of big 0. The longer explanation can be found at "Bases of Logs" on page 630.
+
+Bases of Logs
+=============
+Suppose we have something in log2 (log base 2). How do we convert that to log10 (log base 10)? That is, what's the
+relationship between (logb k) and (logx k) ?
+
+Let's do some math. Assume c=logb k lets express logb k in terms of logx k.
+
+logb k = c 
+b^c = k                // This is the definition of log.
+logx (b^c) = logx k    // Take log of both sides of b^c = k.
+c logx b = logx k      // Rules of logs. You can move out the exponents.
+c = logx k / logx b
+c = logb k
+
+Therefore, if we want to convert log2 p to log10 p, we just do this:
+c = log10 p
+x = 2
+k = p
+b = 10
+
+log10 p = log2 p / log2 10
+so, log10 p = constant * log2 p
+
+Takeaway: Logs of different bases are only off by a constant factor. For this reason, we largely ignore what
+the base of a log within a big O expression. It doesn't matter since we drop constants anyway.
 
 Recursive Runtimes
 ==================
@@ -163,12 +189,14 @@ Therefore, there will be
 Try to remember this pattern. When you have a recursive function that makes multiple calls, the runtime will
 often (but not always) look like O(branches rasiedTo depth), where branches is the number of times each recursive
 call branches. In this case, this gives us O(2 rasiedTo N).
-I As you may recall, the base of a log doesn't matter for big O since logs of different bases are
+
+As you may recall, the base of a log doesn't matter for big O since logs of different bases are
 only different by a constant factor. However, this does not apply to exponents. The base of an
-exponent does matter. Compare 2 rasiedTo n and 8 rasiedTo n. If you expand 8 rasiedTo n, you get (2 rasiedTo 3) rasiedTo n, 
+exponent does matter. Compare 2 rasiedTo n and 8 rasiedTo n. If you expand 8 rasiedTo n, you get ((2 rasiedTo 3) rasiedTo n), 
 which equals 2 rasiedTo 3n,
-which equals 2 rasiedTo 2n * 2 rasiedTo n. As you can see, 8 rasiedTo n  and 2 rasiedTo n are different 
-by a factor of 2 rasiedTo 2n. That is very much not a constant factor!
+which equals (2 rasiedTo 2n) * (2 rasiedTo n). As you can see, (8 rasiedTo n)  and (2 rasiedTo n) are different 
+by a factor of (2 rasiedTo 2n). That is very much not a constant factor!
+
 The space complexity of this algorithm will be O(N). Although we have O(2N) nodes in the tree total, only
 O(N) exist at any given time. Therefore, we would only need to have O(N) memory available.
 
@@ -180,7 +208,7 @@ The following code computes the Nth Fibonacci number.
 3   else if (n == 1) return 1;
 4   return fib(n - 1) + fib(n - 2);
 5 }
-We can use the earlier pattern we'd established for recursive calls: O(branchesdepth).
+We can use the earlier pattern we'd established for recursive calls: O(branches rasiedTo depth).
 There are 2 branches per call, and we go as deep as N, therefore the runtime is O(2 raisedTo N).
 
 Through some very complicated math, we can actually get a tighter runtime. The time is indeed
@@ -209,6 +237,7 @@ The following code prints all Fibonacci numbers from 0 to n. What is its time co
 9   else if (n == 1) return 1;
 10    return fib(n - 1) + fib(n - 2);
 11 }
+
 Many people will rush to concluding that since fib(n) takes O(2 rasiedTo n) time and it's called n times, then it's
 O(n *(2 raisedTo n)).
 Not so fast. Can you find the error in the logic?
@@ -219,10 +248,29 @@ fib(2) -> 2 raisedTo 2 steps
 fib(3) -> 2 raisedTo 3 steps
 fib(4) -> 2 raisedTo 4 steps
 fib(n) -> 2 raisedTo n steps
+
 Therefore, the total amount of work is:
 2 raisedTo 1 + 2 raisedTo 2 + 2 raisedTo 3 + 2 raisedTo 4 + , , , + 2 raisedTo n
-As we showed on page 44, this is 2 raisedTo n+1. Therefore, the runtime to compute the first n Fibonacci numbers
-(using this terrible algorithm) is still O( 2 raisedTo n).
+As we showed on page 44, this is (2 raisedTo n+1). Therefore, the runtime to compute the first n Fibonacci numbers
+(using this terrible algorithm) is still O(2 raisedTo n).
+
+Above is by geometric progression formula:
+
+For series:
+{ar^0, ar^1, ar^2, ar^3, .... ar^(n-1)}
+where a = first term, r = common ratio, n = number of terms
+- nth term Xn = ar^(n-1)
+- The sum of series:
+ar^0 + ar^1 + ar^2 + ar^3 .... + ar^(n-1) = a(1-r^n)/(1-r)
+
+Arithematic progression:
+For series:
+{a, a+d, a+2d, a+3d, ... }
+where a = first term, d = common difference
+- nth term Xn = a+(n-1)d
+- The sum of series:
+a + (a+d) + (a+2d) + (a+3d) ... + (a+(n-1)d) = (n/2)*(2a+(n-1)d)
+
 
 Example 15
 ==========
