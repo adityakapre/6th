@@ -57,7 +57,7 @@ linearly check the string for neighboring characters that are identical. Careful
 algorithms take up extra space.
 These solutions are not as optimal in some respects, but might be better depending on the constraints of
 the problem.
-checker will be 32 bits (4 bytes)
+checker will be 32 bits (4 bytes) since int in Java is 4 bytes
 */
 package Q1_01_Is_Unique;
 
@@ -70,9 +70,9 @@ public class QuestionB {
 		}
 		int checker = 0;
 		for (int i = 0; i < str.length(); i++) {
-			int val = str.charAt(i) - 'a';		//acsii value
-			if ((checker & (1 << val)) > 0) return false;
-			checker |= (1 << val);
+			int val = str.charAt(i) - 'a';		       // acsii value
+			if ((checker & (1 << val)) > 0) return false;  // left shift 1 for val times
+			checker |= (1 << val);			       // put 1 in val-th position in checker
 		}
 		return true;
 	}
