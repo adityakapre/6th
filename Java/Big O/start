@@ -321,3 +321,17 @@ We just look up those values, sum them, store the new result, and return. This t
 time.
 We're doing a constant amount of work N times, so this is O (n) time.
 This technique, called memoization, is a very common one to optimize exponential time recursive algorithms.
+
+Sample times
+============
+Assume
+n = 10,000K
+no. of instructions per second = 10K
+So,
+O(n) = (10,000K / 10K) = 1000 seconds ~ 17 minutes
+  O (log2 n) = 0.0024 sec
+  O (nlog2 n) = 7 hours
+  O (n^2) = 300 years
+  O (2^n) = Much longer than trillion years
+
+
