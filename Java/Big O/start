@@ -271,6 +271,9 @@ where a = first term, d = common difference
 - The sum of series:
 a + (a+d) + (a+2d) + (a+3d) ... + (a+(n-1)d) = (n/2)*(2a+(n-1)d)
 
+e.g for arithematic series : {1,2,3,4,5,6,....n}
+a=1 d=1 so substituting in above expression, sum = n(n+1)/2
+
 Example 15
 ==========
 The following code prints all Fibonacci numbers from 0 to n. However, this time, it stores (i.e., caches) previously
