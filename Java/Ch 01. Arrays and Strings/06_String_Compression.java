@@ -14,6 +14,28 @@ This works. ls it efficient, though?Take a look at the runtime of this code.
 The runtime is O(p + k sq.), where p is the size of the original string and k is thelnumber of character
 sequences. For example, if the string is aabccdeeaa, then there are six characte sequences. It's slow
 because string concatenation operates in O(n sq.) time (see StringBuilder on pg 8 ).
+
+Why is string concatenation in java is n^2 ? 
+: String is immutable in java, so each "+" creates a new string all over again
+
+public String joinWords(String[] words) {
+    String sentence = "";
+    for(String w : words) {
+        sentence = sentence + w;
+    }
+    return sentence;
+}
+
+e.g consider building "hello"
+
+Since java strings are immutable each + gets you a new copy of the string. Since java strings are immutable 
+each + gets you a new copy of the string. So as you were saying, first you build "h", then "he", then "hel" 
+and so on. 
+Let's suppose I have an n character string. The first + requires building a string of length 2. 
+The next plus requires building a string of length 3, and so on for a total cost of 2 + 3 + ... + n. 
+This is the arithmetic series (minus 1, but constant differences don't affect big-O). The sum of the 
+arithmetic series is (n^2 + n) / 2, which is O(n^2). (dividing by 2 doesn't change that!)
+
 We can fix this by using a StringBuilder.
 */
 package Q1_06_String_Compression;
