@@ -47,7 +47,7 @@ public class QuestionA {
 		for (int i = 0; i < str.length(); i++) {
 			countConsecutive++;
 			
-			/* If next character is different than current, append this char to result.*/
+			/* If string is about to end OR next character is different than current, append this char to result.*/
 			if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1)) {
 				compressedString += "" + str.charAt(i) + countConsecutive;
 				countConsecutive = 0;
@@ -77,7 +77,7 @@ public class QuestionB {
 		for (int i = 0; i < str.length(); i++) {
 			countConsecutive++;
 			
-			/* If next character is different than current, append this char to result.*/
+			/* If string is about to end OR next character is different than current, append this char to result.*/
 			if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1)) {
 				compressed.append(str.charAt(i));
 				compressed.append(countConsecutive);
