@@ -100,7 +100,7 @@ public class QuestionB {
 		
 		Stack<Integer> stack = new Stack<Integer>();
 		
-		while (fast != null && fast.next != null) {
+		while (fast != null && fast.next != null) {  // iterate till both are not null, if either is null, break loop
 			stack.push(slow.data);
 			slow = slow.next;
 			fast = fast.next.next;			
