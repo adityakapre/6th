@@ -4,6 +4,19 @@ https://www.geeksforgeeks.org/trapping-rain-water/
 Water trapped at any element i = min(max_left, max_right) – arr[i]
 where arr[i] contains height of ith bar
 
+    |
+|   |
+| | |
+|_|_|
+
+Algorithm: 
+1. Traverse the array from start to end.
+2. For every element, traverse the array from start to that index and find the maximum height (a) 
+   and traverse the array from the current index to end and find the maximum height (b).
+3. The amount of water that will be stored in this column is min(a,b) – array[i], 
+   add this value to total amount of water stored
+4.Print the total amount of water stored.
+
 Java program to find maximum amount of water that can be trapped within given set of bars. 
 Output:
 Maximum water that can be accumulated is 6
