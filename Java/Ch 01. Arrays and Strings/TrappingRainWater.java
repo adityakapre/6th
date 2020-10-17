@@ -9,6 +9,8 @@ where arr[i] contains height of ith bar
 | | |
 |_|_|
 
+Above will store water = 7
+
 Algorithm: 
 1. Traverse the array from start to end.
 2. For every element, traverse the array from start to that index and find the maximum height (a) 
