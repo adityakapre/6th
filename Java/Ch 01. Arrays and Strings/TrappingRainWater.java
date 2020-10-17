@@ -9,7 +9,15 @@ where arr[i] contains height of ith bar
 | | |
 |_|_|
 
-Above will store water = 7
+Above will store water = 7  (left dominant as its smaller of leftMax and rightMax)
+
+|
+|   |
+| | | 
+|_|_|
+
+Again, above will store water = 7  (right dominant as its smaller of leftMax and rightMax)
+
 
 Algorithm: 
 1. Traverse the array from start to end.
