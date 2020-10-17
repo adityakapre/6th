@@ -1,7 +1,7 @@
 /*
 Q:
 Sum Lists: You have two numbers represented by a linked list, where each node contains a single
-digit. The digits are stored in reverse order, such that the 1 's digit is at the head of the list. Write a
+digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a
 function that adds the two numbers and returns the sum as a linked list.
 EXAMPLE
 Input: (7-> 1 -> 6) + (5 -> 9 -> 2).That is,617 + 295.
@@ -17,8 +17,8 @@ unlike storing units place at tail
 GENERAL CONCEPT  : Store head from place where we start summing numbers
 
 It's useful to remember in this problem how exactly addition works. Imagine the problem:
-6 1 7 
-+ 2 9 5
+6 1 7   <- head
++ 2 9 5   <- head
 
 We start addition from units place. (i.e head in this problem)
 
@@ -30,8 +30,8 @@ node. Let's walk through this for the below linked list:
 7 -> 1 -> 6
 + 5 -> 9 -> 2
 We do the following:
-1. We add 7 and 5 first, getting a result of 12. 2 becomes the first node in our linked list, and we "carry" the
-1 to the next sum.
+1. We add 7 and 5 first, getting a result of 12. 2 (i.e 12%10)becomes the first node in our linked list, 
+and we "carry" the 1 (since 12>=10) to the next sum.
 List: 2 -> ?
 2. We then add 1 and 9, as well as the "carry;' getting a result of 11. 1 becomes the second element of our
 linked list, and we carry the 1 to the next sum.
@@ -50,10 +50,10 @@ public class QuestionA {
 	}
 	
 	private static LinkedListNode addLists(LinkedListNode l1, LinkedListNode l2, int carry) {
-		if (l1 == null && l2 == null && carry == 0) {
+		if (l1 == null && l2 == null && carry == 0) {	//base condition, both lists empty and carry!=1
              		return null;
 		}
-		int value = carry;
+		int value = carry;				//init valueto carry
 		if (l1 != null) {
 			value += l1.data;
 		}
@@ -65,8 +65,8 @@ public class QuestionA {
 		if (l1 != null || l2 != null) {
 			LinkedListNode more = addLists(l1 == null ? null : l1.next, 
 						       l2 == null ? null : l2.next, 
-						       value >= 10 ? 1 : 0);
-			result.setNext(more);
+						       value >= 10 ? 1 : 0);  //imp logic for carry
+			result.next = more; 			// results next node is o/p of next step
 		}
 		return result;
 	}
