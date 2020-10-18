@@ -18,6 +18,17 @@ search trees. A binary search tree's in-order traversal always prints out the va
 two binary search trees with the same values will always have the same in-order traversals, even if their
 structure is different.
 
+e.g for above
+    	       4
+	    /    \
+  	   2      6
+	 /  \    / \
+	1    3  5   7
+	
+	   5
+	 /  \
+	4    6
+
 What about a pre-order traversal? This is a bit more promising. At least in this case we know certain things,
 like the first element in the pre-order traversal is the root node. The left and right elements will follow.
 Unfortunately, trees with different structures could still have the same pre-order traversal.
@@ -66,7 +77,7 @@ import CtCILibrary.TreeNode;
 public class QuestionA {
 	
 	public static boolean containsTree(TreeNode t1, TreeNode t2) {
-		StringBuilder sb1 = new StringBuilder();
+		StringBuilder sb1 = new StringBuilder(); //notice recursive method users StringBuilder
 		StringBuilder sb2 = new StringBuilder();
 		getOrderString(t1, sb1);
 		getOrderString(t2, sb2);
@@ -117,13 +128,16 @@ of T2, call matchTree. The matchTree method will compare the two subtrees to see
 Analyzing the runtime is somewhat complex. A naive answer would be to say that it is O(nm) time, where
 n is the number of nodes in T1 and m is the number of nodes in T2. While this is technically correct, a little
 more thought can produce a tighter bound.
+
 We do not actually call matchTree on every node in T1. Rather, we call it k times, where k is the number
 of occurrences of T2's root in T1. The runtime is closer to O(n + km).
 In fact, even that overstates the runtime. Even if the root were identical, we exit matchTree when we find
 a difference between T1 and T2. We therefore probably do not actually look at m nodes on each call of
 match Tree.
+
 When might the simple solution be better, and when might the alternative approach be better? This is a
 great conversation to have with your interviewer. Here are a few thoughts on that matter:
+
 1. The simple solution takes O(n + m) memory. The alternative solution takes O(log(n) + log(m))
 memory. Remember: memory usage can be a very big deal when it comes to scalability.
 2. The simple solution is O(n + m) time and the alternative solution has a worst case time of O (nm).
