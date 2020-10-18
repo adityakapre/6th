@@ -73,7 +73,7 @@ public class Question {
 		Unvisited, Visited, Visiting;
 	} 
 
-	public static boolean search(Graph g,Node start,Node end) {  
+	public static boolean search(Graph g, Node start, Node end) {  
 		LinkedList<Node> q = new LinkedList<Node>();
 		//Initialize everything as unvisited
 		for (Node u : g.getNodes()) {
