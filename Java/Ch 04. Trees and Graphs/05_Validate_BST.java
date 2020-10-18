@@ -50,7 +50,7 @@ public class QuestionB {
 	}
 	
 	public static boolean checkBST(TreeNode n, Integer min, Integer max) {
-		if (n == null) {
+		if (n == null) {  // base case - null node is a valid BST
 			return true;
 		}
 		//check if n.data are out of bounds
