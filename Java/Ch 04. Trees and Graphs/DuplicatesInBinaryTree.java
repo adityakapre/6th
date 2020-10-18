@@ -8,10 +8,14 @@ Time complexity = time complexity(inorder traversal) = O(n)
 
 int duplicates=0;    // global variable to count duplicates
 public Node countDuplicatesLCR(Node prev, Node root) {
- 	 if(root==null) return duplicates;
- 	 if(root.left!=null) duplicates += countDuplicatesLCR(root.left, root);  //L                              
-   if(root!=prev && root.data==prev.data) duplicates += 1;                   // C (actual processing)
-   if(root.right!=null) duplicates += countDuplicatesLCR(root, root.right); //R                                             
+   if(root==null) 
+     return duplicates;
+ 	 if(root.left!=null) 
+     duplicates += countDuplicatesLCR(root.left, root);  //L                              
+   if(root!=prev && root.data==prev.data) 
+     duplicates += 1;                   // C (actual processing)
+   if(root.right!=null) 
+     duplicates += countDuplicatesLCR(root, root.right); //R                                             
  	 return duplicates;
 } 
 
