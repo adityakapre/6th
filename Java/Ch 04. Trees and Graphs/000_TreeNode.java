@@ -1,3 +1,28 @@
+/*
+Input:  Array {1, 2, 3}
+Output:
+          2
+        /   \
+       1     3
+       
+Input: Array {1, 2, 3, 4, 5, 6}
+Output:
+             4
+           /  \
+          2    5
+        /  \    \
+       1    3    6
+       
+Input: Array {1, 2, 3, 4, 5, 6, 7}
+Output:
+
+          4
+       /     \
+      2       6
+     / \     / \
+    1   3   5   7
+
+*/
 public class TreeNode {
   
   public int data;
