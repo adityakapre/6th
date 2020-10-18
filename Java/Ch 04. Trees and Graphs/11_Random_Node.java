@@ -185,17 +185,17 @@ class TreeNode {
 
 	//creates BST from array
 	public void insertInOrder(int d) {
-		if (d <= data) {
-			if (left == null) {
-				left = new TreeNode(d);
+		if (d <= this.data) {
+			if (this.left == null) {
+				this.left = new TreeNode(d);
 			} else {
-				left.insertInOrder(d);		//call insertInOrder on child
+				this.left.insertInOrder(d); //call insertInOrder on left child
 			}
 		} else {
-			if (right == null) {
-				right = new TreeNode(d);
+			if (this.right == null) {
+				this.right = new TreeNode(d);
 			} else {
-				right.insertInOrder(d);
+				this.right.insertInOrder(d);
 			}
 		}
 		size++;		//increment number of nodes under this node
@@ -206,40 +206,40 @@ class TreeNode {
 	}
 
 	public TreeNode find(int d) {
-		if (d == data) {
+		if (d == this.data) {
 			return this;
-		} else if (d <= data) {
-			return left != null ? left.find(d) : null;
+		} else if (d <= this.data) {
+			return this.left != null ? this.left.find(d) : null;
 		} else if (d > data) {
-			return right != null ? right.find(d) : null;
+			return this.right != null ? this.right.find(d) : null;
 		}
 		return null;
 	}
 
 	//anwers option#6
 	public TreeNode getRandomNode() {
-		int leftSize = left == null ? 0 : left.size();
+		int leftSize = this.left == null ? 0 : this.left.size();
 		Random random = new Random();
 		int index = random.nextInt(size);
 		if (index < leftSize) {
-			return left.getRandomNode();
+			return this.left.getRandomNode();
 		} else if (index == leftSize) {
 			return this;
 		} else {
-			return right.getRandomNode();
+			return this.right.getRandomNode();
 		}
 	}
 
 	//anwers option#7
 	public TreeNode getIthNode(int i) {
-		int leftSize = left == null ? 0 : left.size();
+		int leftSize = this.left == null ? 0 : this.left.size();
 		if (i < leftSize) {
 			return left.getIthNode(i);
 		} else if (i == leftSize) {
 			return this;
 		} else {
 			//go right as rand num > leftSize, subtract leftSize+1 from rand
-			return right.getIthNode(i - (leftSize + 1)); 
+			return this.right.getIthNode(i - (leftSize + 1)); 
 		}
 	}
 }
