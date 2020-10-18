@@ -21,7 +21,7 @@ import CtCILibrary.TreeNode;
 public class QuestionBrute {
 	
 	public static boolean isBalanced(TreeNode root) {	//recurssive method 1
-		if (root == null) {
+		if (root == null) {  //base condition - empty tree is always balanced
 			return true;
 		}
 		int heightDiff = getHeight(root.left) - getHeight(root.right);
@@ -82,7 +82,7 @@ public class QuestionImproved {
 	}
 	
 	public static int checkHeight(TreeNode root) {
-		if (root == null) {
+		if (root == null) {	//base condition - height of empty tree = -1
 			return -1;
 		}
 		int leftHeight = checkHeight(root.left);
@@ -97,7 +97,7 @@ public class QuestionImproved {
 			return Integer.MIN_VALUE; // Found error -> pass it back
 		} else {
           		System.out.println("Balanced ->"+root.data);
-			return 1 + Math.max(leftHeight, rightHeight);
+			return 1 + Math.max(leftHeight, rightHeight);  // by definition of height
 		}
 	}
 		
