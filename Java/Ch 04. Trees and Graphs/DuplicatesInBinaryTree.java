@@ -11,7 +11,7 @@ public Node countDuplicatesLCR(Node prev, Node root) {
    if(root==null) {
      return duplicates;
    }
- 	if(root.left!=null) {
+   if(root.left!=null) {
      duplicates += countDuplicatesLCR(root.left, root);  //L  
    }
    if(root!=prev && root.data==prev.data) {
