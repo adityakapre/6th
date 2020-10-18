@@ -26,7 +26,7 @@ public class RootToLeafToSum {
         if(root == null){
             return false;
         }
-        if(root.left == null && root.right == null){
+        if(root.left == null && root.right == null){ //leaf detected, NOW check if sum is equal
             if(root.data == sum){
                 path.add(root);
                 return true;
