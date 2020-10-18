@@ -20,7 +20,7 @@ public Node countDuplicatesLCR(Node prev, Node root) {
    if(root.right!=null) {
      duplicates += countDuplicatesLCR(root, root.right); //R     
    }
- 	return duplicates;
+   return duplicates;
 } 
 
 //Recursion based Generic
