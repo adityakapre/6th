@@ -34,7 +34,7 @@ public class RootToLeafToSum {
                 return false;
             }
         }
-        if(printPath(root.left, sum - root.data, path)){
+        if(printPath(root.left, sum - root.data, path)){ // returns true iff recursion returns true
             path.add(root);
             return true;
         }
