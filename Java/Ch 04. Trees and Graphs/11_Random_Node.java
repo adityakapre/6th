@@ -183,7 +183,7 @@ class TreeNode {
 		size = 1;
 	}
 
-	//creates BST from array
+	//creates BST from array, each node contains size of tree under it
 	public void insertInOrder(int d) {
 		if (d <= this.data) {
 			if (this.left == null) {
@@ -198,7 +198,7 @@ class TreeNode {
 				this.right.insertInOrder(d);
 			}
 		}
-		size++;		//increment number of nodes under this node
+		size++;	 //increment number of nodes under this node every time insert is called
 	}
 
 	public int size() {
