@@ -19,9 +19,11 @@ package Q4_01_Route_Between_Nodes;
 import java.util.LinkedList;
 
 class Graph {
+
     private Node[] vertices;
     public static int MAX_VERTICES = 6;
     public int count;
+
     public Graph() {
     	vertices = new Node[MAX_VERTICES];
     	count = 0;
