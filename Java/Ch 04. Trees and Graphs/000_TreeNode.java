@@ -34,7 +34,7 @@ public class TreeNode {
   }
   
   public static TreeNode createMinimalBST(int[] array, int start, int end) {
-    if(start > end) {
+    if(start > end) { // base condition
       return null;
     }
     TreeNode node = new TreeNode();
