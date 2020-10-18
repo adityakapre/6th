@@ -42,10 +42,12 @@ class Graph {
 }
 
 class Node {
-    private Node[] adjacent;
-    public int adjacentCount;
+
     private String vertex;
     public Question.State state;
+    private Node[] adjacent;
+    public int adjacentCount;
+
     public Node(String vertex, int adjacentLength) {
         this.vertex = vertex;                
         adjacentCount = 0;        
@@ -60,15 +62,18 @@ class Node {
             System.out.print("No more adjacent can be added");
         }
     }
+	
     public Node[] getAdjacent() {
         return adjacent;
     }
+	
     public String getVertex() {
         return vertex;
     }
 }
 
 public class Question {
+	
 	public enum State {
 		Unvisited, Visited, Visiting;
 	} 
