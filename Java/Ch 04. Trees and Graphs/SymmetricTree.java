@@ -26,7 +26,7 @@ public boolean isSymmetric(Node l, Node r) {
       return true;
   else if (l == null || r == null) 
       return false;
-  if (l.val != r.val) 
+  if (l.val != r.val) // main logic
         return false;
   if (!isSymmetric(l.left, r.right)) 	
         return false;
