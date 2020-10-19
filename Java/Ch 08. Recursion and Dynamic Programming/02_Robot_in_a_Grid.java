@@ -219,6 +219,9 @@ i.e
 dp[j] = dp[j] + dp[j-1]
 
 Now, if there is obstacle marked in a cell, for such cell, mark dp[j]=0
+
+https://leetcode.com/problems/unique-paths-ii/ 
+
 */
 
 uniquePathsWithObstacles(int[][] obstacles) {
