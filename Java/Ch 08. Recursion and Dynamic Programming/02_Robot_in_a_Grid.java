@@ -235,5 +235,5 @@ uniquePathsWithObstacles(int[][] obstacles) {
 			}
 		}
 	}
-	return dp[j-1];
+	return dp[width-1];
 }
