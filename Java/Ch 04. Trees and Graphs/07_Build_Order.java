@@ -82,70 +82,6 @@ Initialization and setup:
       » If child dependencies is zero, add child to end of buildOrder.
       3. Increment toBeProcessed.
 
-
-Solution #2
-Alternatively, we can use depth-first search (DFS) to find the build path.
-
-         f                  d
-       / | \                |
-     c   |   b              g
-       \ |  // \
-         a  /   h
-         | /
-         e 
-
-Suppose we picked an arbitrary node (say b) and performed a depth-first search on it. When we get to the
-end of a path and can't go any further (which will happen at h and e), we know that those terminating
-nodes can be the last projects to be built. No projects depend on them.
-DFS(b) // Step 1
-  DFS(h) // Step 2
-    build order ... , h // Step 3
-  DFS(a) // Step 4
-    DFS(e) // Step 5
-      build order ... , e, h // Step 6
-// Step 7+
-Now, consider what happens at node a when we return from the DFS of e. We know a's children need to
-appear after a in the build order. So, once we return from searching a's children (and therefore they have
-been added), we can choose to add a to the front of the build order.
-
-Once we return from a, and complete the DFS of b's other children, then everything that must appear after
-b is in the list. Add b to the front.
-DFS(b)                                // Step 1
-  DFS(h)                              // Step 2
-    build order. .. , h               // Step 3
-  DFS(a)                              // Step 4
-     DFS(e)                           // Step 5
-        build order = ... , e, h      // Step 6
-   build order = ... , a, e, h        // Step 7
-  DFS(e) -> return                    // Step 8
-  build order = ... , b, a, e, h      // Step 9
-
-Let's mark these nodes as having been built too, just in case someone else needs to build them.
-
-Now what? We can start with any old node again, doing a DFS on it and then adding the node to the front
-of the build queue when the DFS is completed.
-DFS(d)
-    DFS(g)
-        build order = ... , g, b, a, e, h
-    build order = ... , d, g, b, a, e, h
-DFS(f)
-    DFS(c)
-      build order = ... , c, d, g, b, a, e, h
-    build order= f, c, d, g, b, a, e, h
-
-In an algorithm like this, we should think about the issue of cycles. There is no possible build order if there
-is a cycle. But still, we don't want to get stuck in an infinite loop just because there's no possible solution.
-A cycle will happen if, while doing a DFS on a node, we run back into the same path. What we need therefore
-is a signal that indicates "I'm still processing this node, so if you see the node again, we have a problem:'
-What we can do for this is to mark each node as a "partial" (or "is visiting") state just before we start
-the DFS on it. If we see any node whose state is partial, then we know we have a problem. When we're
-done with this node's DFS, we need to update the state.
-We also need a state to indicate "I've already processed/built this node" so we don't re-build the node. Our
-state therefore can have three options: COMPLETED, PARTIAL, and BLANK.
-
-Like the earlier algorithm, this solution is O(P+D) time, where P is the number of projects and D is the
-number of dependency pairs.
-
 By the way, this problem is called topological sort: linearly ordering the vertices in a graph such that for
 every edge (a, b), a appears before b in the linear order.
 
@@ -259,7 +195,7 @@ public class BuildOrder {
 		
 		int toBeProcessed = 0;
 		//output is like a queue here
-		//toBeProcessed=order.length indicates all projects compiled
+		//toBeProcessed=output.length indicates all projects compiled
 		while (toBeProcessed < output.length) { 
 			Project current = output[toBeProcessed];
 			
@@ -344,10 +280,72 @@ public class BuildOrder {
 
 /*
 A:
+Solution #2
+Alternatively, we can use depth-first search (DFS) to find the build path.
+
+         f                  d
+       / | \                |
+     c   |   b              g
+       \ |  // \
+         a  /   h
+         | /
+         e 
+
+Suppose we picked an arbitrary node (say b) and performed a depth-first search on it. When we get to the
+end of a path and can't go any further (which will happen at h and e), we know that those terminating
+nodes can be the last projects to be built. No projects depend on them.
+DFS(b) // Step 1
+  DFS(h) // Step 2
+    build order ... , h // Step 3
+  DFS(a) // Step 4
+    DFS(e) // Step 5
+      build order ... , e, h // Step 6
+// Step 7+
+Now, consider what happens at node a when we return from the DFS of e. We know a's children need to
+appear after a in the build order. So, once we return from searching a's children (and therefore they have
+been added), we can choose to add a to the front of the build order.
+
+Once we return from a, and complete the DFS of b's other children, then everything that must appear after
+b is in the list. Add b to the front.
+DFS(b)                                // Step 1
+  DFS(h)                              // Step 2
+    build order. .. , h               // Step 3
+  DFS(a)                              // Step 4
+     DFS(e)                           // Step 5
+        build order = ... , e, h      // Step 6
+   build order = ... , a, e, h        // Step 7
+  DFS(e) -> return                    // Step 8
+  build order = ... , b, a, e, h      // Step 9
+
+Let's mark these nodes as having been built too, just in case someone else needs to build them.
+
+Now what? We can start with any old node again, doing a DFS on it and then adding the node to the front
+of the build queue when the DFS is completed.
+DFS(d)
+    DFS(g)
+        build order = ... , g, b, a, e, h
+    build order = ... , d, g, b, a, e, h
+DFS(f)
+    DFS(c)
+      build order = ... , c, d, g, b, a, e, h
+    build order= f, c, d, g, b, a, e, h
+
+In an algorithm like this, we should think about the issue of cycles. There is no possible build order if there
+is a cycle. But still, we don't want to get stuck in an infinite loop just because there's no possible solution.
+A cycle will happen if, while doing a DFS on a node, we run back into the same path. What we need therefore
+is a signal that indicates "I'm still processing this node, so if you see the node again, we have a problem:'
+What we can do for this is to mark each node as a "partial" (or "is visiting") state just before we start
+the DFS on it. If we see any node whose state is partial, then we know we have a problem. When we're
+done with this node's DFS, we need to update the state.
+We also need a state to indicate "I've already processed/built this node" so we don't re-build the node. Our
+state therefore can have three options: COMPLETED, PARTIAL, and BLANK.
+
+Like the earlier algorithm, this solution is O(P+D) time, where P is the number of projects and D is the
+number of dependency pairs.
+
 DFS approach
 We start by finding nodes that can be built last (no nodes depend on them) and add such nodes to stack
-So stack starts by pushing nodes that can be built last.
-therefore, Stack top contains nodes that can be built first
+So stack starts by pushing nodes that can be built last. Therefore, Stack top contains nodes that can be built first
 */
 
 package Q4_07_Build_Order.DFS;
@@ -364,7 +362,7 @@ public class Question {
 		for (Project project : projects) {
 			if (project.getState() == Project.State.BLANK) {
 				if (!doDFS(project, stack)) {
-					return null;
+					return null; //failed, no build order possible
 				}
 			}
 		}
@@ -373,18 +371,18 @@ public class Question {
 	
 	public static boolean doDFS(Project project, Stack<Project> stack) {
 		if (project.getState() == Project.State.PARTIAL) { //Check if project was seen before
-			return false; // Cycle
+			return false; // Cycle detected, failed, no build order possible
 		}
 		
 		if (project.getState() == Project.State.BLANK) {
-			project.setState(Project.State.PARTIAL);
+			project.setState(Project.State.PARTIAL); //started dfs on this project
 			ArrayList<Project> children = project.getChildren();
 			for (Project child : children) {
 				if (!doDFS(child, stack)) {
 					return false;
 				}
 			}
-			project.setState(Project.State.COMPLETE);
+			project.setState(Project.State.COMPLETE); //completed dfs on this project
 			/*
 			push leaf nodes (dependent projects) to bottom of stack
 			so that when we unwind stack, projects with no dependencies pop out first
