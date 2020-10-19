@@ -148,6 +148,10 @@ public class QuestionB {
 		if (maze == null || maze.length == 0) return null;
 		ArrayList<Point> path = new ArrayList<Point>();
 		HashSet<Point> failedPoints = new HashSet<Point>();
+		/*
+		Start at (maze.length - 1, maze[0].length - 1) since thats the last point.
+		Cannot start at (maze.length, maze[0].length) since it will be out of bounds.
+		*/
 		if (getPath(maze, maze.length - 1, maze[0].length - 1, path, failedPoints)) {
 			return path;	//returns actual path from src (maze.length - 1, maze[0].length - 1) to dest(0,0)
 		}
