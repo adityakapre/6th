@@ -87,7 +87,7 @@ The automatic garbage collector calls the finalize () method just before actuall
 A class can therefore override the finalize () method from the Object class in order to define custom
 behavior during garbage collection.
 1 protected void finalize() throws Throwable {
-2 /* Close open files, release resources, etc */
+2 // Close open files, release resources, etc 
 3 }
 
 13.4 Generics vs. Templates: Explain the difference between templates in C ++ and generics in Java.
@@ -115,21 +115,21 @@ creating a new copy of the template code for each type. Proof of this is in the 
 MyClass<Foo> will not share a static variable with MyClass<Bar>. Two instances of MyClass<Foo>,
 however, will share a static variable.
 To illustrate this, consider the code below:
-1 /*** MyClass.h ***/
+1 // MyClass.h
 2 template<class T> class MyClass {
 3 public:
 4 static int val;
 5 MyClass(int v) { val v;}
 6 };
 7
-8 /*** MyClass.cpp ***/
+8 // MyClass.cpp
 9 template<typename T>
 10 int MyClass<T>::bar;
 11
 12 template class MyClass<Foo>;
 13 template class MyClass<Bar>;
 14
-15 /*** main.cpp ***/
+15 // main.cpp
 16 MyClass<Foo> * fool
 17 MyClass<Foo> * foo2
 18 MyClass<Bar> * barl
