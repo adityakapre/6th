@@ -17,6 +17,9 @@ transient Entry[] table; // an array of entries;
 transient int size; // number of mappings in the HashMap object
 
 /*
+Java transient keyword is used in serialization. 
+If you define any data member as transient, it will not be serialized.
+
 You might already have noticed a potential pitfall with this scheme: 
 two distinct keys might produce the same index. For example, 214-30-3261 and 
 323-56-8157 both produce the index 541. Such a phenomenon is called a collision, 
