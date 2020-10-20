@@ -1,10 +1,11 @@
+/*
 13.2 Return from Finally: In Java, does the finally block get executed if we insert a return statement
 inside the try block of a try-catch-finally?
 
 SOLUTION
-Yes, it will get executed. The finally block gets executed when the try block exits. Even when we
-attempt to exit within the try block (via a return statement, a continue statement, a break statement
-or any exception), the finally block will still be executed.
+Yes, it will get executed. The finally block gets executed when the try block exits. 
+Even when we attempt to exit within the try block (via a return statement, a continue statement, 
+a break statement or any exception), the finally block will still be executed.
 Note that there are some cases in which the finally block will not get executed, such as the following:
 If the virtual machine exits during try/ catch block execution.
 If the thread which is executing during the try/ catch block gets killed.
@@ -21,6 +22,7 @@ references exist.
 Further detail on these keywords and methods is provided below.
 
 final
+------
 The final statement has a different meaning depending on its context.
 When applied to a variable (primitive): The value of the variable cannot change.
 • When applied to a variable (reference): The reference variable cannot point to any other object on the
@@ -29,6 +31,7 @@ heap.
 • When applied to a class:The class cannot be subclassed.
 
 finally keyword
+---------------
 There is an optional finally block after the try block or after the catch block. Statements in the
 finally block will always be executed, even if an exception is thrown (except if Java Virtual Machine exits
 from the try block). The finally block is often used to write the clean-up code. It will be executed after
@@ -78,7 +81,8 @@ The output for this code is the following:
 Look carefully at lines 3 to 5 in the output. The catch block is fully executed (including the function call in
 the return statement), then the finally block, and then the function actually returns.
 
-finalize(}
+finalize()
+----------
 The automatic garbage collector calls the finalize () method just before actually destroying the object.
 A class can therefore override the finalize () method from the Object class in order to define custom
 behavior during garbage collection.
@@ -152,3 +156,4 @@ classes are different, so the type parameter can be used for static methods and 
 In Java, all instances of MyClass, regardless of their type parameters, are the same type. The type
 parameters are erased at runtime. In C++, instances with different type parameters are different types.
 Remember: Although Java generics and C ++ templates look the same in many ways, they are very different.
+*/
