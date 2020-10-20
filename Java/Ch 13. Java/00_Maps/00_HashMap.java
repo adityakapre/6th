@@ -1,5 +1,6 @@
 /*
 HashMap
+-------
 
 The HashMap class is outstanding for insertions, removals, and searches, on average, 
 but if you also need a sorted collection, you should probably use a TreeMap Instead. 
