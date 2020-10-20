@@ -1,3 +1,4 @@
+/*
 13.5 TreeMap, HashMap, LinkedHashMap: Explain the differences between TreeMap, HashMap, and
 LinkedHashMap. Provide an example of when each one would be best.
 
@@ -48,3 +49,4 @@ This kind of map is well-suited to building LRU caches.
 Generally, unless there is a reason not to, you would use HashMap. That is, if you need to get the keys back
 in insertion order, then use LinkedHashMap. If you need to get the keys back in their true/natural order,
 then use TreeMap. Otherwise, HashMap is probably best. It is typically faster and requires less overhead.
+*/
