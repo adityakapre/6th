@@ -1,21 +1,47 @@
+/*
 Q. Java Threading
 
 So what exactly is a thread? In Java, "thread" means two different things:
 ■ An instance of class java.lang.Thread
 ■ A thread of execution
-An instance of Thread is just...an object. Like any other object in Java, it has variables and methods, and lives and dies on the heap. But a thread of execution is an individual process (a "lightweight" process) that has its own call stack. In Java,
-there is one thread per call stack—or, to think of it in reverse, one call stack per thread. Even if you don't create any new threads in your program, threads are back there running.
-The main() method, that starts the whole ball rolling, runs in one thread, called (surprisingly) the main thread.
 
-But as soon as you create a new thread, a new stack materializes and methods called from that thread run in a call stack that's separate from the main() call stack. That second new call stack is said to run concurrently with the main thread, but we'll refine that notion as we go through this chapter.
-The JVM, which gets its turn at the CPU by whatever scheduling mechanism the underlying OS uses, operates like a mini-OS and schedules its own threads regardless of the underlying operating system. In some JVMs, the Java
-threads are actually mapped to native OS threads, but we won't discuss that here; native threads are not on the exam.
+An instance of Thread is just...an object. Like any other object in Java, 
+it has variables and methods, and lives and dies on the heap. 
+But a thread of execution is an individual process (a "lightweight" process) 
+that has its own call stack. 
+In Java, there is one thread per call stack—or, to think of it in reverse, 
+one call stack per thread. Even if you don't create any new threads in your program, 
+threads are back there running.
+
+The main() method, that starts the whole ball rolling, runs in one thread, 
+called (surprisingly) the main thread.
+
+But as soon as you create a new thread, a new stack materializes and methods called 
+from that thread run in a call stack that's separate from the main() call stack. 
+That second new call stack is said to run concurrently with the main thread, 
+but we'll refine that notion as we go through this chapter.
+
+The JVM, which gets its turn at the CPU by whatever scheduling mechanism the 
+underlying OS uses, operates like a mini-OS and schedules its own threads regardless 
+of the underlying operating system. In some JVMs, the Java threads are actually 
+mapped to native OS threads, but we won't discuss that here;
 
 When it comes to threads, very little is guaranteed.
+Don't make the mistake of designing your program to be dependent on a particular 
+implementation of the JVM. As you'll learn a little later, different JVMs can run 
+threads in profoundly different ways. For example, one JVM might be sure that all 
+threads get their turn, with a fairly even amount of time allocated for each thread 
+in a nice, happy, round-robin fashion. But in other JVMs, a thread might start 
+running and then just hog the whole show, never stepping out so others can have a turn. 
+If you test your application on the "nice turn-taking" JVM, and you don't know 
+what is and is not guaranteed in Java, then you might be in for a big shock when 
+you run it under a JVM with a different thread scheduling mechanism.
 
-Don't make the mistake of designing your program to be dependent on a particular implementation of the JVM. As you'll learn a little later, different JVMs can run threads in profoundly different ways. For example, one JVM might be sure that all threads get their turn, with a fairly even amount of time allocated for each thread in a nice, happy, round-robin fashion. But in other JVMs, a thread might start running and then just hog the whole show, never stepping out so others can have a turn. If you test your application on the "nice turn-taking" JVM, and you don't know what is and is not guaranteed in Java, then you might be in for a big shock when you run it under a JVM with a different thread scheduling mechanism.
-
-You and the operating system can create a second kind of thread called a daemon thread. The difference between these two types of threads (user and daemon) is that the JVM exits an application only when all user threads are complete—the JVM doesn't care about letting daemon threads complete, so once all user threads are complete, the JVM will shut down, regardless of the state of any daemon threads.
+You and the operating system can create a second kind of thread called a daemon thread. 
+The difference between these two types of threads (user and daemon) is that the 
+JVM exits an application only when all user threads are complete—the JVM doesn't 
+care about letting daemon threads complete, so once all user threads are complete, 
+the JVM will shut down, regardless of the state of any daemon threads.
 
 Making a thread
 
@@ -24,57 +50,93 @@ yield()
 sleep()
 run()
 
-The action happens in the run() method. Think of the code you want to execute in a separate thread as the job to do. In other words, you have some work that needs to be done, say, downloading stock prices in the background while other things are happening in the program, so what you really want is that job to be executed in its own thread. So if the work you want done is the job, the one doing the work (actually executing the job code) is the thread. And the job always starts from a
-run() method as follows:
+The action happens in the run() method. 
+Think of the code you want to execute in a separate thread as the job to do. 
+In other words, you have some work that needs to be done, say, downloading 
+stock prices in the background while other things are happening in the program, 
+so what you really want is that job to be executed in its own thread. 
+So if the work you want done is the job, the one doing the work 
+(actually executing the job code) is the thread. 
+And the job always starts from a run() method as follows:
+*/
 
 public void run() {
-// your job code goes here
+	// your job code goes here
 }
 
-
+/*
 the thread of execution—the new call stack—always begins by invoking run().
 
 You can define and instantiate a thread in one of two ways:
-	■ Extend the java.lang.Thread class.
+■ Extend the java.lang.Thread class.
 ■ Implement the Runnable interface.
 
-the real world you're much more likely to implement Runnable than extend Thread. Extending the Thread class is the easiest, but it's usually not a good OO practice. Why? Because subclassing should be reserved for specialized versions of more general superclasses. So the only time it really makes sense (from an OO perspective) to extend Thread is
-when you have a more specialized version of a Thread class. In other words, because you have more specialized thread-specific behavior. Chances are, though, that the thread work you want is really just a job to be done by a thread. In that case, you should design a class that implements the Runnable interface, which also leaves your class free to extend some other class.
+the real world you're much more likely to implement Runnable than extend Thread. 
+Extending the Thread class is the easiest, but it's usually not a good OO practice. 
+Why? 
+Because subclassing should be reserved for specialized versions of more general 
+superclasses. So the only time it really makes sense (from an OO perspective) 
+to extend Thread is when you have a more specialized version of a Thread class. 
+In other words, because you have more specialized thread-specific behavior. 
+Chances are, though, that the thread work you want is really just a job to be done 
+by a thread. In that case, you should design a class that implements the 
+Runnable interface, which also leaves your class free to extend some other class.
+*/
 
 class MyThread extends Thread {
-public void run() {
-System.out.println("Important job running in MyThread");
+	public void run() {
+		System.out.println("Important job running in MyThread");
+	}
+	public void run(String s) {
+		System.out.println("overloaded run");
+	}
 }
-public void run(String s) {
-System.out.println("overloaded run");
-}
-
-}
-The limitation with this approach (besides being a poor design choice in most cases) is that if you extend Thread, you can't extend anything else.
-The overloaded run(String s) method will be ignored by the Thread class unless you call it yourself. The Thread class expects a run() method with no arguments, and it will execute this method for you in a separate call stack
-after the thread has been started. With a run(String s) method, the Thread class won't call the method for you, and even if you call the method directly yourself, execution won't happen in a new thread of execution with a separate
-call stack. It will just happen in the same call stack as the code that you made the call from, just like any other normal method call.
+/*
+The limitation with this approach (besides being a poor design choice 
+in most cases) is that if you extend Thread, you can't extend anything else.
+The overloaded run(String s) method will be ignored by the Thread class 
+unless you call it yourself. The Thread class expects a run() method 
+with no arguments, and it will execute this method for you in a separate call stack
+after the thread has been started. With a run(String s) method, the Thread class 
+won't call the method for you, and even if you call the method directly 
+yourself, execution won't happen in a new thread of execution with a separate
+call stack. It will just happen in the same call stack as the code that 
+you made the call from, just like any other normal method call.
+*/
 
 class MyRunnable implements Runnable {
-public void run() {
-System.out.println("Important job running in MyRunnable");
+	public void run() {
+		System.out.println("Important job running in MyRunnable");
+	}
 }
-}
+/*
+If you extended the Thread class, instantiation is dead simple 
+(we'll look at some additional overloaded constructors in a moment):
 
-If you extended the Thread class, instantiation is dead simple (we'll look at some additional overloaded constructors in a moment):
 MyThread t = new MyThread()
-If you implement Runnable, instantiation is only slightly less simple. To have code run by a separate thread, you still need a Thread instance. (Another common way to think about this is that the Thread is the "worker," and the Runnable is the "job" to be done.)
+If you implement Runnable, instantiation is only slightly less simple. 
+To have code run by a separate thread, you still need a Thread instance. 
+(Another common way to think about this is that the Thread is the "worker," 
+and the Runnable is the "job" to be done.)
 
 MyRunnable r = new MyRunnable();
 Thread t = new Thread(r); // Pass your Runnable to the Thread
 
-If you create a thread using the no-arg constructor, the thread will call its own run() method when it's time to start working. That's exactly what you want when you extend Thread, but when you use Runnable, you need to tell the new thread to
-use your run() method rather than its own. The Runnable you pass to the Thread constructor is called the target or the target Runnable.
-The Thread class itself implements Runnable. (After all, it has a run() method that we were overriding.) This means that you could pass a Thread to another Thread’s constructor:
+If you create a thread using the no-arg constructor, the thread will call 
+its own run() method when it's time to start working. 
+That's exactly what you want when you extend Thread, but when you use Runnable, 
+you need to tell the new thread to use your run() method rather than its own. 
+The Runnable you pass to the Thread constructor is called the target 
+or the target Runnable.
+The Thread class itself implements Runnable. 
+(After all, it has a run() method that we were overriding.) 
+This means that you could pass a Thread to another Thread’s constructor:
 
 Thread t = new Thread(new MyThread());
 
-This is a bit silly, but it’s legal. In this case, you really just need a Runnnable, and creating a whole other Thread is overkill.
+This is a bit silly, but it’s legal. 
+In this case, you really just need a Runnnable, and creating a whole other 
+Thread is overkill.
 
 The constructors we care about are
 ■ Thread()
@@ -82,50 +144,74 @@ The constructors we care about are
 ■ Thread(Runnable target, String name)
 ■ Thread(String name)
 
-When a thread has been instantiated but not started (in other words, the start() method has not been invoked on the Thread instance), the thread is said to be in the new state. At this stage, the thread is not yet considered to be alive. Once the start() method is called, the thread is considered to be alive (even though the run() method may not have actually started executing yet). A thread is considered dead (no longer alive) after the run() method completes. The isAlive() method is the best way to determine if a thread has been started but has not yet completed its run() method. (Note: The getState() method is very useful for debugging, but you won't have to know it for the exam.)
+When a thread has been instantiated but not started (in other words, the start() 
+method has not been invoked on the Thread instance), the thread is said to be 
+in the new state. At this stage, the thread is not yet considered to be alive. 
+Once the start() method is called, the thread is considered to be alive 
+(even though the run() method may not have actually started executing yet). 
+A thread is considered dead (no longer alive) after the run() method completes. 
+The isAlive() method is the best way to determine if a thread has been started 
+but has not yet completed its run() method. 
+(Note: The getState() method is very useful for debugging)
 
 Starting the thread :
-
+--------------------
 t.start();
 
 So what happens after you call start()? The good stuff:
 ■ A new thread of execution starts (with a new call stack).
 ■ The thread moves from the new state to the runnable state.
 ■ When the thread gets a chance to execute, its target run() method will run.
-Be sure you remember the following: You start a Thread, not a Runnable. You call start() on a Thread instance, not on a Runnable instance.
 
-There’s nothing special about the run() method as far as Java is concerned. Like main(), it just happens to be the name (and signature) of the method that the new thread knows to invoke. So if you see code that calls the run() method on a Runnable (or even on a Thread instance), that’s perfectly legal. But it doesn’t mean the run() method will run in a separate thread! Calling a run() method directly just means you’re invoking a method from whatever thread is currently executing, and the run() method goes onto the current call stack rather than at the beginning of a new call stack.
+Be sure you remember the following: You start a Thread, not a Runnable. 
+You call start() on a Thread instance, not on a Runnable instance.
+
+There’s nothing special about the run() method as far as Java is concerned. 
+Like main(), it just happens to be the name (and signature) of the method that 
+the new thread knows to invoke. So if you see code that calls the run() method 
+on a Runnable (or even on a Thread instance), that’s perfectly legal. 
+But it doesn’t mean the run() method will run in a separate thread! 
+Calling a run() method directly just means you’re invoking a method from whatever 
+thread is currently executing, and the run() method goes onto the current call stack 
+rather than at the beginning of a new call stack.
+
 The following code does not start a new thread of execution:
 Thread t = new Thread();
 t.run(); // Legal, but does not start a new thread
 
-We can use the getName() method of class Thread, and have each Runnable print out the name of the thread executing that Runnable object's run() method.
-
-To get the name of a thread you call—who would have guessed—getName() on the Thread instance. But the target Runnable instance doesn't even have a reference to the Thread instance, so we first invoked the static Thread.currentThread() method, which returns a reference to the currently executing thread, and then we invoked getName() on that returned reference.
+We can use the getName() method of class Thread, and have each Runnable print out 
+the name of the thread executing that Runnable object's run() method.
+To get the name of a thread you call—who would have guessed—getName() on the 
+Thread instance. But the target Runnable instance doesn't even have a reference 
+to the Thread instance, so we first invoked the static Thread.currentThread() method, 
+which returns a reference to the currently executing thread, and then we invoked 
+getName() on that returned reference.
 
 Starting and running multiple threads : 
-
+---------------------------------------
 class NameRunnable implements Runnable {
-public void run() {
-for (int x = 1; x <= 3; x++) {
-System.out.println("Run by "+ Thread.currentThread().getName()+ ", x is " + x);
+	public void run() {
+		for (int x = 1; x <= 3; x++) {
+		System.out.println
+			("Run by "+ Thread.currentThread().getName()+ ", x is " + x);
+		}
+	}
 }
-}
-}
+
 public class ManyNames {
-public static void main(String [] args) {
-// Make one Runnable
-NameRunnable nr = new NameRunnable();
-Thread one = new Thread(nr);
-Thread two = new Thread(nr);
-Thread three = new Thread(nr);
-one.setName("Fred");
-two.setName("Lucy");
-three.setName("Ricky");
-one.start();
-two.start();
-three.start();
-}
+	public static void main(String [] args) {
+		// Make one Runnable
+		NameRunnable nr = new NameRunnable();
+		Thread one = new Thread(nr);
+		Thread two = new Thread(nr);
+		Thread three = new Thread(nr);
+		one.setName("Fred");
+		two.setName("Lucy");
+		three.setName("Ricky");
+		one.start();
+		two.start();
+		three.start();
+	}
 }
 
 Running this code might produce the following:
@@ -140,20 +226,46 @@ Run by Ricky, x is 1
 Run by Ricky, x is 2
 Run by Ricky, x is 3
 
-Well, at least that's what it printed when we ran it—this time, on our machine. But the behavior you see above is not guaranteed. This is so crucial that you need to stop right now, take a deep breath, and repeat after me, "The behavior is not
-guaranteed." You need to know, for your future as a Java programmer as well as for the exam, that there is nothing in the Java specification that says threads will start running in the order in which they were started (in other words, the order in which start() was invoked on each thread). And there is no guarantee that once a thread starts executing, it will keep executing until it's done. Or that a loop will complete before another thread begins. No siree Bob. Nothing is guaranteed in the preceding code except this:
-Each thread will start, and each thread will run to completion.
+Well, at least that's what it printed when we ran it—this time, on our machine. 
+But the behavior you see above is not guaranteed. 
+This is so crucial that you need to stop right now, take a deep breath, 
+and repeat after me, "The behavior is not guaranteed." You need to know, for 
+your future as a Java programmer as well as for the exam, that there is nothing 
+in the Java specification that says threads will start running in the order in which 
+they were started (in other words, the order in which start() was invoked on each 
+thread). And there is no guarantee that once a thread starts executing, 
+it will keep executing until it's done. Or that a loop will complete before another 
+thread begins. No siree Bob. Nothing is guaranteed in the preceding code except this:
+	Each thread will start, and each thread will run to completion.
+
 Each one individually is behaving in a nice orderly manner. But together—chaos!
 but then Lucy butts in when it was Fred's turn. What nerve!
 
-There is a way, however, to start a thread but tell it not to run until some other thread has finished. You can do this with the join() method, which we'll look at a little later.
-A thread is done being a thread when its target run() method completes. When a thread completes its run() method, the thread ceases to be a thread of execution. The stack for that thread dissolves, and the thread is considered dead.
-(Technically the API calls a dead thread "terminated", but we'll use "dead" in this chapter.) Not dead and gone, however, just dead. It's still a Thread object, just not a thread of execution. So if you've got a reference to a Thread instance, then even when that Thread instance is no longer a thread of execution, you can still call methods on the Thread instance, just like any other Java object. What you can't do, though, is call start() again. Once a thread has been started, it can never be started again. If you have a reference to a Thread, and you call start(), it's started. If you call start() a second time, it will cause an exception (an IllegalThreadStateException, which is a kind of RuntimeException, but you don't need to worry about the exact type). This happens whether or not the run() method has completed from the first start() call. Only a new thread can be started, and then only once. A runnable thread or a dead thread cannot be restarted.
+There is a way, however, to start a thread but tell it not to run until some other 
+thread has finished. You can do this with the join() method, which we'll look at a 
+little later.
+A thread is done being a thread when its target run() method completes. 
+When a thread completes its run() method, the thread ceases to be a thread of execution. 
+The stack for that thread dissolves, and the thread is considered dead.
+(Technically the API calls a dead thread "terminated", but we'll use "dead" in this chapter.) 
+Not dead and gone, however, just dead. It's still a Thread object, just not a 
+thread of execution. So if you've got a reference to a Thread instance, 
+then even when that Thread instance is no longer a thread of execution, you can still 
+call methods on the Thread instance, just like any other Java object. 
+What you can't do, though, is call start() again. Once a thread has been started, 
+it can never be started again. If you have a reference to a Thread, and you call 
+start(), it's started. If you call start() a second time, it will cause an exception 
+(an IllegalThreadStateException, which is a kind of RuntimeException, but you don't 
+need to worry about the exact type). This happens whether or not the run() method 
+has completed from the first start() call. Only a new thread can be started, 
+and then only once. A runnable thread or a dead thread cannot be restarted.
 
-
-In addition to using setName() and getName to identify threads, you might see getld(). The getld() method returns a positive, unique, long number, and that number will be that thread's only ID number for the thread's entire life.
+In addition to using setName() and getName to identify threads, you might see getld(). 
+The getld() method returns a positive, unique, long number, and that number will 
+be that thread's only ID number for the thread's entire life.
 
 Thread Scheduler
+----------------
 Assuming a single processor machine, only one thread can actually run at a time. Only one stack can ever be executing at one time. And it's the thread scheduler that decides which thread—of all that are eligible—will actually run. When we say eligible, we really mean in the runnable state.Any thread in the runnable state can be chosen by the scheduler to be the one and only running thread. If a thread is not in a runnable state, then it cannot be chosen to be the currently running thread. And just so we're clear about how little is guaranteed here: The order in which runnable threads are chosen to run is not guaranteed.
 
 threads aren't all lined up in some guaranteed order. Although we don't control the thread scheduler (we can't, for example, tell a specific thread to run), we can sometimes influence it. The following methods give us some tools for influencing the scheduler. Just don't ever mistake influence for control.
