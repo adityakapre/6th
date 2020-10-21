@@ -514,22 +514,40 @@ Besides those three, we also have the following scenarios in which a thread migh
 
 Synchronization and Locks
 -------------------------
-How does synchronization work? With locks. Every object in Java has a built-in lock that only comes into play when the object has synchronized method code. When we enter a synchronized non-static method, we automatically acquire the lock
-associated with the current instance of the class whose code we're executing (the this instance). Acquiring a lock for an object is also known as getting the lock, or locking the object, locking on the object, or synchronizing on the object. We
-may also use the term monitor to refer to the object whose lock we're acquiring. Technically the lock and the monitor are two different things, but most people talk about the two interchangeably, and we will too.
+How does synchronization work? With locks. Every object in Java has a built-in lock that only comes into 
+play when the object has synchronized method code. When we enter a synchronized non-static method, 
+we automatically acquire the lock associated with the current instance of the class whose code we're 
+executing (the this instance). Acquiring a lock for an object is also known as getting the lock, or 
+locking the object, locking on the object, or synchronizing on the object. We may also use the term monitor 
+to refer to the object whose lock we're acquiring. Technically the lock and the monitor are two different 
+things, but most people talk about the two interchangeably, and we will too.
 
 Remember the following key points about locking and synchronization:
 ■ Only methods (or blocks) can be synchronized, not variables or classes.
 ■ Each object has just one lock.
-■ Not all methods in a class need to be synchronized. A class can have both synchronized and non-synchronized methods.
-■ If two threads are about to execute a synchronized method in a class, and both threads are using the same instance of the class to invoke the method, only one thread at a time will be able to execute the method. The other thread will need to wait until the first one finishes its method call. In other words, once a thread acquires the lock on an object, no other thread can enter any of the synchronized methods in that class (for that object).
-■ If a class has both synchronized and non-synchronized methods, multiple threads can still access the class's non-synchronized methods! If you have methods that don't access the data you're trying to protect, then you don't
-need to synchronize them. Synchronization can cause a hit in some cases (or even deadlock if used incorrectly), so you should be careful not to overuse it.
+■ Not all methods in a class need to be synchronized. A class can have both synchronized 
+  and non-synchronized methods.
+■ If two threads are about to execute a synchronized method in a class, and both threads are using the 
+  same instance of the class to invoke the method, only one thread at a time will be able to execute 
+  the method. The other thread will need to wait until the first one finishes its method call. 
+  In other words, once a thread acquires the lock on an object, no other thread can enter any of the 
+  synchronized methods in that class (for that object).
+■ If a class has both synchronized and non-synchronized methods, multiple threads can still access the 
+  class's non-synchronized methods! If you have methods that don't access the data you're trying to protect, 
+  then you don't need to synchronize them. Synchronization can cause a hit in some cases (or even deadlock 
+  if used incorrectly), so you should be careful not to overuse it.
 ■ If a thread goes to sleep, it holds any locks it has—it doesn't release them.
-■ A thread can acquire more than one lock. For example, a thread can enter a synchronized method, thus acquiring a lock, and then immediately invoke a synchronized method on a different object, thus acquiring that lock as well. As the stack unwinds, locks are released again. Also, if a thread acquires a lock and then attempts to call a synchronized method on that same object, no problem. The JVM knows that this thread already has the lock for this object, so the thread is free to call other synchronized methods on the same object, using the lock the thread already has.
+■ A thread can acquire more than one lock. For example, a thread can enter a synchronized method, 
+  thus acquiring a lock, and then immediately invoke a synchronized method on a different object, 
+  thus acquiring that lock as well. As the stack unwinds, locks are released again. Also, if a thread 
+  acquires a lock and then attempts to call a synchronized method on that same object, no problem. 
+  The JVM knows that this thread already has the lock for this object, so the thread is free to call 
+  other synchronized methods on the same object, using the lock the thread already has.
 ■ You can synchronize a block of code rather than a method.
 
-Because synchronization does hurt concurrency, you don't want to synchronize any more code than is necessary to protect your data. So if the scope of a method is more than needed, you can reduce the scope of the synchronized part to something less than a full method—to just a block.
+Because synchronization does hurt concurrency, you don't want to synchronize any more code than is necessary 
+to protect your data. So if the scope of a method is more than needed, you can reduce the scope of the 
+synchronized part to something less than a full method—to just a block.
 
 class SyncTest {
 	public void doStuff() {
@@ -541,149 +559,221 @@ class SyncTest {
 }
 
 The real question is, synchronized on what? Or, synchronized on which object's lock?
-When you synchronize a method, the object used to invoke the method is the object whose lock must be acquired. But when you synchronize a block of code, you specify which object's lock you want to use as the lock, so you could, for example, use some third-party object as the lock for this piece of code. That gives you the ability to have more than one lock for code synchronization within a single object.
-Or you can synchronize on the current instance (this) as in the code above. Since that's the same instance that synchronized methods lock on, it means that you could always replace a synchronized method with a non-synchronized
-method containing a synchronized block. In other words, this:
+When you synchronize a method, the object used to invoke the method is the object whose lock must be acquired. 
+But when you synchronize a block of code, you specify which object's lock you want to use as the lock, 
+so you could, for example, use some third-party object as the lock for this piece of code. That gives you 
+the ability to have more than one lock for code synchronization within a single object.
+Or you can synchronize on the current instance (this) as in the code above. Since that's the same instance 
+that synchronized methods lock on, it means that you could always replace a synchronized method with a 
+non-synchronized method containing a synchronized block. In other words, this:
+
 public synchronized void doStuff() {
-System.out.println("synchronized");
+	System.out.println("synchronized");
 }
+
 is equivalent to this:
+
 public void doStuff() {
-synchronized(this) {
-System.out.println("synchronized");
-}
+	synchronized(this) {
+		System.out.println("synchronized");
+	}
 }
 
 So What About Static Methods? Can They Be Synchronized?
-static methods can be synchronized. There is only one copy of the static data you're trying to protect, so you only need one lock per class to synchronize static methods—a lock for the whole class. There is such a lock; every class loaded in Java
-has a corresponding instance of java.lang.Class representing that class. It's that java.lang.Class instance whose lock is used to protect the static methods of the class (if they're synchronized). There's nothing special you have to do to
-synchronize a static method:
+static methods can be synchronized. There is only one copy of the static data you're trying to protect, 
+so you only need one lock per class to synchronize static methods—a lock for the whole class. 
+There is such a lock; every class loaded in Java has a corresponding instance of java.lang.Class representing 
+that class. It's that java.lang.Class instance whose lock is used to protect the static methods of the class 
+(if they're synchronized). There's nothing special you have to do to synchronize a static method:
+
 public static synchronized int getCount() {
-return count;
+	return count;
 }
 
 public static int getCount() {
-synchronized(MyClass.class) {
-return count;
+	synchronized(MyClass.class) {
+		return count;
+	}
 }
-}
-Wait—what's that MyClass.class thing? That's called a class literal. It's a special feature in the Java language that tells the compiler (who tells the JVM): go and find me the instance of Class that represents the class called MyClass. You can
-also do this with the following code:
+
+Wait—what's that MyClass.class thing? That's called a class literal. It's a special feature in the Java 
+language that tells the compiler (who tells the JVM): go and find me the instance of Class that represents 
+the class called MyClass. You can also do this with the following code:
+
 public static void classMethod() {
-Class cl = Class.forName("MyClass");
-synchronized (cl) {
-// do stuff
-}
+	Class cl = Class.forName("MyClass");
+	synchronized (cl) {
+		// do stuff
+	}
 }
 
 What Happens If a Thread Can't Get the Lock?
-If a thread tries to enter a synchronized method and the lock is already taken, the thread is said to be blocked on the object's lock. Essentially, the thread goes into a kind of pool for that particular object and has to sit there until the lock is released and the thread can again become runnable/running. Just because a lock is released doesn't mean any particular thread will get it. There might be three threads waiting for a single lock, for example, and there's no guarantee that the thread that has waited the longest will get the lock first.
+If a thread tries to enter a synchronized method and the lock is already taken, the thread is said to be 
+blocked on the object's lock. Essentially, the thread goes into a kind of pool for that particular object 
+and has to sit there until the lock is released and the thread can again become runnable/running. Just because 
+a lock is released doesn't mean any particular thread will get it. There might be three threads waiting 
+for a single lock, for example, and there's no guarantee that the thread that has waited the longest will 
+get the lock first.
 When thinking about blocking, it's important to pay attention to which objects are being used for locking.
-■ Threads calling non-static synchronized methods in the same class will only block each other if they're invoked using the same instance. That's because they each lock on this instance, and if they're called using two different instances, they get two locks, which do not interfere with each other.
-■ Threads calling static synchronized methods in the same class will always block each other—they all lock on the same Class instance.
-■ A static synchronized method and a non-static synchronized method will not block each other, ever. The static method locks on a Class instance while the non-static method locks on the this instance—these actions do not interfere with each other at all.
-■ For synchronized blocks, you have to look at exactly what object has been used for locking. (What's inside the parentheses after the word synchronized?) Threads that synchronize on the same object will block each other.
-Threads that synchronize on different objects will not.
-
-
+■ Threads calling non-static synchronized methods in the same class will only block each other if they're 
+  invoked using the same instance. That's because they each lock on this instance, and if they're called using 
+  two different instances, they get two locks, which do not interfere with each other.
+■ Threads calling static synchronized methods in the same class will always block each other—they all 
+  lock on the same Class instance.
+■ A static synchronized method and a non-static synchronized method will not block each other, ever. 
+  The static method locks on a Class instance while the non-static method locks on the this instance—these 
+  actions do not interfere with each other at all.
+■ For synchronized blocks, you have to look at exactly what object has been used for locking. (What's inside 
+  the parentheses after the word synchronized?) Threads that synchronize on the same object will block each other.
+  Threads that synchronize on different objects will not.
 
 
 So When Do I Need to Synchronize?
-Generally, any time more than one thread is accessing mutable (changeable) data, you synchronize to protect that data, to make sure two threads aren't changing it at the same time (or that one isn't changing it at the same time the other is
-reading it, which is also confusing). You don't need to worry about local variables—each thread gets its own copy of a local variable. Two threads executing the same method at the same time will use different copies of the local variables, and they
-won't bother each other. However, you do need to worry about static and non-static fields, if they contain data that can be changed. 
+Generally, any time more than one thread is accessing mutable (changeable) data, you synchronize 
+to protect that data, to make sure two threads aren't changing it at the same time (or that one isn't changing 
+it at the same time the other is reading it, which is also confusing). You don't need to worry about 
+local variables—each thread gets its own copy of a local variable. Two threads executing the same method 
+at the same time will use different copies of the local variables, and they won't bother each other. 
+However, you do need to worry about static and non-static fields, if they contain data that can be changed. 
 For changeable data in a non-static field, you usually use a non-static method to access it.
 
-However—what if you have a non-static method that accesses a static field? Or a static method that accesses a non-static field (using an instance)? In these cases things start to get messy quickly, and there's a very good chance that things will not work the way you want. If you've got a static method accessing a non-static field, and you synchronize the method, you acquire a lock on the Class object. But what if there's another method that also accesses the non-static field, this time using a non-static method? It probably synchronizes on the current instance (this) instead. Remember that a static synchronized method and a non-static synchronized method will not block each other—they can run at the same time. Similarly, if you access a static field using a non-static method, two threads might invoke that method using two different this instances. Which means they won't block each other, because they use different locks. Which means two threads are simultaneously accessing the same static field—exactly the sort of thing we're trying to prevent.
-It gets very confusing trying to imagine all the weird things that can happen here. To keep things simple: in order to make a class thread-safe, methods that access changeable fields need to be synchronized. Access to static fields should be done from static synchronized methods. Access to non-static fields should be done from non-static synchronized methods.
-
+However—what if you have a non-static method that accesses a static field? Or a static method that accesses 
+a non-static field (using an instance)? In these cases things start to get messy quickly, and there's a 
+very good chance that things will not work the way you want. 
+If you've got a static method accessing a non-static field, and you synchronize the method, 
+you acquire a lock on the Class object. But what if there's another method that also accesses the non-static field, 
+this time using a non-static method? It probably synchronizes on the current instance (this) instead. 
+Remember that a static synchronized method and a non-static synchronized method will not block each other—they 
+can run at the same time. Similarly, if you access a static field using a non-static method, two threads might 
+invoke that method using two different this instances. Which means they won't block each other, because they 
+use different locks. Which means two threads are simultaneously accessing the same static field—exactly 
+the sort of thing we're trying to prevent.
+It gets very confusing trying to imagine all the weird things that can happen here. 
+To keep things simple: in order to make a class thread-safe, methods that access changeable fields need 
+to be synchronized. Access to static fields should be done from static synchronized methods. 
+Access to non-static fields should be done from non-static synchronized methods.
 
 Thread-Safe Classes
-Many classes in the Java APIs already use synchronization internally in order to make the class "thread-safe." For example, StringBuffer and StringBuilder are nearly identical classes, except that all the methods in StringBuffer are synchronized
-when necessary, while those in StringBuilder are not. Generally, this makes StringBuffer safe to use in a multithreaded environment, while StringBuilder is not. (In return, StringBuilder is a little bit faster because it doesn't bother synchronizing.)
+-------------------
+Many classes in the Java APIs already use synchronization internally in order to make the class "thread-safe." 
+For example, StringBuffer and StringBuilder are nearly identical classes, except that all the methods in 
+StringBuffer are synchronized when necessary, while those in StringBuilder are not. 
+Generally, this makes StringBuffer safe to use in a multithreaded environment, while StringBuilder is not. 
+(In return, StringBuilder is a little bit faster because it doesn't bother synchronizing.)
 
 import java.util.*;
 public class NameList {
-private List names = Collections.synchronizedList(
-new LinkedList());
-public void add(String name) {
-names.add(name);
-}
-public String removeFirst() {
-if (names.size() > 0)
-return (String) names.remove(0);
-else
-return null;
-}
+	private List names = Collections.synchronizedList(new LinkedList());
+
+	public void add(String name) {
+		names.add(name);
+	}
+	public String removeFirst() {
+		if (names.size() > 0)
+			return (String) names.remove(0);
+		else
+			return null;
+	}
 }
 
-The method Collections.synchronizedList() returns a List whose methods are all synchronized and "thread-safe" according to the documentation (like a Vector—but since this is the 21st century, we're not going to use a Vector here).
-The question is, can the NameList class be used safely from multiple threads? It's tempting to think that yes, since the data in names is in a synchronized collection, the NameList class is "safe" too. However that's not the case—the removeFirst()
-may sometimes throw a NoSuchElementException. What's the problem? Doesn't it correctly check the size() of names before removing anything, to make sure there's something there? How could this code fail? Let's try to use NameList like this:
+The method Collections.synchronizedList() returns a List whose methods are all synchronized and 
+"thread-safe" according to the documentation (like a Vector—but since this is the 21st century, 
+we're not going to use a Vector here).
+The question is, can the NameList class be used safely from multiple threads? It's tempting to think 
+that yes, since the data in names is in a synchronized collection, the NameList class is "safe" too. 
+However that's not the case—the removeFirst() may sometimes throw a NoSuchElementException. 
+What's the problem? Doesn't it correctly check the size() of names before removing anything, to make 
+sure there's something there? How could this code fail? Let's try to use NameList like this:
 
 public static void main(String[] args) {
-final NameList nl = new NameList();
-nl.add("Ozymandias");
-class NameDropper extends Thread {
-public void run() {
-String name = nl.removeFirst();
-System.out.println(name);
-}
-}
-Thread t1 = new NameDropper();
-Thread t2 = new NameDropper();
-t1.start();
-t2.start();
+	final NameList nl = new NameList();
+	nl.add("Ozymandias");
+	
+	class NameDropper extends Thread {
+		public void run() {
+			String name = nl.removeFirst();
+			System.out.println(name);
+		}
+	}
+	Thread t1 = new NameDropper();
+	Thread t2 = new NameDropper();
+	t1.start();
+	t2.start();
 }
 
-The thing to realize here is that in a "thread-safe" class like the one returned by synchronizedList(), each individual method is synchronized. So names.size() is synchronized, and names.remove(0) is synchronized. But nothing prevents another thread from doing something else to the list in between those two calls. And that's where problems can happen.
+The thing to realize here is that in a "thread-safe" class like the one returned by synchronizedList(), 
+each individual method is synchronized. So names.size() is synchronized, and names.remove(0) is synchronized. 
+But nothing prevents another thread from doing something else to the list in between those two calls. 
+And that's where problems can happen.
 
 Thread Deadlock
-
-Necessary Conditions to be hold simultaneously
-following four conditions hold
+---------------
+Necessary Conditions to be hold simultaneously, following four conditions hold
 1. Mutual exclusion.
 2. Hold and wait.
 3. No preemption.
 4. Circular wait.
 
-Perhaps the scariest thing that can happen to a Java program is deadlock. Deadlock occurs when two threads are blocked, with each waiting for the other's lock. Neither can run until the other gives up its lock, so they'll sit there forever. This can happen, for example, when thread A hits synchronized code, acquires a lock B, and then enters another method (still within the synchronized code it has the lock on) that's also synchronized. But thread A can't get the lock to enter this synchronized code—block C—because another thread D has the lock already. So thread A goes off to the waiting-for-the-C-lock pool, hoping that thread D will hurry up and release the lock (by completing the synchronized method). But thread A will wait a very long time indeed, because while thread D picked up lock C, it then entered a method synchronized on lock B. Obviously, thread D can't get the lock B because thread A has it. And thread A won't release it until thread D releases lock C. But thread D won't release lock C until after it can get lock B and continue. And there they sit. The following example demonstrates deadlock:
+Perhaps the scariest thing that can happen to a Java program is deadlock. Deadlock occurs when two 
+threads are blocked, with each waiting for the other's lock. Neither can run until the other gives 
+up its lock, so they'll sit there forever. This can happen, for example, when thread A hits synchronized code, 
+acquires a lock B, and then enters another method (still within the synchronized code it has the lock on) 
+that's also synchronized. But thread A can't get the lock to enter this synchronized code—block C—because 
+another thread D has the lock already. So thread A goes off to the waiting-for-the-C-lock pool, hoping that 
+thread D will hurry up and release the lock (by completing the synchronized method). But thread A will wait 
+a very long time indeed, because while thread D picked up lock C, it then entered a method synchronized on lock B. 
+Obviously, thread D can't get the lock B because thread A has it. And thread A won't release it until thread D 
+releases lock C. But thread D won't release lock C until after it can get lock B and continue. And there they sit. 
+The following example demonstrates deadlock:
 
 1. public class DeadlockRisk {
-2. private static class Resource {
-3. public int value;
-4. }
-5. private Resource resourceA = new Resource();
-6. private Resource resourceB = new Resource();
-7. public int read() {
-8. synchronized(resourceA) { // May deadlock here
-9. synchronized(resourceB) {
-10. return resourceB.value + resourceA.value;
-11. }
-12. }
-13. }
+2. 	private static class Resource {
+3. 		public int value;
+4. 	}
+5. 	private Resource resourceA = new Resource();
+6. 	private Resource resourceB = new Resource();
+7. 	public int read() {
+8. 		synchronized(resourceA) { // May deadlock here
+9. 			synchronized(resourceB) {
+10. 				return resourceB.value + resourceA.value;
+11. 			}
+12. 		}
+13. 	}
 14.
-15. public void write(int a, int b) {
-16. synchronized(resourceB) { // May deadlock here
-17. synchronized(resourceA) {
-18. resourceA.value = a;
-19. resourceB.value = b;
-20. }
-21. }
-22. }
+15. 	public void write(int a, int b) {
+16. 		synchronized(resourceB) { // May deadlock here
+17. 			synchronized(resourceA) {
+18. 				resourceA.value = a;
+19. 				resourceB.value = b;
+20. 			}
+21. 		}
+22. 	}
 23. }
 
-The preceding simple example is easy to fix; just swap the order of locking for either the reader or the writer at lines 16 and 17 (or lines 8 and 9). More complex deadlock situations can take a long time to figure out. Regardless of how little chance there is for your code to deadlock, the bottom line is, if you deadlock, you're dead. There are design approaches that can help avoid deadlock, including strategies for always acquiring locks in a predetermined order.
+The preceding simple example is easy to fix; just swap the order of locking for either the reader 
+or the writer at lines 16 and 17 (or lines 8 and 9). More complex deadlock situations can take a long time 
+to figure out. Regardless of how little chance there is for your code to deadlock, the bottom line is, 
+if you deadlock, you're dead. There are design approaches that can help avoid deadlock, including strategies 
+for always acquiring locks in a predetermined order.
 
 Thread Interaction:
-The Object class has three methods, wait(), notify(), and notifyAll() that help threads communicate about the status of an event that the threads care about.
-Using the wait and notify mechanism, the mail-processor thread could check for mail, and if it doesn't find any it can say, "Hey, I'm not going to waste my time checking for mail every two seconds. I'm going to go hang out, and when the mail
-deliverer puts something in the mailbox, have him notify me so I can go back to runnable and do some work." In other words, using wait() and notify() lets one thread put itself into a "waiting room" until some other thread notifies it that there's
+-------------------
+The Object class has three methods, wait(), notify(), and notifyAll() that help threads communicate about 
+the status of an event that the threads care about. Using the wait and notify mechanism, the mail-processor 
+thread could check for mail, and if it doesn't find any it can say, "Hey, I'm not going to waste my time checking 
+for mail every two seconds. I'm going to go hang out, and when the mail deliverer puts something in the mailbox, 
+have him notify me so I can go back to runnable and do some work." In other words, using wait() and notify() 
+lets one thread put itself into a "waiting room" until some other thread notifies it that there's
 a reason to come back out.
 
-wait(), notify(), and notifyAll() must be called from within a synchronized context! A thread can't invoke a wait or notify method on an object unless it owns that object's lock.
+wait(), notify(), and notifyAll() must be called from within a synchronized context! A thread can't invoke a 
+wait or notify method on an object unless it owns that object's lock.
 
-In the same way that every object has a lock, every object can have a list of threads that are waiting for a signal (a notification) from the object. A thread gets on this waiting list by executing the wait() method of the target object. From that moment, it doesn't execute any further instructions until the notify() method of the target object is called. If many threads are waiting on the same object, only one will be chosen (in no guaranteed order) to proceed with its execution.
+In the same way that every object has a lock, every object can have a list of threads that are waiting for a 
+signal (a notification) from the object. A thread gets on this waiting list by executing the wait() method 
+of the target object. From that moment, it doesn't execute any further instructions until the notify() method 
+of the target object is called. If many threads are waiting on the same object, only one will be chosen 
+(in no guaranteed order) to proceed with its execution.
 
 1. class ThreadA {
 2. public static void main(String [] args) {
@@ -701,148 +791,198 @@ In the same way that every object has a lock, every object can have a list of th
 14. }
 15.
 16. class ThreadB extends Thread {
-17. int total;
+17. 	int total;
 18.
-19. public void run() {
-20. synchronized(this) {
-21. for(int i=0;i<100;i++) {
-22. total += i;
-23. }
-24. notify();
-25. }
-26. }
+19. 	public void run() {
+20. 		synchronized(this) {
+21. 			for(int i=0;i<100;i++) {
+22. 				total += i;
+23.			 }
+24.		 	notify();
+25. 		}
+26. 	}
 27. }
 
-As soon as line 4 calls the start() method, ThreadA will continue with the next line of code in its own class, which means it could get to line 11 before ThreadB has finished the calculation. To prevent this, we use the wait() method in line 9.
-Notice in line 6 the code synchronizes itself with the object b—this is because in order to call wait() on the object, ThreadA must own a lock on b. For a thread to call wait() or notify(), the thread has to be the owner of the lock for that object.
-When the thread waits, it temporarily releases the lock for other threads to use, but it will need it again to continue execution.
+As soon as line 4 calls the start() method, ThreadA will continue with the next line of code 
+in its own class, which means it could get to line 11 before ThreadB has finished the calculation. 
+To prevent this, we use the wait() method in line 9.
+Notice in line 6 the code synchronizes itself with the object b—this is because in order to 
+call wait() on the object, ThreadA must own a lock on b. For a thread to call wait() or notify(), 
+the thread has to be the owner of the lock for that object.
+When the thread waits, it temporarily releases the lock for other threads to use, but it will 
+need it again to continue execution.
 
 synchronized(anotherObject) { // this has the lock on anotherObject
-try {
-anotherObject.wait();
-// the thread releases the lock and waits
-// To continue, the thread needs the lock,
-// so it may be blocked until it gets it.
-} catch(InterruptedException e){}
+	try {
+		anotherObject.wait();
+		// the thread releases the lock and waits
+		// To continue, the thread needs the lock,
+		// so it may be blocked until it gets it.
+	} 
+	catch(InterruptedException e){}
 }
 
 The preceding code waits until notify() is called on anotherObject.
-synchronized(this) { notify(); }
 
-Note that if the thread calling wait() does not own the lock, it will throw an IllegalMonitorStateException. This exception is not a checked exception, so you don't have to catch it explicitly. You should always be clear whether a thread has the lock of an object in any given block of code.
-
-A waiting thread can be interrupted in the same way as a sleeping thread, so you have to take care of the exception:
-try {
-wait();
-} catch(InterruptedException e) {
-// Do something about it
+synchronized(this) { 
+	notify(); 
 }
 
-When the wait() method is invoked on an object, the thread executing that code gives up its lock on the object immediately. However, when notify() is called, that doesn’t mean the thread gives up its lock at that moment. If the thread is still
-completing synchronized code, the lock is not released until the thread moves out of synchronized code. So just because notify() is called doesn’t mean the lock becomes available at that moment.
+Note that if the thread calling wait() does not own the lock, it will throw an  
+IllegalMonitorStateException. This exception is not a checked exception, so you don't have 
+to catch it explicitly. You should always be clear whether a thread has the lock of an object 
+in any given block of code.
 
-Using notifyAll( ) When Many Threads May Be Waiting
-In most scenarios, it's preferable to notify all of the threads that are waiting on a particular object. If so, you can use notifyAll() on the object to let all the threads rush out of the waiting area and back to runnable. This is especially important if you have several threads waiting on one object, but for different reasons, and you want to be sure that the right thread (along with all of the others) gets notified.
+A waiting thread can be interrupted in the same way as a sleeping thread, so you have to 
+take care of the exception:
+
+try {
+	wait();
+} catch(InterruptedException e) {
+	// Do something about it
+}
+
+When the wait() method is invoked on an object, the thread executing that code gives up its 
+lock on the object immediately. However, when notify() is called, that doesn’t mean the thread 
+gives up its lock at that moment. If the thread is still completing synchronized code, the lock 
+is not released until the thread moves out of synchronized code. So just because notify() is called 
+doesn’t mean the lock becomes available at that moment.
+-------------------------------------------------------------------------------------------------
+Give Up Locks | Keep Locks                                            | Class Defining the Method
+-------------------------------------------------------------------------------------------------
+wait()        | notify() (Although the thread will probably exit the  | java.lang.Object
+              | synchronized code shortly after this call, and thus   | 
+	      | give up its locks)                                    |
+	      | join()                                                | java.lang.Thread
+	      | sleep()                                               | java.lang.Thread
+	      | yield()                                               | java.lang.Thread
+-------------------------------------------------------------------------------------------------
+
+Using notifyAll) When Many Threads May Be Waiting
+-------------------------------------------------
+In most scenarios, it's preferable to notify all of the threads that are waiting on a particular object. 
+If so, you can use notifyAll() on the object to let all the threads rush out of the waiting area and 
+back to runnable. This is especially important if you have several threads waiting on one object, 
+but for different reasons, and you want to be sure that the right thread (along with all of the others) 
+gets notified.
+
 notifyAll(); // Will notify all waiting threads
 
-As we said earlier, an object can have many threads waiting on it, and using notify() will affect only one of them. Which one, exactly, is not specified and depends on the JVM implementation, so you should never rely on a particular thread being notified in preference to another. In cases in which there might be a lot more waiting, the best way to do this is by
-using notifyAll().
+As we said earlier, an object can have many threads waiting on it, and using notify() will affect only 
+one of them. Which one, exactly, is not specified and depends on the JVM implementation, so you should 
+never rely on a particular thread being notified in preference to another. In cases in which there might 
+be a lot more waiting, the best way to do this is by using notifyAll().
 
 class Operator extends Thread {
-public void run(){
-while(true){
-// Get shape from user
-synchronized(this){
-// Calculate new machine steps from shape
-notify();
+	public void run(){
+		while(true){
+			// Get shape from user
+			synchronized(this){
+				// Calculate new machine steps from shape
+			notify();
+			}
+		}
+	}
 }
-}
-}
-}
+
 class Machine extends Thread {
-Operator operator; // assume this gets initialized
-public void run(){
-while(true){
-synchronized(operator){
-try {
-operator.wait();
-} catch(InterruptedException ie) {}
-// Send machine steps to hardware
-}
-}
-}
-}
+	Operator operator; // assume this gets initialized
+	public void run(){
+		while(true){
+		synchronized(operator){
+			try {
+				operator.wait();
+			} catch(InterruptedException ie) {}
+				// Send machine steps to hardware
+			}
+			}
+		}
+	}
 }
 
 
-Using wait( ) in a Loop : 
-Actually both of the previous examples (Machine/Operator and Reader/Calculator) had a common problem. In each one, there was at least one thread calling wait(), and another thread calling notify() or notifyAll(). This works well enough as long as the waiting threads have actually started waiting before the other thread executes the notify() or notifyAll(). But what happens if, for example, the Calculator runs first and calls notify() before the Readers have started waiting?
-This could happen, since we can't guarantee what order the different parts of the thread will execute in. Unfortunately, when the Readers run, they just start waiting right away. They don't do anything to see if the event they're waiting for has already
-happened. So if the Calculator has already called notifyAll(), it's not going to call notifyAll() again—and the waiting Readers will keep waiting forever. This is probably not what the programmer wanted to happen. Almost always, when you want to wait for something, you also need to be able to check if it has already happened. Generally the best way to solve this is to put in some sort of loop that checks on some sort of conditional expressions, and only waits if the thing you're waiting for has not yet happened. Here's a modified, safer version of the earlier fabric-cutting machine example:
+Using wait() in a Loop : 
+------------------------
+Actually both of the previous examples (Machine/Operator and Reader/Calculator) 
+had a common problem. In each one, there was at least one thread calling wait(), and another 
+thread calling notify() or notifyAll(). This works well enough as long as the waiting threads 
+have actually started waiting before the other thread executes the notify() or notifyAll(). 
+But what happens if, for example, the Calculator runs first and calls notify() before the 
+Readers have started waiting?
+This could happen, since we can't guarantee what order the different parts of the thread will 
+execute in. Unfortunately, when the Readers run, they just start waiting right away. 
+They don't do anything to see if the event they're waiting for has already happened. 
+So if the Calculator has already called notifyAll(), it's not going to call notifyAll() again—and 
+the waiting Readers will keep waiting forever. This is probably not what the programmer wanted 
+to happen. Almost always, when you want to wait for something, you also need to be able to check 
+if it has already happened. Generally the best way to solve this is to put in some sort of loop 
+that checks on some sort of conditional expressions, and only waits if the thing you're waiting 
+for has not yet happened. Here's a modified, safer version of the earlier fabric-cutting machine example:
 
 
 class Operator extends Thread {
-Machine machine; // assume this gets initialized
+	Machine machine; // assume this gets initialized
+	public void run() {
+		while (true) {
+			Shape shape = getShapeFromUser();
+			MachineInstructions job = calculateNewInstructionsFor(shape);
+			machine.addJob(job);
+		}
+	}
+}
+
 public void run() {
-while (true) {
-Shape shape = getShapeFromUser();
-MachineInstructions job = calculateNewInstructionsFor(shape);
-machine.addJob(job);
-}
-}
-}
-
-public void run() {
-while (true) {
-synchronized (jobs) {
-// wait until at least one job is available
-while (jobs.isEmpty()) {
-try {
-jobs.wait();
-} catch (InterruptedException ie) { 
-}
-}
-// If we get here, we know that jobs is not empty
-MachineInstructions instructions = jobs.remove(0);
-// Send machine steps to hardware
-}
-}
-}
+	while (true) {
+		synchronized (jobs) {
+		// wait until at least one job is available
+			while (jobs.isEmpty()) {
+			try {
+				jobs.wait();
+			} catch (InterruptedException ie) { 
+			}
+			}
+			// If we get here, we know that jobs is not empty
+			MachineInstructions instructions = jobs.remove(0);
+			// Send machine steps to hardware
+			}
+		}
+	}
 }
 
-Meanwhile the run() method just keeps looping, looking for any jobs on the list. If there are no jobs, it will start waiting. If it's notified, it will stop waiting and then recheck the loop condition: is the list still empty? In practice this double-check is probably not necessary, as the only time a notify() is ever sent is when a new job has been added to the list. However, it's a good idea to require the thread to recheck the isEmpty() condition whenever it's been woken up, because it's possible that a thread has accidentally sent an extra notify() that was not intended. There's also a possible situation called spontaneous wakeup that may exist in some situations—a thread may wake up even though no code has called notify() or notifyAll(). (At least, no code you know about has called these methods.
-Sometimes the JVM may call notify() for reasons of its own, or code in some other class calls it for reasons you just don't know.) What this means is, when your thread wakes up from a wait(), you don't know for sure why it was awakened. By putting the wait() method in a while loop and re-checking the condition that represents what we were waiting for, we ensure that whatever the reason we woke up, we will re-enter the wait() if (and only if) the thing we were waiting for has not happened yet. In the Machine class, the thing we were waiting for is for the jobs list to not be empty. If it's empty, we wait, and if it's not, we don't.
+Meanwhile the run() method just keeps looping, looking for any jobs on the list. 
+If there are no jobs, it will start waiting. If it's notified, it will stop waiting and 
+then recheck the loop condition: is the list still empty? In practice this double-check is 
+probably not necessary, as the only time a notify() is ever sent is when a new job has been 
+added to the list. However, it's a good idea to require the thread to recheck the isEmpty() 
+condition whenever it's been woken up, because it's possible that a thread has accidentally 
+sent an extra notify() that was not intended. There's also a possible situation called spontaneous 
+wakeup that may exist in some situations—a thread may wake up even though no code has called notify() 
+or notifyAll(). (At least, no code you know about has called these methods. Sometimes the JVM may call 
+notify() for reasons of its own, or code in some other class calls it for reasons you just don't know.) 
+What this means is, when your thread wakes up from a wait(), you don't know for sure why it was awakened. 
+By putting the wait() method in a while loop and re-checking the condition that represents what we were 
+waiting for, we ensure that whatever the reason we woke up, we will re-enter the wait() if (and only if) 
+the thing we were waiting for has not happened yet. 
+In the Machine class, the thing we were waiting for is for the jobs list to not be empty. If it's empty, 
+we wait, and if it's not, we don't.
 
-The moral here is that when you use wait() and notify() or notifyAll(), you should almost always also have a while loop around the wait() that checks a condition and forces continued waiting until the condition is met. And you should also make use of the required synchronization for the wait() and notify() calls, to also protect whatever other data you're sharing between threads. If you see code which fails to do this, there's usually something wrong with the code—even if you have a hard time seeing what exactly the problem is.
+The moral here is that when you use wait() and notify() or notifyAll(), you should almost always also 
+have a while loop around the wait() that checks a condition and forces continued waiting until the 
+condition is met. And you should also make use of the required synchronization for the wait() and notify() 
+calls, to also protect whatever other data you're sharing between threads. If you see code which fails to 
+do this, there's usually something wrong with the code—even if you have a hard time seeing what 
+exactly the problem is.
 
-The methods wait() , notify(), and notifyAll() are methods of only java.lang.Object, not of java.lang.Thread or java.lang.Runnable. Be sure you know which methods are defined in Thread, which in Object, and which in Runnable (just run(), so that’s an easy one). Of the key methods in Thread, be sure you know which are static—sleep() and yield(), and which are not static—join() and start(). Table 9-2 lists the key methods you’ll need to know for the exam, with the static methods shown in italics.
-
-
-
-Q. difference betweween jdk, jre and jvm
-
-
-
-Cleaning Up Before Garbage Collection—the finalize() Method
-Java provides you a mechanism to run some code just before your object is deleted by the garbage collector. This code is located in a method named finalize() that all classes inherit from class Object. On the surface this sounds like a great idea;
-maybe your object opened up some resources, and you'd like to close them before your object is deleted. The problem is that, as you may have gathered by now, you can't count on the garbage collector to ever delete an object. So, any code that you put into your class's overridden finalize() method is not guaranteed to run. The finalize() method for any given object might run, but you can't count on it, so don't put any essential code into your finalize() method. In fact, we recommend
-that in general you don't override finalize() at all.
-Tricky Little finalize() Gotcha's
-There are a couple of concepts concerning finalize() that you need to remember.
-■ For any given object, finalize() will be called only once (at most) by the garbage collector.
-■ Calling finalize() can actually result in saving an object from deletion.
-Let's look into these statements a little further. First of all, remember that any code that you can put into a normal method you can put into finalize(). For example, in the finalize() method you could write code that passes a reference to the object in question back to another object, effectively uneligiblizing the object for garbage collection. If at some point later on this same object becomes eligible for garbage collection again, the garbage collector can still process this object and delete it. The garbage collector, however, will remember that, for this object, finalize() already ran, and it will not run finalize() again.
-
-Finally block
-Although try and catch provide a terrific mechanism for trapping and handling exceptions, we are left with the problem of how to clean up after ourselves if an exception occurs. Because execution transfers out of the try block as soon as an
-exception is thrown, we can't put our cleanup code at the bottom of the try block and expect it to be executed if an exception occurs. Almost as bad an idea would be placing our cleanup code in each of the catch blocks—let's see why.
-Exception handlers are a poor place to clean up after the code in the try block because each handler then requires its own copy of the cleanup code. If, for example, you allocated a network socket or opened a file somewhere in the guarded region,
-each exception handler would have to close the file or release the socket. That would make it too easy to forget to do cleanup, and also lead to a lot of redundant code. To address this problem, Java offers the finally block. A finally block encloses code that is always executed at some point after the try block, whether an exception was thrown or not. Even if there is a return statement in the try block, the finally block executes right after the return statement is encountered, and before the return executes!
-If an exception is thrown, finally runs. If an exception is not thrown, finally runs. If the exception is caught, finally runs. If the exception is not caught, finally runs. Later we'll look at the few scenarios in which finally might not run or complete.
-
-It is illegal to use a try clause without either a catch clause or a finally clause. A try clause by itself will result in a compiler error. Any catch clauses must immediately follow the try block. Any finally clause must immediately follow the last
-catch clause (or it must immediately follow the try block if there is no catch). It is legal to omit either the catch clause or the 
-finally clause, but not both.
-
-❑ The only exception to the finally-will-always-be-called rule is that a finally will not be invoked if the JVM shuts down. That could happen if code from the try or catch blocks calls System.exit().
-❑ Just because finally is invoked does not mean it will complete. Code in the finally block could itself raise an exception or issue a System.exit().
+The methods wait() , notify(), and notifyAll() are methods of only java.lang.Object, 
+not of java.lang.Thread or java.lang.Runnable. Be sure you know which methods are defined in Thread, 
+which in Object, and which in Runnable (just run(), so that’s an easy one). Of the key methods in Thread, 
+be sure you know which are static—sleep() and yield(), and which are not static—join() and start(). 
+Table 9-2 lists the key methods you’ll need to know for the exam, with the static methods shown in italics.
+------------------------------------------------------
+Class Object | Class Thread	 | Interface Runnable
+------------------------------------------------------
+wait()       | start() 	         | run()
+notify()     | join()            |
+notifyAll()  | sleep() {static}  |
+             | yield() {static}  |
+------------------------------------------------------
