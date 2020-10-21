@@ -266,124 +266,254 @@ be that thread's only ID number for the thread's entire life.
 
 Thread Scheduler
 ----------------
-Assuming a single processor machine, only one thread can actually run at a time. Only one stack can ever be executing at one time. And it's the thread scheduler that decides which thread—of all that are eligible—will actually run. When we say eligible, we really mean in the runnable state.Any thread in the runnable state can be chosen by the scheduler to be the one and only running thread. If a thread is not in a runnable state, then it cannot be chosen to be the currently running thread. And just so we're clear about how little is guaranteed here: The order in which runnable threads are chosen to run is not guaranteed.
+Assuming a single processor machine, only one thread can actually run at a time. 
+Only one stack can ever be executing at one time. And it's the thread scheduler that 
+decides which thread—of all that are eligible—will actually run. When we say eligible, 
+we really mean in the runnable state.Any thread in the runnable state can be chosen 
+by the scheduler to be the one and only running thread. If a thread is not in a runnable state, 
+then it cannot be chosen to be the currently running thread. And just so we're clear about 
+how little is guaranteed here: The order in which runnable threads are chosen to run is 
+not guaranteed. Threads aren't all lined up in some guaranteed order. 
+Although we don't control the thread scheduler (we can't, for example, tell a specific 
+thread to run), we can sometimes influence it. The following methods give us some tools 
+for influencing the scheduler. Just don't ever mistake influence for control.
 
-threads aren't all lined up in some guaranteed order. Although we don't control the thread scheduler (we can't, for example, tell a specific thread to run), we can sometimes influence it. The following methods give us some tools for influencing the scheduler. Just don't ever mistake influence for control.
+Methods from the java.lang.Thread Class Some of the methods that can help us influence 
+thread scheduling are as follows:
 
-Methods from the java.lang.Thread Class Some of the methods that can
-help us influence thread scheduling are as follows:
-public static void sleep(long millis) throws InterruptedException
-public static void yield()
-public final void join() throws InterruptedException
-public final void setPriority(int newPriority)
+	public static void sleep(long millis) throws InterruptedException
+	public static void yield()
+	public final void join() throws InterruptedException
+	public final void setPriority(int newPriority)
+
 Note that both sleep() and join() have overloaded versions not shown here.
 
-Methods from the java.lang.Object Class Every class in Java inherits the following three thread-related methods:
+Methods from the java.lang.Object Class Every class in Java inherits the following 
+three thread-related methods:
+
 public final void wait() throws InterruptedException
 public final void notify()
 public final void notifyAll()
 
 Thread States and Transitions : 
 
+		     Waiting/Blocking/Sleeping
+			|              ^
+			|              |
+			v              |
+	New ------> Runnable <-----> Running ------> Dead
 
-
-While the thread scheduler can move a thread from the running state back to runnable, other factors can cause a thread to move out of running, but not back to runnable. One of these is when the thread's run()method completes, in which case the thread moves from the running state directly to the dead state. Next we'll look at some of the other ways in which a thread can leave the running state, and where the thread goes.
+While the thread scheduler can move a thread from the running state back to runnable, 
+other factors can cause a thread to move out of running, but not back to runnable. 
+One of these is when the thread's run()method completes, in which case the thread moves 
+from the running state directly to the dead state. 
+Next we'll look at some of the other ways in which a thread can leave the 
+running state, and where the thread goes.
 
 Thread States
+-------------
 
 A thread can be only in one of five states (see Figure 9-2):
-■ New This is the state the thread is in after the Thread instance has been created, but the start() method has not been invoked on the thread. It is a live Thread object, but not yet a thread of execution. At this point, the thread is considered not alive.
-■ Runnable This is the state a thread is in when it's eligible to run, but the scheduler has not selected it to be the running thread. A thread first enters the runnable state when the start() method is invoked, but a thread can also return to the runnable state after either running or coming back from a blocked, waiting, or sleeping state. When the thread is in the runnable state, it is considered alive.
-■ Running This is it. The "big time." Where the action is. This is the state a thread is in when the thread scheduler selects it (from the runnable pool) to be the currently executing process. A thread can transition out of a running state for several reasons, including because "the thread scheduler felt like it." We'll look at those other reasons shortly. Note that in Figure 9-2, there are several ways to get to the runnable state, but only one way to get to the running state: the scheduler chooses a thread from the runnable pool.
-■ Waiting/blocked/sleeping This is the state a thread is in when it's not eligible to run. Okay, so this is really three states combined into one, but they all have one thing in common: the thread is still alive, but is currently not eligible to run. In other words, it is not runnable, but it might return to a runnable state later if a particular event occurs. A thread may be
-blocked waiting for a resource (like I/O or an object's lock), in which case the event that sends it back to runnable is the availability of the resource—for example, if data comes in through the input stream the thread code is reading
-from, or if the object's lock suddenly becomes available. A thread may be sleeping because the thread's run code tells it to sleep for some period of time, in which case the event that sends it back to runnable is that it wakes up because its sleep time has expired. Or the thread may be waiting, because the thread's run code causes it to wait, in which case the event that sends it back to runnable is that another thread sends a notification that it may no longer be necessary for the thread to wait. The important point is that one thread does not tell another thread to block. Some methods may look like they tell
-another thread to block, but they don't. If you have a reference t to another thread, you can write something like this:
-t.sleep(); or t.yield()
-But those are actually static methods of the Thread class—they don't affect the instance t; instead they are defined to always affect the thread that's currently executing. (This is a good example of why it's a bad idea to use an instance
-variable to access a static method—it's misleading. There is a method, suspend(), in the Thread class, that lets one thread tell another to suspend, but the suspend() method has been deprecated and won't be on the exam (nor will its counterpart resume()). There is also a stop() method, but it too has been deprecated and we won't
-■ Dead A thread is considered dead when its run() method completes. It may still be a viable Thread object, but it is no longer a separate thread of execution. Once a thread is dead, it can never be brought back to life! (The whole "I see dead threads" thing.) If you invoke start() on a dead Thread instance, you'll get a runtime (not compiler) exception. And it probably
-doesn't take a rocket scientist to tell you that if a thread is dead, it is no longer considered to be alive.
+
+■ New This is the state the thread is in after the Thread instance has been created, 
+  but the start() method has not been invoked on the thread. It is a live Thread object, 
+  but not yet a thread of execution. At this point, the thread is considered not alive.
+  
+■ Runnable This is the state a thread is in when it's eligible to run, but the scheduler 
+  has not selected it to be the running thread. A thread first enters the runnable state 
+  when the start() method is invoked, but a thread can also return to the runnable state 
+  after either running or coming back from a blocked, waiting, or sleeping state. 
+  When the thread is in the runnable state, it is considered alive.
+  
+■ Running This is it. The "big time." Where the action is. This is the state a thread is 
+  in when the thread scheduler selects it (from the runnable pool) to be the currently 
+  executing process. A thread can transition out of a running state for several reasons, 
+  including because "the thread scheduler felt like it." We'll look at those other reasons 
+  shortly. Note that in Figure 9-2, there are several ways to get to the runnable state, 
+  but only one way to get to the running state: the scheduler chooses a thread from the 
+  runnable pool.
+  
+■ Waiting/blocked/sleeping This is the state a thread is in when it's not eligible to run. 
+  Okay, so this is really three states combined into one, but they all have one thing in common: 
+  the thread is still alive, but is currently not eligible to run. In other words, it is not 
+  runnable, but it might return to a runnable state later if a particular event occurs. 
+  A thread may be blocked waiting for a resource (like I/O or an object's lock), in which case 
+  the event that sends it back to runnable is the availability of the resource—for example, 
+  if data comes in through the input stream the thread code is reading from, or if the object's 
+  lock suddenly becomes available. A thread may be sleeping because the thread's run code tells 
+  it to sleep for some period of time, in which case the event that sends it back to runnable is 
+  that it wakes up because its sleep time has expired. Or the thread may be waiting, because the 
+  thread's run code causes it to wait, in which case the event that sends it back to runnable is 
+  that another thread sends a notification that it may no longer be necessary for the thread to 
+  wait. The important point is that one thread does not tell another thread to block. Some methods 
+  may look like they tell another thread to block, but they don't. If you have a reference t to 
+  another thread, you can write something like this: t.sleep(); or t.yield()
+  But those are actually static methods of the Thread class—they don't affect the instance t; 
+  instead they are defined to always affect the thread that's currently executing. 
+  (This is a good example of why it's a bad idea to use an instance variable to access a static 
+  method—it's misleading. There is a method, suspend(), in the Thread class, that lets one thread 
+  tell another to suspend, but the suspend() method has been deprecated and won't be on the exam 
+  (nor will its counterpart resume()). There is also a stop() method, but it too has been deprecated.
+  
+■ Dead A thread is considered dead when its run() method completes. It may still be a viable Thread 
+  object, but it is no longer a separate thread of execution. Once a thread is dead, it can never be 
+  brought back to life! (The whole "I see dead threads" thing.) If you invoke start() on a dead Thread 
+  instance, you'll get a runtime (not compiler) exception. And it probably doesn't take a rocket 
+  scientist to tell you that if a thread is dead, it is no longer considered to be alive.
 
 Sleeping :
+---------
 
-The sleep() method is a static method of class Thread. You use it in your code to "slow a thread down" by forcing it to go into a sleep mode before coming back to runnable (where it still has to beg to be the currently running thread). When a thread sleeps, it drifts off somewhere and doesn't return to runnable until it wakes up. So why would you want a thread to sleep? Well, you might think the thread is moving too quickly through its code. Or you might need to force your threads to
-take turns, since reasonable turn-taking isn't guaranteed in the Java specification. Or imagine a thread that runs in a loop, downloading the latest stock prices and analyzing them. Downloading prices one after another would be a waste of time, as
-most would be quite similar—and even more important, it would be an incredible waste of precious bandwidth. The simplest way to solve this is to cause a thread to pause (sleep) for five minutes after each download.
-You do this by invoking the static Thread.sleep() method, giving it a time in
-milliseconds as follows:
+The sleep() method is a static method of class Thread. You use it in your code to "slow a thread down" 
+by forcing it to go into a sleep mode before coming back to runnable (where it still has to beg to be 
+the currently running thread). When a thread sleeps, it drifts off somewhere and doesn't return to 
+runnable until it wakes up. 
+So why would you want a thread to sleep? 
+Well, you might think the thread is moving too quickly through its code. Or you might need to force 
+your threads to take turns, since reasonable turn-taking isn't guaranteed in the Java specification. 
+Or imagine a thread that runs in a loop, downloading the latest stock prices and analyzing them. 
+Downloading prices one after another would be a waste of time, as most would be quite similar—and 
+even more important, it would be an incredible waste of precious bandwidth. The simplest way to solve 
+this is to cause a thread to pause (sleep) for five minutes after each download.
+You do this by invoking the static Thread.sleep() method, giving it a time in milliseconds as follows:
+
 try {
-Thread.sleep(5*60*1000); // Sleep for 5 minutes
+	Thread.sleep(5*60*1000); // Sleep for 5 minutes
 } catch (InterruptedException ex) { 
 }
-Notice that the sleep() method can throw a checked InterruptedException (you'll usually know if that is a possibility, since another thread has to explicitly do the interrupting), so you must acknowledge the exception with a handle or declare.
+
+Notice that the sleep() method can throw a checked InterruptedException (you'll usually know if that 
+is a possibility, since another thread has to explicitly do the interrupting), so you must acknowledge 
+the exception with a handle or declare.
 Typically, you wrap calls to sleep() in a try/catch, as in the preceding code.
-Still, using sleep() is the best way to help all threads get a chance to run! Or at least to guarantee that one thread doesn't get in and stay until it's done. When a thread encounters a sleep call, it must go to sleep for at least the specified number of milliseconds (unless it is interrupted before its wake-up time, in which case it immediately throws the InterruptedException).
+Still, using sleep() is the best way to help all threads get a chance to run! Or at least to guarantee 
+that one thread doesn't get in and stay until it's done. When a thread encounters a sleep call, 
+it must go to sleep for at least the specified number of milliseconds (unless it is interrupted before 
+its wake-up time, in which case it immediately throws the InterruptedException).
 
-Just because a thread’s sleep() expires, and it wakes up, does not mean it will return to running! Remember, when a thread wakes up, it simply goes back to the runnable state. So the time specified in sleep() is the minimum duration in which
-the thread won’t run, but it is not the exact duration in which the thread won’t run. So you can’t, for example, rely on the sleep() method to give you a perfectly accurate timer. Although in many applications using sleep() as a timer is certainly good enough,you must know that a sleep() time is not a guarantee that the thread will start running again as soon as the time expires and the thread wakes.
+Just because a thread’s sleep() expires, and it wakes up, does not mean it will return to running! 
+Remember, when a thread wakes up, it simply goes back to the runnable state. So the time specified 
+in sleep() is the minimum duration in which the thread won’t run, but it is not the exact duration 
+in which the thread won’t run. So you can’t, for example, rely on the sleep() method to give you a 
+perfectly accurate timer. Although in many applications using sleep() as a timer is certainly good enough,
+you must know that a sleep() time is not a guarantee that the thread will start running again 
+as soon as the time expires and the thread wakes.
 
-Remember that sleep() is a static method, so don't be fooled into thinking that one thread can put another thread to sleep. You can put sleep() code anywhere, since all code is being run by some thread. When the executing code (meaning the
-currently running thread's code) hits a sleep() call, it puts the currently running thread to sleep.
+Remember that sleep() is a static method, so don't be fooled into thinking that one thread can put 
+another thread to sleep. You can put sleep() code anywhere, since all code is being run by some thread. 
+When the executing code (meaning the currently running thread's code) hits a sleep() call, 
+it puts the currently running thread to sleep.
 
-Thread Priorities and yield( ) : 
-To understand yield(), you must understand the concept of thread priorities. Threads always run with some priority, usually represented as a number between 1 and 10 (although in some cases the range is less than 10). The scheduler in most
-JVMs uses preemptive, priority-based scheduling (which implies some sort of time slicing). This does not mean that all JVMs use time slicing. The JVM specification does not require a VM to implement a time-slicing scheduler, where
-each thread is allocated a fair amount of time and then sent back to runnable to give another thread a chance. Although many JVMs do use time slicing, some may use a scheduler that lets one thread stay running until the thread completes its run() method.
-In most JVMs, however, the scheduler does use thread priorities in one important way: If a thread enters the runnable state, and it has a higher priority than any of the threads in the pool and a higher priority than the currently running thread,
-the lower-priority running thread usually will be bumped back to runnable and the highest-priority thread will be chosen to run. In other words, at any given time the currently running thread usually will not have a priority that is lower than any of
-the threads in the pool. In most cases, the running thread will be of equal or greater priority than the highest priority threads in the pool. This is as close to a guarantee about scheduling as you'll get from the JVM specification, so you must never rely on thread priorities to guarantee the correct behavior of your program.
-Don't rely on thread priorities when designing your multithreaded application. Because thread-scheduling priority behavior is not guaranteed, use thread priorities as a way to improve the efficiency of your program, but just be sure your program doesn't depend on that behavior for correctness.
-What is also not guaranteed is the behavior when threads in the pool are of equal priority, or when the currently running thread has the same priority as threads in the pool.
+Thread Priorities and yield():
+------------------------------
+To understand yield(), you must understand the concept of thread priorities. Threads always run with 
+some priority, usually represented as a number between 1 and 10 (although in some cases the range is 4
+less than 10). The scheduler in most JVMs uses preemptive, priority-based scheduling (which implies 
+some sort of time slicing). This does not mean that all JVMs use time slicing. The JVM specification 
+does not require a VM to implement a time-slicing scheduler, where each thread is allocated a fair amount 
+of time and then sent back to runnable to give another thread a chance. Although many JVMs do use 
+time slicing, some may use a scheduler that lets one thread stay running until the thread completes 
+its run() method.
+In most JVMs, however, the scheduler does use thread priorities in one important way: 
+If a thread enters the runnable state, and it has a higher priority than any of the threads in the pool 
+and a higher priority than the currently running thread, the lower-priority running thread usually 
+will be bumped back to runnable and the highest-priority thread will be chosen to run. In other words, 
+at any given time the currently running thread usually will not have a priority that is lower than any of
+the threads in the pool. In most cases, the running thread will be of equal or greater priority than the 
+highest priority threads in the pool. This is as close to a guarantee about scheduling as you'll get 
+from the JVM specification, so you must never rely on thread priorities to guarantee the correct behavior 
+of your program.
+Don't rely on thread priorities when designing your multithreaded application. Because thread-scheduling 
+priority behavior is not guaranteed, use thread priorities as a way to improve the efficiency of your program, 
+but just be sure your program doesn't depend on that behavior for correctness.
+What is also not guaranteed is the behavior when threads in the pool are of equal priority, or when the 
+currently running thread has the same priority as threads in the pool.
 
 Setting a Thread's Priority 
-A thread gets a default priority that is the priority of the thread of execution that creates it. For example, in the code
+---------------------------
+A thread gets a default priority that is the priority of the thread of execution that creates it. 
+For example, in the code
+
 public class TestThreads {
-public static void main (String [] args) {
-MyThread t = new MyThread();
-}
-}  
-the thread referenced by t will have the same priority as the main thread, since the main thread is executing the code that creates the MyThread instance.
+	public static void main (String [] args) {
+		MyThread t = new MyThread();
+	}
+} 
+
+The thread referenced by t will have the same priority as the main thread, since the main thread 
+is executing the code that creates the MyThread instance.
 
 FooRunnable r = new FooRunnable();
 Thread t = new Thread(r);
 t.setPriority(8);
 t.start();
-Priorities are set using a positive integer, usually between 1 and 10, and the JVM will never change a thread's priority. However, the values 1 through 10 are not guaranteed. Some JVM's might not recognize ten distinct values.
 
-Although the default priority is 5, the Thread class has the three following constants (static final variables) that define the range of thread priorities:
+Priorities are set using a positive integer, usually between 1 and 10, and the JVM will never 
+change a thread's priority. However, the values 1 through 10 are not guaranteed. Some JVM's might 
+not recognize ten distinct values.
+
+Although the default priority is 5, the Thread class has the three following constants 
+(static final variables) that define the range of thread priorities:
 
 Thread.MIN_PRIORITY (1)
 Thread.NORM_PRIORITY (5)
 Thread.MAX_PRIORITY (10)
 
-The yield( ) Method 
-So what does the static Thread.yield() have to do with all this? Not that much, in practice. What yield() is supposed to do is
-make the currently running thread head back to runnable to allow other threads of the same priority to get their turn. So the intention is to use yield() to promote graceful turn-taking among equal-priority threads. In reality, though, the yield() method isn't guaranteed to do what it claims, and even if yield() does cause a thread to step out of running and back to runnable, there's no guarantee the yielding thread won't just be chosen again over all the others! So while yield() might—and often does—make a running thread give up its slot to another runnable thread of the same priority, there's no guarantee.
-A yield() won't ever cause a thread to go to the waiting/sleeping/ blocking state. At most, a yield() will cause a thread to go from running to runnable, but again, it might have no effect at all.
+The yield() Method
+------------------
+So what does the static Thread.yield() have to do with all this? Not that much, in practice. 
+What yield() is supposed to do is make the currently running thread head back to runnable 
+to allow other threads of the same priority to get their turn. So the intention is to use 
+yield() to promote graceful turn-taking among equal-priority threads. In reality, though, 
+the yield() method isn't guaranteed to do what it claims, and even if yield() does cause 
+a thread to step out of running and back to runnable, there's no guarantee the yielding thread 
+won't just be chosen again over all the others! So while yield() might—and often does—make a 
+running thread give up its slot to another runnable thread of the same priority, there's 
+no guarantee. A yield() won't ever cause a thread to go to the waiting/sleeping/ blocking state. 
+At most, a yield() will cause a thread to go from running to runnable, but again, 
+it might have no effect at all.
 
-The join( ) Method
-The non-static join() method of class Thread lets one thread "join onto the end" of another thread. If you have a thread B that can't do its work until another thread A has completed its work, then you want thread B to "join" thread A. This means that thread B will not become runnable until A has finished (and entered the dead state).
+The join() Method
+-----------------
+The non-static join() method of class Thread lets one thread "join onto the end" of another thread. 
+If you have a thread B that can't do its work until another thread A has completed its work, 
+then you want thread B to "join" thread A. This means that thread B will not become runnable until 
+A has finished (and entered the dead state).
+
 Thread t = new Thread();
 t.start();
 t.join();
-The preceding code takes the currently running thread (if this were in the main() method, then that would be the main thread) and joins it to the end of the thread referenced by t. This blocks the current thread from becoming runnable
-until after the thread referenced by t is no longer alive. In other words, the code t.join() means "Join me (the current thread) to the end of t, so that t must finish before I (the current thread) can run again." You can also call one of the overloaded versions of join() that takes a timeout duration, so that you're saying, "wait until thread t is done, but if it takes longer than 5,000 milliseconds, then stop waiting and become runnable anyway." Figure 9-3 shows the effect of the join() method.
+
+The preceding code takes the currently running thread (if this were in the main() method, then that 
+would be the main thread) and joins it to the end of the thread referenced by t. This blocks the current 
+thread from becoming runnable until after the thread referenced by t is no longer alive. 
+In other words, the code t.join() means "Join me (the current thread) to the end of t, so that t must 
+finish before I (the current thread) can run again." You can also call one of the overloaded versions 
+of join() that takes a timeout duration, so that you're saying, "wait until thread t is done, 
+but if it takes longer than 5,000 milliseconds, then stop waiting and become runnable anyway." 
+Figure 9-3 shows the effect of the join() method.
 
 So far we've looked at three ways a running thread could leave the running state:
 
-■ A call to sleep() Guaranteed to cause the current thread to stop executing for at least the specified sleep duration (although it might be interrupted before its specified time).
-■ A call to yield() Not guaranteed to do much of anything, although typically it will cause the currently running thread to move back to runnable so that a thread of the same priority can have a chance.
-■ A call to join() Guaranteed to cause the current thread to stop executing until the thread it joins with (in other words, the thread it calls join() on) completes, or if the thread it's trying to join with is not alive, however,the current thread won't need to back out.
+■ A call to sleep() Guaranteed to cause the current thread to stop executing for at least the 
+  specified sleep duration (although it might be interrupted before its specified time).
+■ A call to yield() Not guaranteed to do much of anything, although typically it will cause the 
+  currently running thread to move back to runnable so that a thread of the same priority can have a chance.
+■ A call to join() Guaranteed to cause the current thread to stop executing until the thread it joins 
+  with (in other words, the thread it calls join() on) completes, or if the thread it's trying to join 
+  with is not alive, however,the current thread won't need to back out.
 
 Besides those three, we also have the following scenarios in which a thread might leave the running state:
+
 ■ The thread's run() method completes. Duh.
 ■ A call to wait() on an object (we don't call wait() on a thread, as we'll see in a moment).
 ■ A thread can't acquire the lock on the object whose method code it's attempting to run.
-■ The thread scheduler can decide to move the current thread from running to runnable in order to give another thread a chance to run. No reason is needed—the thread scheduler can trade threads in and out whenever it likes.
+■ The thread scheduler can decide to move the current thread from running to runnable in order to give 
+  another thread a chance to run. No reason is needed—the thread scheduler can trade threads in and 
+  out whenever it likes.
 
 Synchronization and Locks
-
+-------------------------
 How does synchronization work? With locks. Every object in Java has a built-in lock that only comes into play when the object has synchronized method code. When we enter a synchronized non-static method, we automatically acquire the lock
 associated with the current instance of the class whose code we're executing (the this instance). Acquiring a lock for an object is also known as getting the lock, or locking the object, locking on the object, or synchronizing on the object. We
 may also use the term monitor to refer to the object whose lock we're acquiring. Technically the lock and the monitor are two different things, but most people talk about the two interchangeably, and we will too.
