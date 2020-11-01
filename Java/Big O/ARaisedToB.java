@@ -10,3 +10,8 @@ public class ARaisedToB {
     }
   }
 }
+
+/*
+What is the time complexity ?
+0(b). The recursive code iterates through b calls, since it subtracts one at each level.
+*/
