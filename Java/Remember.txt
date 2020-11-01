@@ -1,0 +1,7 @@
+1.  For strings, s.charAt(i) returns character at ith location in string but when
+    its casted as integer or used as array index e.g arr[s.charAt(i)], it gets
+    converted to ascii value of the character.
+2.  The basic ASCII set uses 7 bits for each character, giving it a total of 128 unique symbols. 
+    The extended ASCII character set uses 8 bits, which gives it an additional 128 characters. 
+    The extra characters represent characters from foreign languages and special symbols 
+    for drawing pictures.
