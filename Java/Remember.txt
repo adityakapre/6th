@@ -6,3 +6,4 @@
     The extra characters represent characters from foreign languages and special symbols 
     for drawing pictures.
 3.  i==mid+1 is the condition for string to be palindrome
+4.  Water trapped on ith location: water += Math.min(leftMax[i],rightMax[i]) - arr[i]; 
