@@ -5,3 +5,4 @@
     The extended ASCII character set uses 8 bits, which gives it an additional 128 characters. 
     The extra characters represent characters from foreign languages and special symbols 
     for drawing pictures.
+3.  i==mid+1 is the condition for string to be palindrome
