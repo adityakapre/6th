@@ -59,13 +59,20 @@ public class QuestionA {
 		return table;
 	}
 	
+	/*
+	We need this method since we are creating the array/hashtable of size 26 using 
+	int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
+	
+	Character.getNumericValue(char ch) returns the int value that the specified Unicode character represents.
+	So below method is used to return hash key or character c so that it falls in [0, 25]
+	*/
 	public static int getCharNumber(Character c) {
 		int a = (int)'a';
 		int z = (int)'z';
 		
 		int val = (int)c;
 		if (a <= val && val <= z) {
-			return val - a;
+			return val - a;	// this offset is the hash key
 		}
 		return -1;
 	}
