@@ -40,18 +40,18 @@ Hybrid threads
 
 Parameter	                            Process	                                  Thread
 ================================================================================================================
-Definition	            Process means a program is in execution.	        Thread means a segment of a process.
-Lightweight	            The process is not Lightweight.	                  Threads are Lightweight.
-System call             Separate statem calls for each process creation.  Single system call can create more than one thread
+Definition              Process means a program is in execution.          Thread means a segment of a process.
+Lightweight             The process is not Lightweight.                   Threads are Lightweight.
+System call             Separate system calls for each process creation.  Single system call can create more than one thread
 Management time         Process management takes more system calls.       Less or no system calls and communication
                                                                           can be performed using shared memory.
-Termination time	      The process takes more time to terminate.	        The thread takes less time to terminate.
-Creation time   	      It takes more time for creation.	                It takes less time for creation.
-Communication	          More inter-process communication time.	          Less inter-thread communication time.
-Context switching time	It takes more time for context switching.	        It takes less time for context switching.
-Resource	              Process consume more resources.	                  Thread consume fewer resources.
-Treatment by OS	        Different process treated separately by OS.       All level peer threads treated single task by OS.
-Memory	                The process is mostly isolated.	                  Threads share memory.
+Termination time        The process takes more time to terminate.         The thread takes less time to terminate.
+Creation time           It takes more time for creation.                  It takes less time for creation.
+Communication           More inter-process communication time.            Less inter-thread communication time.
+Context switching time  It takes more time for context switching.         It takes less time for context switching.
+Resource                Process consume more resources.                   Thread consume fewer resources.
+Treatment by OS         Different process treated separately by OS.       All level peer threads treated single task by OS.
+Memory                  The process is mostly isolated.                   Threads share memory.
                         process has its stack,heap memory & data map.     Threads shares instruction, global & heap regions. 
                                                                           But, it has its register and stack.
-Sharing	                It does not share data	                          Threads share data with each other.
+Sharing                 It does not share data                            Threads share data with each other.
