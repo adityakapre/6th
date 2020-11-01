@@ -14,3 +14,44 @@ cannot directly access the memory of another process. Each thread still has its 
 stack, but other threads can read and write the heap memory.
 A thread is a particular execution path of a process. When one thread modifies a process resource, the
 change is immediately visible to sibling threads.
+
+
+What is a Process?
+==================
+A process is the execution of a program that allows you to perform the appropriate actions specified in a program. 
+It can be defined as an execution unit where a program runs. The OS helps you to create, schedule, and terminates 
+the processes which is used by CPU. The other processes created by the main process are called child process.
+
+A process operations can be easily controlled with the help of PCB(Process Control Block). You can consider it as 
+the brain of the process, which contains all the crucial information related to processing like process id, 
+priority, state, and contents CPU register, etc.
+
+What is Thread?
+===============
+Thread is an execution unit that is part of a process. A process can have multiple threads, all executing at the same time. 
+It is a unit of execution in concurrent programming. A thread is lightweight and can be managed independently by a scheduler. 
+It helps you to improve the application performance using parallelism.
+
+Multiple threads share information like data, code, files, etc. We can implement threads in three different ways:
+
+Kernel-level threads
+User-level threads
+Hybrid threads
+
+Parameter	                            Process	                                  Thread
+================================================================================================================
+Definition	            Process means a program is in execution.	        Thread means a segment of a process.
+Lightweight	            The process is not Lightweight.	                  Threads are Lightweight.
+System call             Separate statem calls for each process creation.  Single system call can create more than one thread
+Management time         Process management takes more system calls.       Less or no system calls and communication
+                                                                          can be performed using shared memory.
+Termination time	      The process takes more time to terminate.	        The thread takes less time to terminate.
+Creation time   	      It takes more time for creation.	                It takes less time for creation.
+Communication	          More inter-process communication time.	          Less inter-thread communication time.
+Context switching time	It takes more time for context switching.	        It takes less time for context switching.
+Resource	              Process consume more resources.	                  Thread consume fewer resources.
+Treatment by OS	        Different process treated separately by OS.       All level peer threads treated single task by OS.
+Memory	                The process is mostly isolated.	                  Threads share memory.
+                        process has its stack,heap memory & data map.     Threads shares instruction, global & heap regions. 
+                                                                          But, it has its register and stack.
+Sharing	                It does not share data	                          Threads share data with each other.
