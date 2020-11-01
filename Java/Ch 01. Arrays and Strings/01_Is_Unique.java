@@ -14,7 +14,11 @@ alphabet. After all, you can't form a string of 280 unique characters out of a 1
 It's also okay to assume 256 characters. This would be the case in extended ASCII. You should
 clarify your assumptions with your interviewer.
 
-The time complexity for this code isO(n), where n is the length of the string. The space complexity isO(l).
+The basic ASCII set uses 7 bits for each character, giving it a total of 128 unique symbols. 
+The extended ASCII character set uses 8 bits, which gives it an additional 128 characters. 
+The extra characters represent characters from foreign languages and special symbols for drawing pictures.
+
+The time complexity for this code is O(n), where n is the length of the string. The space complexity is O(l).
 (You could also argue the time complexity is O(1), since the for loop will never iterate through more than
 128 characters.) If you didn't want to assume the character set is fixed, you could express the complexity as
 O(c) space and O(min(c, n)) or O(c) time, where c is the size of the character set.
@@ -28,7 +32,7 @@ public class QuestionA {
 		}
 		boolean[] char_set = new boolean[128];
 		for (int i = 0; i < str.length(); i++) {
-			int val = str.charAt(i);	//remember this string api to get each string character
+			int val = str.charAt(i);	//remember charAt(i) to get each string character
 			if (char_set[val]) return false;
 			char_set[val] = true;
 		}
@@ -72,7 +76,7 @@ public class QuestionB {
 		for (int i = 0; i < str.length(); i++) {
 			int val = str.charAt(i) - 'a';		       // acsii value
 			if ((checker & (1 << val)) > 0) return false;  // left shift 1 for val times
-			checker |= (1 << val);			       // put 1 in val-th position in checker
+			checker |= (1 << val);			       // put 1 in val-th position in checker by OR-ing
 		}
 		return true;
 	}
