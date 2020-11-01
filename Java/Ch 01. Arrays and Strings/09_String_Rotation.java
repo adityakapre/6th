@@ -23,9 +23,6 @@ runs in O(A+B) time (on strings of length A and B), then the runtime of is Rotat
 package Q1_09_String_Rotation;
 
 public class Question {
-	public static boolean isSubstring(String big, String small) {
-		return (big.indexOf(small) >= 0);
-	}
 	
 	public static boolean isRotation(String s1, String s2) {
 	    int len = s1.length();
@@ -36,6 +33,10 @@ public class Question {
 	    	return isSubstring(s1s1, s2);
 	    }
 	    return false;
+	}
+	
+	public static boolean isSubstring(String big, String small) {
+		return (big.indexOf(small) >= 0);
 	}
 	
 	public static void main(String[] args) {
