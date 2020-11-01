@@ -35,7 +35,7 @@ public class Question {
 		/* Partition list */
 		while (node != null) {
 			LinkedListNode next = node.next;
-			node.next = null;
+			node.next = null;			// Imp to set node.next to null
 			if (node.data < x) {
 				if (beforeStart == null) {
 					beforeStart = node;
