@@ -91,7 +91,7 @@ class PriorityQueue
        //first element inserted at "1" as preincrement done (++heapSize)
        //new element inserted at last available location in array as per definition of heap
        heap[++heapSize] = newJob;
-       //start with child position at "heapSize" i.e end and start checking its parent at pos/2
+       //start with child position at "heapSize" (i.e end) and start checking its parent at pos/2
        int pos = heapSize;
        //repeat till parent < child i.e heap[pos/2] < newJob since this is maxHeap
        while (pos != 1 && newJob.priority > heap[pos/2].priority) {
