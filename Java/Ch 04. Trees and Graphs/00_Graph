@@ -42,7 +42,7 @@ A recursive implementation of DFS:[5]
 
 1  procedure DFS(G,v):
 2      label v as discovered
-3      for all directed edges from v to w that are in G.adjacentEdges(v) do
+3      for each directed edge w from v to w in G.adjacentEdges(v) do
 4          if vertex w is not labeled as discovered then
 5              recursively call DFS(G,w)
 The order in which the vertices are discovered by this algorithm is called the lexicographic order.
