@@ -20,7 +20,7 @@ Output: Goal state. The parent links trace the shortest path back to root
 6          v = Q.dequeue()
 7          if v is the goal:
 8              return v
-9          for all edges from v to w in G.adjacentEdges(v) do
+9          for each edge w from v to w in G.adjacentEdges(v) do
 10             if w is not labeled as discovered:
 11                 label w as discovered
 12                 w.parent = v
