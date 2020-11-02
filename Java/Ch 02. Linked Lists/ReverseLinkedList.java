@@ -43,7 +43,7 @@ void recursiveReverse(Node head) {
     rest  = first.next;
     if (rest == null) return;  /* List has only one node */
     recursiveReverse(rest); 	/* reverse the rest list and put the first element at the end */
-    first.next.next  = first; 
+    first.next.next  = first;   /*at last scenario will be  -->node1-->....-->nodeN-->first-->rest-->null*/
     first.next = null;      	/* tricky step -- see the diagram */
     head = rest;          	 /* fix the head pointer */
 }
