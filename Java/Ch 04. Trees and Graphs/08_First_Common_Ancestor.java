@@ -166,9 +166,9 @@ public class QuestionD {
 		}
 		//If both on left, go to left
 		if(pIsOnLeft) {
-            		return ancestorHelper(root.left, p, q);
+            		return ancestorHelper(root.left, p, q);	// branch to left
         	} else {
-            		return ancestorHelper(root.right, p, q);
+            		return ancestorHelper(root.right, p, q); // branch to right
         	}
 	}
 	
