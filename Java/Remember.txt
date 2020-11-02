@@ -7,3 +7,6 @@
     for drawing pictures.
 3.  i==mid+1 is the condition for string to be palindrome
 4.  Water trapped on ith location: water += Math.min(leftMax[i],rightMax[i]) - arr[i]; 
+5.  In priority queue, children of the element at position i are at positions 2i+1 & 2i+2.
+    Parent of i is at position (i-1)/2.
+    i starts at 0 (array index).
