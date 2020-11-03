@@ -158,18 +158,18 @@ any information.
 This algorithm will run in O(log s) time, where s is the smaller of the two numbers.
 e.g 15*30 i.e smaller = 15, larger=30
 inital call (15, 30) 
-Stack wind (i/p params)   Stack unwind (returns to above halfProd+halfProd+bigger)
-(15, 30)			210+210+30=450
-(7, 30)				90+90+30=210
-(3, 30)				30+30+30=90
-(1, 30)				30
+Stack wind (i/p params)   Stack unwind (returns to above halfProd+halfProd+bigger)	Description (divide by 2 smaller)
+(15, 30) 			210+210+30=450						((7*2+1), 30)
+(7, 30)				90+90+30=210						((3*2+1), 30)
+(3, 30)				30+30+30=90						((1*2+1), 30)
+(1, 30)				30							((0*2+1), 30)
 e.g 16*30 i.e smaller = 16, larger=30
 inital call (16, 30) 
-Stack wind (i/p params)   Stack unwind (returns to above call halfProd+halfProd)
-(16, 30)			240+240=480
-(8, 30)				120+120=240
-(4, 30)				60+60=120
-(2, 30)				30+30=60
+Stack wind (i/p params)   Stack unwind (returns to above call halfProd+halfProd)	Description
+(16, 30)			240+240=480						(8*2, 30)						
+(8, 30)				120+120=240						(4*2, 30)
+(4, 30)				60+60=120						(2*2, 30)
+(2, 30)				30+30=60						(1*2, 30)
 (1, 30)				30
 */
 package Q8_05_Recursive_Multiply;
