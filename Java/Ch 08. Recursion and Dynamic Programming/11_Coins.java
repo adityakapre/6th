@@ -3,6 +3,9 @@ Q:
 Coins: Given an infinite number of quarters (25 cents), dimes (1O cents), nickels (5 cents), and
 pennies (1 cent), write code to calculate the number of ways of representing n cents.
 
+ANSWER:
+https://leetcode.com/problems/coin-change-2/
+
 A:
 This is a recursive problem, so let's figure out how to compute makeChange(n) using prior solutions (i.e.,subproblems).
 Let's say n = 100. We want to compute the number of ways of making change for 100 cents. What is the relationship between 
