@@ -5,7 +5,7 @@ pennies (1 cent), write code to calculate the number of ways of representing n c
 
 ANSWER:
 https://leetcode.com/problems/coin-change-2/
-https://www.youtube.com/watch?v=_fgjrs570YE
+https://www.youtube.com/watch?v=ruMqWViJ2_U
 
 A:
 This is a recursive problem, so let's figure out how to compute makeChange(n) using prior solutions (i.e.,subproblems).
