@@ -99,10 +99,10 @@ public class Question {
 
 /*
 If the elements are not distinct, then this algorithm fails. Consider the following array:
--10  -5  2  2  2  3  4  7  9  12  13
+-10  -5  2  2  2  3  4  7  9  9  13
  0   1   2  3  4  5  6  7  8  9   10
 When we see that A [mid] < mid, we cannot conclude which side the magic index is on. It could be on
-the right side, as before. Or, it could be on the left side (as it, in fact, is).
+the right side (e.g 9). Or, it could be on the left side (e.g 2).
 Could it be anywhere on the left side? Not exactly. Since A[5] = 3, we know that A[4] couldn't be a magic
 index. A[4] would need to be 4 to be the magic index, but A[4] must be less than or equal to A[5].
 In fact, when we see that A[5] = 3, we'll need to recursively search the right side as before. But, to search
