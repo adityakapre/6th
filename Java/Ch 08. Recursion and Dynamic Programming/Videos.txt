@@ -9,3 +9,6 @@ https://www.youtube.com/watch?v=iLuYoPwAhmM&list=PLzffTJx5aHaQM-twdYq0Flzmqfiv05
 
 Longest Common Subsequence:
 https://www.youtube.com/watch?v=YL3b3F7sJBM&list=PLzffTJx5aHaT-0K_b47KxScckZfDXAKF3&index=7
+
+Longest Palindromic Subsequence:
+https://www.youtube.com/watch?v=J7rqc7pbwkI&list=PLzffTJx5aHaT-0K_b47KxScckZfDXAKF3&index=6
