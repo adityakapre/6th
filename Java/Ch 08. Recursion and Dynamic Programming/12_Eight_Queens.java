@@ -4,6 +4,9 @@ Eight Queens:Write an algorithm to print all ways of arranging eight queens on a
 so that none of them share the same row, column, or diagonal. In this case, "diagonal" means all
 diagonals, not just the two that bisect the board.
 
+ANSWER:
+https://www.youtube.com/watch?v=xUyDjqAOFjE
+
 A:
 We have eight queens which must be lined up on an 8x8 chess board such that none share the same row,
 column or diagonal. So, we know that each row and column (and diagonal) must be used exactly once .
