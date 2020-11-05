@@ -12,3 +12,6 @@ https://www.youtube.com/watch?v=YL3b3F7sJBM&list=PLzffTJx5aHaT-0K_b47KxScckZfDXA
 
 Longest Palindromic Subsequence:
 https://www.youtube.com/watch?v=J7rqc7pbwkI&list=PLzffTJx5aHaT-0K_b47KxScckZfDXAKF3&index=6
+
+0-1 Knapsack (Interviewbit):
+https://www.youtube.com/watch?v=l4lsRYNS_ok&list=PLzffTJx5aHaT-0K_b47KxScckZfDXAKF3&index=20&t=38s
