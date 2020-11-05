@@ -18,3 +18,15 @@ https://www.youtube.com/watch?v=l4lsRYNS_ok&list=PLzffTJx5aHaT-0K_b47KxScckZfDXA
 
 Coin Change 2 | Dynamic programming | Leetcode #518
 https://www.youtube.com/watch?v=ruMqWViJ2_U
+
+
+
+
+====================================================================================================
+Question: Why in coin change problem we remain in same row while finding number of possible ways ?
+Ans: https://youtu.be/ruMqWViJ2_U?t=553
+(infinite supply available and we can include second time)
+
+Question: Why in knapsack we consider previous row while excluding item ?
+Ans: https://youtu.be/YRBON9sIZ2Y?t=1255
+(we dont wanna include item second time)
