@@ -5,6 +5,7 @@ https://www.youtube.com/watch?v=2aNabwX4Yfg&list=PLzffTJx5aHaQVaxU8bD0ge7TeTR_Pe
 https://leetcode.com/problems/top-k-frequent-words/
 
 53. Maximum Subarray
+https://www.youtube.com/watch?v=tinz1fiYv0c
 https://leetcode.com/problems/maximum-subarray/submissions/
 
 1. create runningSum array
