@@ -19,7 +19,8 @@ https://www.youtube.com/watch?v=l4lsRYNS_ok&list=PLzffTJx5aHaT-0K_b47KxScckZfDXA
 Coin Change 2 | Dynamic programming | Leetcode #518
 https://www.youtube.com/watch?v=ruMqWViJ2_U
 
-
+Best Time to Buy and Sell Stock (Leetcode 121)
+https://www.youtube.com/watch?v=d0PZQWyeGZI&list=PL4goA_f8zUhC4iifLgbXZchAW05Afpce-&index=27
 
 
 ====================================================================================================
