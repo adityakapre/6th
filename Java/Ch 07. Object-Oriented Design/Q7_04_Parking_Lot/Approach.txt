@@ -13,3 +13,10 @@ Each ParkingSpot has
   
 Each Vehicle has
   - VehicleSize
+  - Licence plate string
+  - No of spots needed to park (e.g Bus requires 5)
+  
+Each Vehicle can either by
+  - Motorcycle
+  - Bus
+  - Car
