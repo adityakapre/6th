@@ -21,11 +21,19 @@ https://www.youtube.com/watch?v=ruMqWViJ2_U
 
 Best Time to Buy and Sell Stock (Leetcode 121)
 Greedy
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://www.youtube.com/watch?v=d0PZQWyeGZI&list=PL4goA_f8zUhC4iifLgbXZchAW05Afpce-&index=27
 
 Best Time to Buy and Sell Stock II (Leetcode 122)
 Greedy
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 https://www.youtube.com/watch?v=yxKafYH5JMg&list=PL4goA_f8zUhC4iifLgbXZchAW05Afpce-&index=28
+
+Best Time to Buy and Sell Stock III (Leetcode 123)
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+https://www.youtube.com/watch?v=GFa9xlgZcEI
+
+https://youtu.be/37s1_xBiqH0?t=854
 
 ====================================================================================================
 Question: Why in coin change problem we remain in same row while finding number of possible ways ?
