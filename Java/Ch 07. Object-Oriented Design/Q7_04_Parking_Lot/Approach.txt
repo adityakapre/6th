@@ -1,0 +1,11 @@
+ParkingLot has
+  - Levels
+  
+Each Level has
+  - ParkingSpot
+  
+Each ParkingSpot has 
+  - Vehicle
+  
+Each Vehicle has
+  - VehicleSize
