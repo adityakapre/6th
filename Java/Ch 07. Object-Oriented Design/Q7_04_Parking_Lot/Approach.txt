@@ -3,6 +3,8 @@ ParkingLot has
   
 Each Level has
   - ParkingSpot
+  - Level/floor number
+  - No of free spots
   
 Each ParkingSpot has 
   - Vehicle
