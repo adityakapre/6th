@@ -6,6 +6,7 @@ Each Level has
   
 Each ParkingSpot has 
   - Vehicle
+  - VehicleSize
   
 Each Vehicle has
   - VehicleSize
