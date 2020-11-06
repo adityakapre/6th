@@ -20,20 +20,26 @@ Coin Change 2 | Dynamic programming | Leetcode #518
 https://www.youtube.com/watch?v=ruMqWViJ2_U
 
 Best Time to Buy and Sell Stock (Leetcode 121)
+Permitted to complete at most one transaction
 Greedy
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://www.youtube.com/watch?v=d0PZQWyeGZI&list=PL4goA_f8zUhC4iifLgbXZchAW05Afpce-&index=27
 
 Best Time to Buy and Sell Stock II (Leetcode 122)
+As many transactions as you like 
 Greedy
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 https://www.youtube.com/watch?v=yxKafYH5JMg&list=PL4goA_f8zUhC4iifLgbXZchAW05Afpce-&index=28
 
 Best Time to Buy and Sell Stock III (Leetcode 123)
+You may complete at most two transactions
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://www.youtube.com/watch?v=GFa9xlgZcEI
 
-https://youtu.be/37s1_xBiqH0?t=854
+188. Best Time to Buy and Sell Stock IV
+You may complete at most k transactions
+https://www.youtube.com/watch?v=thGK0PjLemk
+
 
 ====================================================================================================
 Question: Why in coin change problem we remain in same row while finding number of possible ways ?
