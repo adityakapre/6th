@@ -151,8 +151,8 @@ public class QuestionB {
 		for (int r = 1; r < matrix.length; r++) {
 			for (int c = 1; c < matrix[0].length; c++) {
 				if (matrix[r][c] == 0) {
-					matrix[r][0] = 0;
-					matrix[0][c] = 0;
+					matrix[r][0] = 0;	//set 0s in first column
+					matrix[0][c] = 0;	//set 0s in first row
 		 		}
 			}
 		}		
