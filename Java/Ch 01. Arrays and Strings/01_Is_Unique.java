@@ -75,7 +75,7 @@ public class QuestionB {
 		int checker = 0;
 		for (int i = 0; i < str.length(); i++) {
 			int val = str.charAt(i) - 'a';		       // acsii value
-			if ((checker & (1 << val)) > 0) return false;  // left shift 1 for val times
+			if ((checker & (1 << val)) > 0) return false;  // left shift 1 val times, check if it already exists
 			checker |= (1 << val);			       // put 1 in val-th position in checker by OR-ing
 		}
 		return true;
