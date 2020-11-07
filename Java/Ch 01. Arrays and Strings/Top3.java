@@ -1,5 +1,8 @@
 /*
 Find top 3 numbers in an input array
+
+Tip: Whenever you want to find maximum number/s, initialize answer variable/s
+to minimum.
 */
 
 public void findTop3 {
