@@ -53,11 +53,21 @@ public class QuestionA {
 				if (foundDifference) {
 					return false;
 				}
-				
 				foundDifference = true;
 			}
 		}
 		return true;
+	}
+	
+	public static boolean oneEditAway(String first, String second) {
+		if (first.length() == second.length()) {                //same lengths, so might be replacement
+			return oneEditReplace(first, second);
+		} else if (first.length() + 1 == second.length()) {
+			return oneEditInsert(first, second);
+		} else if (first.length() - 1 == second.length()) {
+			return oneEditInsert(second, first);
+		} 
+		return false;
 	}
 	
 	/* Check if you can insert a character into s1 to make s2. s1->smaller s2->larger */
@@ -81,17 +91,6 @@ public class QuestionA {
 		}
 		return true;
 	}	
-	
-	public static boolean oneEditAway(String first, String second) {
-		if (first.length() == second.length()) {                //same lengths, so might be replacement
-			return oneEditReplace(first, second);
-		} else if (first.length() + 1 == second.length()) {
-			return oneEditInsert(first, second);
-		} else if (first.length() - 1 == second.length()) {
-			return oneEditInsert(second, first);
-		} 
-		return false;
-	}
 	
 	public static void main(String[] args) {
 		String a = "pse";
