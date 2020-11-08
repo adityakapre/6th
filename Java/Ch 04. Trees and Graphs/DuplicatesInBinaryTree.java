@@ -6,6 +6,7 @@ use inorder traversal (LCR) since it goes sequentially in increasing order
 Time complexity = time complexity(inorder traversal) = O(n)
 */
 
+// If global not created, then need to pass as parameter in recursive function
 int duplicates=0;    // global variable to count duplicates
 public Node countDuplicatesLCR(Node prev, Node root) {
    if(root==null) {
@@ -15,7 +16,7 @@ public Node countDuplicatesLCR(Node prev, Node root) {
      duplicates += countDuplicatesLCR(root.left, root);  //L  
    }
    if(root!=prev && root.data==prev.data) {
-     duplicates += 1;                   // C (actual processing)
+     duplicates += 1;   // C (actual processing)
    }
    if(root.right!=null) {
      duplicates += countDuplicatesLCR(root, root.right); //R     
