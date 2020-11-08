@@ -106,7 +106,11 @@ public class QuestionB {
 			fast = fast.next.next;			
 		}
 		
-		/* Has odd number of elements, so skip the middle */
+		/* 
+		 * If fast is null, list has even no of elements
+		 * If fast.next is null, list has odd no of elements
+		 * If list has odd number of elements, skip the middle 
+		 */
 		if (fast != null) { 
 			slow = slow.next;
 		}
