@@ -83,7 +83,7 @@ public class QuestionImproved {
 	
 	public static int checkHeight(TreeNode root) {
 		if (root == null) {	//base condition - height of empty tree = -1
-			return -1;
+			return -1;	// by definition of height
 		}
 		int leftHeight = checkHeight(root.left);
 		if (leftHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE; // Propagate error up
