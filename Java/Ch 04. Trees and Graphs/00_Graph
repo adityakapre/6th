@@ -26,6 +26,10 @@ Output: Goal state. The parent links trace the shortest path back to root
 12                 w.parent = v
 13                 Q.enqueue(w) 
 
+**The above logic also applies in binary tree for level order traversal, but there 
+instead of a "for" loop, we just use node.left and node.right as each parent node 
+can have only those two as child nodes**
+
 
 DFS
 ===
@@ -48,7 +52,7 @@ A recursive implementation of DFS:[5]
 The order in which the vertices are discovered by this algorithm is called the lexicographic order.
 
 **The above logic also applies in binary tree, but there instead of a "for" loop,
-we just use node.left and node.right as each parent nodde can have onlt those two
+we just use node.left and node.right as each parent node can have only those two
 as child nodes**
 
 A non-recursive implementation of DFS with worst-case space complexity {\displaystyle O(|E|)} O(|E|):[6]
