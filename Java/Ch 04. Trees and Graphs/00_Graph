@@ -47,6 +47,10 @@ A recursive implementation of DFS:[5]
 5              recursively call DFS(G,w)
 The order in which the vertices are discovered by this algorithm is called the lexicographic order.
 
+**The above logic also applies in binary tree, but there instead of a "for" loop,
+we just use node.left and node.right as each parent nodde can have onlt those two
+as child nodes**
+
 A non-recursive implementation of DFS with worst-case space complexity {\displaystyle O(|E|)} O(|E|):[6]
 
 1  procedure DFS-iterative(G,v):
