@@ -39,7 +39,7 @@ public class Question {
 	}
 
 	private static TreeNode createMinimalBST(int arr[], int start, int end){ //REMEMBER : to pass start & end pointers
-		if (end < start) {
+		if (start > end) {
 			return null;
 		}
 		int mid = (start + end) / 2;
