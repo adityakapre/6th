@@ -50,7 +50,7 @@ public class QuestionB {
 	}
 	
 	/*
-	* Notice that we pass a wrapper class Integer instead of int datatype
+	* Notice that we pass a wrapper class "Integer" instead of "int" datatype
 	* so that we can compare it with "null"
 	*/
 	public static boolean checkBST(TreeNode n, Integer min, Integer max) {
