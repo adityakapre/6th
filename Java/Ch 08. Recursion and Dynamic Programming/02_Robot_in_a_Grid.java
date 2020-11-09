@@ -5,7 +5,101 @@ Robot in a Grid: Imagine a robot sitting on the upper left corner of grid with r
 The robot can only move in two directions, right and down, but certain cells are "off limits" such that
 the robot cannot step on them. Design an algorithm to find a path for the robot from the top left to
 the bottom right.
+*/
+/*
+https://leetcode.com/problems/unique-paths-ii/ 
 
+Dynamic programming approach :
+Consider 1x1 grid, then 1x2, then 1x3 grid then ... till 3X3 grid.
+Assume each time, assume robot starting from (1,1) and destinations are right corners.
+Find in total how many ways can robot reach destination each time.
+Generalize the formula
+Below is grid considering no obstacles
+
+   j
+   0 1 2
+0  1 1 1
+1  1 2 3
+2  1 3 6
+
+General formula on noticing:
+curr_cell_val = top_cell_val + left_cell_val
+i.e 
+new_dp = old_dp(top) + left_dp
+i.e
+dp[i][j] = dp[i-1][j] + dp[i][j-1]
+*/
+
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+
+        if(obstacleGrid.length==1 && obstacleGrid[0].length==1){
+            if(obstacleGrid[0][0]==0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+	int dp[][] = new int[obstacleGrid.length][obstacleGrid[0].length];
+        
+        //decide 1st cell
+        dp[0][0]= obstacleGrid[0][0]== 0?  1:0;
+        
+        //decide 1st row
+        for(int i=1; i<obstacleGrid[0].length;i++){
+            dp[0][i]=obstacleGrid[0][i]==0 && dp[0][i-1]==1? 1:0;
+        }
+        
+        //decide 1st column
+        for(int i=1; i<obstacleGrid.length;i++){
+            dp[i][0]=obstacleGrid[i][0]==0 && dp[i-1][0]==1? 1:0;
+        }
+        
+        //decide next rows and cells
+        for(int i=1; i<dp.length;i++) {
+            for(int j=1; j< dp[0].length; j++) {
+                if(obstacleGrid[i][j]==1) {	//obstacle found
+                    dp[i][j]=0;
+                } else {
+                    dp[i][j]=dp[i-1][j]+dp[i][j-1];
+                }
+            }
+        }
+	    
+	return dp[dp.length-1][dp[0].length-1];
+    }
+
+
+/*
+Now, if there is obstacle marked in a cell, for such cell, mark dp[j]=0
+
+General formula on noticing:
+curr_cell_val = top_cell_val + left_cell_val
+i.e 
+new_dp[j] = old_dp[j] + dp[j-1]
+i.e
+dp[j] = dp[j] + dp[j-1]
+*/
+
+uniquePathsWithObstacles(int[][] obstacles) {
+	
+	int width = obstacles[0].length;
+	int dp[] = new int[width];
+	dp[0]=1;
+	for(int[] row : obstacles) {
+		for(int j=0; j< width; j++) {
+			if(row[j]==1) {	//obstacle found
+				dp[j]=0;
+			} else if(j>0) {
+				dp[j]=dp[j]+dp[j-1];
+			}
+		}
+	}
+	return dp[width-1];
+}
+
+
+/*
 A:
 
 |_|_|_|_|
@@ -195,48 +289,4 @@ public class QuestionB {
 			System.out.println("No path found.");
 		}
 	}
-}
-
-/*
-Dynamic programming approach :
-Consider 1x1 grid, then 1x2, then 1x3 grid then ... till 3X3 grid.
-Assume each time, assume robot starting from (1,1) and destinations are right corners.
-Find in total how many ways can robot reach destination each time.
-Generalize the formula
-
-   j
-   1 2 3
-1  0 1 1
-2  1 2 3
-3  1 3 6
-
-General formula on noticing:
-
-curr_cell_val = top_cell_val + left_cell_val
-i.e 
-new_dp[j] = old_dp[j] + dp[j-1]
-i.e
-dp[j] = dp[j] + dp[j-1]
-
-Now, if there is obstacle marked in a cell, for such cell, mark dp[j]=0
-
-https://leetcode.com/problems/unique-paths-ii/ 
-
-*/
-
-uniquePathsWithObstacles(int[][] obstacles) {
-	
-	int width = obstacles[0].length;
-	int dp[] = new int[width];
-	dp[0]=1;
-	for(int[] row : obstacles) {
-		for(int j=0; j< width; j++) {
-			if(row[j]==1) {	//obstacle found
-				dp[j]=0;
-			} else if(j>0) {
-				dp[j]=dp[j]+dp[j-1];
-			}
-		}
-	}
-	return dp[width-1];
 }
