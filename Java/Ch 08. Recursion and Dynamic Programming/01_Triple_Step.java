@@ -6,6 +6,13 @@ stairs.
 
 Also see: 
 https://leetcode.com/problems/climbing-stairs/
+
+Notice all techniques to solve the problem:
+https://leetcode.com/problems/climbing-stairs/solution/
+1. Brute force
+2. Recursion and memoization
+3. Dynamic programming
+4. Fibonacci Number
 */
 
 /*
