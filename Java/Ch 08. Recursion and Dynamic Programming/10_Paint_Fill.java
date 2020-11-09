@@ -90,7 +90,7 @@ public class Paint {
 			Queue<Integer> col = new LinkedList<Integer>();
 			row.add(r);
 			col.add(c);
-			while (!row.isEmpty()) {
+			while (!row.isEmpty()) { //row or col both the queues will be in sync
 				r = row.remove();
 				c = col.remove();
 				if (screen[r][c] == oldC) {
