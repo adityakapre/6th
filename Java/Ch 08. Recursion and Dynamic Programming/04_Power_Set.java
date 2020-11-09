@@ -2,7 +2,9 @@
 Q:
 Power Set: Write a method to return all subsets of a set.
 
-Ans: https://www.youtube.com/watch?v=LdtQAYdYLcE
+Ans: 
+****************************************************CHECK Videos.txt**************************************************
+https://www.youtube.com/watch?v=LdtQAYdYLcE
 
 We should first have some reasonable expectations of our time and space complexity.
 How many subsets of a set are there? When we generate a subset, each element has the "choice" of either
