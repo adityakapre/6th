@@ -47,7 +47,7 @@ public class Question {
 	}
 	
 	public static int magicFast(int[] array, int start, int end) {
-		if (end < start) {	//base condition
+		if (start > end) {	//base condition
 			return -1;
 		}
 		int mid = (start + end) / 2;
