@@ -18,4 +18,4 @@ Many client-specific interfaces are better than one general-purpose interface.
 
 Dependency inversion principle
 ==============================
-One should "depend upon abstractions, not on concretions (concrete classes)."
+One should depend upon abstractions, not on concretions (concrete classes).
