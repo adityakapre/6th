@@ -986,3 +986,7 @@ notify()     | join()            |
 notifyAll()  | sleep() {static}  |
              | yield() {static}  |
 ------------------------------------------------------
+
+
+Q. Runnable Vs Callable
+https://www.baeldung.com/java-runnable-callable
