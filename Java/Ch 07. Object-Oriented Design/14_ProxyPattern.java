@@ -8,6 +8,6 @@ https://www.youtube.com/watch?v=NwaabHqPHeM&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eM
   
 - Types
     Remote resource
-    Virtual
+    Virtual resource - expensive to create
     Protection
  
