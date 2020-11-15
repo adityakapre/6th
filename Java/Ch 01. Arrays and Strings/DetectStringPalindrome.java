@@ -9,6 +9,24 @@ https://leetcode.com/problems/valid-palindrome/submissions/
 
 */
 
+public boolean isValid(String s) {
+        int start = 0;
+        int end = s.length() - 1;
+        while(start < end) {
+            if(s.charAt(start)==s.charAt(end)) {
+                start++;
+                end--;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+/*
+Another answer
+*/
+
 import java.util.*;
  
 public class Palindrome {
