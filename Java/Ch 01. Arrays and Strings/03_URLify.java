@@ -32,7 +32,7 @@ public class Question {
 	public static void replaceSpaces(char[] str, int trueLength) {
 		int spaceCount = 0, index, i = 0;
 		for (i = 0; i < trueLength; i++) {
-			if (str[i] == ' ') {
+			if (str[i] == ' ') {	//in character datatype, space is represented as ' 'and not as " "
 				spaceCount++;
 			}
 		}
