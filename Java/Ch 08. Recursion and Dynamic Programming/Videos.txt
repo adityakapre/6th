@@ -19,6 +19,21 @@ https://www.youtube.com/watch?v=l4lsRYNS_ok&list=PLzffTJx5aHaT-0K_b47KxScckZfDXA
 Coin Change 2 | Dynamic programming | Leetcode #518
 https://www.youtube.com/watch?v=ruMqWViJ2_U
 
+for (int i=1; i<T.length; i++) {
+  for (int j=1; j<T[0].length; j++){ // amount+1 since its open range (excludes last) 
+    if (coins[i-1] > j) { // i-1 as coin array has first coin is at 0 and we start i at 1
+      T[i][j] = T[i-1][j]; // copy top value as we cant take this coin
+    } else { 
+      T[i][j] = T[i-1][j] + T[i][j - coins[i-1]] ;
+      // Total ways = ways(amount w/o coin) + ways(amount with coin)
+      // coins[i-1] because that is the current coin in consideration
+    }       
+  }
+}
+//print(T);
+return T[coins.length][amount];
+
+
 Best Time to Buy and Sell Stock (Leetcode 121)
 Permitted to complete at most one transaction
 Greedy
