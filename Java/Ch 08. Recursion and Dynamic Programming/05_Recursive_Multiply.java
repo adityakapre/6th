@@ -51,7 +51,7 @@ public class QuestionC {
 			return bigger;
 		} 
 		
-		int s = smaller >> 1; //divide by 2 - right shift once
+		int s = smaller/2; // smaller >> 1; divide by 2 - right shift once
 		int halfProd = minProductHelper(s, bigger);
 		
 		if (smaller % 2 == 0) {
