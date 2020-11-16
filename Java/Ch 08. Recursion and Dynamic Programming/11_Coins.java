@@ -7,6 +7,14 @@ ANSWER:
 https://leetcode.com/problems/coin-change-2/
 https://www.youtube.com/watch?v=ruMqWViJ2_U
 
+     --> amount j
+|    0 1 2 3 4 5 6
+     -------------
+     0 1 0 0 0 0 0
+i    1 1 1 1 1 1 1
+     2 1 1 2 2 3 3
+     5 1 1 2 2 3 4
+
 A:
 This is a recursive problem, so let's figure out how to compute makeChange(n) using prior solutions (i.e.,subproblems).
 Let's say n = 100. We want to compute the number of ways of making change for 100 cents. What is the relationship between 
