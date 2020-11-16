@@ -220,7 +220,7 @@ class TreeNode {
 	public TreeNode getRandomNode() {
 		int leftSize = this.left == null ? 0 : this.left.size();
 		Random random = new Random();
-		int index = random.nextInt(size);
+		int index = random.nextInt(size); // size here is total size of tree below this node
 		if (index < leftSize) {
 			return this.left.getRandomNode();
 		} else if (index == leftSize) {
