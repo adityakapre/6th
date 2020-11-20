@@ -83,37 +83,81 @@ return p2;
 You may complete at most k transactions
 https://www.youtube.com/watch?v=thGK0PjLemk
 
+public int maxProfit(int k, int[] prices) {
+        if(k==0 || prices.length==0)return 0;
+         int[] profit = new int[prices.length];
+        if(k>=prices.length/2){
+             int p = 0;
+              for(int i=1;i<prices.length;i++){
+             if(prices[i]>prices[i-1]){
+               p = p+ prices[i]-prices[i-1]; 
+             }
+           }
+           return p;
+        }
+        
+        //1 trans 
+        int min = prices[0] , p = 0;
+        for(int i =0;i<prices.length;i++){
+            min = Math.min(min,prices[i]);
+            p = Math.max(p,prices[i]-min);
+            profit[i]=p;
+        }
+        
+        //k = 3
+        for(int i=1;i<k;i++){
+           ktimes(prices, profit);      
+        } 
+        
+        int ans = 0;
+        for(int i=0;i<profit.length;i++){
+            ans = Math.max(profit[i],ans);
+        }
+        
+        return ans;
+    }
+    
+     void ktimes(int[] prices,int[] profit){
+          int b2 = Integer.MAX_VALUE;
+          int p2 = 0;
+          for(int i=0;i<prices.length;i++){
+           b2 = Math.min(b2,prices[i]-profit[i]);
+           p2 = Math.max(p2,prices[i]-b2);
+           profit[i] = p2;
+          }  
+     }
+     
+I + II + III + IV together DP :
 
 static public int maxProfit(int k, int[] prices) {
         if(k==0 || prices.length<2)return 0;
         if(k>prices.length/2)k = prices.length/2;//4
-        int[] dp = new int[prices.length];
+        int[][] dp = new int[k+1][prices.length];
 
         int min = prices[0] , p = 0;
         for (int i=0;i<prices.length;i++){
             min = Math.min(prices[i],min);
             p = Math.max(prices[i]-min,p);
-            dp[i] = p;
+            dp[1][i] = p;
         }
-
 
         for(int i=2;i<=k;i++){
             int b2 = Integer.MAX_VALUE;
             int p2 = 0;
             for (int j=0;j<prices.length;j++){
-                b2 = Math.min(b2,prices[j]-dp[j]);
+                b2 = Math.min(b2,prices[j]-dp[i-1][j]);
                 p2 = Math.max(p2,prices[j]-b2);
-                dp[j] = p2;
+                dp[i][j] = p2;
             }
         }
 
-        return findMax(dp);
+        return findMax(dp, dp.length-1);
     }
 
-    static int findMax(int[] dp){
+    static int findMax(int[][] dp, int lastRow){
         int max = 0;
-        for (int i=0;i<dp.length;i++){
-            max = Math.max(dp[i],max);
+        for (int j=0;;j<dp[lastRow].length;j++){
+            max = Math.max(dp[lastRow][i],max);
         }
         return max;
     }
