@@ -10,6 +10,11 @@ projects: a, b, c, d, e, f
 dependencies: (a, d), (f, b), (b, d), (f, a), (d, c)
 Output: f, e, a, b, d, c
 
+
+ANS:
+https://www.youtube.com/watch?v=tggiFvaxjrY
+https://leetcode.com/problems/course-schedule-ii/submissions/
+
 A:
 Visualizing the information as a graph probably works best. Be careful with the direction of the arrows. In
 the graph below, an arrow from d to g means that d must be compiled before g. You can also draw them
