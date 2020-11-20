@@ -234,7 +234,7 @@ class TreeNode {
 	public TreeNode getIthNode(int i) {
 		int leftSize = this.left == null ? 0 : this.left.size();
 		if (i < leftSize) {
-			return left.getIthNode(i);
+			return this.left.getIthNode(i);
 		} else if (i == leftSize) {
 			return this;
 		} else {
