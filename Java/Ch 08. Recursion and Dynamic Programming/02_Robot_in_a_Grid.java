@@ -258,22 +258,17 @@ public class QuestionB {
 		if (col < 0 || row < 0 || !maze[row][col]) {
 			return false;
 		}
-		
 		Point p = new Point(row, col);
-		
 		/* If we've already visited this cell, return. */
 		if (failedPoints.contains(p)) { 
 			return false;
 		}	
-		
 		boolean isAtOrigin = (row == 0) && (col == 0);
-		
 		/* If there's a path from the start to my current location, add my location.*/
 		if (isAtOrigin || getPath(maze, row, col - 1, path, failedPoints) || getPath(maze, row - 1, col, path, failedPoints)) {
 			path.add(p);
 			return true;
 		}
-		
 		failedPoints.add(p); // Cache result
 		return false;
 	}
