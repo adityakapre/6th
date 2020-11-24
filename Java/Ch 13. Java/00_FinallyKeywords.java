@@ -81,6 +81,15 @@ The output for this code is the following:
 Look carefully at lines 3 to 5 in the output. The catch block is fully executed (including the function call in
 the return statement), then the finally block, and then the function actually returns.
 
+Note: If the JVM exits while the try or catch code is being executed, then the finally block may not execute. 
+Likewise, if the thread executing the try or catch code is interrupted or killed, the finally block may not 
+execute even though the application as a whole continues.
+
+Important: The finally block is a key tool for preventing resource leaks. 
+When closing a file or otherwise recovering resources, place the code in a finally block to ensure 
+that resource is always recovered.
+
+
 finalize()
 ----------
 The automatic garbage collector calls the finalize () method just before actually destroying the object.
