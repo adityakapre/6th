@@ -53,7 +53,10 @@ The order in which the vertices are discovered by this algorithm is called the l
 
 **The above logic also applies in binary tree, but there instead of a "for" loop,
 we just use node.left and node.right as each parent node can have only those two
-as child nodes**
+as child nodes
+Also, in tree, we do not check condition "if vertex w is not labeled as discovered".
+This is because tree does not have cycles.
+**
 
 A non-recursive implementation of DFS with worst-case space complexity {\displaystyle O(|E|)} O(|E|):[6]
 
