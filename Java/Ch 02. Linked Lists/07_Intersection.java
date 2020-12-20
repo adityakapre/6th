@@ -78,7 +78,10 @@ public class Question {
 		/* Return either one. */
 		return longer; 
 	}
-	
+	/*
+	* We need tail node in result to check if tails to two lists are same.
+	* Intersecting lists should have same tail nodes.
+	*/
 	public static class Result {
 		public LinkedListNode tail;
 		public int size;
