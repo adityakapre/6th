@@ -39,10 +39,10 @@ import CtCILibrary.AssortedMethods;
 public class FixedMultiStack {
 	private int numberOfStacks = 3;
 	private int stackCapacity;	//max no of items that a stack can hold
-	private int[] values;		//hold stack items
+	private int[] values;		//many stacks themselves
 	private int[] sizes;		//hold size of each stack
 	
-	public FixedMultiStack(int stackSize) {
+	public FixedMultiStack(int stackCapacity) {
 		this.stackCapacity = stackCapacity;
 		values = new int[stackCapacity * numberOfStacks];
 		sizes = new int[numberOfStacks];
