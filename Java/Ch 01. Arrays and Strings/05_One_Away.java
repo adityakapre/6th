@@ -59,17 +59,6 @@ public class QuestionA {
 		return true;
 	}
 	
-	public static boolean oneEditAway(String first, String second) {
-		if (first.length() == second.length()) {                //same lengths, so might be replacement
-			return oneEditReplace(first, second);
-		} else if (first.length() + 1 == second.length()) {
-			return oneEditInsert(first, second);
-		} else if (first.length() - 1 == second.length()) {
-			return oneEditInsert(second, first);
-		} 
-		return false;
-	}
-	
 	/* Check if you can insert a character into s1 to make s2. s1->smaller s2->larger */
 	public static boolean oneEditInsert(String s1, String s2) {
 		int index1 = 0;
@@ -78,7 +67,7 @@ public class QuestionA {
 			//This condition should be true exactly once for string to be one insert away
 			if (s1.charAt(index1) != s2.charAt(index2)) {
 				//since s2 larger in length, we progress its ptr only once
-				//when chars are not same to allow 1 distince character
+				//when chars are not same to allow 1 non-matching character
 				if (index1 == index2) {
 					index2++; 
 				} else {
@@ -91,6 +80,17 @@ public class QuestionA {
 		}
 		return true;
 	}	
+	
+	public static boolean oneEditAway(String first, String second) {
+		if (first.length() == second.length()) {                //same lengths, so might be replacement
+			return oneEditReplace(first, second);
+		} else if (first.length() + 1 == second.length()) {
+			return oneEditInsert(first, second);
+		} else if (first.length() - 1 == second.length()) {
+			return oneEditInsert(second, first);
+		} 
+		return false;
+	}
 	
 	public static void main(String[] args) {
 		String a = "pse";
